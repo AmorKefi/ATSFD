@@ -1,0 +1,72 @@
+<!-- <div class="container">
+    <div class="row">
+      <div class="card col-6 offset-3 mt-5  p-0 text-center pb-5 auth">
+        <div class="card-header bg-primary text-white h4">Sign In</div>
+       <div class="row">
+         <div class="col">
+        <img src="assets/img/logo.png" alt="" class="img-fluid" style="width:150px">
+      </div>
+      </div>
+        <form class="pt-1" #form="ngForm" (ngSubmit)="connect(form.value)">
+          <div class="col-auto">
+            <label class="sr-only" for="Username">Username</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></div>
+              </div>
+              <input type="text" class="form-control" id="Username" ngModel #Login="ngModel" name="Login" placeholder="Login" required>
+            </div>
+          </div>
+          <div class="col-auto">
+            <label class="sr-only" for="password">Password</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-unlock-alt" aria-hidden="true"></i></div>
+              </div>
+              <input type="password" class="form-control" id="password" ngModel #Password="ngModel" name="Password" placeholder="Password" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary col-md-3 col-12" [disabled]="!Login.valid || !Password.valid">LogIn</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> -->
+  <div class="container">
+      <div class="row">
+        <div class="card col-6 bg-default mt-5 text-center p-0 auth">
+          
+          <div class="card-body">
+              <img src="assets/img/logo.png" alt="" class="img-fluid" style="width:150px">
+          
+            </div>
+        </div>
+        <div class="card col-6 mt-5  p-0 text-center pb-5 auth">
+            <div class="card-header bg-primary font-weight-bold">Sign In</div>
+          <form class="pt-5" #form="ngForm" (ngSubmit)="authenticate(form.value)">
+            <div class="col-auto">
+              <label class="sr-only" for="Username">Username</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-user"></i></div>
+                </div>
+                <input type="text" class="form-control" id="Username" ngModel #Username="ngModel" name="username" placeholder="Login" required>
+              </div>
+            </div>
+            <div class="col-auto">
+              <label class="sr-only" for="Password">Password</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-unlock-alt" aria-hidden="true"></i></div>
+                </div>
+                <input type="password" class="form-control" id="Password" ngModel #Password="ngModel" name="password" placeholder="Password" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary col-md-3 col-12" [disabled]="!Username.valid || !Password.valid">LogIn</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
