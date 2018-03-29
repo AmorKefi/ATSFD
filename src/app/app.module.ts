@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { AlwaysAuthGuard } from './guard/AlwaysAuthGuard';
 import { OnlyLoggedInUsersGuard } from './guard/OnlyLoggedInUsersGuard';
 
-import { AuthServiceService } from './auth-service.service';
+import { AuthServiceService } from './Services/AuthService/auth-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -31,10 +31,10 @@ import {
   AppHeaderComponent,
   AppSidebarComponent,
   AppSidebarFooterComponent,
-  
-  
 
-  
+
+
+
   APP_SIDEBAR_NAV
 } from './components';
 
@@ -80,8 +80,8 @@ import { AddSfdDialogComponent } from './containers/add-sfd-dialog/add-sfd-dialo
 import { AddUserComponent } from './containers/add-user/add-user.component';
 import { AddUserDialogComponent } from './containers/add-user-dialog/add-user-dialog.component';
 import { AuthentificationComComponent } from './components/authentification-com/authentification-com.component';
-
-
+import { UtilisateurService } from './Services/UtilisateursService/utilisateur.service';
+import { UtilisateurDiagComponent } from './containers/utilisateur-diag/utilisateur-diag.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -92,10 +92,10 @@ import { AuthentificationComComponent } from './components/authentification-com/
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule
-  
+
 
   ],
- 
+
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
@@ -111,13 +111,14 @@ import { AuthentificationComComponent } from './components/authentification-com/
     AddSfdDialogComponent,
     AddUserComponent,
     AddUserDialogComponent,
-    AuthentificationComComponent
+    AuthentificationComComponent,
+    UtilisateurDiagComponent
   ],
-  providers: [AlwaysAuthGuard,OnlyLoggedInUsersGuard,AuthServiceService,CookieService,{
+  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService, UtilisateurService, {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
   bootstrap: [ AppComponent ],
-  entryComponents: [AddSfdDialogComponent]
+  entryComponents: [AddSfdDialogComponent, UtilisateurDiagComponent]
 })
 export class AppModule { }

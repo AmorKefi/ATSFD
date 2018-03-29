@@ -36,6 +36,7 @@ export class AppSidebarNavComponent {
 }
 
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sidebar-nav-item',
@@ -79,7 +80,13 @@ export class AppSidebarNavItemComponent {
 @Component({
   selector: 'app-sidebar-nav-link',
   template: `
-    <a *ngIf="!isExternalLink(); else external"
+  <a *ngIf="!isExternalLink() && isbutton()"
+  [ngClass]="hasVariant() ? 'nav-link nav-link-' + link.variant : 'nav-link'" (click)="logout()">
+  <i *ngIf="isIcon()" class="{{ link.icon }}"></i>
+  {{ link.name }}
+  <span *ngIf="isBadge()" [ngClass]="'badge badge-' + link.badge.variant">{{ link.badge.text }}</span>
+</a>
+    <a *ngIf="!isExternalLink() && !isbutton()"
       [ngClass]="hasVariant() ? 'nav-link nav-link-' + link.variant : 'nav-link'"
       routerLinkActive="active"
       [routerLink]="[link.url]">
@@ -87,7 +94,7 @@ export class AppSidebarNavItemComponent {
       {{ link.name }}
       <span *ngIf="isBadge()" [ngClass]="'badge badge-' + link.badge.variant">{{ link.badge.text }}</span>
     </a>
-    <ng-template #external>
+    <ng-template [ngIf]="isExternalLink()">
       <a [ngClass]="hasVariant() ? 'nav-link nav-link-' + link.variant : 'nav-link'" href="{{link.url}}">
         <i *ngIf="isIcon()" class="{{ link.icon }}"></i>
         {{ link.name }}
@@ -98,7 +105,6 @@ export class AppSidebarNavItemComponent {
 })
 export class AppSidebarNavLinkComponent {
   @Input() link: any;
-
   public hasVariant() {
     return this.link.variant ? true : false
   }
@@ -108,14 +114,25 @@ export class AppSidebarNavLinkComponent {
   }
 
   public isExternalLink() {
+    if (this.link.url !== null) {
     return this.link.url.substring(0, 4) === 'http' ? true : false
+  } else {
+    return false;
   }
+  }
+  public isbutton() {
+    return this.link.button ? true : false
+  }
+
 
   public isIcon() {
     return this.link.icon ? true : false
   }
-
-  constructor() { }
+  constructor(private cookie: CookieService, private route: Router) {}
+  logout() {
+    this.cookie.delete('Token');
+    this.route.navigate(['auth']);
+  }
 }
 
 @Component({

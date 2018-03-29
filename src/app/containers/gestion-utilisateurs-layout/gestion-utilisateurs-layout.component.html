@@ -38,27 +38,25 @@
                                     <tr>
                                       <th>Code</th>
                                       <th>Nom</th>
-                                      <th>Adresse</th>
-                                      <th>Pays</th>
-                                      <th>Statut social</th>
+                                      <th>Email</th>
+                                      <th>Roles</th>
                                       <th>Actions</th>
                                     </tr>
                                   </thead>
                                  <tbody>
-                                  <tr><td>1</td>
-                                  <td>SFD1</td>
-                                  <td>rue manaarach</td>
-                                  <td>sénégal</td>
-                                  <td>aaaa</td>
+                                  <tr *ngFor="let utilisateur of Utilisateurs">
+                                  <td>{{utilisateur.id}}</td>
+                                  <td>{{utilisateur.firstName +" "+utilisateur.lastName}}</td>
+                                  <td>{{utilisateur.email}}</td>
+                                  <td>{{utilisateur.roles}}</td>
                                   <td>
-                                  
                                     <div class="btn-group" role="group">
                                        
-                                        <button type="button" class="btn btn-info"><i class="fa fa-pencil">
+                                        <button type="button" class="btn btn-info" (click)="Modifier(utilisateur)"><i class="fa fa-pencil">
                                             </i></button>
-                                        <button type="button" class="btn btn-default"><i class="fa fa-eye">
+                                        <button type="button" class="btn btn-default" (click)="Consulter(utilisateur)"><i class="fa fa-eye">
                                             </i></button>
-                                        <button type="button" class="btn btn-danger"><i class="fa fa-close">
+                                        <button type="button" class="btn btn-danger" (click)="Supprimer(utilisateur)"><i class="fa fa-close">
                                             </i></button>
                                     </div>
                                

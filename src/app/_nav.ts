@@ -18,38 +18,38 @@ export const navigation = [
     name: 'Gestion des accès',
     url: '/GestionAccès',
     icon: 'fa fa-key', children: [
-     
-      { name: 'Gestion des utilisateurs',url: '/GestionAccès',icon: 'fa fa-user' },
+
+      { name: 'Gestion des utilisateurs', url: '/GestionAccès', icon: 'fa fa-user' },
       { name: 'Gestion des rôles', url: '/GestionRoles', icon: 'fa fa-address-card'  },
       { name: 'Gestion des fonctions', url: '/GestionFontions', icon: 'fa fa-eye'  },
-     
+
     ]},
- 
+
     {
       name: 'Statistiques',
       url: '/Statistiques',
       icon: 'fa fa-bar-chart'
- 
+
     },
-  
+
     {
       name: 'Paramètres globaux',
       url: '/GestionParamètresGlobaux',
       icon: 'fa fa-gears'
-   
+
     },
     {
       name: 'Paramètres compte',
       url: '/GestionParamètresComptes',
       icon: 'fa fa-gear'
- 
+
     }
     ,
     {
       name: 'Déconnexion',
       url: '',
-      icon: 'fa fa-sign-out'
-     
+      icon: 'fa fa-sign-out',
+      button : true,
     }
-   
+
 ];

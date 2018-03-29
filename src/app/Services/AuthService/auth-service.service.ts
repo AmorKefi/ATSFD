@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map'
 export class AuthServiceService {
 
   constructor(private http: HttpClient) { }
-  authenticate(User){
-    return this.http.post('http://127.0.0.1:8080/auth',User).map(res=>res);
+  authenticate(User) {
+    return this.http.post('http://127.0.0.1:8080/auth', User).map(res => res);
   }
 }
