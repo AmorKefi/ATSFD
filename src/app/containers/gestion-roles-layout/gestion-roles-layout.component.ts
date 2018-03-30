@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RoleServiceService } from '../../Services/RoleService/role-service.service';
 
 @Component({
   selector: 'app-gestion-roles-layout',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestionRolesLayoutComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private roleservice: RoleServiceService) { }
+  // tslint:disable-next-line:member-ordering
+  roles: any ;
   ngOnInit() {
-  }
+    this.roleservice.getroles().subscribe(res => this.roles = res, err => console.log(err));
+    }
 
 }

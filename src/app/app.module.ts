@@ -82,6 +82,7 @@ import { AddUserDialogComponent } from './containers/add-user-dialog/add-user-di
 import { AuthentificationComComponent } from './components/authentification-com/authentification-com.component';
 import { UtilisateurService } from './Services/UtilisateursService/utilisateur.service';
 import { UtilisateurDiagComponent } from './containers/utilisateur-diag/utilisateur-diag.component';
+import { RoleServiceService } from './Services/RoleService/role-service.service';
 @NgModule({
   imports: [
     BrowserModule,
@@ -114,7 +115,7 @@ import { UtilisateurDiagComponent } from './containers/utilisateur-diag/utilisat
     AuthentificationComComponent,
     UtilisateurDiagComponent
   ],
-  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService, UtilisateurService, {
+  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService, UtilisateurService, RoleServiceService , {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
