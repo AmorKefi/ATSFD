@@ -10,20 +10,32 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 				<h4 class="mb-4">Ajouter un SFD</h4>
 			</div>
 			<div class="form-group">
-				<label>Nom:</label>
-				<input type="text" class="form-control" placeholder="Nom SFD" name="Login" [ngModel]="data?.ssoId">
+				<label>Nom :</label>
+				<input type="text" class="form-control" placeholder="Nom SFD" name="Login" [ngModel]="data?.nomsfd">
       </div>
       <div class="form-group">
-      <label>Nom Agence:</label>
-      <input type="text" class="form-control" placeholder="Nom Agence" >
+      <label>raison Social:</label>
+      <input type="text" class="form-control" placeholder="raison sociale" [ngModel]="data?.raisonsociale">
     </div>
     <div class="form-group">
     <label>Adresse:</label>
-    <input type="text" class="form-control" placeholder="Adresse SFD">
+    <input type="text" class="form-control" placeholder="Adresse SFD" [ngModel]="data?.adressesfd">
   </div>
   <div class="form-group">
-  <label>Statut social:</label>
-  <input type="text" class="form-control" placeholder="Statut social" >
+  <label>Email:</label>
+  <input type="email" class="form-control" placeholder="Email" [ngModel]="data?.email">
+</div>
+<div class="form-group">
+<label>Status:</label>
+<input type="text" class="form-control" placeholder="Statuts" [ngModel]="data?.statutsfd">
+</div>
+<div class="form-group">
+<label>Tel :</label>
+<input type="text" class="form-control" placeholder="Tel" [ngModel]="data?.telsfd">
+</div>
+<div class="form-group">
+<label>Ville :</label>
+<input type="text" class="form-control" placeholder="Ville" [ngModel]="data?.villesfd">
 </div>
 			<div class="text-right mt-3">
 				<button class="btn btn-light" (click)="close()">Quitter</button>

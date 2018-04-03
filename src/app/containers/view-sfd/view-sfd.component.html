@@ -1,0 +1,25 @@
+<app-header></app-header>
+<div class="app-body">
+  <app-sidebar></app-sidebar>
+  <!-- Main content -->
+ <main class="main">
+    <!-- Breadcrumb -->
+   <ol class="breadcrumb">
+      <app-breadcrumbs></app-breadcrumbs>
+    </ol>
+<!--Content-->
+<div class="row">
+  <div class="col-12 card">
+    <div class="card-header text-center display-4">Enda</div>
+    <div class="card-body">
+      Details
+    </div>
+  </div>
+</div>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div><!-- /.conainer-fluid -->
+  </main>
+  <app-aside></app-aside>
+</div>
+<app-footer></app-footer>

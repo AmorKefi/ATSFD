@@ -19,6 +19,7 @@ import { AuthentificationComComponent } from './components/authentification-com/
 import { AppRoleComponent } from './gestion_access/app-role/app-role.component';
 import { AppUserComponent } from './gestion_access/app-user/app-user.component';
 import { AppFunctionComponent } from './gestion_access/app-fuction/app-function.component';
+import { ViewSfdComponent } from './containers/view-sfd/view-sfd.component';
 
 export const routes: Routes = [
   {
@@ -88,6 +89,10 @@ export const routes: Routes = [
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: StatistiquesLayoutComponent
 
+  },{
+    path: 'GestionSFD/view/:id',
+    canActivate : [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+    component: ViewSfdComponent
   },
   {
     path: '',

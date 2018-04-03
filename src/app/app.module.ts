@@ -101,6 +101,7 @@ import { CrudRfService } from './gestion_access/app-role/crud-rf/crud-rf.service
 import { UpdateDialog } from './gestion_access/app-role/update-role.component';
 import { DeleteRoleFunctionDialog } from './gestion_access/app-role/crud-rf/delete-roleFunction.component';
 import { CrudRfComponent } from './gestion_access/app-role/crud-rf/crud-rf.component';
+import { ViewSfdComponent } from './containers/view-sfd/view-sfd.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -156,7 +157,8 @@ import { CrudRfComponent } from './gestion_access/app-role/crud-rf/crud-rf.compo
     AddRoleFunctionDialog,
     UpdateDialog,
     DeleteRoleFunctionDialog,
-    CrudRfComponent
+    CrudRfComponent,
+    ViewSfdComponent
   ],
   providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, RoleServiceService , AppUserService,AppRoleService,AppFunctionService,{
     provide: LocationStrategy,
