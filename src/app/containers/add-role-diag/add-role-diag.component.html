@@ -1,0 +1,35 @@
+<div class="text-center p-0">
+  <div class="card-body">
+<form #form="ngForm" > 
+    <div class="text-center">
+        <h4 class="mb-4">{{data.caller}}</h4>
+      </div>
+    <input  type="text" name="id" hidden [ngModel]="data?.id">
+      <div class="form-group">
+        <label>Login:</label>
+        <input type="text" class="form-control" placeholder="Nom SFD" name="ssoId" [ngModel]="data?.ssoId">
+      </div>
+      <div class="form-group">
+      <label>Nom :</label>
+      <input type="text" class="form-control" placeholder="Nom" name="firstName" [ngModel]="data?.firstName">
+    </div>
+    <div class="form-group">
+      <label>Prénom :</label>
+      <input type="text" class="form-control" placeholder="Prénom" name="lastName" [ngModel]="data?.lastName">
+    </div>
+    <div class="form-group">
+    <label>Email :</label>
+    <input type="Email" class="form-control" placeholder="Email" name="email" [ngModel]="data?.email">
+  </div>
+  <div class="form-group">
+      <label>Mot de passe :</label>
+      <input type="password" class="form-control" placeholder="password" name="password" [ngModel]="data?.password">
+    </div>
+      <div class="text-right mt-3">
+        <button class="btn btn-light" (click)="close()">Quitter</button>
+        <button type="submit" class="btn btn-primary" *ngIf="data.caller=='modifier'" (click)="Modifier(form)">Modifier</button>
+        <button type="submit" class="btn btn-primary" *ngIf="data.caller=='Ajouter'" (click)="Ajouter(form)">Ajouter</button>
+      </div>
+</form>
+  </div>
+</div>

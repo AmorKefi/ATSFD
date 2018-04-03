@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div class="app-body">
+    <app-sidebar></app-sidebar>
+    <!-- Main content -->
+    <main class="main">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <app-breadcrumbs></app-breadcrumbs>
+        </ol>
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <h5>
+                    <i class="fa fa-circle"></i>
+                    <span class="caption-subject bold uppercase">Liste des fonctions </span>
+                </h5>
+            </div>
+            <div class="tools float-right">
+                <div class="tools">
+
+
+                    <!--<span class="btn  btn-primary"> Exporter </span>-->
+                    <a class="btn btn-primary btn-outline" target="_blank" onClick="
+                            $('#functions_table').tableExport({
+                            headings: true,
+                            fileName: 'functions',
+                            type: 'xls'
+                            });">
+                        <i class="fa fa-file-excel-o "> </i> Excel
+                    </a>
+                    <a class="btn btn-primary " onClick="
+                            $('#functions_table').tableExport({ headings: true,
+                            fileName: 'functions',
+                            type: 'csv'});">
+                        <i class="fa fa-file-text-o "> </i> CSV
+                    </a>
+                    <a class="btn  btn-primary margin-right-10" onClick="function DoCellData(cell, row, col, data) {}
+                            function DoBeforeAutotable(table, headers, rows, AutotableSettings) {}
+                            $('#functions_table').tableExport({fileName: 'functions' ,
+                            type: 'pdf', jspdf: {format: 'a4', margins: {left: 20, right: 10, top: 20, bottom: 20},  autotable: {tableWidth: 'wrap',
+                            tableExport: {onBeforeAutotable: DoBeforeAutotable, onCellData: DoCellData}}}}); ">
+                        <i class="fa fa-file-pdf-o "> </i> PDF
+                    </a>
+                    <a class="btn btn-outline btn-primary" data-target="#add-function-model" data-toggle="modal" (click)="add()">
+                        <i class="fa fa-plus"></i> Nouvelle Fonction </a>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="portlet-body">
+
+
+            <ng2-smart-table class='form-control table-striped table-bordered center-block text-center' [settings]="settings" [source]="data"
+                (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)">
+                <!-- (createConfirm)="onCreateConfirm($event)"  -->
+            </ng2-smart-table>
+
+        </div>
+
+    </main>
+    <app-aside></app-aside>
+</div>
+<app-footer></app-footer>

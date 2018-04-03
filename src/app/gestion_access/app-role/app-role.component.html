@@ -1,0 +1,100 @@
+<app-header></app-header>
+<div class="app-body">
+    <app-sidebar></app-sidebar>
+    <!-- Main content -->
+    <main class="main">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <app-breadcrumbs></app-breadcrumbs>
+        </ol>
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <h5>
+                    <i class="fa fa-circle"></i>
+                    <span class="caption-subject bold uppercase">Liste des roles </span>
+                </h5>
+            </div>
+            <div class="tools float-right">
+                <div class="">
+
+
+                    <!--<span class="btn  btn-primary"> Exporter </span>-->
+                    <a class="btn btn-primary btn-outline" target="_blank" onClick="
+                        $('#functions_table').tableExport({
+                        headings: true,
+                        fileName: 'functions',
+                        type: 'xls'
+                        });">
+                        <i class="fa fa-file-excel-o "> </i> Excel
+                    </a>
+                    <a class="btn btn-primary " onClick="
+                        $('#functions_table').tableExport({ headings: true,
+                    fileName: 'functions',
+                    type: 'csv'});">
+                        <i class="fa fa-file-text-o "> </i> CSV
+                    </a>
+                    <a class="btn  btn-primary margin-right-10" onClick="function DoCellData(cell, row, col, data) {}
+                        function DoBeforeAutotable(table, headers, rows, AutotableSettings) {}
+                        $('#functions_table').tableExport({fileName: 'functions' ,
+                        type: 'pdf', jspdf: {format: 'a4', margins: {left: 20, right: 10, top: 20, bottom: 20},  autotable: {tableWidth: 'wrap',
+                        tableExport: {onBeforeAutotable: DoBeforeAutotable, onCellData: DoCellData}}}}); ">
+                        <i class="fa fa-file-pdf-o "> </i> PDF
+                    </a>
+
+                    <a class="btn btn-outline btn-primary" data-target="#add-function-model" data-toggle="modal" (click)="CreateRole()">
+                        <i class="fa fa-plus"></i> Nouvelle Role </a>
+
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped table-hover dt-responsive table-bordered" width="100%" data-toggle="table" data-search="true"
+            data-filter-control="true" id="roles_table">
+            <thead>
+                <tr class="text-center">
+                    <th class="hidden" hidden> ID</th>
+                    <th class="" data-sortable="true">Nom</th>
+                    <th class="" data-sortable="true">Description</th>
+                    <th class="">Fonctions</th>
+                    <th class="hidden-md hidden-lg hidden-print">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                <tr class="text-center" *ngFor="let r of data">
+                    <td class="hidden" hidden>{{r.roleId}}</td>
+                    <td>{{r.roleName}}</td>
+                    <td>{{r.description}}</td>
+                    <td>
+                        <ul>
+                            <ol class="btn btn-outline-primary" *ngFor="let x  of r.roleFunctions" (click)="updateRoleFunction(x,r)">{{x.function.functionName}}</ol>
+                        </ul>
+
+                        <!-- <div *ngFor="let fn of r.roleFunctions">
+                                                                                            <span class="label label-info">{{fn.function.functionName}}</span>
+                                                                                            </div> -->
+                    </td>
+
+                    <td class="hidden-md  hidden-lg hidden-print">
+
+                        <!-- <div class="btn-group  btn-group-xs"> -->
+                        <div>
+                            <a class="btn btn-outline btn-outline-primary btn-xs" (click)="AddRoleFunction(r)">
+                                <i class="fa fa-edit"></i>Màj Fonction</a>
+                            <a class="btn btn-outline btn-outline-warning btn-xs" (click)="UpdateRole(r)">
+                                <i class="fa fa-edit"></i> Mise à Jour</a>
+                            <a class="btn btn-outline btn-outline-danger btn-xs" data-target="#delete-role-model" data-toggle="modal" (click)="DeleteRole(r)">
+                                <i class="fa fa-remove"></i>Supprimer </a>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </main>
+    <app-aside></app-aside>
+</div>
+<app-footer></app-footer>

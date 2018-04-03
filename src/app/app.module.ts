@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule, MatSidenavModule, MatIconModule, MatButtonModule, MatCardModule, MatMenuModule, MatAutocompleteModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -67,6 +67,7 @@ const APP_DIRECTIVES = [
 import { AppRoutingModule } from './app.routing';
 
 // Import components
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { SfdLayoutComponent } from './containers/sfd-layout/sfd-layout.component';
@@ -77,12 +78,29 @@ import { GestionFonctionsLayoutComponent } from './containers/gestion-fonctions-
 import {ParamètresglobauxLayoutComponent} from './containers/paramètresglobaux-layout/paramètresglobaux-layout.component';
 import {ParamètresCompteLayoutComponent} from './containers/paramètres-compte-layout/paramètres-compte-layout.component';
 import { AddSfdDialogComponent } from './containers/add-sfd-dialog/add-sfd-dialog.component';
-import { AddUserComponent } from './containers/add-user/add-user.component';
 import { AddUserDialogComponent } from './containers/add-user-dialog/add-user-dialog.component';
 import { AuthentificationComComponent } from './components/authentification-com/authentification-com.component';
 import { UtilisateurService } from './Services/UtilisateursService/utilisateur.service';
 import { UtilisateurDiagComponent } from './containers/utilisateur-diag/utilisateur-diag.component';
 import { RoleServiceService } from './Services/RoleService/role-service.service';
+import { AddRoleDiagComponent } from './containers/add-role-diag/add-role-diag.component';
+import { AppUserComponent } from './gestion_access/app-user/app-user.component';
+import { AppRoleComponent } from './gestion_access/app-role/app-role.component';
+import { AppFunctionComponent } from './gestion_access/app-fuction/app-function.component';
+import { LoadingModule } from 'ngx-loading';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import { AppUserService } from './gestion_access/app-user/app-user.service';
+import { AppRoleService } from './gestion_access/app-role/app-role.service';
+import { AppFunctionService } from './gestion_access/app-fuction/app-function.service';
+import { AddRoleComponent } from './gestion_access/app-role/add-role/add-role.component';
+import { AddFunctionComponent } from './gestion_access/app-fuction/add-function/add-function.component';
+import { AddUserComponent } from './gestion_access/app-user/add-user/add-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddRoleFunctionDialog } from './gestion_access/app-role/add-role-function/add-rf.component';
+import { CrudRfService } from './gestion_access/app-role/crud-rf/crud-rf.service';
+import { UpdateDialog } from './gestion_access/app-role/update-role.component';
+import { DeleteRoleFunctionDialog } from './gestion_access/app-role/crud-rf/delete-roleFunction.component';
+import { CrudRfComponent } from './gestion_access/app-role/crud-rf/crud-rf.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -92,10 +110,25 @@ import { RoleServiceService } from './Services/RoleService/role-service.service'
     MatDialogModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
-
-
-  ],
+    ReactiveFormsModule,
+    HttpClientModule,
+    Ng2SmartTableModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
+    MatDialogModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatMenuModule,
+    MatAutocompleteModule,
+    LoadingModule
+ ],
 
   declarations: [
     AppComponent,
@@ -110,16 +143,26 @@ import { RoleServiceService } from './Services/RoleService/role-service.service'
     ParamètresglobauxLayoutComponent,
     ParamètresCompteLayoutComponent,
     AddSfdDialogComponent,
-    AddUserComponent,
     AddUserDialogComponent,
     AuthentificationComComponent,
-    UtilisateurDiagComponent
+    UtilisateurDiagComponent,
+    AddRoleDiagComponent,
+    AppUserComponent,
+    AppRoleComponent,
+    AppFunctionComponent,
+    AddFunctionComponent,
+    AddRoleComponent,
+    AddUserComponent,
+    AddRoleFunctionDialog,
+    UpdateDialog,
+    DeleteRoleFunctionDialog,
+    CrudRfComponent
   ],
-  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService, UtilisateurService, RoleServiceService , {
+  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, RoleServiceService , AppUserService,AppRoleService,AppFunctionService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
   bootstrap: [ AppComponent ],
-  entryComponents: [AddSfdDialogComponent, UtilisateurDiagComponent]
+  entryComponents: [AddSfdDialogComponent, CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent, AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog ]
 })
 export class AppModule { }

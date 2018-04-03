@@ -1,0 +1,26 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+
+.tools{
+    margin: 10px,
+    
+}
+.tools {
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+
+.myCheckbox input {
+    // display: none;
+    // Better than display: none for accessibility reasons
+    position: relative;
+    z-index: -9999;
+}
+
+.sidebar {
+    padding-left: 0;
+    padding-right: 0;
+}

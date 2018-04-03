@@ -1,0 +1,7 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+.myCheckbox input {
+    // display: none;
+    // Better than display: none for accessibility reasons
+    position: relative;
+    z-index: -9999;
+}

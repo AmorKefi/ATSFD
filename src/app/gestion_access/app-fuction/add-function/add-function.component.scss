@@ -1,0 +1,54 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+.mat-dialog-container {
+    display: flex !important;
+    flex-direction: column;
+    max-width: none;
+}
+
+.mat-dialog-container > * {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-dialog-content {
+    max-height: inherit !important;
+}
+
+.mat-dialog-actions {
+    display: block !important;
+    flex-grow: inherit;
+    flex-shrink: inherit;
+    padding: 16px  !important;
+
+    &:last-child {
+        margin-bottom: 16px !important;
+    }
+}
+
+// global styles
+.my-centered-dialog {
+    max-width: 80vw;
+}
+
+// th, td {
+//     padding: 15px;
+// }
+
+.mat-dialog-container {
+    overflow: hidden !important;
+    border-radius: 5px !important;
+    padding: 5px !important;
+}
+
+.md-dialog-container {
+    position: absolute;
+  }
+  
+ md-dialog {
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  
+ 

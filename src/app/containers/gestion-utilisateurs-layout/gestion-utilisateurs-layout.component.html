@@ -2,72 +2,79 @@
 <div class="app-body">
   <app-sidebar></app-sidebar>
   <!-- Main content -->
- <main class="main">
+  <main class="main">
     <!-- Breadcrumb -->
-   <ol class="breadcrumb">
+    <ol class="breadcrumb">
       <app-breadcrumbs></app-breadcrumbs>
     </ol>
-  
-            <div class="card mb-3">
-                <div class="card-header font-weight-bold">Liste des utilisateurs</div>
-                <div class="card-body">
-                    <div class="row float-right">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-primary rounded" (click)="openAddSFDDialog()"><span class="fa fa-plus" ></span> Ajouter</button>
-                      </div>
-                    </div>
-                    <div class="row">
-                        <form class="form-inline">
-                    <div class="form-group ">
-                        <label class="mr-2">Afficher:</label>
-                        <select class="form-control mr-2">
-                            <option>10</option>
-                          </select>
-                          <label>éléments</label>
+
+    <div class="card mb-3">
+      <div class="card-header font-weight-bold">Liste des utilisateurs</div>
+      <div class="card-body">
+        <div class="row float-right">
+          <div class="form-group">
+            <button type="button" class="btn btn-primary rounded" (click)="openAddSFDDialog()">
+              <span class="fa fa-plus"></span> Ajouter</button>
+          </div>
+        </div>
+        <div class="row">
+          <form class="form-inline">
+            <div class="form-group ">
+              <label class="mr-2">Afficher:</label>
+              <select class="form-control mr-2">
+                <option>10</option>
+              </select>
+              <label>éléments</label>
+            </div>
+
+          </form>
+        </div>
+        <div class="row mt-2">
+          <div class="col-lg-12">
+            <div class="card">
+
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Nom</th>
+                      <th>Email</th>
+                      <th>Roles</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let utilisateur of Utilisateurs">
+                      <td>{{utilisateur.id}}</td>
+                      <td>{{utilisateur.firstName +" "+utilisateur.lastName}}</td>
+                      <td>{{utilisateur.email}}</td>
+                      <td>{{utilisateur.roles}}</td>
+                      <td>
+                        <div class="btn-group" role="group">
+
+                          <button type="button" class="btn btn-info" (click)="Modifier(utilisateur)">
+                            <i class="fa fa-pencil">
+                            </i>
+                          </button>
+                          <button type="button" class="btn btn-default" (click)="Consulter(utilisateur)">
+                            <i class="fa fa-eye">
+                            </i>
+                          </button>
+                          <button type="button" class="btn btn-danger" (click)="Supprimer(utilisateur)">
+                            <i class="fa fa-close">
+                            </i>
+                          </button>
                         </div>
-                     
-                </form>
-                </div>
-                      <div class="row mt-2">
-                          <div class="col-lg-12">
-                            <div class="card">
-                            
-                             <div class="card-body">
-                                <table class="table">
-                                  <thead>
-                                    <tr>
-                                      <th>Code</th>
-                                      <th>Nom</th>
-                                      <th>Email</th>
-                                      <th>Roles</th>
-                                      <th>Actions</th>
-                                    </tr>
-                                  </thead>
-                                 <tbody>
-                                  <tr *ngFor="let utilisateur of Utilisateurs">
-                                  <td>{{utilisateur.id}}</td>
-                                  <td>{{utilisateur.firstName +" "+utilisateur.lastName}}</td>
-                                  <td>{{utilisateur.email}}</td>
-                                  <td>{{utilisateur.roles}}</td>
-                                  <td>
-                                    <div class="btn-group" role="group">
-                                       
-                                        <button type="button" class="btn btn-info" (click)="Modifier(utilisateur)"><i class="fa fa-pencil">
-                                            </i></button>
-                                        <button type="button" class="btn btn-default" (click)="Consulter(utilisateur)"><i class="fa fa-eye">
-                                            </i></button>
-                                        <button type="button" class="btn btn-danger" (click)="Supprimer(utilisateur)"><i class="fa fa-close">
-                                            </i></button>
-                                    </div>
-                               
-                                </td>
-                                  </tr>
-                                
+
+                      </td>
+                    </tr>
 
 
-                                 </tbody>
-                                </table>
-                                <!--Pagination
+
+                  </tbody>
+                </table>
+                <!--Pagination
                                 <ul class="pagination">
                                   <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                                   <li class="page-item active">
@@ -78,19 +85,20 @@
                                   <li class="page-item"><a class="page-link" href="#">4</a></li>
                                   <li class="page-item"><a class="page-link" href="#">Next</a></li>
                                 </ul>-->
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-                  
-                </div>
+              </div>
             </div>
- 
-       
-  
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
     <div class="container-fluid">
       <router-outlet></router-outlet>
-    </div><!-- /.conainer-fluid -->
+    </div>
+    <!-- /.conainer-fluid -->
   </main>
   <app-aside></app-aside>
 </div>

@@ -1,0 +1,86 @@
+<h2 mat-dialog-title>Nouvelle Utilisateur</h2>
+<div class="container-fluid">
+                <form [formGroup]="form">
+                <div class="form-group">   
+                            <div class="input-group">
+                                <label class="col-md-4 control-label">Login</label>
+                                <input type="text"  formControlName="ssoId"  class="form-control col-md-6"  placeholder="Login"/>
+                                <small [hidden]="form.controls.ssoId.valid || (form.controls.ssoId.pristine && !submitted)">
+                                        Login est Obligatoire  .
+                                </small>
+                            </div>
+
+                </div>
+
+                <div class="form-group">
+                            <div class="input-group">
+                                        <label class="col-md-4 control-label">PassWord</label>
+                                <input type="password" class="form-control col-md-6"   placeholder="Mot de passe" formControlName="password"  />
+                                <small [hidden]="form.controls.password.valid || (form.controls.password.pristine && !submitted)">
+                                        PassWord est Obligatoire  .
+                                    </small>
+                            </div>
+                </div>
+                <div class="form-group">
+                        
+                        <div class="input-group">
+                                <label class="col-md-4 control-label">Nom</label>
+                                <input type="text" id="lastName" name="lastname" class="form-control  col-md-6"  paceholder="Nom" formControlName="lastName" />
+                                <small [hidden]="form.controls.lastName.valid || (form.controls.lastName.pristine && !submitted)">
+                                        Nom est Obligatoire .
+                                </small>
+                            </div>
+                </div>
+                <div class="form-group">
+                        
+  
+                            <div class="input-group  ">
+                                <label class="col-md-4 control-label">Prenom</label>
+                                <input type="text" id="firstName" name="firstname" class="form-control col-md-6"  paceholder="Prenom" formControlName="firstName"  />
+                                <small [hidden]="form.controls.firstName.valid || (form.controls.firstName.pristine && !submitted)">
+                                        Prénom est Obligatoire .
+                                </small>
+                            </div>
+
+                </div>
+                <div class="form-group">
+                           <div class="input-group">
+                                <label class="col-md-4 control-label">Email</label>
+                                <input type="text" id="email" name="email" class="form-control col-md-6" placeholder="Email Address" formControlName="email" />
+                                <small [hidden]="form.controls.email.valid || (form.controls.email.pristine && !submitted)">
+                                        Email est Obligatoire  .
+                                </small>
+                            </div>
+
+                </div>
+            
+                <div class="row">
+                <select class="form-control col-md-5" formControlName="role"  (ngModelChange)="onChangeRole($event)"> 
+                        
+                        <option [value]="">Select parent</option>
+                         <option *ngFor="let _role of _roles" [value]="_role.roleId"> {{_role.roleName}} </option> 
+                </select>
+                <div class="col-md-1"></div>
+                <button class="btn btn-outline-primary my-2 my-sm-0 col-md-4" formControlName="addnewuser" (click)="addUserRole()">Ajouter un nouveau role</button>
+                </div>
+
+            </form>
+                <div class="row esapce">
+                        <h4> les Roles d'utilisateur </h4>
+                </div>
+                <div class="row esapce">        
+                        <div class="w3-panel">
+                        <ul>
+                            <ol class="btn btn-outline-primary RFespace" *ngFor="let role of this.user.roles">{{ role.roleName}}</ol>
+                        </ul>
+                </div>
+                </div> 
+                    
+            <mat-dialog-actions class="justify-content-center esapce">
+                 <button class="btn btn-outline-success my-2 my-sm-0" (click)="save(form.value, form.valid)">Enregister</button>
+                 <button class="btn btn-outline-danger my-2 my-sm-0" [mat-dialog-close]>Annuler</button>
+            </mat-dialog-actions>
+       
+   
+   
+</div> 

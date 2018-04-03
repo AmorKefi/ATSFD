@@ -35,15 +35,11 @@
   </div> -->
   <div class="container">
       <div class="row">
-        <div class="card col-6 bg-default mt-5 text-center p-0 auth">
-          
-          <div class="card-body">
-              <img src="assets/img/logo.png" alt="" class="img-fluid" style="width:150px">
-          
-            </div>
-        </div>
-        <div class="card col-6 mt-5  p-0 text-center pb-5 auth">
-            <div class="card-header bg-primary font-weight-bold">Sign In</div>
+        <div class="card col-6  offset-3 mt-5  p-0 text-center pb-5 auth">
+            <div class="card-header bg-default font-weight-bold" style="font-size: 30px">
+              <span class="float-left"> 
+                  <img src="assets/img/logo.png" alt="" class="img-fluid" style="width:50px">
+              </span><span style="margin-left:-10%">Sign In</span></div>
           <form class="pt-5" #form="ngForm" (ngSubmit)="authenticate(form.value)">
             <div class="col-auto">
               <label class="sr-only" for="Username">Username</label>
@@ -63,7 +59,7 @@
                 <input type="password" class="form-control" id="Password" ngModel #Password="ngModel" name="password" placeholder="Password" required>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-5">
               <button type="submit" class="btn btn-primary col-md-3 col-12" [disabled]="!Username.valid || !Password.valid">LogIn</button>
             </div>
           </form>

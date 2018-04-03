@@ -1,0 +1,121 @@
+<div class="container">
+    <h2 mat-dialog-title>Nouveau Role</h2>
+    <form>
+     
+            <div class="form-body">
+                        <div class="form-group row">
+                        <label class="col-md-2 control-label">Nom</label>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <input type="text" path="roleName" name="roleName" id="roleName" placeholder="Nom de Role"
+                                            class="form-control " [(ngModel)]="roleName" />
+                            </div>
+                        </div>
+                        </div>
+                    
+                        <div class="form-group row">
+                        <label class="col-md-2 control-label">Description</label>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <input type="text" path="description"  name="description" id="description" placeholder="Description de role"
+                                            class="form-control " [(ngModel)]="description"/>
+                            </div>
+                        </div>
+                        </div>
+                   
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label">Anonyme   </label>
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                        <input class="form-check-input" type="checkbox" [checked]="add" (change)="anonyme = !anonyme">
+                                </div>
+                            </div>
+                        </div>              
+                </div>
+
+      
+      <div class="form-group row">
+          <h3> Fonctions</h3>
+      </div>
+      <div class="form-group row">
+          <table  class="table-striped table-bordered center-block text-center"
+          width="100%"
+          data-toggle="table"
+          data-search="true"
+          data-filter-control="true"
+          id="functions_table">
+              <tr>
+                  <td> Nom de Fonction </td>
+                  <td> Nom de Role </td>
+                  <td> Liste </td>
+                  <td> Màj </td>
+                  <td> Supprimer </td>
+                  <td> Ajout </td>
+                </tr>
+            <tr *ngFor="let r of roleFunctions">
+              <td>{{r.function.functionName}}</td>
+              <td>{{roleName}}</td>
+              <td>{{r.select}}</td>
+              <td>{{r.update}}</td>
+              <td>{{r.delete}}</td>
+              <td>{{r.add}}</td>
+            </tr>
+          </table>
+      </div>
+      <div class="form-group row">
+            <table class="table-striped table-bordered center-block text-center col-md-9">
+              <tr>
+                <td>Fonction Parent</td>
+                <td>
+                    <select class="form-control" id="selectParent" required [(ngModel)]="selectParent" name="selectedParent" #selectedParent="ngModel" (ngModelChange)="onChangeParent($event)">
+                        <option [value]="">Select parent</option> 
+                        <option *ngFor="let _p of _parent" [value]="_p.functionId"> {{_p.functionName}} </option>
+                    </select>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="form-check-label checkbox-m">Liste</label></td>
+                <td> <input class="form-check-input myCheckbox" type="checkbox" [checked]="select" (change)="select = !select"> </td>
+              </tr>
+              <tr>
+                <td><label class="form-check-label">Màj</label></td>
+                <td><input class="form-check-input myCheckbox" type="checkbox" [checked]="update" (change)="update = !update"></td>
+              </tr>
+             <tr> 
+                <td><label class="form-check-label">Supprimer</label></td>
+                <td><input class="form-check-input myCheckbox" type="checkbox" [checked]="delete" (change)="delete = !delete"></td>
+              </tr>
+              <tr>
+                <td><label class="form-check-label">Ajout</label></td>
+                <td><input class="form-check-input myCheckbox" type="checkbox" [checked]="add" (change)="add = !add"> </td>
+              </tr>
+            
+          </table>
+          <div class="col-md-1"></div>
+          <button class=" btn btn-outline-primary btn-xs col-md-2" (click)="AddFunctions()">Ajouter</button>
+      </div>
+     
+      <!-- <div class="form-group row">
+          <mat-dialog-actions> 
+              <button class="btn btn-outline-success my-2 my-sm-0" [mat-dialog-close]="true" (click)="AddRole()">Enregister</button>
+              <button class="btn btn-outline-success my-2 my-sm-0" [mat-dialog-close]="false">Annuler</button>
+          </mat-dialog-actions>
+      </div> -->
+      <div class="form-group row justify-content-center">
+            <mat-dialog-actions>
+                <button mat-button class="btn btn-outline-danger btn-xs" [mat-dialog-close]="false">Annuler</button>
+                <button mat-button class="btn btn-outline-success btn-xs" (click)="AddRole()" [mat-dialog-close]="true">Enregister</button>
+            </mat-dialog-actions>
+         </div>
+      
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+

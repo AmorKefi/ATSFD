@@ -1,0 +1,16 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+.w3-panel {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding-right: 30px;
+    padding-left: 80px;
+    border-left: 6px solid rgb(14, 153, 218)!important;
+}
+
+.myCheckbox input {
+    // display: none;
+    // Better than display: none for accessibility reasons
+    position: relative;
+    z-index: -9999;
+}

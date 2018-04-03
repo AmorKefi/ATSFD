@@ -1,0 +1,91 @@
+    <div class="container">
+     <h2 mat-dialog-title>Mise à jour de Role: </h2>
+        <form>
+            <div class="form-body">
+                <div class="form-group row">
+                <label class="col-md-2 control-label">Nom</label>
+                <div class="col-md-8">
+                    <div class="input-group ">
+                        <input type="text" path="roleName" id="roleName" name="roleName"
+                                    class="form-control " [(ngModel)]="roleName" />
+                    </div>
+                </div>
+                </div>
+            
+                <div class="form-group row">
+                <label class="col-md-2 control-label">Description</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input type="text" path="description" id="description" name="description"
+                                    class="form-control " [(ngModel)]="description"/>
+                    </div>
+                </div>
+                </div>
+           
+                <div class="form-group row">
+                    <label class="col-md-2 control-label">Anonyme</label>
+                    <div class="col-md-8">
+                        <div class="input-group ">
+                                <input class="form-check-input" name="Anonyme" type="checkbox" [checked]="add" (change)="anonyme = !anonyme">
+                        </div>
+                    </div>
+                </div>              
+        </div>
+          <!-- <div class="w3-panel">
+              <div class="form-group row"> 
+                <h3> List des Fonctions  </h3>
+              </div>
+              <div class="form-group row">
+                  <ul>
+                      <ol class="btn btn-outline-primary" *ngFor="let x  of _Rolefunctions">{{x.functionName}}</ol>
+                  </ul>
+              </div>
+            </div>   -->
+         
+          <!-- <div class="form-group row">
+                <table class="table-striped table-bordered center-block text-center col-md-9">
+                        <thead class="thead-dark">
+                        <tr>
+                          <th> Fonction d'utilisateur</th>
+                          <th>
+                              <select class="form-control" id="selectParent" required [(ngModel)]="selectParent" name="selectedParent" #selectedParent="ngModel" 
+                              (ngModelChange)="onChangeParent($event)">
+                                  <option [value]="">Select parent</option> 
+                                  <option *ngFor="let _f of _functions" [value]="_f.functionId"> {{_f.functionName}} </option>
+                              </select>
+                          </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td><label class="form-check-label checkbox-m">Liste</label></td>
+                          <td> <input class="form-check-input myCheckbox" type="checkbox" [checked]="select" (change)="select = !select"> </td>
+                        </tr>
+                        <tr>
+                          <td><label class="form-check-label">Màj</label></td>
+                          <td><input class="form-check-input myCheckbox" type="checkbox" [checked]="update" (change)="update = !update"></td>
+                        </tr>
+                       <tr> 
+                          <td><label class="form-check-label">Supprimer</label></td>
+                          <td><input class="form-check-input myCheckbox" type="checkbox" [checked]="delete" (change)="delete = !delete"></td>
+                        </tr>
+                        <tr>
+                          <td><label class="form-check-label">Ajout</label></td>
+                          <td><input class="form-check-input myCheckbox" type="checkbox" [checked]="add" (change)="add = !add"> </td>
+                        </tr>
+                      </tbody>
+                     </table>
+            <div class="col-md-1"></div>
+            <button class=" btn btn-outline-primary btn-xs col-md-2" (click)="AddFunctions()">Ajouter</button>
+          </div>  -->
+
+
+
+          <div class="form-group row center justify-content-center">
+            <mat-dialog-actions>
+                <button mat-button class="btn btn-outline-danger btn-xs" [mat-dialog-close]="false">Annuler</button>
+                <button mat-button class="btn btn-outline-success btn-xs" (click)="updateRole()" [mat-dialog-close]="true">Enregister</button>
+            </mat-dialog-actions>
+         </div>
+        </form>
+      </div>

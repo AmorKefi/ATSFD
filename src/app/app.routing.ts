@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule ,CanActivate } from '@angular/router';
+import { Routes, RouterModule , CanActivate } from '@angular/router';
 import { AlwaysAuthGuard } from './guard/AlwaysAuthGuard';
 import { OnlyLoggedInUsersGuard } from './guard/OnlyLoggedInUsersGuard';
 
@@ -7,7 +7,6 @@ import { OnlyLoggedInUsersGuard } from './guard/OnlyLoggedInUsersGuard';
 import {
   FullLayoutComponent,
   SimpleLayoutComponent
-  
 } from './containers';
 import { SfdLayoutComponent } from './containers/sfd-layout/sfd-layout.component';
 import { StatistiquesLayoutComponent } from './containers/statistiques-layout/statistiques-layout.component';
@@ -17,6 +16,9 @@ import { GestionFonctionsLayoutComponent } from './containers/gestion-fonctions-
 import { ParamètresglobauxLayoutComponent } from './containers/param\u00E8tresglobaux-layout/param\u00E8tresglobaux-layout.component';
 import { ParamètresCompteLayoutComponent } from './containers/param\u00E8tres-compte-layout/param\u00E8tres-compte-layout.component';
 import { AuthentificationComComponent } from './components/authentification-com/authentification-com.component';
+import { AppRoleComponent } from './gestion_access/app-role/app-role.component';
+import { AppUserComponent } from './gestion_access/app-user/app-user.component';
+import { AppFunctionComponent } from './gestion_access/app-fuction/app-function.component';
 
 export const routes: Routes = [
   {
@@ -30,7 +32,7 @@ export const routes: Routes = [
       title: 'Gestion des SFD'
     },
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
-    component:SfdLayoutComponent,
+    component: SfdLayoutComponent,
   },
   {
     path: 'GestionAccès',
@@ -38,12 +40,12 @@ export const routes: Routes = [
       title: 'Gestion des utilisateurs'
     },
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
-    component:GestionUtilisateursLayoutComponent
+    component: AppUserComponent
   },
   {
     path: 'auth',
-   
-    component:AuthentificationComComponent
+
+    component: AuthentificationComComponent
   },
   {
     path: 'GestionRoles',
@@ -51,7 +53,7 @@ export const routes: Routes = [
       title: 'Gestion des rôles'
     },
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
-    component:GestionRolesLayoutComponent
+    component: AppRoleComponent
   },
   {
     path: 'GestionFontions',
@@ -59,7 +61,7 @@ export const routes: Routes = [
       title: 'Gestion des fonctions'
     },
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
-    component:GestionFonctionsLayoutComponent
+    component: AppFunctionComponent
   },
   {
     path: 'GestionParamètresGlobaux',
@@ -67,7 +69,7 @@ export const routes: Routes = [
       title: 'Paramètres Globaux'
     },
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
-    component:ParamètresglobauxLayoutComponent
+    component: ParamètresglobauxLayoutComponent
   },
   {
     path: 'GestionParamètresComptes',
@@ -75,7 +77,7 @@ export const routes: Routes = [
       title: 'Paramètres comptes'
     },
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
-    component:ParamètresCompteLayoutComponent
+    component: ParamètresCompteLayoutComponent
   },
 
   {
@@ -84,8 +86,8 @@ export const routes: Routes = [
       title: 'Statistiques'
     },
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
-    component:StatistiquesLayoutComponent
-    
+    component: StatistiquesLayoutComponent
+
   },
   {
     path: '',
@@ -94,7 +96,7 @@ export const routes: Routes = [
     data: {
       title: 'Tableau de bord'
     },
-  
+
     children: [
       {
         path: 'dashboard',
