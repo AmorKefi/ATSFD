@@ -16,9 +16,9 @@ import { GestionFonctionsLayoutComponent } from './containers/gestion-fonctions-
 import { ParamètresglobauxLayoutComponent } from './containers/param\u00E8tresglobaux-layout/param\u00E8tresglobaux-layout.component';
 import { ParamètresCompteLayoutComponent } from './containers/param\u00E8tres-compte-layout/param\u00E8tres-compte-layout.component';
 import { AuthentificationComComponent } from './components/authentification-com/authentification-com.component';
-import { AppRoleComponent } from './gestion_access/app-role/app-role.component';
-import { AppUserComponent } from './gestion_access/app-user/app-user.component';
-import { AppFunctionComponent } from './gestion_access/app-fuction/app-function.component';
+import { AppRoleComponent } from './gestion_acces/app-role/app-role.component';
+import { AppUserComponent } from './gestion_acces/app-user/app-user.component';
+import { AppFunctionComponent } from './gestion_acces/app-fuction/app-function.component';
 import { ViewSfdComponent } from './containers/view-sfd/view-sfd.component';
 
 export const routes: Routes = [
