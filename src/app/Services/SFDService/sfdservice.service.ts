@@ -19,4 +19,19 @@ export class SfdserviceService {
     headers.append('content-type','application/json');
     return this.http.get('http://127.0.0.1:8080/sfd/GetSfdByCode/'+id,{headers})
   }
+  add(sfd){
+    const headers = new HttpHeaders().set('X-Auth-Token',JSON.parse(this.Token).token);
+    headers.append('content-type','application/json');
+    return this.http.post('http://127.0.0.1:8080/sfd/saveSfd',sfd,{headers});
+  }
+  update(sfd){
+    const headers =  new HttpHeaders().set('X-Auth-Token',JSON.parse(this.Token).token);
+    headers.append('content-type','application/json');
+    return this.http.put('http://127.0.0.1:8080/sfd/UpdateSFD',sfd,{headers});
+  }
+  delete(sfd){
+    const headers = new HttpHeaders().set('X-Auth-Token',JSON.parse(this.Token).token);
+    headers.append('content-type','application/json');
+    return this.http.put('http://127.0.0.1:8080/sfd/DesactivateSfd',sfd,{headers})
+  }
 }

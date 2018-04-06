@@ -1,28 +1,42 @@
-<div>
-  <mat-toolbar color="primary">
-    <span><mat-icon>mood</mat-icon></span>
-
-    <span>Yay, Material in Angular 2!</span>
-
-    <button mat-icon-button [mat-menu-trigger-for]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-  </mat-toolbar>
-  <mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item>Option 1</button>
-    <button mat-menu-item>Option 2</button>
-  </mat-menu>
-
-  <mat-card>
-    <button mat-button>All</button>
-    <button mat-raised-button>Of</button>
-    <button mat-raised-button color="primary">The</button>
-    <button mat-raised-button color="accent">Buttons</button>
-  </mat-card>
-
-  <span class="done">
-    <button mat-fab>
-      <mat-icon>check circle</mat-icon>
-    </button>
-  </span>
+<div class="card m-0 p-0">
+  <div class=" card-header text-center">
+    <h4 class="mb-4">{{data?.caller}}</h4>
+  </div>
+  <div>
+  <div class="card-body">
+  <form #form="ngForm" class="form-inline">
+  <div class="form-group col-6 mb-2">
+    <input type="text" name="codesfd" [ngModel]=data?.codesfd hidden>
+  <input type="text" class="form-control" placeholder="Nom SFD" name="nomsfd" [ngModel]="data?.nomsfd">
 </div>
+<div class="form-group col-6 mb-2">
+<input type="text" class="form-control" placeholder="raison sociale" name="raisonsociale" [ngModel]="data?.raisonsociale">
+</div>
+<div class="form-group col-6 mb-2">
+<input type="text" class="form-control" placeholder="Adresse SFD" name="adressesfd" [ngModel]="data?.adressesfd">
+</div>
+<div class="form-group col-6 mb-2">
+<input type="email" class="form-control" placeholder="Email" name="email" [ngModel]="data?.email">
+</div>
+<div class="form-group col-6 mb-2">
+
+<input type="text" class="form-control" placeholder="Statuts" name="statutsfd" [ngModel]="data?.statutsfd">
+</div>
+<div class="form-group col-6 mb-2">
+<input type="text" class="form-control" placeholder="Tel" name="telsfd" [ngModel]="data?.telsfd">
+</div>
+<div class="form-group col-6 mb-2">
+<input type="text" class="form-control" placeholder="Ville" name="villesfd" [ngModel]="data?.villesfd">
+</div>
+<div class="form-group col-6 mb-2">
+  <input type="text" class="form-control" placeholder="Ville" name="matriculeFiscale" [ngModel]="data?.matriculeFiscale">
+  </div>
+</form>
+</div>
+<div class="card-footer">
+<div class="text-center col-12">
+<button class="btn btn-light" (click)="close()">Quitter</button>
+<button type="submit" class="btn btn-primary" (click)="add(form)" *ngIf="data?.caller !== 'Modifier SFD'">Ajouter</button>
+<button type="submit" class="btn btn-primary" (click)="update(form)" *ngIf="data?.caller=='Modifier SFD'">Modifier</button>
+</div>
+</div> 

@@ -80,17 +80,17 @@
                                   <td>{{sfd.adressesfd}}</td>
                                   <td>{{sfd.villesfd}}</td>
                                   <td><span *ngIf="sfd.statutsfd=='Active'" class="badge badge-success">{{sfd.statutsfd}}</span>
-                                      <span *ngIf="sfd.statutsfd=='Desactive'" class="badge badge-danger">{{sfd.statutsfd}}</span>  
+                                      <span *ngIf="sfd.statutsfd=='désactivé'" class="badge badge-danger">{{sfd.statutsfd}}</span>  
                                 </td>
                                   <td>
                                   
                                     <div class="btn-group" role="group">
                                        
-                                        <button type="button" class="btn btn-info"><i class="fa fa-pencil">
+                                        <button type="button" class="btn btn-info" (click)="update(sfd)"><i class="fa fa-pencil">
                                             </i></button>
                                         <button type="button" class="btn btn-default" routerLink="view/{{sfd.codesfd}}"><i class="fa fa-eye">
                                             </i></button>
-                                        <button type="button" class="btn btn-danger"><i class="fa fa-close">
+                                        <button type="button" class="btn btn-danger"(click)="delete(sfd)"><i class="fa fa-close">
                                             </i></button>
                                     </div>
                                

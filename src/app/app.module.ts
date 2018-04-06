@@ -103,6 +103,8 @@ import { DeleteRoleFunctionDialog } from './gestion_acces/app-role/crud-rf/delet
 import { CrudRfComponent } from './gestion_acces/app-role/crud-rf/crud-rf.component';
 import { ViewSfdComponent } from './containers/view-sfd/view-sfd.component';
 import { SfdserviceService } from './Services/SFDService/sfdservice.service';
+import { DeleteDialog } from './gestion_acces/app-role/delete-role.component';
+import { DeletediagComponent } from './containers/deletediag/deletediag.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -159,13 +161,15 @@ import { SfdserviceService } from './Services/SFDService/sfdservice.service';
     UpdateDialog,
     DeleteRoleFunctionDialog,
     CrudRfComponent,
-    ViewSfdComponent
+    ViewSfdComponent,
+    DeleteDialog,
+    DeletediagComponent
   ],
   providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
   bootstrap: [ AppComponent ],
-  entryComponents: [AddSfdDialogComponent, CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent, AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog ]
+  entryComponents: [AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent, AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog ]
 })
 export class AppModule { }
