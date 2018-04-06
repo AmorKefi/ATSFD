@@ -102,6 +102,7 @@ import { UpdateDialog } from './gestion_access/app-role/update-role.component';
 import { DeleteRoleFunctionDialog } from './gestion_access/app-role/crud-rf/delete-roleFunction.component';
 import { CrudRfComponent } from './gestion_access/app-role/crud-rf/crud-rf.component';
 import { ViewSfdComponent } from './containers/view-sfd/view-sfd.component';
+import { SfdserviceService } from './Services/SFDService/sfdservice.service';
 @NgModule({
   imports: [
     BrowserModule,
@@ -160,7 +161,7 @@ import { ViewSfdComponent } from './containers/view-sfd/view-sfd.component';
     CrudRfComponent,
     ViewSfdComponent
   ],
-  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, RoleServiceService , AppUserService,AppRoleService,AppFunctionService,{
+  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],

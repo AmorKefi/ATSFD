@@ -41,22 +41,8 @@
                 <div class="card-body">
                     <div class="row float-right">
                         <div class="form-group">
-                                <div class="btn-group" dropdown>
-                                        <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle rounded">
-                                       Action <span class="caret"></span>
-                                        </button>
-                                        <ul *dropdownMenu class="dropdown-menu" role="menu">
-                                          <li role="menuitem"><a class="dropdown-item" (click)="openAddSFDDialog()"><span class="fa fa-plus" >Ajouter</span></a></li>
-                                          <li role="menuitem"><a class="dropdown-item" href="#">Histrique des SFD supprimés</a></li>
-    
-                                        </ul>
-                                      </div>
-
-
-
-
-
-                           <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
+            <button class="btn btn-primary rounded" (click)="openAddSFDDialog()"><i class="fa fa-plus"></i> Ajouter SFD</button>
+         <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
                       </div>
                     </div>
                     <div class="row">
@@ -88,18 +74,21 @@
                                     </tr>
                                   </thead>
                                  <tbody>
-                                  <tr><td>1</td>
-                                  <td>SFD1</td>
-                                  <td>rue manaarach</td>
-                                  <td>sénégal</td>
-                                  <td>aaaa</td>
+                                  <tr *ngFor="let sfd of sfds">
+                                      <td>{{sfd.codesfd}}</td>
+                                  <td>{{sfd.nomsfd}}</td>
+                                  <td>{{sfd.adressesfd}}</td>
+                                  <td>{{sfd.villesfd}}</td>
+                                  <td><span *ngIf="sfd.statutsfd=='Active'" class="badge badge-success">{{sfd.statutsfd}}</span>
+                                      <span *ngIf="sfd.statutsfd=='Desactive'" class="badge badge-danger">{{sfd.statutsfd}}</span>  
+                                </td>
                                   <td>
                                   
                                     <div class="btn-group" role="group">
                                        
                                         <button type="button" class="btn btn-info"><i class="fa fa-pencil">
                                             </i></button>
-                                        <button type="button" class="btn btn-default"><i class="fa fa-eye">
+                                        <button type="button" class="btn btn-default" routerLink="view/{{sfd.codesfd}}"><i class="fa fa-eye">
                                             </i></button>
                                         <button type="button" class="btn btn-danger"><i class="fa fa-close">
                                             </i></button>

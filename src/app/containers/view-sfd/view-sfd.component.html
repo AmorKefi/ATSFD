@@ -9,16 +9,29 @@
     </ol>
 <!--Content-->
 <div class="row">
-  <div class="col-12 card">
-    <div class="card-header text-center display-4">Enda</div>
+  <div class="col-12 card mb-0">
+    <div class="card-header text-center display-4 font-weight-bold">{{SFD?.nomsfd}}</div>
     <div class="card-body">
-      Details
+      <div class="row">
+        <div class="col-6">Status : </div><div class="col-6"><span *ngIf="SFD?.statutsfd=='Active'" class="badge badge-success">{{SFD?.statutsfd}}</span><span *ngIf="SFD?.statutsfd=='Desactive'" class="badge badge-danger">{{SFD?.statutsfd}}</span></div>
+        <div class="col-6">Email : </div><div class="col-6">{{SFD?.email}}</div>
+        <div class="col-6">Tel : </div><div class="col-6">{{SFD?.telsfd}}</div>
+        <div class="col-6">Ville : </div><div class="col-6">{{SFD?.villesfd}}</div>
+   
+      </div>
+    </div>
+  </div>
+  <div class="col-12 card mb-0">
+    <div class="card-header display-6 text-center">Historique</div>
+    <div class="card-body">
+
     </div>
   </div>
 </div>
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
       <router-outlet></router-outlet>
-    </div><!-- /.conainer-fluid -->
+    </div> -->
+    <!-- /.conainer-fluid -->
   </main>
   <app-aside></app-aside>
 </div>
