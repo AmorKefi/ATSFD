@@ -20,6 +20,7 @@ import { AppRoleComponent } from './gestion_acces/app-role/app-role.component';
 import { AppUserComponent } from './gestion_acces/app-user/app-user.component';
 import { AppFunctionComponent } from './gestion_acces/app-fuction/app-function.component';
 import { ViewSfdComponent } from './containers/view-sfd/view-sfd.component';
+import { GestionComptesComponent } from './containers/gestion-comptes/gestion-comptes.component';
 
 export const routes: Routes = [
   {
@@ -79,6 +80,13 @@ export const routes: Routes = [
     },
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: ParamètresCompteLayoutComponent
+  }, {
+    path: 'Comptes',
+    data: {
+      title: 'Gestion des comptes'
+    },
+    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+    component: GestionComptesComponent
   },
 
   {

@@ -105,6 +105,9 @@ import { ViewSfdComponent } from './containers/view-sfd/view-sfd.component';
 import { SfdserviceService } from './Services/SFDService/sfdservice.service';
 import { DeleteDialog } from './gestion_acces/app-role/delete-role.component';
 import { DeletediagComponent } from './containers/deletediag/deletediag.component';
+import { GestionComptesComponent } from './containers/gestion-comptes/gestion-comptes.component';
+import { CompteFinancierDiagComponent } from './containers/compte-financier-diag/compte-financier-diag.component';
+import { CompteFinancierService } from './Services/compte-financier.service';
 @NgModule({
   imports: [
     BrowserModule,
@@ -163,13 +166,15 @@ import { DeletediagComponent } from './containers/deletediag/deletediag.componen
     CrudRfComponent,
     ViewSfdComponent,
     DeleteDialog,
-    DeletediagComponent
+    DeletediagComponent,
+    GestionComptesComponent,
+    CompteFinancierDiagComponent
   ],
-  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,{
+  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
   bootstrap: [ AppComponent ],
-  entryComponents: [AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent, AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog ]
+  entryComponents: [CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent, AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog ]
 })
 export class AppModule { }

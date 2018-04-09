@@ -1,0 +1,106 @@
+<app-header></app-header>
+<div class="app-body">
+  <app-sidebar></app-sidebar>
+  <!-- Main content -->
+ <main class="main">
+    <!-- Breadcrumb -->
+   <ol class="breadcrumb">
+      <app-breadcrumbs></app-breadcrumbs>
+    </ol>
+
+
+
+    <div class="card mb-3">
+        <div class="card-header font-weight-bold">Liste des Comptes</div>
+        <div class="card-body">
+            <div class="row float-right">
+                <div class="form-group">
+    <button class="btn btn-primary rounded" (click)="Ajouter()"><i class="fa fa-plus"></i> Ajouter Un compte</button>
+ <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
+              </div>
+            </div>
+            <div class="row">
+                <form class="form-inline">
+            <div class="form-group ">
+                <label class="mr-2">Afficher:</label>
+                <select class="form-control mr-2">
+                    <option>10</option>
+                  </select>
+                  <label>éléments</label>
+                </div>
+             
+        </form>
+        </div>
+              <div class="row mt-2">
+                  <div class="col-lg-12">
+                    <div class="card">
+                    
+                     <div class="card-body">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>num_compte</th>
+                              <th>date_cloture</th>
+                              <th>date_creation</th>
+                              <th>solde</th>
+                              <th>statut_compte</th>
+                              <th>Actions</th>
+                            </tr>
+                          </thead>
+                         <tbody>
+                          <tr *ngFor="let compte of comptes">
+                              <td>{{compte.numCompte}}</td>
+                          <td>{{compte.dateCloture | date:'yyyy-MM-dd' }}</td>
+                          <td>{{compte.dateCreation | date:'yyyy-MM-dd' }}</td>
+                          <td>{{compte.solde}}</td>
+                          <td>
+                              <span *ngIf="compte.statutCompte=='Active'" class="badge badge-success">{{compte.statutCompte}}</span>
+                              <span *ngIf="compte.statutCompte=='désactivé'" class="badge badge-danger">{{compte.statutCompte}}</span>  
+                        </td>
+                          <td>
+                          
+                            <div class="btn-group" role="group">
+                               
+                                <button type="button" class="btn btn-info" (click)="Modifier(compte)"><i class="fa fa-pencil">
+                                    </i></button>
+                                <button type="button" class="btn btn-default" routerLink="view/{{compte.numCompte}}"><i class="fa fa-eye">
+                                    </i></button>
+                                <!-- <button type="button" class="btn btn-danger"(click)="delete(compte)"><i class="fa fa-close">
+                                    </i></button> -->
+                            </div>
+                       
+                        </td>
+                          </tr>
+                        
+
+
+                         </tbody>
+                        </table>
+                        <!--Pagination
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                          <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item"><a class="page-link" href="#">4</a></li>
+                          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>-->
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          
+        </div>
+    </div>
+
+
+    
+    <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div><!-- /.conainer-fluid -->
+    </main>
+    <app-aside></app-aside>
+  </div>
+  <app-footer></app-footer>

@@ -5,8 +5,11 @@
   <div>
   <div class="card-body">
   <form #form="ngForm" class="form-inline">
+      
+      <div class="form-group col-6 mb-2">
+          <input type="text" class="form-control" placeholder="code SFD" name="codesfd" [ngModel]="data?.codesfd" >  
+        </div>
   <div class="form-group col-6 mb-2">
-    <input type="text" name="codesfd" [ngModel]=data?.codesfd hidden>
   <input type="text" class="form-control" placeholder="Nom SFD" name="nomsfd" [ngModel]="data?.nomsfd">
 </div>
 <div class="form-group col-6 mb-2">
@@ -29,7 +32,7 @@
 <input type="text" class="form-control" placeholder="Ville" name="villesfd" [ngModel]="data?.villesfd">
 </div>
 <div class="form-group col-6 mb-2">
-  <input type="text" class="form-control" placeholder="Ville" name="matriculeFiscale" [ngModel]="data?.matriculeFiscale">
+  <input type="text" class="form-control" placeholder="matriculeFiscale" name="matriculeFiscale" [ngModel]="data?.matriculeFiscale">
   </div>
 </form>
 </div>

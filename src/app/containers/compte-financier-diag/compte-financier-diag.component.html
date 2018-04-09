@@ -1,0 +1,26 @@
+<div class="card m-0 p-0">
+    <div class=" card-header text-center">
+      <h4 class="mb-4">{{data?.caller}}</h4>
+    </div>
+    <div>
+    <div class="card-body">
+    <form #form="ngForm" class="form-inline">
+        
+        <div class="form-group col-6 mb-2">
+            <input type="text" class="form-control" placeholder="Num compte" name="numCompte" [ngModel]="data?.compte.numCompte" >  
+          </div>
+  <div class="form-group col-6 mb-2">
+  <input type="text" class="form-control" placeholder="statut Compte" name="statutCompte" [ngModel]="data?.compte.statutCompte">
+  </div>
+  <div class="form-group col-6 mb-2">
+  <input type="text" class="form-control" placeholder="solde" name="solde" [ngModel]="data?.compte.solde">
+  </div>
+  </form>
+  </div>
+  <div class="card-footer">
+  <div class="text-center col-12">
+  <button class="btn btn-light" (click)="close()">Quitter</button>
+  <button type="submit" class="btn btn-primary" (click)="add(form)" *ngIf="data?.caller !== 'Modifier Compte'">Ajouter</button>
+  <button type="submit" class="btn btn-primary" (click)="update(form)" *ngIf="data?.caller=='Modifier Compte'">Modifier</button>
+  </div>
+  </div> 
