@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { PdvServiceService } from '../Services/pdvService/pdv-service.service';
 import { PdvDiagComponent } from '../pdv-diag/pdv-diag.component';
 
@@ -14,11 +14,24 @@ export class PointDeVenteComponent implements OnInit {
   constructor(private diag : MatDialog, private service: PdvServiceService) { }
 
   ngOnInit() {
-    this.service.getAll().subscribe(res=>console.log(res),err=>console.log(err));
+    this.service.getAll().subscribe(res=>this.pdvs=res,err=>console.log(err));
   }
   ajouter(){
-  this.diag.open(PdvDiagComponent);
-  
+    let datapdv={
+      caller:''
+    }
+    datapdv.caller="Modifier SFD"
+    const dialogConfig = new MatDialogConfig();
+     dialogConfig.height='400px';
+     dialogConfig.width='600px';
+     dialogConfig.data = datapdv;
+     this.diag.open(PdvDiagComponent, dialogConfig);
+
+     this.diag.afterAllClosed.subscribe(res=>{
+      this.ngOnInit();
+      });
+
+
   }
 
 }

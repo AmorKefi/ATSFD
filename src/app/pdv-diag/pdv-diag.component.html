@@ -1,3 +1,32 @@
-<p>
-  pdv-diag works!
-</p>
+<div class="card">
+ <div class="card-header text-center Font-weight-bold">{{data.caller}}</div>
+ <div class="card-body">
+    <form #form="ngForm" class="form-inline">
+            
+         <div class="form-group col-6 mb-2">
+            <input type="text" class="form-control" placeholder="code Pdv" name="codePdv" [ngModel]="data?.pdv?.codePdv">  
+         </div>
+         
+         <div class="from-group col-6 mb-2">
+            <input type="text" class="form-control" placeholder="nom Pdv" name="nomPdv" [ngModel]="data?.pdv?.nomPdv" >
+         </div>
+         <div class="from-group col-6 mb-2">
+            <input type="text" class="form-control" placeholder="telephone Pdv" name="telephone1Pdv" [ngModel]="data?.pdv?.telephone1Pdv" >
+         </div>
+         <div class="from-group col-6 mb-2">
+            <input type="text" class="form-control" placeholder="telephone Pdv 2" name="telephone2Pdv" [ngModel]="data?.pdv?.telephone2Pdv" >
+         </div>
+         <div class="from-group col-6 mb-2">
+            <input type="text" class="form-control" placeholder="email Pdv" name="emailPdv" [ngModel]="data?.pdv?.emailPdv" >
+         </div>
+         <div class="from-group col-6 mb-2">
+            <input type="checkbox" class="form-control" placeholder="statut Pdv" name="statutPdv" [ngModel]="data?.pdv?.statutPdv" >
+         </div>
+         <div class="from-group col-6 mb-2">
+            <input type="text" class="form-control" placeholder="typePdv" name="telephone2Pdv" [ngModel]="data?.pdv?.typePdv" >
+         </div>
+      </form>
+      
+         
+ </div>
+</div>

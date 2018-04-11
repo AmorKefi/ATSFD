@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { PdvServiceService } from '../Services/pdvService/pdv-service.service';
 
 @Component({
   selector: 'app-pdv-diag',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PdvDiagComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data,private diag:MatDialog, private service:PdvServiceService) { }
 
   ngOnInit() {
   }

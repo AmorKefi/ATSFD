@@ -37,9 +37,4 @@ export class CompteFinancierService {
     headers.append('content-type','application/json')
     return this.http.put('http://127.0.0.1:8080/compte/bloqueCompte',data,{headers})
   }
-  getfreeAccount(){
-    const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
-    headers.append('content-type','application/json')
-    return this.http.get('http://127.0.0.1:8080/compte/freeAccount',{headers})
-  }
 }

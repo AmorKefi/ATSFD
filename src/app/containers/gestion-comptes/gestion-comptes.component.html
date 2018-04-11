@@ -45,6 +45,7 @@
                               <th>date_creation</th>
                               <th>solde</th>
                               <th>statut_compte</th>
+                              <th>Nom SFD</th>
                               <th>Actions</th>
                             </tr>
                           </thead>
@@ -59,6 +60,7 @@
                               <span *ngIf="compte.statutCompte=='désactivé'" class="badge badge-danger">{{compte.statutCompte}}</span>
                               <span *ngIf="compte.statutCompte=='bloqué'" class="badge badge-warning">{{compte.statutCompte}}</span>  
                         </td>
+                        <td>{{compte?.sfd?.nomsfd}}</td>
                           <td>
                           
                             <div class="btn-group" role="group">

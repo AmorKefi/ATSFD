@@ -12,7 +12,6 @@ export class AddSfdDialogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog, private service : SfdserviceService, private servicecpt: CompteFinancierService) { }
   comptes : any;
   ngOnInit() {
-    this.servicecpt.getfreeAccount().subscribe(res=>this.comptes=res,err=>console.log(err));
   }
   close() {
     this.dialog.closeAll();
