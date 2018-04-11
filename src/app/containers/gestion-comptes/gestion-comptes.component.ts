@@ -30,9 +30,13 @@ export class GestionComptesComponent implements OnInit {
      this.ngOnInit();
      });
   }
-  Modifier(cpt){
+  bloquer(cpt){
+    console.log(cpt.statutCompte);
+    if(cpt.statutCompte == 'bloqué'){
+      this.service.bloquer(cpt).subscribe(res=>this.ngOnInit(),err=>console.log(err));
+    }else{
     const data={
-      caller : 'Modifier Compte',
+      caller : 'bloquer',
       compte : cpt
     };
     const dialogConfig = new MatDialogConfig();
@@ -44,5 +48,12 @@ export class GestionComptesComponent implements OnInit {
     this.dialog.afterAllClosed.subscribe(res=>{
      this.ngOnInit();
      });
+  }
+}
+  Activer(cpt){
+    this.service.activer(cpt).subscribe(res=>this.ngOnInit(),err=>console.log(err));
+  }
+  Desactiver(cpt){
+    this.service.desactiver(cpt).subscribe(res=>this.ngOnInit(),err=>console.log(err));
   }
 }

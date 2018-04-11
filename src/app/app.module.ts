@@ -108,6 +108,9 @@ import { DeletediagComponent } from './containers/deletediag/deletediag.componen
 import { GestionComptesComponent } from './containers/gestion-comptes/gestion-comptes.component';
 import { CompteFinancierDiagComponent } from './containers/compte-financier-diag/compte-financier-diag.component';
 import { CompteFinancierService } from './Services/compte-financier.service';
+import { PointDeVenteComponent } from './point-de-vente/point-de-vente.component';
+import { PdvServiceService } from './Services/pdvService/pdv-service.service';
+import { PdvDiagComponent } from './pdv-diag/pdv-diag.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -168,9 +171,11 @@ import { CompteFinancierService } from './Services/compte-financier.service';
     DeleteDialog,
     DeletediagComponent,
     GestionComptesComponent,
-    CompteFinancierDiagComponent
+    CompteFinancierDiagComponent,
+    PointDeVenteComponent,
+    PdvDiagComponent
   ],
-  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
+  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],

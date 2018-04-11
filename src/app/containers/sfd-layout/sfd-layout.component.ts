@@ -16,18 +16,23 @@ export class SfdLayoutComponent implements OnInit{
   
   ngOnInit(): void {
     this.sfd.getAll().subscribe(res=>this.sfds=res,err=>console.log(err));
+
   }
   
 
   openAddSFDDialog(){
- 
+    const sfd = {
+      caller :'Ajouter SFD'
+    }
     let dialogRef = this.dialog.open(AddSfdDialogComponent, {
       height: '400px',
       width: '600px',
+      data:sfd
     });
 
     dialogRef.afterClosed().subscribe(result => {
       dialogRef = null;
+      this.ngOnInit();
     });
   };
   update(sfd){
@@ -53,6 +58,23 @@ export class SfdLayoutComponent implements OnInit{
   this.dialog.afterAllClosed.subscribe(res=>{
     this.ngOnInit()
   });
+  }
+
+  search(filter){
+    let req = {
+      codesfd :"",
+      nomsfd:""
+    };
+    let send="";
+    if(filter.Code && filter.Nom){
+      req.codesfd=filter.Code;
+      req.nomsfd=filter.Nom
+    }else if (filter.Nom){
+      req.nomsfd=filter.Nom
+    }else {
+      req.codesfd=filter.Code;
+    }
+   this.sfd.getbyFilter(req).subscribe(res=>this.sfds=res,err=>console.log(err));
   }
   }
      

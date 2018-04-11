@@ -11,9 +11,13 @@ export const navigation = [
     {
       name: 'Gestion des SFD',
       url: '/GestionSFD',
+      icon: 'fa fa-building'
+    },
+    {
+      name: 'Gestion Point de vente',
+      url: '/GestionPDV',
       icon: 'fa fa-institution'
     },
-
    {
     name: 'Gestion des accès',
     url: '/GestionAccès',

@@ -23,7 +23,7 @@
 </div>
 <div class="form-group col-6 mb-2">
 
-<input type="text" class="form-control" placeholder="Statuts" name="statutsfd" [ngModel]="data?.statutsfd">
+<input type="checkbox" class="form-control" placeholder="Statuts" name="statutsfd" [ngModel]="data?.statutsfd">
 </div>
 <div class="form-group col-6 mb-2">
 <input type="text" class="form-control" placeholder="Tel" name="telsfd" [ngModel]="data?.telsfd">
@@ -34,12 +34,17 @@
 <div class="form-group col-6 mb-2">
   <input type="text" class="form-control" placeholder="matriculeFiscale" name="matriculeFiscale" [ngModel]="data?.matriculeFiscale">
   </div>
+  <div class="form-group col-6 mb-2">
+     <select name="cpt" [ngModel]="data?.cpt?.numCompte">
+       <option *ngFor="let compte of comptes" [value]="compte.numCompte">{{compte.numCompte}}</option>
+     </select>
+  </div>
 </form>
 </div>
 <div class="card-footer">
 <div class="text-center col-12">
 <button class="btn btn-light" (click)="close()">Quitter</button>
 <button type="submit" class="btn btn-primary" (click)="add(form)" *ngIf="data?.caller !== 'Modifier SFD'">Ajouter</button>
-<button type="submit" class="btn btn-primary" (click)="update(form)" *ngIf="data?.caller=='Modifier SFD'">Modifier</button>
+<button type="submit" class="btn btn-primary" (click)="update(form)" *ngIf="data?.caller =='Modifier SFD'">Modifier</button>
 </div>
 </div> 

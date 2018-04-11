@@ -21,6 +21,7 @@ import { AppUserComponent } from './gestion_acces/app-user/app-user.component';
 import { AppFunctionComponent } from './gestion_acces/app-fuction/app-function.component';
 import { ViewSfdComponent } from './containers/view-sfd/view-sfd.component';
 import { GestionComptesComponent } from './containers/gestion-comptes/gestion-comptes.component';
+import { PointDeVenteComponent } from './point-de-vente/point-de-vente.component';
 
 export const routes: Routes = [
   {
@@ -103,13 +104,20 @@ export const routes: Routes = [
     component: ViewSfdComponent
   },
   {
+    path:'GestionPDV',
+    canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+    component: PointDeVenteComponent,
+    data:{
+      title: 'Gestion Des Point de Vente'
+    }
+  },
+  {
     path: '',
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: FullLayoutComponent,
     data: {
       title: 'Tableau de bord'
     },
-
     children: [
       {
         path: 'dashboard',
