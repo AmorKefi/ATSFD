@@ -51,13 +51,15 @@ import { RoleFunctionApp } from '../../../model/roleFunction';
 
 
     ngOnInit(): void {
+      this._functions=null; 
       this.appFunctionService.getAllFunctionArray().subscribe(res => {
        this.listOfNewFunction(res);
       });
      
    }
 
-   listOfNewFunction(fun:FunctionApp[]){      
+   listOfNewFunction(fun:FunctionApp[]){  
+   
     this.appRoleService.loadFunctionOfRoleById(this.roleID).subscribe(data=>{
       let __functions=new Array<FunctionApp>();
        for(let i=0;i<fun.length;i++){

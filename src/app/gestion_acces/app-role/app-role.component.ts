@@ -37,7 +37,8 @@ export class AppRoleComponent implements OnInit {
 
   }
 
-  listOfNewFunction(role:AppRole[]){   
+  listOfNewFunction(role:AppRole[]){ 
+    this.data =new Array<AppRole>();
     for(let i=0;i<role.length;i++){ 
       let lRole=new AppRole();
       lRole.roleId=role[i].roleId;
@@ -76,8 +77,8 @@ export class AppRoleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.data =new Array<AppRole>();
-      this.appRoleService.getAllRoles3().subscribe(res => {
+  
+    this.appRoleService.getAllRoles3().subscribe(res => {
        this.listOfNewFunction(res);
       });
 
@@ -132,7 +133,10 @@ UpdateRole(r){
     })
     this.dialog.afterAllClosed.subscribe(res=>{
       this.ngOnInit();
+    
+    
     });
+ 
 }
 
 updateRoleFunction(x,r){

@@ -7,47 +7,45 @@
         <ol class="breadcrumb">
             <app-breadcrumbs></app-breadcrumbs>
         </ol>
-        <div class="portlet-title">
-            <div class="caption font-dark">
-                <h5>
-                    <i class="fa fa-circle"></i>
-                    <span class="caption-subject bold uppercase">Liste des roles </span>
-                </h5>
-            </div>
+        <div class="card">
+            <div class="card-header text-white bg-secondary mb-3">Liste des rôles</div>
+            
+      
+            <div class="tools ">
+                <div class="form-group float-left pt-2">
+                        <button type="button" class="btn bg-info rounded" (click)="CreateRole()" data-target="#add-function-model" >
+                          <span class="fa fa-plus"></span> Nouveau rôle</button>
+                      </div>
             <div class="tools float-right">
-                <div class="">
-
-
-                    <!--<span class="btn  btn-primary"> Exporter </span>-->
-                    <a class="btn btn-primary btn-outline" target="_blank" onClick="
-                        $('#functions_table').tableExport({
-                        headings: true,
-                        fileName: 'functions',
-                        type: 'xls'
-                        });">
-                        <i class="fa fa-file-excel-o "> </i> Excel
-                    </a>
-                    <a class="btn btn-primary " onClick="
-                        $('#functions_table').tableExport({ headings: true,
+                
+                <div class="form-group">
+                <!--<span class="btn  btn-primary"> Exporter </span>-->
+                <a class="btn btn-info text-white" target="_blank" onClick="
+                    $('#functions_table').tableExport({
+                    headings: true,
+                    fileName: 'functions',
+                    type: 'xls'
+                    });">
+                    <i class="fa fa-file-excel-o "> </i> Excel
+                </a>
+                <a class="btn btn-info text-white" onClick="
+                    $('#functions_table').tableExport({ headings: true,
                     fileName: 'functions',
                     type: 'csv'});">
-                        <i class="fa fa-file-text-o "> </i> CSV
-                    </a>
-                    <a class="btn  btn-primary margin-right-10" onClick="function DoCellData(cell, row, col, data) {}
-                        function DoBeforeAutotable(table, headers, rows, AutotableSettings) {}
-                        $('#functions_table').tableExport({fileName: 'functions' ,
-                        type: 'pdf', jspdf: {format: 'a4', margins: {left: 20, right: 10, top: 20, bottom: 20},  autotable: {tableWidth: 'wrap',
-                        tableExport: {onBeforeAutotable: DoBeforeAutotable, onCellData: DoCellData}}}}); ">
-                        <i class="fa fa-file-pdf-o "> </i> PDF
-                    </a>
-
-                    <a class="btn btn-outline btn-primary" data-target="#add-function-model" data-toggle="modal" (click)="CreateRole()">
-                        <i class="fa fa-plus"></i> Nouvelle Role </a>
-
-                </div>
+                    <i class="fa fa-file-text-o "> </i> CSV
+                </a>
+                <a class="btn  btn-info margin-right-10 text-white" onClick="function DoCellData(cell, row, col, data) {}
+                    function DoBeforeAutotable(table, headers, rows, AutotableSettings) {}
+                    $('#functions_table').tableExport({fileName: 'functions' ,
+                    type: 'pdf', jspdf: {format: 'a4', margins: {left: 20, right: 10, top: 20, bottom: 20},  autotable: {tableWidth: 'wrap',
+                    tableExport: {onBeforeAutotable: DoBeforeAutotable, onCellData: DoCellData}}}}); ">
+                    <i class="fa fa-file-pdf-o "> </i> PDF
+                </a>
+            </div>
+               
+                
             </div>
         </div>
-
         <table class="table table-striped table-hover dt-responsive table-bordered" width="100%" data-toggle="table" data-search="true"
             data-filter-control="true" id="roles_table">
             <thead>
@@ -79,19 +77,24 @@
                     <td class="hidden-md  hidden-lg hidden-print">
 
                         <!-- <div class="btn-group  btn-group-xs"> -->
-                        <div>
-                            <a class="btn btn-outline btn-outline-primary btn-xs" (click)="AddRoleFunction(r)">
-                                <i class="fa fa-edit"></i>Màj Fonction</a>
-                            <a class="btn btn-outline btn-outline-warning btn-xs" (click)="UpdateRole(r)">
-                                <i class="fa fa-edit"></i> Mise à Jour</a>
-                            <a class="btn btn-outline btn-outline-danger btn-xs" data-target="#delete-role-model" data-toggle="modal" (click)="DeleteRole(r)">
-                                <i class="fa fa-remove"></i>Supprimer </a>
-
-                        </div>
+                        
+                            <div class="btn-group" role="group">
+                                       
+                                <button type="button" class="btn btn-info" (click)="AddRoleFunction(r)"><i class="fa fa-pencil">
+                                    </i></button>
+                                <button type="button" class="btn btn-default" (click)="UpdateRole(r)"><i class="fa fa-eye">
+                                    </i></button>
+                                <button type="button" class="btn btn-danger"(click)="DeleteRole(r)"><i class="fa fa-close">
+                                    </i></button>
+                            </div>
+                                
+                      
                     </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+
 
 
     </main>
