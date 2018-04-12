@@ -113,6 +113,7 @@ import { PointDeVenteComponent } from './point-de-vente/point-de-vente.component
 import { PdvServiceService } from './Services/pdvService/pdv-service.service';
 import { PdvDiagComponent } from './pdv-diag/pdv-diag.component';
 import { DeleteUserDialogComponent } from './gestion_acces/app-user/delete-user-dialog/delete-user-dialog.component';
+import { UserDesactivesComponent } from './gestion_acces/app-user/user-desactives/user-desactives.component';
 
 @NgModule({
   imports: [
@@ -178,7 +179,8 @@ import { DeleteUserDialogComponent } from './gestion_acces/app-user/delete-user-
     CompteFinancierDiagComponent,
     PointDeVenteComponent,
     PdvDiagComponent,
-    DeleteUserDialogComponent
+    DeleteUserDialogComponent,
+    UserDesactivesComponent
   ],
   providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
     provide: LocationStrategy,

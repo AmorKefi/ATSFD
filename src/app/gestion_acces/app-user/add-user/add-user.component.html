@@ -61,14 +61,14 @@
     
                                 
                 <div class="form-group col-5 mb-2">
-                                <select class="form-control col-5 " formControlName="role"  (ngModelChange)="onChangeRole($event)"> 
+                                <select class="form-control col-5 mt-1 " formControlName="role"  (ngModelChange)="onChangeRole($event)"> 
                 
                                                 <option [value]="">sélectionner un rôle </option>
                                                  <option *ngFor="let _role of _roles" [value]="_role.roleId"> {{_role.roleName}} </option> 
                          </select>     
                                               
                   
- <button class="btn btn-light-blue col-5 " formControlName="addnewuser" (click)="addUserRole()"><i class="fa fa-plus-circle" aria-hidden="true"></i> rôle</button>       
+ <button class="btn blue darken-3 col-5" formControlName="addnewuser" (click)="addUserRole()"><i class="fa fa-plus-circle" aria-hidden="true"></i> rôle</button>       
                        
 
       
@@ -83,7 +83,7 @@
                 <div class="row ">        
                    
                         <ul>
-                            <li class="btn btn-outline-primary  " *ngFor="let role of this.user.roles">{{ role.roleName}}</li>
+                            <li class="btn btn-danger rounded" *ngFor="let role of this.user.roles">{{ role.roleName}}</li>
                         </ul>
               
                 </div> 
@@ -100,7 +100,7 @@
                 <div class="text-center col-12">
                  <mat-dialog-actions class="justify-content-center esapce">
                         
-                  <button type="submit"  class="btn blue darken-4 rounded" mdbRippleRadius  (click)="save(form.value, form.valid)">Ajouter</button>
+                  <button type="submit"  class="btn blue darken-4 rounded" mdbRippleRadius  [disabled]="!form.valid"(click)="save(form.value, form.valid)">Ajouter</button>
         
                   <button type="reset" class="btn btn-danger rounded" [mat-dialog-close] >Annuler</button>
                 </mat-dialog-actions>

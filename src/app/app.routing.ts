@@ -22,6 +22,7 @@ import { AppFunctionComponent } from './gestion_acces/app-fuction/app-function.c
 import { ViewSfdComponent } from './containers/view-sfd/view-sfd.component';
 import { GestionComptesComponent } from './containers/gestion-comptes/gestion-comptes.component';
 import { PointDeVenteComponent } from './point-de-vente/point-de-vente.component';
+import { UserDesactivesComponent } from './gestion_acces/app-user/user-desactives/user-desactives.component';
 
 export const routes: Routes = [
   {
@@ -65,6 +66,12 @@ export const routes: Routes = [
     },
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: AppFunctionComponent
+  },
+  {
+    path: 'UsersDesactives',
+
+    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+    component: UserDesactivesComponent
   },
   {
     path: 'GestionParamètresGlobaux',
