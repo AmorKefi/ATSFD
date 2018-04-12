@@ -25,7 +25,7 @@ export class SfdLayoutComponent implements OnInit{
       caller :'Ajouter SFD'
     }
     let dialogRef = this.dialog.open(AddSfdDialogComponent, {
-      height: '590px',
+      height: '543px',
       width: '600px',
       data:sfd
     });
@@ -38,7 +38,7 @@ export class SfdLayoutComponent implements OnInit{
   update(sfd){
     sfd.caller="Modifier SFD"
     const dialogConfig = new MatDialogConfig();
-     dialogConfig.height='590px';
+     dialogConfig.height='543px';
      dialogConfig.width='600px';
      dialogConfig.data = sfd;
      this.dialog.open(AddSfdDialogComponent, dialogConfig);

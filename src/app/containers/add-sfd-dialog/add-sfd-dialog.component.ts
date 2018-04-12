@@ -1,11 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 import { SfdserviceService } from '../../Services/SFDService/sfdservice.service';
 import { CompteFinancierService } from '../../Services/compte-financier.service';
 
 @Component({
   selector: 'app-add-sfd-dialog',
-  templateUrl: './add-sfd-dialog.component.html',
+  templateUrl: './add-sfd-dialog.component.html'
 })
 export class AddSfdDialogComponent implements OnInit {
 

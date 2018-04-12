@@ -7,28 +7,26 @@
     <div class="card-body">
     <form #form="ngForm" class="form-inline">
         
-        <div class="form-group col-6 mb-2">
-            <input type="text" class="form-control" placeholder="Num compte" name="numCompte" [ngModel]="data?.compte?.numCompte" >  
+        <div class="form-group col-12 mb-2">
+            <input type="text" class="form-control col-12" placeholder="Num compte" name="numCompte" [ngModel]="data?.compte?.numCompte" >  
           </div>
-  <div class="form-group col-6 mb-2">
-    <label for="" class="mr-2">Status </label>
-  <input type="checkbox" class="form-control" placeholder="statut Compte" name="statutCompte" [ngModel]="data?.compte?.statutCompte">
-  </div>
-  <div class="form-group col-6 mb-2">
-  <input type="text" class="form-control" placeholder="solde" name="solde" [ngModel]="data?.compte?.solde">
-  </div>
-  <div class="form-group col-6 mb-2">
-      <select name="sfd" class="form-control" [ngModel]="data?.compte?.sfd">
-    <option *ngFor="let sfd of sfds" [value]="sfd.codesfd">{{sfd.codesfd}}</option>              
-      </select>
-    </div>
+          <div class="form-group col-12 mb-2">
+              <select name="statutCompte" [ngModel]="data?.compte?.statutCompte" class="form-control col-12 rounded">             
+                    <option value="Activé" >Activé</option>                
+                  <option value="désactivé">désactivé</option>              
+                 </select>
+               </div>
+               <div class="form-group col-12 mb-2">
+                    <select name="sfd" class="form-control col-12 rounded" [ngModel]="data?.compte?.sfd">             
+                  <option *ngFor="let sfd of sfds" [value]="sfd.codesfd">{{sfd.codesfd}}</option>                            
+                    </select>                  
+              </div>
   </form>
   </div>
   <div class="card-footer">
   <div class="text-center col-12">
-  <button class="btn btn-light" (click)="close()">Quitter</button>
+  <button class="btn btn-default waves-light rounded" mdbRippleRadius (click)="close()">Quitter</button>
   <button type="submit" class="btn btn-primary" (click)="add(form)" *ngIf="data?.caller !== 'Modifier Compte'">Ajouter</button>
-  <button type="submit" class="btn btn-primary" (click)="update(form)" *ngIf="data?.caller=='Modifier Compte'">Modifier</button>
   </div>
   </div> 
 </div>
@@ -61,7 +59,7 @@
       </div>
       <div class="card-footer">
       <div class="text-center col-12">
-      <button class="btn btn-light" (click)="close()">Quitter</button>
+      <button class="btn btn-default waves-light rounded" mdbRippleRadius (click)="close()">Quitter</button>
       <button type="submit" class="btn btn-primary" (click)="bloquer(form)" *ngIf="data?.caller=='bloquer'">Bloquer</button>
       </div>
       </div> 
