@@ -8,6 +8,8 @@ import { AppRoleService } from '../../app-role/app-role.service';
 import { resolve } from 'q';
 import { UserApp } from '../../../model/user-app';
 import { RoleApp } from '../../../model/role-app';
+import { Router } from '@angular/router';
+import { UserDesactivesComponent } from '../user-desactives/user-desactives.component';
 
 @Component({
   selector: 'app-add-user',
@@ -29,11 +31,21 @@ export class AddUserComponent implements OnInit {
   constructor(private appRoleService:AppRoleService,
               private appUserService:AppUserService,
               private _fb: FormBuilder,
+              private route:Router,
               private dialogRef: MatDialogRef<AddUserComponent>,
               @Inject(MAT_DIALOG_DATA) data) { 
                 this.user.roles=new Array<RoleApp>();
     
               }
+
+              getAllDesactives(){
+
+                // this.route.navigate(['UsersDesactives']);
+                
+                
+                
+                 }
+                
 
   ngOnInit() {
      this.form = this._fb.group({
@@ -42,8 +54,8 @@ export class AddUserComponent implements OnInit {
                lastName: ['', [<any>Validators.required]],
                firstName: ['', [<any>Validators.required]],
               email: ['', [<any>Validators.required,<any>Validators.email]],
-              role:'',
-              addnewuser:''
+              role:''
+           
        });  
 
 
@@ -74,6 +86,7 @@ export class AddUserComponent implements OnInit {
     if(ok){
       
       this.user.roles.push(this._roles[i]);
+      this._roles.splice(i,1);
       //console.log(this._roles[i].roleName);
       //for(let j=0;j<this.user.roles.length;j++){
       //  console.log(`user roles ${j} = `+ this.user.roles[j]);

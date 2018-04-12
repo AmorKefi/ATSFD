@@ -92,7 +92,7 @@ export class AppUserComponent implements OnInit {
   
   add(){
      const dialogConfig = new MatDialogConfig();
-     dialogConfig.height='470px';
+     dialogConfig.height='480px';
      dialogConfig.width='650px';
      this.dialog.open(AddUserComponent, dialogConfig);
      this.dialog.afterAllClosed.subscribe(res=>{
