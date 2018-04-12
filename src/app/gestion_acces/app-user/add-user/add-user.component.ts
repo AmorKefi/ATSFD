@@ -91,13 +91,14 @@ export class AddUserComponent implements OnInit {
      this.user.lastName=model.lastName;
      this.user.email=model.email;
      this.user.image=model.image;
+     this.user.statut="Activé";
       console.log(this.user);
    
      //this.user.roles=new Array<RoleApp>();
      //this._roles.map(x=>this.user.roles.push(x));
 
      this.appUserService.addAppUser(this.user).subscribe(
-       res=>console.log(res),
+       res=>this.dialogRef.close(),
        err => console.error(err, model),
        ()=>console.log('we added the user => '+ model)
      )

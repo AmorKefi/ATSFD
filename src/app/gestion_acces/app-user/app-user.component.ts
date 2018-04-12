@@ -25,17 +25,27 @@ export class AppUserComponent implements OnInit {
     
       ssoId: {
         title: 'Login',
+        filter:false
       
       },
       firstName: {
-        title: 'Nom'
+        title: 'Nom',
+        filter:false
       }, 
       lastName: {
-        title: 'Prénom'
+        title: 'Prénom',
+       
+        filter:false
       },
       email: {
-        title: 'Email'
-      }
+        title: 'Email',
+      
+        filter:false
+       }
+      // password:{
+      //   title:'Mot de passe',
+      //   filter:false
+      // }
      
     },
     mode :'inline'
@@ -55,14 +65,14 @@ export class AppUserComponent implements OnInit {
       
     },
     delete:{
-      deleteButtonContent:'<a class="btn btn-danger"><i class="fa fa-close"></i>Supprimer</a>',
+      deleteButtonContent:'<a class="btn btn-danger  red accent-4 rounded"><i class="fa fa-close"></i></a>',
       cancelButtonContent:'<a class="btn btn-outline btn-warning">Annuler</a>',
       confirmDelete:true
     },
     edit:{
-      editButtonContent:'<a class="btn btn-default waves-light"><i class="fa fa-pencil"></i>Modifier</a>',
-      saveButtonContent:'<a class="btn btn-primary waves-ligh"><i class="fa fa-plus"></i>Enregister</a>',
-      cancelButtonContent:'<a class="btn btn-danger waves-light">Annuler</a>',
+      editButtonContent:'<a class="btn btn-default  rounded"><i class="fa fa-pencil"></i></a>',
+      saveButtonContent:'<a class="btn btn-primary waves-ligh rounded"><i class="fa fa-plus"></i>Enregister</a>',
+      cancelButtonContent:'<a class="btn btn-danger waves-light rounded">Annuler</a>',
       confirmSave : true
     },
     attr: {
@@ -82,7 +92,7 @@ export class AppUserComponent implements OnInit {
   
   add(){
      const dialogConfig = new MatDialogConfig();
-     dialogConfig.height='400px';
+     dialogConfig.height='470px';
      dialogConfig.width='650px';
      this.dialog.open(AddUserComponent, dialogConfig);
      this.dialog.afterAllClosed.subscribe(res=>{

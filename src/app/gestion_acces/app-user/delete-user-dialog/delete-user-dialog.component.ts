@@ -6,7 +6,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material'
   selector: 'app-delete-user-dialog',
   template: `
     <div class="container">
-    <h2 mat-dialog-title justify-content-center>Etes-vous sûr de vouloir supprimer cet utilisateur ?</h2>
+    <h2 mat-dialog-title justify-content-center>Etes-vous sûr de vouloir désactiver cet utilisateur ?</h2>
     
     <mat-dialog-actions justify-content-center>
     <button mat-button class="btn btn-outline btn-danger" [mat-dialog-close]="true" (click)="sup()">Oui</button>

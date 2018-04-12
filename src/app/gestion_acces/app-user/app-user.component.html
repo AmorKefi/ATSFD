@@ -17,11 +17,12 @@
             
             </div>
                        <div class="tools ">
-                    <div class="form-group float-left pt-2">
-                            <button type="button" class="btn bg-info rounded" (click)="add()" data-target="#add-function-model" >
+                    <div class="form-group float-right pt-2">
+                            <button type="button" class="btn light-blue darken-4 rounded" (click)="add()" data-target="#add-function-model" >
                               <span class="fa fa-plus"></span> Ajouter utilisateur</button>
-                              <button type="button" class="btn btn-unique waves-light" (click)="add()" data-target="#add-function-model" >
-                                <span class="fa fa-plus"></span> Voir Historique</button>
+                              <button type="button" class="btn  blue-grey darken-3 rounded" ripple-radius  data-target="#add-function-model" >
+                               
+                                <span class="fa fa-list-ul"></span> Voir Historique</button>
                           </div>
                          
      
@@ -29,7 +30,7 @@
                     
                     <div class="form-group">
                     <!--<span class="btn  btn-primary"> Exporter </span>-->
-                    <a class="btn btn-info text-white" target="_blank" onClick="
+                    <!-- <a class="btn btn-info text-white" target="_blank" onClick="
                         $('#functions_table').tableExport({
                         headings: true,
                         fileName: 'functions',
@@ -42,14 +43,14 @@
                         fileName: 'functions',
                         type: 'csv'});">
                         <i class="fa fa-file-text-o "> </i> CSV
-                    </a>
-                    <a class="btn  btn-info margin-right-10 text-white" onClick="function DoCellData(cell, row, col, data) {}
+                    </a> -->
+                    <!-- <a class="btn btn-secondary  margin-right-10 text-white" onClick="function DoCellData(cell, row, col, data) {}
                         function DoBeforeAutotable(table, headers, rows, AutotableSettings) {}
                         $('#functions_table').tableExport({fileName: 'functions' ,
                         type: 'pdf', jspdf: {format: 'a4', margins: {left: 20, right: 10, top: 20, bottom: 20},  autotable: {tableWidth: 'wrap',
                         tableExport: {onBeforeAutotable: DoBeforeAutotable, onCellData: DoCellData}}}}); ">
-                        <i class="fa fa-file-pdf-o "> </i> PDF
-                    </a>
+                        <i class="fa fa-file-pdf-o "> </i> Imprimer reçu
+                    </a> -->
                 </div>
                    
                     

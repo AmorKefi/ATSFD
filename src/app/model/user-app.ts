@@ -9,4 +9,5 @@ export class UserApp{
     email:string;
     image:string;
     roles:Array<RoleApp>;
+    statut:string;
 }
