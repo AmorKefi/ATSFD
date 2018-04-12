@@ -20,11 +20,7 @@ export class AddSfdDialogComponent implements OnInit {
     form.value.cpt={
       numCompte: form.value.cpt
     };
-    if(form.value.statutsfd){
-      form.value.statutsfd="Activé"
-    }else{
-      form.value.statutsfd="désactivé"
-    }
+    form.value.statutsfd="Activé"
   this.service.add(form.value).subscribe(res=>{
       this.dialog.closeAll();
     }
@@ -43,5 +39,7 @@ export class AddSfdDialogComponent implements OnInit {
       this.dialog.closeAll();
     },err=>console.log(err));
   }
-
+  reset(form){
+    form.reset();
+  }
 }
