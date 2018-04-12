@@ -14,15 +14,15 @@
                 <div class="card-body">
                     <form class="form-inline mb-2" #form="ngForm" (ngSubmit)="search(form.value)">
                         <div class="form-group col-4">
-                            <label for="Code"> Code SFD : </label> 
+                            <label for="Code" class="font-weight-bold"> Code SFD : </label> 
                             <input type="text" id="Code" class="form-control col-12 rounded" placeholder="Code" ngModel #Code="ngModel" name="Code" required>
                           </div>
                           <div class="form-group col-4">
-                               <label for="Nom"> Nom SFD : </label>
+                               <label for="Nom" class="font-weight-bold"> Nom SFD : </label>
                                 <input type="text" id="Nom" class="form-control  col-12 rounded"  placeholder="Nom"  ngModel #Nom="ngModel" name="Nom" required>
                               </div>   
-                              <div class="form-groupe col-4">
-                                    <button type="submit" class="btn btn-primary btn-lg float-right rounded" [disabled]="!Code.valid && !Nom.valid"><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
+                              <div class="form-groupe col-3">
+                                    <button type="submit" class="btn btn-primary  float-right rounded col-12" [disabled]="!Code.valid && !Nom.valid"><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
                               </div>                       
                     </form>                   
                 </div>
@@ -30,43 +30,44 @@
         </div>
     </div>
   
-            <div class="card mb-3">
+            <div class="card  col-12  p-0 mb-3">
                 <div class="card-header font-weight-bold">Liste des SFD</div>
                 <div class="card-body">
                     <div class="row float-right">
                         <div class="form-group">
-            <button class="btn btn-success rounded" routerLink="/Comptes">Gestion des comptes</button>
             <button class="btn btn-primary rounded" (click)="openAddSFDDialog()"><i class="fa fa-plus"></i> Ajouter SFD</button>
+            <button class="btn btn-success rounded" routerLink="/Comptes">Gestion des comptes</button>
          <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
                       </div>
                     </div>
                     <div class="row">
-                        <form class="form-inline">
-                    <div class="form-group ">
-                        <label class="mr-2">Afficher:</label>
-                        <select class="form-control mr-2">
-                            <option>10</option>
-                          </select>
-                          <label>éléments</label>
-                        </div>
-                     
-                </form>
-                </div>
+                            <form class="form-inline">
+                        <div class="form-group ">
+                            <label class="mr-2">Afficher:</label>
+                            <select class="form-control mr-2">
+                                <option>10</option>
+                              </select>
+                              <label>éléments</label>
+                            </div>
+                         
+                    </form>
+                    </div>
+                    </div>
+                    <div class="card-body">
                       <div class="row mt-2">
                           <div class="col-lg-12">
-                            <div class="card">
-                            
-                             <div class="card-body">
+                            <div class="card p-0">
+                             <div class="card-body  table-responsive p-0">
                                 <table class="table">
-                                  <thead>
+                                  <thead class="blue-grey lighten-4">
                                     <tr>
-                                      <th>Code</th>
-                                      <th>Nom</th>
-                                      <th>Adresse</th>
-                                      <th>Pays</th>
-                                      <th>Statut social</th>
-                                      <th>Num Compte</th>
-                                      <th>Actions</th>
+                                      <th class="font-weight-bold">Code</th>
+                                      <th class="font-weight-bold" >Nom</th>
+                                      <th class="font-weight-bold" >Adresse</th>
+                                      <th class="font-weight-bold" >Pays</th>
+                                      <th class="font-weight-bold" >Statut social</th>
+                                      <th class="font-weight-bold" >Num Compte</th>
+                                      <th class="font-weight-bold" >Actions</th>
                                     </tr>
                                   </thead>
                                  <tbody>
