@@ -1,8 +1,7 @@
-<div class="card m-0 p-0">
-  <div class=" card-header text-center">
+<div class="card   m-0 p-0">
+  <div class=" card-header text-white text-uppercase cyan darken-2 text-center">
     <h4 class="mb-4">{{data?.caller}}</h4>
   </div>
-</div>
   <div class="card-body">
     <form #form="ngForm" class="form-inline">
       <div class="form-group col-5 mb-2" [ngClass]="{
@@ -87,11 +86,12 @@
       </div>
     </form>
 </div>
-<div class="card-footer">
+<div class="card-footer pb-0 cyan darken-2 ">
   <div class="text-center col-12">
-    <button type="submit"  class="btn btn-primary waves-light rounded" mdbRippleRadius (click)="add(form)" *ngIf="data?.caller !== 'Modifier SFD'" [disabled]="!form.valid">Ajouter</button>
-    <button type="submit" class="btn btn-primary rounded" (click)="update(form)" *ngIf="data?.caller =='Modifier SFD'" [disabled]="!form.valid">Modifier</button>
-    <button type="reset" class="btn btn-danger rounded" (click)="reset(form)">Annuler</button>
+    <button type="submit"  class="btn btn-primary   indigo darken-4 waves-light rounded" mdbRippleRadius (click)="add(form)" *ngIf="data?.caller !== 'Modifier SFD'" [disabled]="!form.valid">Ajouter</button>
+    <button type="submit" class="btn btn-primary indigo darken-4 waves-light rounded" (click)="update(form)" *ngIf="data?.caller =='Modifier SFD'" [disabled]="!form.valid">Modifier</button>
+    <button type="reset" class="btn btn-danger rounded" (click)="reset(form)" *ngIf="data?.caller != 'Modifier SFD'">Annuler</button>
     <button type="button" class="btn btn-default waves-light rounded" mdbRippleRadius (click)="close()">Quitter</button>
   </div>
 </div> 
+</div>
