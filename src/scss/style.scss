@@ -10,6 +10,9 @@
 .main{
     height: 650px;
 }
+.ng-touched.ng-invalid {
+    @extend .is-invalid;
+  }
 @import "bootstrap-variables";
 
 // Import Bootstrap source files

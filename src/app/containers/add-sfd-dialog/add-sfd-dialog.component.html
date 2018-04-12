@@ -2,49 +2,94 @@
   <div class=" card-header text-center">
     <h4 class="mb-4">{{data?.caller}}</h4>
   </div>
-  <div>
+</div>
   <div class="card-body">
-  <form #form="ngForm" class="form-inline">
-      
-      <div class="form-group col-6 mb-2">
-          <input type="text" class="form-control" placeholder="code SFD" name="codesfd" [ngModel]="data?.codesfd" >  
+    <form #form="ngForm" class="form-inline">
+      <div class="form-group col-6 mb-2" [ngClass]="{
+        'invalid-feedback': codesfd.invalid && codesfd.dirty, 
+        'valid-feedback': codesfd.valid && codesfd.dirty 
+      }">
+          <input type="text" class="form-control col-11 has-danger" placeholder="code SFD" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required>  
+          <div *ngIf="codesfd.invalid && (codesfd.dirty || codesfd.touched)"
+          class="text-danger">
+            <div *ngIf="codesfd.errors.required">
+              *
+            </div>
+          </div>
         </div>
-  <div class="form-group col-6 mb-2">
-  <input type="text" class="form-control" placeholder="Nom SFD" name="nomsfd" [ngModel]="data?.nomsfd">
-</div>
-<div class="form-group col-6 mb-2">
-<input type="text" class="form-control" placeholder="raison sociale" name="raisonsociale" [ngModel]="data?.raisonsociale">
-</div>
-<div class="form-group col-6 mb-2">
-<input type="text" class="form-control" placeholder="Adresse SFD" name="adressesfd" [ngModel]="data?.adressesfd">
-</div>
-<div class="form-group col-6 mb-2">
-<input type="email" class="form-control" placeholder="Email" name="email" [ngModel]="data?.email">
-</div>
-<div class="form-group col-6 mb-2">
-
-<input type="checkbox" class="form-control" placeholder="Statuts" name="statutsfd" [ngModel]="data?.statutsfd">
-</div>
-<div class="form-group col-6 mb-2">
-<input type="text" class="form-control" placeholder="Tel" name="telsfd" [ngModel]="data?.telsfd">
-</div>
-<div class="form-group col-6 mb-2">
-<input type="text" class="form-control" placeholder="Ville" name="villesfd" [ngModel]="data?.villesfd">
-</div>
-<div class="form-group col-6 mb-2">
-  <input type="text" class="form-control" placeholder="matriculeFiscale" name="matriculeFiscale" [ngModel]="data?.matriculeFiscale">
-  </div>
-  <div class="form-group col-6 mb-2">
-     <select name="cpt" [ngModel]="data?.cpt?.numCompte">
-       <option *ngFor="let compte of comptes" [value]="compte.numCompte">{{compte.numCompte}}</option>
-     </select>
-  </div>
-</form>
+      <div class="form-group col-6 mb-2">
+          <input type="text" class="form-control col-11" placeholder="Nom SFD" name="nomsfd" [ngModel]="data?.nomsfd" #nomsfd="ngModel" required>
+          <div class="text-danger" *ngIf="nomsfd.invalid && (nomsfd.dirty || nomsfd.touched)">
+              <div *ngIf="nomsfd.errors.required">
+                  *
+                </div>
+          </div>
+      </div>
+      <div class="form-group col-6 mb-2">
+          <input type="text" class="form-control col-11" placeholder="raison sociale" name="raisonsociale" [ngModel]="data?.raisonsociale" #raisonsocial="ngModel" required>
+          <div class="text-danger" *ngIf="raisonsocial.invalid && (raisonsocial.dirty || raisonsocial.touched)">
+              <div *ngIf="raisonsocial.errors.required"> 
+                  *
+              </div>
+          </div>
+        </div>
+      <div class="form-group col-6 mb-2">
+          <input type="text" class="form-control col-11" placeholder="Adresse SFD" name="adressesfd" [ngModel]="data?.adressesfd" #adressesfd="ngModel" required>
+          <div class="text-danger" *ngIf="adressesfd.invalid && (adressesfd.dirty || adressesfd.touched)">
+              <div *ngIf="adressesfd.errors.required">
+                *
+              </div>
+            </div>
+        </div>
+      <div class="form-group col-6 mb-2">
+          <input type="email" class="form-control col-7" placeholder="Email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [ngModel]="data?.email" #email="ngModel" required>
+          <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div *ngIf="email.errors.required">
+                *
+              </div>
+              <div *ngIf="email.errors.pattern">
+                Email invalide
+              </div>
+            </div>
+      </div>
+      <div class="form-group col-6 mb-2">
+        <label for="status" class="col-6">Status SFD </label>
+          <input type="checkbox" class="form-control col-4" id="status" placeholder="Statuts" name="statutsfd" [ngModel]="data?.statutsfd" #statussfd="ngModel">
+      </div>
+      <div class="form-group col-6 mb-2">
+          <input type="text" class="form-control" placeholder="Tel" name="telsfd" [ngModel]="data?.telsfd" #telsfd="ngModel" required pattern="[0-9]*" minlength="8">
+          <div class="text-danger" *ngIf="telsfd.invalid && (telsfd.dirty || telsfd.touched)">
+            <div *ngIf="telsfd.errors.required">
+              *
+            </div>
+            <div *ngIf="telsfd.errors.minlength || telsfd.errors.pattern">
+              numéro Invalid
+            </div>
+          </div>
+        </div>
+      <div class="form-group col-6 mb-2">
+          <input type="text" class="form-control" placeholder="Ville" name="villesfd" [ngModel]="data?.villesfd" #villesfd="ngModel" required>
+          <div class="text-danger" *ngIf="villesfd.invalid && (villesfd.dirty || villesfd.touched)">
+            <div *ngIf="villesfd.errors.required">
+              *
+            </div>
+          </div>
+      </div>
+      <div class="form-group col-6 mb-2">
+          <input type="text" class="form-control" placeholder="matriculeFiscale" name="matriculeFiscale" [ngModel]="data?.matriculeFiscale" #matriculeFiscale="ngModel" required>
+          <div class="text-danger" *ngIf="matriculeFiscale.invalid && (matriculeFiscale.dirty || matriculeFiscale.touched)">
+            <div *ngIf="matriculeFiscale.errors.required">
+              *
+            </div>
+          </div>
+      </div>
+    </form>
 </div>
 <div class="card-footer">
-<div class="text-center col-12">
-<button class="btn btn-light" (click)="close()">Quitter</button>
-<button type="submit" class="btn btn-primary" (click)="add(form)" *ngIf="data?.caller !== 'Modifier SFD'">Ajouter</button>
-<button type="submit" class="btn btn-primary" (click)="update(form)" *ngIf="data?.caller =='Modifier SFD'">Modifier</button>
-</div>
+  <div class="text-center col-12">
+    <button type="submit" class="btn btn-primary" (click)="add(form)" *ngIf="data?.caller !== 'Modifier SFD'" [disabled]="!form.valid">Ajouter</button>
+    <button type="submit" class="btn btn-primary" (click)="update(form)" *ngIf="data?.caller =='Modifier SFD'" [disabled]="!form.valid">Modifier</button>
+    <button type="reset" class="btn btn-danger" (click)="reset(form)">Annuler</button>
+    <button class="btn btn-light" (click)="close()">Quitter</button>
+  </div>
 </div> 
