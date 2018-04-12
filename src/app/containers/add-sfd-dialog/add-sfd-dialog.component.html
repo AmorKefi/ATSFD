@@ -4,7 +4,7 @@
   </div>
   <div class="card-body">
     <form #form="ngForm" class="form-inline">
-      <div class="form-group col-5 mb-2" [ngClass]="{
+      <div *ngIf="data?.caller !== 'Modifier SFD'" class="form-group col-5 mb-2" [ngClass]="{
         'invalid-feedback': codesfd.invalid && codesfd.dirty, 
         'valid-feedback': codesfd.valid && codesfd.dirty 
       }">
@@ -16,6 +16,18 @@
             </div>
           </div>
         </div>
+        <div *ngIf="data?.caller == 'Modifier SFD'" class="form-group col-5 mb-2" [ngClass]="{
+          'invalid-feedback': codesfd.invalid && codesfd.dirty, 
+          'valid-feedback': codesfd.valid && codesfd.dirty 
+        }">
+            <input type="text" class="form-control col-11 has-danger" placeholder="code SFD" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required readonly>  
+            <div *ngIf="codesfd.invalid && (codesfd.dirty || codesfd.touched)"
+            class="text-danger">
+              <div *ngIf="codesfd.errors.required">
+                *
+              </div>
+            </div>
+          </div>
       <div class="form-group col-5 mb-2">
           <input type="text" class="form-control col-11" placeholder="Nom SFD" name="nomsfd" [ngModel]="data?.nomsfd" #nomsfd="ngModel" required>
           <div class="text-danger" *ngIf="nomsfd.invalid && (nomsfd.dirty || nomsfd.touched)">
