@@ -4,6 +4,7 @@ import { MatDialog,MatDialogConfig } from '@angular/material';
 import { AddUserComponent } from './add-user/add-user.component';
 import { DeleteDialog } from '../app-role/delete-role.component';
 import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-app-user',
@@ -80,7 +81,7 @@ export class AppUserComponent implements OnInit {
     }
   };
 
-  constructor(private appUserService:AppUserService, private dialog: MatDialog) { }
+  constructor(private appUserService:AppUserService, private dialog: MatDialog,private route:Router) { }
 
   ngOnInit() {
     this.appUserService.getAllUsers().subscribe(
@@ -138,6 +139,9 @@ export class AppUserComponent implements OnInit {
       },
       () => console.log('done') 
     );*/
+  }
+  getAllDesactives(){
+this.route.navigate(['UsersDesactives']);
   }
 
 }
