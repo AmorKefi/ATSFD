@@ -13,19 +13,12 @@
 .ng-touched.ng-invalid {
     @extend .is-invalid;
   }
-<<<<<<< HEAD
   .mat-dialog-container{
       margin:0px !important;
       padding: 0px !important;
       overflow-y: hidden;
   }
-=======
-  .mat-dialog-container {
-    margin: 0px !important;
-    padding: 0px !important;
-    z-index: 1000 !important;    
-}
->>>>>>> 06a22126bfdbf82742de54f26d022cb0fbf9f47a
+
 @import "bootstrap-variables";
 
 // Import Bootstrap source files
