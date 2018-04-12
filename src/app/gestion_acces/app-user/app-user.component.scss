@@ -9,3 +9,9 @@
     padding-left: 0;
     padding-right: 0;
 }
+:host /deep/ tr,th {
+    background-color: white;
+    text-align:right;
+    border: 1px solid black;
+  
+    }

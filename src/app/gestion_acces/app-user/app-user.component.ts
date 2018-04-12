@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AppUserService } from './app-user.service';
 import { MatDialog,MatDialogConfig } from '@angular/material';
 import { AddUserComponent } from './add-user/add-user.component';
+import { DeleteDialog } from '../app-role/delete-role.component';
+import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
 
 @Component({
   selector: 'app-app-user',
@@ -20,15 +22,16 @@ export class AppUserComponent implements OnInit {
       //   title: 'ID'
       // }
       //,
+    
       ssoId: {
-        title: 'Login'
+        title: 'Login',
+      
       },
       firstName: {
-        title: 'First Name'
-      }
-      ,
+        title: 'Nom'
+      }, 
       lastName: {
-        title: 'last Name'
+        title: 'Prénom'
       },
       email: {
         title: 'Email'
@@ -38,7 +41,9 @@ export class AppUserComponent implements OnInit {
     mode :'inline'
     ,
     actions :{
+  
       add:false,
+    
       edit:true,
       delete:true,
       position:'right'
@@ -47,17 +52,21 @@ export class AppUserComponent implements OnInit {
       createButtonContent:'Create',
       cancelButtonContent:'Cancel',
       confirmCreate:true
+      
     },
     delete:{
-      deleteButtonContent:'<a class="btn btn-outline btn-outline-danger btn-xs"> <i class="fa fa-remove"> </i>Supprime</a>',
-      cancelButtonContent:'<a class="btn btn-outline btn-outline-warning btn-xs">Annuler</a>',
+      deleteButtonContent:'<a class="btn btn-danger"><i class="fa fa-close"></i>Supprimer</a>',
+      cancelButtonContent:'<a class="btn btn-outline btn-warning">Annuler</a>',
       confirmDelete:true
     },
     edit:{
-      editButtonContent:'<a class="btn btn-outline btn-outline-warning btn-xs"><i class="fa fa-edit"></i> MàJ</a>',
-      saveButtonContent:'<a class="btn btn-outline btn-outline-primary btn-xs"><i class="fa fa-plus"></i>Enregister</a>',
-      cancelButtonContent:'<a class="btn btn-outline btn-outline-danger btn-xs">Annuler</a>',
+      editButtonContent:'<a class="btn btn-default waves-light"><i class="fa fa-pencil"></i>Modifier</a>',
+      saveButtonContent:'<a class="btn btn-primary waves-ligh"><i class="fa fa-plus"></i>Enregister</a>',
+      cancelButtonContent:'<a class="btn btn-danger waves-light">Annuler</a>',
       confirmSave : true
+    },
+    attr: {
+      class: 'table-bordered'
     }
   };
 
@@ -99,18 +108,26 @@ export class AppUserComponent implements OnInit {
   }
   
   onDeleteConfirm(event): void {
-    console.log(event);
+   const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {app_role:event.data};
+    dialogConfig.height='200px';
+    dialogConfig.width='350px';
+    this.dialog.open(DeleteUserDialogComponent, dialogConfig);
+    /*console.log(event);
     this.appUserService.deleteAppUser(event.data.id).subscribe(
       res => {
         console.log(res);
+      
         event.confirm.resolve(event.newData);
+      
+  
       },
       err => {
         console.error(err);
         event.confirm.reject();
       },
       () => console.log('done') 
-    );
+    );*/
   }
 
 }

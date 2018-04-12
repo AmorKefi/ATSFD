@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { MatDialogModule, MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule, MatSidenavModule, MatIconModule, MatButtonModule, MatCardModule, MatMenuModule, MatAutocompleteModule } from '@angular/material';
 import { AppComponent } from './app.component';
@@ -111,6 +112,8 @@ import { CompteFinancierService } from './Services/compte-financier.service';
 import { PointDeVenteComponent } from './point-de-vente/point-de-vente.component';
 import { PdvServiceService } from './Services/pdvService/pdv-service.service';
 import { PdvDiagComponent } from './pdv-diag/pdv-diag.component';
+import { DeleteUserDialogComponent } from './gestion_acces/app-user/delete-user-dialog/delete-user-dialog.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -137,7 +140,8 @@ import { PdvDiagComponent } from './pdv-diag/pdv-diag.component';
     MatCardModule,
     MatMenuModule,
     MatAutocompleteModule,
-    LoadingModule
+    LoadingModule,
+    MDBBootstrapModule.forRoot()
  ],
 
   declarations: [
@@ -173,13 +177,15 @@ import { PdvDiagComponent } from './pdv-diag/pdv-diag.component';
     GestionComptesComponent,
     CompteFinancierDiagComponent,
     PointDeVenteComponent,
-    PdvDiagComponent
+    PdvDiagComponent,
+    DeleteUserDialogComponent
   ],
   providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
   bootstrap: [ AppComponent ],
-  entryComponents: [PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent, AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog ]
+  entryComponents: [PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent, AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent ],
+  schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }

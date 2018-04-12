@@ -43,7 +43,8 @@ export class AppUserService implements OnInit {
     deleteAppUser(id){
         const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
         headers.append('Content-Type', 'application/json')
-        return this.http.delete(`${this.apiUrl.transactionURL}deleteUser/${id}`,{ headers }).map(res =>res);
+      
+        return this.http.put(`${this.apiUrl.transactionURL}desactivateUser`,id ,{ headers }).map(res =>res);
     }
 
     UpdateAppUser(data){
