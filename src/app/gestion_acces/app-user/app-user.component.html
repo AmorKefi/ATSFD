@@ -3,6 +3,9 @@
     <app-sidebar></app-sidebar>
     <!-- Main content -->
     <main class="main">
+        <div class="alert rgba-green-light font-weight-bold col-4" id="Message">
+            
+        </div>
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
            
@@ -20,9 +23,12 @@
                     <div class="form-group float-right pt-2">
                             <button type="button" class="btn light-blue darken-4 rounded" (click)="add()" data-target="#add-function-model" >
                               <span class="fa fa-plus"></span> Ajouter utilisateur</button>
-                              <button type="button" class="btn  blue-grey darken-3 rounded" (click)=getAllDesactives()>
+                              <button type="button" class="btn  blue-grey darken-3 rounded" *ngIf="layout=='Active'" (click)=getAllDesactives()>
                                
                                 <span class="fa fa-list-ul"></span> Voir Historique</button>
+                                <button type="button" class="btn  blue-grey darken-3 rounded" *ngIf="layout=='Desactivated'" (click)=getAllDesactives()>
+                               
+                                        <span class="fa fa-list-ul"></span> Liste des Utilisateurs</button>
                           </div>
                          
      

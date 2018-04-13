@@ -36,8 +36,10 @@
                     <div class="row float-right">
                         <div class="form-group">
             <button class="btn btn-primary rounded" (click)="openAddSFDDialog()"><i class="fa fa-plus"></i> Ajouter SFD</button>
-            <button class="btn btn-success rounded" routerLink="/Comptes">Gestion des comptes</button>
-         <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
+            <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Active'" mdbRippleRadius (click)="getDesactivated()"><i class="fa fa-list" aria-hidden="true"></i> Historique</button>
+            <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Desactivated'" mdbRippleRadius (click)="getDesactivated()"><i class="fa fa-list" aria-hidden="true"></i> List Des SFD</button>
+            <button class="btn btn-success rounded" routerLink="/Comptes">Gestion des comptes</button>                  
+            <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
                       </div>
                     </div>
                     <div class="row">

@@ -44,4 +44,9 @@ export class SfdserviceService {
     headers.append('content-type','application/json');
     return this.http.get('http://127.0.0.1:8080/sfd/getfreesfd',{headers})
   }
+  getDesactivated(){
+    const headers = new HttpHeaders().set('X-Auth-Token',JSON.parse(this.Token).token);
+    headers.append('content-type','application/json');
+    return this.http.get('http://127.0.0.1:8080/sfd/getdesactivated',{headers});
+  }
 }

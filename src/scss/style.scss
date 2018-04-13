@@ -19,6 +19,22 @@
       padding: 0px !important;
       overflow-y: hidden !important;
   }
+  #Message{
+      position: absolute !important;
+      bottom: 0px !important;
+      right: 2px !important;
+      opacity: 0;
+      z-index: 1000;
+  }
+  @keyframes example {
+    0%   {opacity: 0;}
+    50%  {opacity: 1;}
+    100% {opacity: 0;}
+  }
+  .animate{
+    animation-name: example ;
+    animation-duration: 4s;
+  }
 
 @import "bootstrap-variables";
 

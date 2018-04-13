@@ -11,11 +11,11 @@ import { DeletediagComponent } from '../deletediag/deletediag.component';
 })
 export class SfdLayoutComponent implements OnInit{
   
-  constructor(private dialog: MatDialog, private sfd : SfdserviceService) {}
+  constructor(private dialog: MatDialog, private service : SfdserviceService) {}
   sfds:any;
-  
+  layout='Active';
   ngOnInit(): void {
-    this.sfd.getAll().subscribe(res=>this.sfds=res,err=>console.log(err));
+    this.service.getAll().subscribe(res=>this.sfds=res,err=>console.log(err));
 
   }
   
@@ -74,8 +74,18 @@ export class SfdLayoutComponent implements OnInit{
     }else {
       req.codesfd=filter.Code;
     }
-   this.sfd.getbyFilter(req).subscribe(res=>this.sfds=res,err=>console.log(err));
+   this.service.getbyFilter(req).subscribe(res=>this.sfds=res,err=>console.log(err));
   }
+  getDesactivated(){
+    if(this.layout=="Active"){
+    this.layout='Desactivated';
+    this.service.getDesactivated().subscribe(res=>this.sfds=res,err=>console.log(err));
+  }else {
+    this.layout='Active';
+    this.ngOnInit();
+  }
+  }
+
   }
      
     

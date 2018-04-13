@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app-user.component.scss']
 })
 export class AppUserComponent implements OnInit {
-
+  layout='Active';
   data:any;
   settings = {
     pager:{
@@ -42,7 +42,11 @@ export class AppUserComponent implements OnInit {
         title: 'Email',
       
         filter:false
-       }
+       },
+      statut:{
+        title: 'Statut',
+        filter: false
+      }
       // password:{
       //   title:'Mot de passe',
       //   filter:false
@@ -85,7 +89,8 @@ export class AppUserComponent implements OnInit {
 
   ngOnInit() {
     this.appUserService.getAllUsers().subscribe(
-      res => this.data=res,
+      res =>{ this.data=res;
+      console.log(res)},
       err => console.error(err),
       () => console.log('done loading all app-roles') 
     );
@@ -97,7 +102,7 @@ export class AppUserComponent implements OnInit {
      dialogConfig.width='650px';
      this.dialog.open(AddUserComponent, dialogConfig);
      this.dialog.afterAllClosed.subscribe(res=>{
-      this.ngOnInit();
+      this.ngOnInit(); 
       });
   }
 
@@ -141,7 +146,13 @@ export class AppUserComponent implements OnInit {
     );*/
   }
   getAllDesactives(){
-this.route.navigate(['UsersDesactives']);
+    if(this.layout=='Active'){
+    this.layout='Desactivated';
+    this.appUserService.getDesactivatedUser().subscribe(res=>this.data=res,err=>console.log(err));
+  }else{
+    this.layout='Active';
+    this.ngOnInit();
+  }
   }
 
 }

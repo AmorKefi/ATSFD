@@ -52,4 +52,9 @@ export class AppUserService implements OnInit {
         headers.append('Content-Type', 'application/json')
         return this.http.put<UserApp>(`${this.apiUrl.transactionURL}UpdateUser`, data ,{ headers }).map(res =>res);
     }
+    getDesactivatedUser(){
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+        headers.append('Content-Type', 'application/json')
+        return this.http.get(`${this.apiUrl.transactionURL}desactivatedUser`, { headers });
+    }
 }

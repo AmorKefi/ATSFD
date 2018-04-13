@@ -111,7 +111,14 @@ export class AddUserComponent implements OnInit {
      //this._roles.map(x=>this.user.roles.push(x));
 
      this.appUserService.addAppUser(this.user).subscribe(
-       res=>this.dialogRef.close(),
+       res=>{
+        let div= document.getElementById('Message');
+        div.classList.add('animate');
+        div.innerHTML="Utilisateur ajouter avec succés !";
+        setInterval(function(){
+          div.classList.remove('animate');
+        },4000)
+        this.dialogRef.close()},
        err => console.error(err, model),
        ()=>console.log('we added the user => '+ model)
      )
