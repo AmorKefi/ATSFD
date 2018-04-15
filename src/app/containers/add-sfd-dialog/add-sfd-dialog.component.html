@@ -8,7 +8,7 @@
         'invalid-feedback': codesfd.invalid && codesfd.dirty, 
         'valid-feedback': codesfd.valid && codesfd.dirty 
       }">
-          <input type="text" class="form-control col-11 has-danger" placeholder="code SFD" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required>  
+          <input type="text" class="form-control col-10 has-danger" placeholder="code SFD" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required>  
           <div *ngIf="codesfd.invalid && (codesfd.dirty || codesfd.touched)"
           class="text-danger">
             <div *ngIf="codesfd.errors.required">
@@ -20,7 +20,7 @@
           'invalid-feedback': codesfd.invalid && codesfd.dirty, 
           'valid-feedback': codesfd.valid && codesfd.dirty 
         }">
-            <input type="text" class="form-control col-11 has-danger" placeholder="code SFD" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required readonly>  
+            <input type="text" class="form-control col-10 has-danger" placeholder="code SFD" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required readonly>  
             <div *ngIf="codesfd.invalid && (codesfd.dirty || codesfd.touched)"
             class="text-danger">
               <div *ngIf="codesfd.errors.required">
@@ -29,7 +29,7 @@
             </div>
           </div>
       <div class="form-group col-5 mb-2">
-          <input type="text" class="form-control col-11" placeholder="Nom SFD" name="nomsfd" [ngModel]="data?.nomsfd" #nomsfd="ngModel" required>
+          <input type="text" class="form-control col-10" placeholder="Nom SFD" name="nomsfd" [ngModel]="data?.nomsfd" #nomsfd="ngModel" required>
           <div class="text-danger" *ngIf="nomsfd.invalid && (nomsfd.dirty || nomsfd.touched)">
               <div *ngIf="nomsfd.errors.required">
                   *
@@ -37,7 +37,7 @@
           </div>
       </div>
       <div class="form-group col-5 mb-2">
-          <input type="text" class="form-control col-11" placeholder="raison sociale" name="raisonsociale" [ngModel]="data?.raisonsociale" #raisonsocial="ngModel" required>
+          <input type="text" class="form-control col-10" placeholder="raison sociale" name="raisonsociale" [ngModel]="data?.raisonsociale" #raisonsocial="ngModel" required>
           <div class="text-danger" *ngIf="raisonsocial.invalid && (raisonsocial.dirty || raisonsocial.touched)">
               <div *ngIf="raisonsocial.errors.required"> 
                   *
@@ -63,7 +63,7 @@
               </div>
             </div>
       </div>
-      <div class="form-group col-5 mb-2">
+      <div class="form-group col-5 mb-2" *ngIf="data?.caller =='Modifier SFD'">
           <select name="statutsfd" id="" name="statutsfd" [ngModel]="data?.statutsfd" #statussfd="ngModel" class="form-control col-10">
             <option value="Activé">Activé</option>
             <option value="désactivé">désactivé</option>
@@ -96,9 +96,23 @@
             </div>
           </div>
       </div>
+      <div class="form-group col-5 mb-2">
+        <select name="user" [ngModel]="data?.user" #user="ngModel" class="form-control col-10" required>
+          <option [ng-value]="">Selectioné un Reponsable</option>
+          <option *ngFor="let user of users" [value]="user.id">{{user.firstName +" "+user.lastName}}</option>
+        </select>
+        <div class="text-danger" *ngIf="user.invalid && (user.dirty || user.touched)">
+          <div *ngIf="user.errors.required">
+            *
+          </div>
+        </div>
+      </div> 
     </form>
 </div>
-<div class="card-footer pb-0 cyan darken-2 ">
+<div class="card-footer pb-0 cyan darken-2" [ngClass]="{
+  'p-3': data?.caller != 'Modifier SFD',
+  'p-2': data?.caller == 'Modifier SFD'
+}">
   <div class="text-center col-12">
     <button type="submit"  class="btn btn-primary   indigo darken-4 waves-light rounded" mdbRippleRadius (click)="add(form)" *ngIf="data?.caller !== 'Modifier SFD'" [disabled]="!form.valid">Ajouter</button>
     <button type="submit" class="btn btn-primary indigo darken-4 waves-light rounded" (click)="update(form)" *ngIf="data?.caller =='Modifier SFD'" [disabled]="!form.valid">Modifier</button>

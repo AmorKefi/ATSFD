@@ -114,12 +114,23 @@ export class AddUserComponent implements OnInit {
        res=>{
         let div= document.getElementById('Message');
         div.classList.add('animate');
+        div.classList.remove('red','accent-1');
+        div.classList.add('rgba-green-light','animate');
         div.innerHTML="Utilisateur ajouter avec succés !";
         setInterval(function(){
           div.classList.remove('animate');
         },4000)
         this.dialogRef.close()},
-       err => console.error(err, model),
+       err => {
+         this.dialogRef.close();
+         let div= document.getElementById('Message');
+         div.classList.remove('rgba-green-light');
+         div.classList.add('red','accent-1','animate');
+         div.innerHTML="l'utilisateur n'a pas été ajouté !"
+         setInterval(function(){
+           div.classList.remove('animate');
+         },4000)
+       },
        ()=>console.log('we added the user => '+ model)
      )
 

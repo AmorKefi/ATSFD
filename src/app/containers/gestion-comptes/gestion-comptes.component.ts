@@ -31,7 +31,6 @@ export class GestionComptesComponent implements OnInit {
      });
   }
   bloquer(cpt){
-    console.log(cpt.statutCompte);
     if(cpt.statutCompte == 'bloqué'){
       this.service.bloquer(cpt).subscribe(res=>this.ngOnInit(),err=>console.log(err));
     }else{

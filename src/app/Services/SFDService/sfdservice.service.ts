@@ -8,6 +8,11 @@ export class SfdserviceService {
 
   constructor(private http: HttpClient, private cookie:  CookieService) { }
   Token = this.cookie.get('Token');
+  user:any={
+    id:'',
+    firstName:'',
+    lastName:''
+  }
 
   getAll(){
     const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
@@ -48,5 +53,10 @@ export class SfdserviceService {
     const headers = new HttpHeaders().set('X-Auth-Token',JSON.parse(this.Token).token);
     headers.append('content-type','application/json');
     return this.http.get('http://127.0.0.1:8080/sfd/getdesactivated',{headers});
+  }
+  getresponsable(){
+    const headers = new HttpHeaders().set('X-Auth-Token',JSON.parse(this.Token).token);
+    headers.append('content-type','application/json');
+    return this.http.get('http://127.0.0.1:8080/sfd/getresponsable',{headers});
   }
 }
