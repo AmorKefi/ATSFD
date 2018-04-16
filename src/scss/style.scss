@@ -21,10 +21,11 @@
   }
   #Message{
       position: absolute !important;
-      bottom: 0px !important;
-      right: 2px !important;
+      top: 0% !important;
+      right: 25% !important;
       opacity: 0;
-      z-index: 1000;
+      padding:2%;
+      z-index: 10000;
   }
   @keyframes example {
     0%   {opacity: 0;}

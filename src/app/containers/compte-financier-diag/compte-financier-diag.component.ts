@@ -13,6 +13,7 @@ export class CompteFinancierDiagComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog, private service : CompteFinancierService, private servicesfd : SfdserviceService) { }
   sfds:any;
   ngOnInit() {
+    this.data.statutCompte='activé';
   this.servicesfd.getfreesfd().subscribe(res=>this.sfds=res,err=>console.log(err))
   }
   close(){
@@ -20,11 +21,6 @@ export class CompteFinancierDiagComponent implements OnInit {
   }
   add(form){
     form.value.dateCreation= new Date();
-    if( form.value.statutCompte){
-      form.value.statutCompte="activé"
-    }else{
-      form.value.statutCompte="désactivé"
-    }
     if(form.value.sfd){
       form.value.sfd={
         codesfd: form.value.sfd

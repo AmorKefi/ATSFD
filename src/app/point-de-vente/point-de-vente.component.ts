@@ -14,24 +14,36 @@ export class PointDeVenteComponent implements OnInit {
   constructor(private diag : MatDialog, private service: PdvServiceService) { }
 
   ngOnInit() {
-    this.service.getAll().subscribe(res=>this.pdvs=res,err=>console.log(err));
+    this.service.getAll().subscribe(res=>{this.pdvs=res;},err=>console.log(err));
   }
   ajouter(){
     let datapdv={
       caller:''
     }
-    datapdv.caller="Modifier SFD"
+    datapdv.caller="Ajouter"
     const dialogConfig = new MatDialogConfig();
-     dialogConfig.height='400px';
+     dialogConfig.height='543px';
      dialogConfig.width='600px';
      dialogConfig.data = datapdv;
-     this.diag.open(PdvDiagComponent, dialogConfig);
+    let diag= this.diag.open(PdvDiagComponent, dialogConfig);
 
-     this.diag.afterAllClosed.subscribe(res=>{
+     diag.afterClosed().subscribe(res=>{
       this.ngOnInit();
       });
-
-
+  }
+  update(pdv){
+    let datapdv={
+      caller:'Modifier',
+      pdv
+    }
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.height='543px';
+    dialogConfig.width='600px';
+    dialogConfig.data=datapdv;
+   let diag= this.diag.open(PdvDiagComponent,dialogConfig);
+    diag.afterClosed().subscribe(res=>{
+      this.ngOnInit();
+    })
   }
 
 }

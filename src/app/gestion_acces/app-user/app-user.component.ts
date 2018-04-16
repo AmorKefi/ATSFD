@@ -19,11 +19,6 @@ export class AppUserComponent implements OnInit {
       perPage:50
     },
     columns: {
-      // id: {
-      //   title: 'ID'
-      // }
-      //,
-    
       ssoId: {
         title: 'Login',
         filter:false
@@ -56,9 +51,7 @@ export class AppUserComponent implements OnInit {
     mode :'inline'
     ,
     actions :{
-  
       add:false,
-    
       edit:true,
       delete:true,
       position:'right'
@@ -129,21 +122,6 @@ export class AppUserComponent implements OnInit {
     dialogConfig.height='200px';
     dialogConfig.width='350px';
     this.dialog.open(DeleteUserDialogComponent, dialogConfig);
-    /*console.log(event);
-    this.appUserService.deleteAppUser(event.data.id).subscribe(
-      res => {
-        console.log(res);
-      
-        event.confirm.resolve(event.newData);
-      
-  
-      },
-      err => {
-        console.error(err);
-        event.confirm.reject();
-      },
-      () => console.log('done') 
-    );*/
   }
   getAllDesactives(){
     if(this.layout=='Active'){

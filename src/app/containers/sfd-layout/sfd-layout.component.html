@@ -7,6 +7,9 @@
    <ol class="breadcrumb">
       <app-breadcrumbs></app-breadcrumbs>
     </ol>
+    <div class="alert rgba-green-light font-weight-bold col-4" id="Message">
+            
+        </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="card mb-3">
@@ -68,7 +71,6 @@
                                       <th class="font-weight-bold" >Adresse</th>
                                       <th class="font-weight-bold" >Pays</th>
                                       <th class="font-weight-bold" >Statut social</th>
-                                      <th class="font-weight-bold" >Num Compte</th>
                                       <th class="font-weight-bold" >Actions</th>
                                     </tr>
                                   </thead>
@@ -81,7 +83,6 @@
                                   <td><span *ngIf="sfd.statutsfd=='Activé'" class="badge badge-success">{{sfd.statutsfd}}</span>
                                       <span *ngIf="sfd.statutsfd=='désactivé'" class="badge badge-danger">{{sfd.statutsfd}}</span>  
                                 </td>
-                                <td>{{sfd.cpt?.numCompte}}</td>
                                   <td>
                                   
                                     <div class="btn-group" role="group">
