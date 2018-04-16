@@ -19,18 +19,16 @@ export class AppFunctionComponent implements OnInit {
       perPage: 50
     },
     columns: {
+      functionName: {
+        title: 'Function Name',
+        filter: true
+      },
       description: {
         title: 'Description',
         filter: true
       },
-      functionUrl: {
-        title: 'Function Url',
-        filter: true
-      },
-      functionName: {
-        title: 'Function Name',
-        filter: true
-      }
+     
+    
       // ,
       // applicationId: {
       //   title: 'Application Id',
@@ -57,11 +55,7 @@ export class AppFunctionComponent implements OnInit {
       //   filter: true,
       //   type:'html'
       // }
-      ,
-      functionNameEn: {
-        title: 'Function Name En',
-        filter: true
-      }
+    
     },
     mode : 'inline'
     ,
@@ -76,17 +70,18 @@ export class AppFunctionComponent implements OnInit {
     //   cancelButtonContent:'Cancel',
     //   confirmCreate:true
      },
-    delete: {
-      deleteButtonContent: '<a class="btn btn-outline btn-outline-danger btn-xs"><i class="fa fa-remove"></i> Supprime</a>',
-      cancelButtonContent: '<a class="btn btn-outline btn-outline-warning btn-xs">Annuler</a>',
-      confirmDelete: true
+     delete:{
+      deleteButtonContent:'<a class="btn btn-danger  red accent-4 rounded"><i class="fa fa-close"></i></a>',
+      cancelButtonContent:'<a class="btn btn-outline btn-warning">Annuler</a>',
+      confirmDelete:true
     },
-    edit: {
-      editButtonContent: '<a class="btn btn-outline btn-outline-warning btn-xs"><i class="fa fa-edit"></i> MàJ</a>',
-      saveButtonContent: '<a class="btn btn-outline btn-outline-primary btn-xs"><i class="fa fa-plus"></i>Enregister</a>',
-      cancelButtonContent: '<a class="btn btn-outline btn-outline-danger btn-xs">Annuler</a>',
+    edit:{
+      editButtonContent:'<a class="btn blue darken-2  rounded"><i class="fa fa-pencil"></i></a>',
+      saveButtonContent:'<a class="btn btn-primary waves-ligh rounded"><i class="fa fa-plus"></i>Enregister</a>',
+      cancelButtonContent:'<a class="btn btn-danger red accent-4 rounded">Annuler</a>',
+
       confirmSave : true
-    }
+    },
   };
 
   constructor(

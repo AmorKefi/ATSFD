@@ -38,7 +38,7 @@
                     <td>{{r.description}}</td>
                     <td>
                         <ul>
-                            <ol class="btn btn-unique waves-light col-5" *ngFor="let x  of r.roleFunctions" (click)="updateRoleFunction(x,r)">{{x.function.functionName}}</ol>
+                            <ol class="btn mdb-color col-5" *ngFor="let x  of r.roleFunctions" (click)="updateRoleFunction(x,r)">{{x.function.functionName}}</ol>
                         </ul>
 
                         <!-- <div *ngFor="let fn of r.roleFunctions">
@@ -51,11 +51,11 @@
                         <!-- <div class="btn-group  btn-group-xs"> -->
                         
                             <div class="btn-group" role="group">
-                                       
-                                <button type="button" class="btn btn-info" (click)="AddRoleFunction(r)"><i class="fa fa-pencil">
+                                <button type="button" class="btn btn-default" (click)="UpdateRole(r)"><i class="fa fa-pencil">
+                                </i></button>
+                                <button type="button" class="btn btn-info" (click)="AddRoleFunction(r)"><i class="fa fa-plus-circle">
                                     </i></button>
-                                <button type="button" class="btn btn-default" (click)="UpdateRole(r)"><i class="fa fa-eye">
-                                    </i></button>
+     
                                 <button type="button" class="btn btn-danger"(click)="DeleteRole(r)"><i class="fa fa-close">
                                     </i></button>
                             </div>

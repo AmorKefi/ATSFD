@@ -3,44 +3,24 @@
     <app-sidebar></app-sidebar>
     <!-- Main content -->
     <main class="main">
+        <div class="alert rgba-green-light font-weight-bold col-4" id="Message">
+            
+        </div>
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
-            <app-breadcrumbs></app-breadcrumbs>
+           
         </ol>
+      
+        <!--   <app-breadcrumbs></app-breadcrumbs>< -->
+        <div class="card">
+                <div class="card-header text-white indigo darken-4 display-5">Liste des fonctions
+                    </div>
         <div class="portlet-title">
-            <div class="caption font-dark">
-                <h5>
-                    <i class="fa fa-circle"></i>
-                    <span class="caption-subject bold uppercase">Liste des fonctions </span>
-                </h5>
-            </div>
+        
             <div class="tools float-right">
                 <div class="tools">
 
-
-                    <!--<span class="btn  btn-primary"> Exporter </span>-->
-                    <a class="btn btn-primary btn-outline" target="_blank" onClick="
-                            $('#functions_table').tableExport({
-                            headings: true,
-                            fileName: 'functions',
-                            type: 'xls'
-                            });">
-                        <i class="fa fa-file-excel-o "> </i> Excel
-                    </a>
-                    <a class="btn btn-primary " onClick="
-                            $('#functions_table').tableExport({ headings: true,
-                            fileName: 'functions',
-                            type: 'csv'});">
-                        <i class="fa fa-file-text-o "> </i> CSV
-                    </a>
-                    <a class="btn  btn-primary margin-right-10" onClick="function DoCellData(cell, row, col, data) {}
-                            function DoBeforeAutotable(table, headers, rows, AutotableSettings) {}
-                            $('#functions_table').tableExport({fileName: 'functions' ,
-                            type: 'pdf', jspdf: {format: 'a4', margins: {left: 20, right: 10, top: 20, bottom: 20},  autotable: {tableWidth: 'wrap',
-                            tableExport: {onBeforeAutotable: DoBeforeAutotable, onCellData: DoCellData}}}}); ">
-                        <i class="fa fa-file-pdf-o "> </i> PDF
-                    </a>
-                    <a class="btn btn-outline btn-primary" data-target="#add-function-model" data-toggle="modal" (click)="add()">
+<a class="btn blue darken-2" data-target="#add-function-model" data-toggle="modal" (click)="add()">
                         <i class="fa fa-plus"></i> Nouvelle Fonction </a>
 
                 </div>
@@ -57,7 +37,7 @@
             </ng2-smart-table>
 
         </div>
-
+</div>
     </main>
     <app-aside></app-aside>
 </div>

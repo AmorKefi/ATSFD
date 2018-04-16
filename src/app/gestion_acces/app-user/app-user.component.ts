@@ -5,6 +5,8 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { DeleteDialog } from '../app-role/delete-role.component';
 import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
 import { Router } from '@angular/router';
+import { LocalDataSource } from 'ng2-smart-table';
+
 
 @Component({
   selector: 'app-app-user',
@@ -13,10 +15,14 @@ import { Router } from '@angular/router';
 })
 export class AppUserComponent implements OnInit {
   layout='Active';
-  data:any;
+data:any;
+perPageSelect: any;
+
   settings = {
     pager:{
-      perPage:50
+      perPage:1,
+      display:true
+
     },
     columns: {
       ssoId: {
@@ -40,7 +46,16 @@ export class AppUserComponent implements OnInit {
        },
       statut:{
         title: 'Statut',
-        filter: false
+        filter: false,
+       
+        editor: {
+          type: "list",
+          config:{
+            list: [{title: 'Activé', value: 'Activé'},{title: 'Désactivé', value: 'Désactivé'}], // a list to populate the options
+          }
+        }
+    
+       
       }
       // password:{
       //   title:'Mot de passe',
@@ -71,6 +86,7 @@ export class AppUserComponent implements OnInit {
       editButtonContent:'<a class="btn btn-default  rounded"><i class="fa fa-pencil"></i></a>',
       saveButtonContent:'<a class="btn btn-primary waves-ligh rounded"><i class="fa fa-plus"></i>Enregister</a>',
       cancelButtonContent:'<a class="btn btn-danger waves-light rounded">Annuler</a>',
+
       confirmSave : true
     },
     attr: {
@@ -81,8 +97,12 @@ export class AppUserComponent implements OnInit {
   constructor(private appUserService:AppUserService, private dialog: MatDialog,private route:Router) { }
 
   ngOnInit() {
+    this.settings.pager.display = true;
+    this.settings.pager.perPage = 100;
     this.appUserService.getAllUsers().subscribe(
       res =>{ this.data=res;
+ 
+      
       console.log(res)},
       err => console.error(err),
       () => console.log('done loading all app-roles') 
