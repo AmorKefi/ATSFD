@@ -24,7 +24,13 @@ export class AddSfdDialogComponent implements OnInit {
   }
   add(form){
     form.value.statutsfd="Activé"
-  this.service.add(form.value).subscribe(res=>{
+    if(form.value.user !='Selectioné un Reponsable' && form.value.user !=null){
+
+    }else{
+      form.value.user = null;
+    }
+console.log(form.value);
+this.service.add(form.value).subscribe(res=>{
       let div = document.getElementById('Message');
       div.classList.remove('red','accent-1');
       div.classList.add('rgba-green-light','animate');
