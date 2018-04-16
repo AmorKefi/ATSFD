@@ -31,6 +31,8 @@ export class CrudRfComponent implements OnInit {
   }
 
   UpdateRoleFunction(){
+    console.log("nochh testiii");
+    console.log(this.roleFunction);
     this.crudRfService.UpdateAppRole(this.roleFunction).subscribe(
       res => console.log(res),
         err => console.error(err),
