@@ -21,29 +21,38 @@
                           </div>
                         </div>
                         <div  class="form-group col-5 mb-2" >
-                              <input type="text" class="form-control col-10 has-danger" placeholder="Telephone Point de vente" name="telephone1Pdv" [ngModel]="data?.pdv?.telephone1Pdv" #telephone1Pdv="ngModel"  required>  
+                              <input type="text" class="form-control col-10 has-danger" placeholder="Telephone Point de vente" name="telephone1Pdv" [ngModel]="data?.pdv?.telephone1Pdv" #telephone1Pdv="ngModel" pattern="[0-9]*" minlength="8"  required>  
                               <div *ngIf="telephone1Pdv.invalid && (telephone1Pdv.dirty || telephone1Pdv.touched)"
                               class="text-danger">
                                 <div *ngIf="telephone1Pdv.errors.required">
                                   *
                                 </div>
+                                <div *ngIf="telephone1Pdv.errors.minlength || telephone1Pdv.errors.pattern">
+                                  numéro Invalid
+                                </div>
                               </div>
                             </div>
                             <div  class="form-group col-5 mb-2" >
-                                  <input type="text" class="form-control col-10 has-danger" placeholder="Telephone Point de vente" name="telephone2Pdv" [ngModel]="data?.pdv?.telephone2Pdv" #telephone2Pdv="ngModel"  required>  
+                                  <input type="text" class="form-control col-10 has-danger" placeholder="Telephone Point de vente" name="telephone2Pdv" [ngModel]="data?.pdv?.telephone2Pdv" #telephone2Pdv="ngModel" pattern="[0-9]*" minlength="8"  required>  
                                   <div *ngIf="telephone2Pdv.invalid && (telephone2Pdv.dirty || telephone2Pdv.touched)"
                                   class="text-danger">
                                     <div *ngIf="telephone2Pdv.errors.required">
                                       *
                                     </div>
+                                    <div *ngIf="telephone2Pdv.errors.minlength || telephone2Pdv.errors.pattern">
+                                      numéro Invalid
+                                    </div>
                                   </div>
                                 </div>
                                 <div  class="form-group col-5 mb-2" >
-                                      <input type="email" class="form-control col-10 has-danger" placeholder="Email Point de vente" name="emailPdv" [ngModel]="data?.pdv?.emailPdv" #emailPdv="ngModel"  required>  
+                                      <input type="email" class="form-control col-10 has-danger" placeholder="Email Point de vente" name="emailPdv" [ngModel]="data?.pdv?.emailPdv" #emailPdv="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>  
                                       <div *ngIf="emailPdv.invalid && (emailPdv.dirty || emailPdv.touched)"
                                       class="text-danger">
                                         <div *ngIf="emailPdv.errors.required">
                                           *
+                                        </div>
+                                        <div *ngIf="emailPdv.errors.pattern">
+                                          Email invalide
                                         </div>
                                       </div>
                                     </div>
@@ -66,17 +75,21 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-5 mb-2">
-                                                <select name="sfd" class="form-control col-10" [ngModel]="data?.pdv?.sfd" #sfd="ngModel" >
+                                                <select name="sfd" class="form-control col-10" [ngModel]="data?.pdv?.sfd.codesfd" #sfd="ngModel" >
                                                     <option [value]="">Choisir un SFD</option>
-                                                    <option *ngFor="let sfd of sfds" [value]="sfd.codesfd">{{sfd.nomsfd}}</option>
+                                                    <option *ngFor="let sfd of sfds" [value]="sfd.codesfd">{{sfd.codesfd}}</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group col-5 mb-2">
-                                                    <select name="cptf" class="form-control col-10" [ngModel]="data?.pdv?.cptf" #cptf="ngModel" >
+                                            <div class="form-group col-5 mb-2" *ngIf="data?.caller !='Modifier'">
+                                                    <select name="cptf" class="form-control col-10" [ngModel]="data?.pdv?.cptf.numCompte" #cptf="ngModel" >
                                                         <option [value]="">choisir un compte Financier</option>
                                                         <option *ngFor="let compte of comptes" [value]="compte.numCompte">{{compte.numCompte}}</option>
                                                     </select>
                                                 </div>
+                                                <div class="form-group col-5 mb-2" *ngIf="data?.caller =='Modifier'">
+                                                  <input name="cptf" class="form-control col-10" [ngModel]="data?.pdv?.cptf.numCompte" #cptf="ngModel" readonly>
+                                                     
+                                              </div>
              </form>
  </div>
  <div class="card-footer pb-0 cyan darken-2 p-5">

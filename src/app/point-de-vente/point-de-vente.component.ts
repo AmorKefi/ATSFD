@@ -11,10 +11,12 @@ import { PdvDiagComponent } from '../pdv-diag/pdv-diag.component';
 export class PointDeVenteComponent implements OnInit {
 
   pdvs:any;
+  layout='Active'
   constructor(private diag : MatDialog, private service: PdvServiceService) { }
 
   ngOnInit() {
     this.service.getAll().subscribe(res=>{this.pdvs=res;},err=>console.log(err));
+    this.layout='Active';
   }
   ajouter(){
     let datapdv={
@@ -46,4 +48,14 @@ export class PointDeVenteComponent implements OnInit {
     })
   }
 
+  getDesactivated(){
+    if(this.layout=='Active'){
+      this.layout='Desactive';
+      this.service.getDesactive().subscribe(res=>this.pdvs=res,err=>console.log(err));
+    }else{
+      this.layout='Active'
+      this.ngOnInit();
+    }
+ 
+  }
 }

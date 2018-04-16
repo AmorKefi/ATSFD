@@ -13,7 +13,9 @@
               <div class="card-body">
                   <div class="row float-right">
                       <div class="form-group">
-          <button class="btn btn-primary rounded" (click)="ajouter()"><i class="fa fa-plus"></i> Ajouter Point De Vente</button>              
+          <button class="btn btn-primary rounded" (click)="ajouter()"><i class="fa fa-plus"></i> Ajouter Point De Vente</button> 
+          <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Active'"><i class="fa fa-list" aria-hidden="true"></i> Historique</button>             
+          <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Desactive'"><i class="fa fa-list" aria-hidden="true"></i> Liste Des Point de ventes</button> 
           <button class="btn btn-success rounded" routerLink="/Comptes">Gestion des comptes</button>
           
        <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
@@ -55,7 +57,7 @@
                                 <td>{{pdv.telephone1Pdv}}</td>
                                 <td>{{pdv.telephone2Pdv}}</td>
                                 <td><span *ngIf="pdv.statutPdv=='Activé'" class="badge badge-success">{{pdv.statutPdv}}</span>
-                                    <span *ngIf="pdv.statutPdv=='désactivé'" class="badge badge-danger">{{pdv.statutPdv}}</span>  
+                                    <span *ngIf="pdv.statutPdv=='Désactivé'" class="badge badge-danger">{{pdv.statutPdv}}</span>  
                               </td>
                               <td>{{pdv?.typePdv}}</td>
                                 <td>
