@@ -22,4 +22,9 @@ export class PdvServiceService {
     headers.append('content-type','application/json')
     return this.http.put('http://127.0.0.1:8080/pdv/updatepdv',data,{headers}) 
   }
+  getDesactive(){
+    const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
+    headers.append('content-type','application/json')
+    return this.http.get('http://127.0.0.1:8080/pdv/getDesactivated',{headers}) 
+  }
 }
