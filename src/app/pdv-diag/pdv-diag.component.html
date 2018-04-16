@@ -1,35 +1,90 @@
 <div class="card">
  <div class="card-header text-center Font-weight-bold">{{data.caller}}</div>
  <div class="card-body">
-    <form #form="ngForm" class="form-inline">
-            
-         <div class="form-group col-6 mb-2">
-            <input type="text" class="form-control" placeholder="code Pdv" name="codePdv" [ngModel]="data?.pdv?.codePdv">  
-         </div>
-         
-         <div class="from-group col-6 mb-2">
-            <input type="text" class="form-control" placeholder="nom Pdv" name="nomPdv" [ngModel]="data?.pdv?.nomPdv" >
-         </div>
-         <div class="from-group col-6 mb-2">
-            <input type="text" class="form-control" placeholder="telephone Pdv" name="telephone1Pdv" [ngModel]="data?.pdv?.telephone1Pdv" >
-         </div>
-         <div class="from-group col-6 mb-2">
-            <input type="text" class="form-control" placeholder="telephone Pdv 2" name="telephone2Pdv" [ngModel]="data?.pdv?.telephone2Pdv" >
-         </div>
-         <div class="from-group col-6 mb-2">
-            <input type="text" class="form-control" placeholder="email Pdv" name="emailPdv" [ngModel]="data?.pdv?.emailPdv" >
-         </div>
-         <div class="from-group col-6 mb-2">
-            <input type="checkbox" class="form-control" placeholder="statut Pdv" name="statutPdv" [ngModel]="data?.pdv?.statutPdv" >
-         </div>
-         <div class="form-group col-6 mb-2">
-            <input type="text" class="form-control" placeholder="typePdv" name="telephone2Pdv" [ngModel]="data?.pdv?.typePdv" >
-         </div>
-         <div class="form-group col-6 mb-2">
-             <select name="">
-                 <option [value]=""></option>
-             </select>
-         </div>       
-      </form>
+        <form #form="ngForm" class="form-inline">
+                <div  class="form-group col-5 mb-2" >
+                      <input type="text" class="form-control col-10 has-danger" placeholder="code Point De vente" name="codePdv" [ngModel]="data?.pdv?.codePdv" #codePdv="ngModel"  required>  
+                      <div *ngIf="codePdv.invalid && (codePdv.dirty || codePdv.touched)"
+                      class="text-danger">
+                        <div *ngIf="codePdv.errors.required">
+                          *
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group col-5 mb-2" >
+                          <input type="text" class="form-control col-10 has-danger" placeholder="Nom Point de vente" name="nomPdv" [ngModel]="data?.pdv?.nomPdv" #nomPdv="ngModel"  required>  
+                          <div *ngIf="nomPdv.invalid && (nomPdv.dirty || nomPdv.touched)"
+                          class="text-danger">
+                            <div *ngIf="nomPdv.errors.required">
+                              *
+                            </div>
+                          </div>
+                        </div>
+                        <div  class="form-group col-5 mb-2" >
+                              <input type="text" class="form-control col-10 has-danger" placeholder="Telephone Point de vente" name="telephone1Pdv" [ngModel]="data?.pdv?.telephone1Pdv" #telephone1Pdv="ngModel"  required>  
+                              <div *ngIf="telephone1Pdv.invalid && (telephone1Pdv.dirty || telephone1Pdv.touched)"
+                              class="text-danger">
+                                <div *ngIf="telephone1Pdv.errors.required">
+                                  *
+                                </div>
+                              </div>
+                            </div>
+                            <div  class="form-group col-5 mb-2" >
+                                  <input type="text" class="form-control col-10 has-danger" placeholder="Telephone Point de vente" name="telephone2Pdv" [ngModel]="data?.pdv?.telephone2Pdv" #telephone2Pdv="ngModel"  required>  
+                                  <div *ngIf="telephone2Pdv.invalid && (telephone2Pdv.dirty || telephone2Pdv.touched)"
+                                  class="text-danger">
+                                    <div *ngIf="telephone2Pdv.errors.required">
+                                      *
+                                    </div>
+                                  </div>
+                                </div>
+                                <div  class="form-group col-5 mb-2" >
+                                      <input type="email" class="form-control col-10 has-danger" placeholder="Email Point de vente" name="emailPdv" [ngModel]="data?.pdv?.emailPdv" #emailPdv="ngModel"  required>  
+                                      <div *ngIf="emailPdv.invalid && (emailPdv.dirty || emailPdv.touched)"
+                                      class="text-danger">
+                                        <div *ngIf="emailPdv.errors.required">
+                                          *
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div  class="form-group col-5 mb-2" >
+                    <select name="statutPdv" [ngModel]="data?.pdv?.statutPdv" #statutPdv="ngModel" class="form-control col-10" >
+                        <option [ng-value]="active">Activé</option>
+                        <option [ng-value]="desactive">Désactivé</option>
+                    </select>
+                                          <div *ngIf="statutPdv.invalid && (statutPdv.dirty || statutPdv.touched)"
+                                          class="text-danger">
+                                            <div *ngIf="statutPdv.errors.required">
+                                              *
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="form-group col-5 mb-2">
+                                            <select name="typePdv" class="form-control col-10" [ngModel]="data?.pdv?.typePdv" #typePdv="ngModel" >
+                                                <option [ng-value]="commercant">commerçant</option>
+                                                <option [ng-value]="agence">agence</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-5 mb-2">
+                                                <select name="sfd" class="form-control col-10" [ngModel]="data?.pdv?.sfd" #sfd="ngModel" >
+                                                    <option [value]="">Choisir un SFD</option>
+                                                    <option *ngFor="let sfd of sfds" [value]="sfd.codesfd">{{sfd.nomsfd}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-5 mb-2">
+                                                    <select name="cptf" class="form-control col-10" [ngModel]="data?.pdv?.cptf" #cptf="ngModel" >
+                                                        <option [value]="">choisir un compte Financier</option>
+                                                        <option *ngFor="let compte of comptes" [value]="compte.numCompte">{{compte.numCompte}}</option>
+                                                    </select>
+                                                </div>
+             </form>
  </div>
+ <div class="card-footer pb-0 cyan darken-2 p-5">
+    <div class="text-center col-12">
+      <button type="submit"  class="btn btn-primary   indigo darken-4 waves-light rounded" mdbRippleRadius (click)="add(form)" *ngIf="data?.caller !== 'Modifier'" [disabled]="!form.valid">Ajouter</button>
+      <button type="submit" class="btn btn-primary indigo darken-4 waves-light rounded" (click)="update(form)" *ngIf="data?.caller =='Modifier'" [disabled]="!form.valid">Modifier</button>
+      <button type="reset" class="btn btn-danger rounded" (click)="reset(form)" *ngIf="data?.caller != 'Modifier'">Annuler</button>
+      <button type="button" class="btn btn-default waves-light rounded" mdbRippleRadius (click)="close()">Quitter</button>
+    </div>
+  </div> 
 </div>

@@ -4,10 +4,7 @@
   </div>
   <div class="card-body">
     <form #form="ngForm" class="form-inline">
-      <div *ngIf="data?.caller !== 'Modifier SFD'" class="form-group col-5 mb-2" [ngClass]="{
-        'invalid-feedback': codesfd.invalid && codesfd.dirty, 
-        'valid-feedback': codesfd.valid && codesfd.dirty 
-      }">
+      <div  class="form-group col-5 mb-2">
           <input type="text" class="form-control col-10 has-danger" placeholder="code SFD" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required>  
           <div *ngIf="codesfd.invalid && (codesfd.dirty || codesfd.touched)"
           class="text-danger">
@@ -16,10 +13,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="data?.caller == 'Modifier SFD'" class="form-group col-5 mb-2" [ngClass]="{
-          'invalid-feedback': codesfd.invalid && codesfd.dirty, 
-          'valid-feedback': codesfd.valid && codesfd.dirty 
-        }">
+        <div  class="form-group col-5 mb-2">
             <input type="text" class="form-control col-10 has-danger" placeholder="code SFD" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required readonly>  
             <div *ngIf="codesfd.invalid && (codesfd.dirty || codesfd.touched)"
             class="text-danger">
@@ -99,7 +93,7 @@
       <div class="form-group col-5 mb-2">
         <select name="user" [ngModel]="data?.user" #user="ngModel" class="form-control col-10" required>
           <option [ng-value]="">Selectioné un Reponsable</option>
-          <option *ngFor="let user of users" [value]="user.id">{{user.firstName +" "+user.lastName}}</option>
+          <option *ngFor="let user of users" [ng-value]="user" >{{user.firstName +" "+user.lastName}}</option>
         </select>
         <div class="text-danger" *ngIf="user.invalid && (user.dirty || user.touched)">
           <div *ngIf="user.errors.required">

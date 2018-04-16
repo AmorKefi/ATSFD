@@ -36,7 +36,7 @@ export class AddSfdDialogComponent implements OnInit {
       setInterval(function(){
         div.classList.remove('animate');
       },4000)
-      /*this.dialog.closeAll();*/
+      this.dialog.closeAll();
     }
     ,err=>{
       let div = document.getElementById('Message');
