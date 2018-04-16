@@ -23,10 +23,6 @@ export class AddSfdDialogComponent implements OnInit {
     this.dialog.closeAll();
   }
   add(form){
-    console.log(form.value);
-    form.value.cpt={
-      numCompte: form.value.cpt
-    };
     form.value.statutsfd="Activé"
   this.service.add(form.value).subscribe(res=>{
       let div = document.getElementById('Message');
@@ -49,9 +45,6 @@ export class AddSfdDialogComponent implements OnInit {
     });
   }
   update(form){
-    form.value.cpt={
-      numCompte: form.value.cpt
-    };
     if(form.value.statutsfd){
       form.value.statutsfd="Activé"
     }else{

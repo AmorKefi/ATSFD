@@ -15,12 +15,18 @@ export class PdvDiagComponent implements OnInit {
   sfds:any;
   comptes:any;
   ngOnInit() {
+    if(this.data.caller=='Modifier'){
+      console.log(this.data);
+      this.servicesfd.getAll().subscribe(res=>this.sfds=res,err=>console.log(err));
+      this.servicecmpt.getfreeacount().subscribe(res=>this.comptes=res,err=>console.log(err));
+    }else{
     this.servicesfd.getAll().subscribe(res=>this.sfds=res,err=>console.log(err));
     this.servicecmpt.getfreeacount().subscribe(res=>this.comptes=res,err=>console.log(err));
     this.data.sfd="Choisir un SFD";
     this.data.cptf="choisir un compte Financier";
     this.data.statutPdv="Activé";
     this.data.typePdv="commerçant";
+  }
   }
   add(form){
     if(form.value.sfd=='Choisir un SFD'){
@@ -30,7 +36,11 @@ export class PdvDiagComponent implements OnInit {
         codesfd:form.value.sfd
       }
     }
-    if(form.value.cptf=='choisir un compte Financier'){
+    if(form.value.cptf!=null && form.value.cptf!='choisir un compte Financier'){
+      form.value.cptf={
+        numCompte:form.value.cptf
+      }
+    }else{
       form.value.cptf=null
     }
     console.log(form.value);
@@ -46,6 +56,14 @@ export class PdvDiagComponent implements OnInit {
     }else{
       form.value.sfd=null
     }
+    if(form.value.cptf!=null && form.value.cptf!='choisir un compte Financier'){
+      form.value.cptf={
+        numCompte:form.value.cptf
+      }
+    }else{
+      form.value.cptf=null
+    }
+    console.log(form.value);
     this.service.update(form.value).subscribe(res=>this.diag.closeAll(),err=>console.log(err));
   }
   reset(form){
