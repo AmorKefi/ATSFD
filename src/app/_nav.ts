@@ -13,10 +13,19 @@ export const navigation = [
       url: '/GestionSFD',
       icon: 'fa fa-building'
     },
+    
     {
       name: 'Gestion Point de vente',
       url: '/GestionPDV',
-      icon: 'fa fa-institution'
+      icon: 'fa fa-institution',children :[
+
+{
+  name: 'Gestion responsables',
+  url: '/GestionResPdv',
+  icon: 'fa fa-users'
+}
+
+      ]
     },
    {
     name: 'Gestion des accès',

@@ -39,6 +39,15 @@ export class AppUserService implements OnInit {
         headers.append('Content-Type', 'application/json')
         return this.http.post<UserApp>(`${this.apiUrl.transactionURL}addUser`, data ,{ headers }).map(res =>res);
     }
+    addResponsable(data){
+
+        console.log('service::'+data);
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+        headers.append('Content-Type', 'application/json')
+        return this.http.post<UserApp>(`${this.apiUrl.transactionURL}addResponsable`, data ,{ headers }).map(res =>res);
+
+
+    }
 
     deleteAppUser(id){
         const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
@@ -56,5 +65,19 @@ export class AppUserService implements OnInit {
         const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
         headers.append('Content-Type', 'application/json')
         return this.http.get(`${this.apiUrl.transactionURL}desactivatedUser`, { headers });
+    }
+    getAllResponsables(){
+
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+        headers.append('Content-Type', 'application/json')
+        return this.http.get(`${this.apiUrl.transactionURL}getAllResponsablesPdv`, { headers });
+
+    }
+    getDesactivatedResponsables(){
+
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+        headers.append('Content-Type', 'application/json')
+        return this.http.get(`${this.apiUrl.transactionURL}getAllResponsablesDesactives`, { headers });
+
     }
 }

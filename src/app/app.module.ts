@@ -115,6 +115,8 @@ import { PdvDiagComponent } from './pdv-diag/pdv-diag.component';
 import { DeleteUserDialogComponent } from './gestion_acces/app-user/delete-user-dialog/delete-user-dialog.component';
 import { UserDesactivesComponent } from './gestion_acces/app-user/user-desactives/user-desactives.component';
 import{SelectStatutComponent} from './gestion_acces/app-user/select-statut/select-statut.component';
+import { ResponsablesPdvComponent } from './point-de-vente/responsables-pdv/responsables-pdv.component';
+import { AddResponsableComponent } from './point-de-vente/responsables-pdv/add-responsable/add-responsable.component';
 
 
 @NgModule({
@@ -183,7 +185,9 @@ import{SelectStatutComponent} from './gestion_acces/app-user/select-statut/selec
     PdvDiagComponent,
     DeleteUserDialogComponent,
     UserDesactivesComponent,
-    SelectStatutComponent
+    SelectStatutComponent,
+    ResponsablesPdvComponent,
+    AddResponsableComponent
   
   ],
   providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
@@ -192,7 +196,7 @@ import{SelectStatutComponent} from './gestion_acces/app-user/select-statut/selec
   }],
   bootstrap: [ AppComponent ],
   entryComponents: [PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent
-    , AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent ],
+    , AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent ],
   schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }

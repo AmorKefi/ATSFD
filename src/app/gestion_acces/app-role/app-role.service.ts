@@ -30,7 +30,14 @@ export class AppRoleService implements OnInit {
         headers.append('Content-Type', 'application/json')
         return this.http.get<RoleApp>(`${this.apiUrl.transactionURL}AllRoles`,{ headers }).map(res =>res);
     }
+getAllRolesResponsables(){
 
+
+    const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+    headers.append('Content-Type', 'application/json')
+    return this.http.get<Array<RoleApp>>(`${this.apiUrl.transactionURL}AllRolesResponsables`,{ headers }).map(res =>res);
+
+}
     getAllRoles2(){
         const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
         headers.append('Content-Type', 'application/json')

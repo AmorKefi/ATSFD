@@ -23,6 +23,7 @@ import { ViewSfdComponent } from './containers/view-sfd/view-sfd.component';
 import { GestionComptesComponent } from './containers/gestion-comptes/gestion-comptes.component';
 import { PointDeVenteComponent } from './point-de-vente/point-de-vente.component';
 import { UserDesactivesComponent } from './gestion_acces/app-user/user-desactives/user-desactives.component';
+import { ResponsablesPdvComponent } from './point-de-vente/responsables-pdv/responsables-pdv.component';
 
 export const routes: Routes = [
   {
@@ -38,6 +39,7 @@ export const routes: Routes = [
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: SfdLayoutComponent,
   },
+ 
   {
     path: 'GestionAccès',
     data: {
@@ -45,6 +47,14 @@ export const routes: Routes = [
     },
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: AppUserComponent
+  },
+  {
+    path: 'GestionResPdv',
+    data: {
+      title: 'Gestion des responsables'
+    },
+    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+    component: ResponsablesPdvComponent
   },
   {
     path: 'auth',
