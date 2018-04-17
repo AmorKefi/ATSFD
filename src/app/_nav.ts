@@ -15,7 +15,7 @@ export const navigation = [
     },
     
     {
-      name: 'Gestion Point de vente',
+      name: 'Points de ventes',
       url: '/GestionPDV',
       icon: 'fa fa-institution',children :[
 
@@ -23,8 +23,11 @@ export const navigation = [
   name: 'Gestion responsables',
   url: '/GestionResPdv',
   icon: 'fa fa-users'
+},
+{name: 'Gestion Point de vente',
+url: '/GestionPDV',
+icon: 'fa fa-institution',
 }
-
       ]
     },
    {

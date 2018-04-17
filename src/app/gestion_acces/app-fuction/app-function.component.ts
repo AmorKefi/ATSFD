@@ -76,7 +76,7 @@ export class AppFunctionComponent implements OnInit {
       confirmDelete:true
     },
     edit:{
-      editButtonContent:'<a class="btn blue darken-2  rounded"><i class="fa fa-pencil"></i></a>',
+      editButtonContent:'<a class="btn pink darken-4  rounded"><i class="fa fa-pencil"></i></a>',
       saveButtonContent:'<a class="btn btn-primary waves-ligh rounded"><i class="fa fa-plus"></i>Enregister</a>',
       cancelButtonContent:'<a class="btn btn-danger red accent-4 rounded">Annuler</a>',
 
