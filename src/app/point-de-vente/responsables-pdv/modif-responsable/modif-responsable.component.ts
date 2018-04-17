@@ -64,7 +64,7 @@ export class ModifResponsableComponent implements OnInit {
 
     
   }
-
+  
  modifier(model: UserApp) {
     this.submitted = true; 
     this.data.ssoId=model.ssoId;
