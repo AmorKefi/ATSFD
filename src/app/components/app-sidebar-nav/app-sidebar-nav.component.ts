@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
-
+import * as jwt_decode from 'jwt-decode';
 // Import navigation elements
 import { navigation } from './../../_nav';
 
@@ -62,7 +62,15 @@ export class AppSidebarNavItemComponent {
   }
 
   public isDropdown() {
-    return this.item.children ? true : false
+    let authorities={
+      authorities:[]
+    }
+   authorities=jwt_decode(this.cookie.get('Token'));
+    if(this.item.children && this.item.role.indexOf(authorities.authorities[0].authority)!=-1){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   public thisUrl() {
@@ -73,9 +81,10 @@ export class AppSidebarNavItemComponent {
     return this.router.isActive(this.thisUrl(), false)
   }
 
-  constructor( private router: Router )  { }
+  constructor( private router: Router ,private cookie :CookieService)  { }
 
 }
+
 
 @Component({
   selector: 'app-sidebar-nav-link',
@@ -84,9 +93,9 @@ export class AppSidebarNavItemComponent {
   [ngClass]="hasVariant() ? 'nav-link nav-link-' + link.variant : 'nav-link'" (click)="logout()">
   <i *ngIf="isIcon()" class="{{ link.icon }}"></i>
   {{ link.name }}
-  <span *ngIf="isBadge()" [ngClass]="'badge badge-' + link.badge.variant">{{ link.badge.text }}</span>
+  <span *ngIf="isBadge()"<<<<<<<<<<<<<<<<<<<<< [ngClass]="'badge badge-' + link.badge.variant">{{ link.badge.text }}</span>
 </a>
-    <a *ngIf="!isExternalLink() && !isbutton()"
+    <a *ngIf="!isExternalLink() && !isbutton() && granted()"
       [ngClass]="hasVariant() ? 'nav-link nav-link-' + link.variant : 'nav-link'"
       routerLinkActive="active"
       [routerLink]="[link.url]">
@@ -105,6 +114,17 @@ export class AppSidebarNavItemComponent {
 })
 export class AppSidebarNavLinkComponent {
   @Input() link: any;
+  public granted(){
+    let authorities={
+      authorities:[]
+    }
+   authorities=jwt_decode(this.cookie.get('Token'));
+    if(this.link.role.indexOf(authorities.authorities[0].authority) != -1){
+return true;
+    }else{
+      return false;
+    }
+  }
   public hasVariant() {
     return this.link.variant ? true : false
   }
