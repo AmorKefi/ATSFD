@@ -65,7 +65,6 @@ export class SfdLayoutComponent implements OnInit{
       codesfd :"",
       nomsfd:""
     };
-    let send="";
     if(filter.Code && filter.Nom){
       req.codesfd=filter.Code;
       req.nomsfd=filter.Nom
