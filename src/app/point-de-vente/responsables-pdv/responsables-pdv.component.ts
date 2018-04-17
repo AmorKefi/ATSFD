@@ -41,7 +41,7 @@ export class ResponsablesPdvComponent implements OnInit {
       const dialogConfig = new MatDialogConfig();
       dialogConfig.height='480px';
       dialogConfig.width='650px';
-      dialogConfig.data = {app_user:event};
+      dialogConfig.data = event;
       this.dialog.open(ModifResponsableComponent, dialogConfig);
       this.dialog.afterAllClosed.subscribe(res=>{
        this.ngOnInit(); 

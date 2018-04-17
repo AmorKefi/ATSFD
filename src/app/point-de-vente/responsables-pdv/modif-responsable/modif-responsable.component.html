@@ -1,6 +1,6 @@
 <div class="card m-0 p-0 ">
   <div class=" card-header text-center  bg-light mb-3">
-    <h4 class="mb-4">Ajouter Responsable</h4>
+    <h4 class="mb-4">Modifier Responsable</h4>
   </div>
 
   <div class="card-body">
@@ -81,7 +81,7 @@
           <div class="text-center col-12">
            <mat-dialog-actions class="justify-content-center esapce p-5">
                   
-            <button type="submit"  class="btn blue darken-4 rounded" mdbRippleRadius  [disabled]="!form.valid"(click)="modifier(form.value, form.valid)">Ajouter</button>
+            <button type="submit"  class="btn blue darken-4 rounded" mdbRippleRadius  [disabled]="!form.valid"(click)="modifier(form.value)">Modifier</button>
   
             <button type="reset" class="btn btn-danger rounded" [mat-dialog-close] >Annuler</button>
           </mat-dialog-actions>

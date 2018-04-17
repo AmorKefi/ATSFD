@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 import { AppUserService } from '../../../gestion_acces/app-user/app-user.service';
 import { AppRoleService } from '../../../gestion_acces/app-role/app-role.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-modif-responsable',
@@ -37,8 +38,7 @@ export class ModifResponsableComponent implements OnInit {
               private route:Router,
               private dialogRef: MatDialogRef<ModifResponsableComponent>,
              @Inject(MAT_DIALOG_DATA) public data) { 
-                this.user.roles=new Array<RoleApp>();
-    
+                //this.user.roles=new Array<RoleApp>();
               }
 
               getAllDesactives(){
@@ -52,38 +52,35 @@ export class ModifResponsableComponent implements OnInit {
 
   ngOnInit() {
      this.form = this._fb.group({
-               ssoId: ['', [<any>Validators.required]],
-             password: ['', [<any>Validators.required]],
-               lastName: ['', [<any>Validators.required]],
-               firstName: ['', [<any>Validators.required]],
-              email: ['', [<any>Validators.required,<any>Validators.email]],
-              statut:'',
-              role:''
+               ssoId: [this.data.ssoId, [<any>Validators.required]],
+             password: [this.data.password, [<any>Validators.required]],
+               lastName: [this.data.lastName, [<any>Validators.required]],
+               firstName: [this.data.firstName, [<any>Validators.required]],
+              email: [this.data.email, [<any>Validators.required,<any>Validators.email]],
+              statut:this.data.statut,
+              role:this.data.role
            
        });  
 
     
   }
 
- modifier(model: UserApp, isValid: boolean) {
+ modifier(model: UserApp) {
     this.submitted = true; 
-    this.data.app_user.ssoId=model.ssoId;
-    this.data.app_user.password=model.password;
-    this.data.app_user.firstName=model.firstName;
-    this.data.app_user.lastName=model.lastName;
-    this.data.app_user.email=model.email;
-    this.data.app_user.image=model.image;
-    console.log("nocccccchhhhhhhhhhhhhhh");
-    console.log(model.statut);
-    this.data.app_user.statut=model.statut;
-
-   console.log(this.data.app_user);
-
-  //this.user.roles=new Array<RoleApp>();
-  //this._roles.map(x=>this.user.roles.push(x));
-
- this.appUserService.UpdateAppUser(this.data.app_user).subscribe(
+    this.data.ssoId=model.ssoId;
+    this.data.password=model.password;
+    this.data.firstName=model.firstName;
+    this.data.lastName=model.lastName;
+    this.data.email=model.email;
+    this.data.image=model.image;
+    this.data.statut=model.statut;
+  this.user.roles=new Array<RoleApp>();
+   this._roles.map(x=>this.data.roles.push(x));
+console.log(this.data);
+ this.appUserService.updateReponsable(this.data).subscribe(
     res=>{
+      console.log('ok0');
+      console.log(res);
      let div= document.getElementById('Message');
      div.classList.add('animate');
      div.classList.remove('red','accent-1');

@@ -91,4 +91,10 @@ export class AppUserService implements OnInit {
         headers.append('Content-Type', 'application/json')
         return this.http.post(`${this.apiUrl.transactionURL}sortby`,filter, { headers });
     }
+    updateReponsable(data){
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+        headers.append('Content-Type', 'application/json')
+        return this.http.put<UserApp>(`${this.apiUrl.transactionURL}updateResponsable`, data ,{ headers });
+       
+    }
 }
