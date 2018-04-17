@@ -3,6 +3,7 @@ import { AppUserService } from '../../gestion_acces/app-user/app-user.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { AddResponsableComponent } from './add-responsable/add-responsable.component';
 import { DeleteUserDialogComponent } from '../../gestion_acces/app-user/delete-user-dialog/delete-user-dialog.component';
+import { ModifResponsableComponent } from './modif-responsable/modif-responsable.component';
 
 @Component({
   selector: 'app-responsables-pdv',
@@ -36,8 +37,15 @@ export class ResponsablesPdvComponent implements OnInit {
       this.ngOnInit();
     }
     }
-    modifier(){
-
+    modifier(event){
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.height='480px';
+      dialogConfig.width='650px';
+      dialogConfig.data = {app_user:event};
+      this.dialog.open(ModifResponsableComponent, dialogConfig);
+      this.dialog.afterAllClosed.subscribe(res=>{
+       this.ngOnInit(); 
+       });
 
 
 
@@ -66,7 +74,12 @@ export class ResponsablesPdvComponent implements OnInit {
 
 
     }
+
     sortBy(t){
       this.userservice.sortBy(t.value).subscribe(res=>this.data=res,err=>console.log(err));
+    }
+   
+    Activer(event){
+      this.userservice.ActiverUser(event).subscribe(res=>this.ngOnInit(),err=>console.log(err));
     }
 }

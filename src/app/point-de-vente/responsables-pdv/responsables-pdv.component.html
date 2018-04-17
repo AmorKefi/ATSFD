@@ -67,10 +67,12 @@
                                 
                                   <div class="btn-group" role="group">
                                      
-                                      <button type="button" class="btn btn-info" (click)="modifier()" ><i class="fa fa-pencil">
+                                      <button type="button" class="btn btn-info" (click)="modifier(user)" ><i class="fa fa-pencil">
                                           </i></button>
                                       <button type="button" class="btn btn-danger" (click)="Desactivate(user)"><i class="fa fa-close">
                                           </i></button>
+                                          <button type="button" class="btn btn-info" (click)="Desactivate(user)" *ngIf="user.statut!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                          <button type="button" class="btn btn-info" (click)="Activer(user)" *ngIf="user.statut=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
                                   </div>
                              
                               </td>
