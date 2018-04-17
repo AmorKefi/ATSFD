@@ -66,4 +66,7 @@ export class ResponsablesPdvComponent implements OnInit {
 
 
     }
+    sortBy(t){
+      this.userservice.sortBy(t.value).subscribe(res=>this.data=res,err=>console.log(err));
+    }
 }

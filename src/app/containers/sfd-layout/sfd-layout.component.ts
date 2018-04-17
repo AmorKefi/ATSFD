@@ -84,7 +84,9 @@ export class SfdLayoutComponent implements OnInit{
     this.ngOnInit();
   }
   }
-
+  sortBy(t){
+    this.service.sortBy(t.value).subscribe(res=>this.sfds=res,err=>console.log(err));
+  }
   }
      
     

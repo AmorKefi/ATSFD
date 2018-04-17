@@ -55,4 +55,8 @@ export class GestionComptesComponent implements OnInit {
   Desactiver(cpt){
     this.service.desactiver(cpt).subscribe(res=>this.ngOnInit(),err=>console.log(err));
   }
+
+  sortBy(t){
+    this.service.sortBy(t.value).subscribe(res=>this.comptes=res,err=>console.log(err));
+  }
 }

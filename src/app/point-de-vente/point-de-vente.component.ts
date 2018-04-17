@@ -79,4 +79,7 @@ export class PointDeVenteComponent implements OnInit {
   Activer(pdv){
     this.service.Activer(pdv).subscribe(res=>this.ngOnInit(),err=>console.log(err));
   }
+  sortBy(t){
+   this.service.sortBy(t.value).subscribe(res=>this.pdvs=res,err=>console.log(err))
+  }
 }

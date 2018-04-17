@@ -80,4 +80,9 @@ export class AppUserService implements OnInit {
         return this.http.get(`${this.apiUrl.transactionURL}getAllResponsablesDesactives`, { headers });
 
     }
+    sortBy(filter){
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+        headers.append('Content-Type', 'application/json')
+        return this.http.post(`${this.apiUrl.transactionURL}sortby`,filter, { headers });
+    }
 }
