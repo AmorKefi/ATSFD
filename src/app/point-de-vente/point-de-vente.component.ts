@@ -58,4 +58,19 @@ export class PointDeVenteComponent implements OnInit {
     }
  
   }
+  search(form){
+    let req = {
+      codePdv :"",
+      nomPdv:""
+    };
+    if(form.Code && form.Nom){
+      req.codePdv=form.Code;
+      req.nomPdv=form.Nom
+    }else if (form.Nom){
+      req.nomPdv=form.Nom
+    }else {
+      req.codePdv=form.Code;
+    }
+      this.service.search(req).subscribe(res=>{this.pdvs=res;console.log(res)},err=>console.log(err));
+  }
 }
