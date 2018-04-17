@@ -73,4 +73,10 @@ export class PointDeVenteComponent implements OnInit {
     }
       this.service.search(req).subscribe(res=>{this.pdvs=res;console.log(res)},err=>console.log(err));
   }
+  Desactiver(pdv){
+    this.service.Desactiver(pdv).subscribe(res=>this.ngOnInit(),err=>console.log(err));
+  }
+  Activer(pdv){
+    this.service.Activer(pdv).subscribe(res=>this.ngOnInit(),err=>console.log(err));
+  }
 }
