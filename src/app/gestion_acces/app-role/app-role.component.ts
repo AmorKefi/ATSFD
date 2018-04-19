@@ -88,7 +88,7 @@ export class AppRoleComponent implements OnInit {
    CreateRole() { 
     const dialogConfig = new MatDialogConfig();
     
-    dialogConfig.height='700px';
+    dialogConfig.height='630px';
     dialogConfig.width='650px';
    this.dialog.open(AddRoleComponent, dialogConfig);
      
@@ -128,7 +128,7 @@ UpdateRole(r){
   const dialogConfig = new MatDialogConfig();
     this.dialog.open(UpdateDialog, {
       data:{app_role:r},
-      height: '350px',
+      height: '319px',
       width: '700px',
     })
     this.dialog.afterAllClosed.subscribe(res=>{

@@ -1,72 +1,53 @@
-         
-   <div class="container">
-         <h2 mat-dialog-title>NOUVELLE FUNCTION</h2>
-    <!-- <mat-dialog-content> -->
-    <div class="form-group row ">
-      <label for="example-text-input" class="col-2 col-form-label">Description</label>
-      <div class="col-10">
-        <input  matInput class="form-control" type="text" value="Description" id="description" [(ngModel)]="fnDesc">
+<div class="card m-0 p-0 ">
+  <div class=" card-header text-center text-white pink darken-4  mb-3">
+    <h4 class="mb-4">Ajouter Fonction</h4>
+  </div>
+
+  <div class="card-body">
+      <div class="form-group col-10">
+    
+          <input matInput  class="form-control" type="url"  value="Function Name" id="functionName" [(ngModel)]="fnNom" placeholder="Nom fonction">
+  
       </div>
+    <div class="form-group col-10">
+
+    
+        <input  matInput class="form-control" type="text" value="Description" id="description" [(ngModel)]="fnDesc" placeholder="Description">
+
     </div>
-    <div class="form-group row"> 
-      <label for="example-search-input" class="col-2 col-form-label">Function Url</label>
-      <div class="col-10">
-        <input matInput  class="form-control" type="search" value="Function Url" id="functionUrl" [(ngModel)]="fnUrl">
-      </div>
+    <div class="form-group col-10"> 
+    
+        <input matInput  class="form-control" type="search" value="Function Url" id="functionUrl" [(ngModel)]="fnUrl" placeholder="Url de la fonction">
+
     </div>
-    <div class="form-group row">
-        <label for="example-url-input" class="col-2 col-form-label">Function Name</label>
-       <div class="col-10">
-        <input matInput  class="form-control" type="url"  value="Function Name" id="functionName" [(ngModel)]="fnNom">
-       </div>
-    </div>
-    <div class="form-group row">
+
+    <!-- <div class="form-group col-10">
         <label for="example-url-input" class="col-2 col-form-label">Function Name Eng</label>
         <div class="col-10">
           <input matInput  class="form-control" type="url" value="Function Name" id="functionName" [(ngModel)]="fnNomEng">
         </div>
-      </div>
-      <div class="form-group row">   
-        <div class="form-inline">
-            <label for="example-url-input" class="col-2 col-form-label">Select Fonction parent </label>
-            <div class="col-10">
-            <select class="form-control" id="selectParent" required [(ngModel)]="selectParent" name="selectedParent" #selectedParent="ngModel" (ngModelChange)="onChangeParent($event)">
+      </div> -->
+      <!-- <div class="form-group ">   
+        <div class="form-inline col-10">
+   
+            <select class="form-control col-10" id="selectParent" required [(ngModel)]="selectParent" name="selectedParent" #selectedParent="ngModel" (ngModelChange)="onChangeParent($event)">
               <option [value]="">Select parent</option> 
               <option *ngFor="let _p of _parent" [value]="_p.functionId"> {{_p.functionName}} </option>
             </select>
-          </div>
+ 
        </div>
-      </div> 
-      
-        <div class="form-group row justify-content-center">
-                <mat-dialog-actions>
-                    <button class="btn btn-outline-success my-2 my-sm-0"  [mat-dialog-close]="true" (click)="AddFunction()">Ajouter</button>
-                    <button class="btn btn-outline-danger my-2 my-sm-0" [mat-dialog-close]="false">Annuler</button>
-                </mat-dialog-actions>
-        </div>
+      </div>  -->
    </div>
-
-
-
-
-<!-- <div class="form-group row">
-        <table>
-              <tr>
-                <td><label class="form-check-label checkbox-m">Liste</label></td>
-                <td> <input class="form-check-input" type="checkbox" [checked]="select" (change)="select = !select"> </td>
-              </tr>
-              <tr>
-                <td><label class="form-check-label">Màj</label></td>
-                <td><input class="form-check-input" type="checkbox" [checked]="update" (change)="update = !update"></td>
-              </tr>
-              <tr> 
-                <td><label class="form-check-label">Supprimer</label></td>
-                <td><input class="form-check-input" type="checkbox" [checked]="delete" (change)="delete = !delete"></td>
-              </tr>
-              <tr>
-                <td><label class="form-check-label">Ajout</label></td>
-                <td><input class="form-check-input" type="checkbox" [checked]="add" (change)="add = !add"> </td>
-              </tr>
+   <div class="card-footer pink darken-4 pt-0">
+    <div class="text-center col-12">
+     <mat-dialog-actions class="justify-content-center esapce p-5">
             
-          </table>
-        </div>  -->
+      <button class="btn info-color-dark rounded"  [mat-dialog-close]="true" (click)="AddFunction()">Ajouter</button>
+      <button class="btn btn-danger rounded" [mat-dialog-close]="false">Annuler</button>
+    </mat-dialog-actions>
+    </div>
+  </div>
+</div>
+
+
+  
