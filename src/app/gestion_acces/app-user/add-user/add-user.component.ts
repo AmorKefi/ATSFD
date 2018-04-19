@@ -50,15 +50,12 @@ export class AddUserComponent implements OnInit {
   ngOnInit() {
      this.form = this._fb.group({
                ssoId: ['', [<any>Validators.required]],
-             password: ['', [<any>Validators.required]],
+             password: ['', [<any>Validators.required,<any>Validators.minLength(5)]],
                lastName: ['', [<any>Validators.required]],
                firstName: ['', [<any>Validators.required]],
               email: ['', [<any>Validators.required,<any>Validators.email]],
-              role:''
-           
+              role:''       
        });  
-
-
           this.appRoleService.getAllRoles2().subscribe(
            res=>res.map(x=>this._roles.push(x)),
             err => console.error(err),

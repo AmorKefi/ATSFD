@@ -12,9 +12,14 @@ export class DeletediagComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private service : SfdserviceService , private dialog: MatDialog) { }
 
   ngOnInit() {
+    console.log(this.data);
   }
-  delete(){
-    this.service.delete(this.data).subscribe(res=>this.dialog.closeAll(),err=>console.log(err));
+  Desactiver(){
+    this.service.delete(this.data.sfd).subscribe(res=>this.dialog.closeAll(),err=>console.log(err));
   }
+  Activate(){
+    this.service.Activate(this.data.sfd).subscribe(res=>this.dialog.closeAll(),err=>console.log(err));
+  }
+
 
 }

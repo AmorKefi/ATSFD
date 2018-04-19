@@ -16,6 +16,7 @@ export class SfdLayoutComponent implements OnInit{
   layout='Active';
   ngOnInit(): void {
     this.service.getAll().subscribe(res=>this.sfds=res,err=>console.log(err));
+    this.layout='Active';
 
   }
   
@@ -49,15 +50,34 @@ export class SfdLayoutComponent implements OnInit{
 
   }
   
-  delete(sfd){
+  Desactiver(sfd){
+    let datal={
+      caller:'Desactiver',
+      sfd
+    }
   const dialogConfig = new MatDialogConfig();
   dialogConfig.height = '250px';
   dialogConfig.width = "550";
-  dialogConfig.data = sfd;
+  dialogConfig.data = datal;
   this.dialog.open(DeletediagComponent,dialogConfig);
   this.dialog.afterAllClosed.subscribe(res=>{
     this.ngOnInit()
   });
+  }
+  Activer(sfd){
+    let datal={
+      caller:'Activer',
+      sfd
+    }
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.height = '250px';
+  dialogConfig.width = "550";
+  dialogConfig.data = datal;
+  this.dialog.open(DeletediagComponent,dialogConfig);
+  this.dialog.afterAllClosed.subscribe(res=>{
+    this.ngOnInit()
+  });
+
   }
 
   search(filter){
