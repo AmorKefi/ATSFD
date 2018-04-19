@@ -1,7 +1,10 @@
-    <div class="container">
-     <h2 mat-dialog-title>Mise à jour de Role: </h2>
-        <form>
-            <div class="form-body">
+<div class="card m-0 p-0 ">
+        <div class=" card-header cyan darken-3 text-white text-center  pt-3 mb-3">
+          <h4 class="mb-2">Modifier rôle</h4>
+        </div>
+      
+        <div class="card-body">
+       
                 <div class="form-group row">
                 <label class="col-md-2 control-label">Nom</label>
                 <div class="col-md-8">
@@ -20,8 +23,8 @@
                                     class="form-control " [(ngModel)]="description"/>
                     </div>
                 </div>
-                </div>
-           
+               </div>
+<!--            
                 <div class="form-group row">
                     <label class="col-md-2 control-label">Anonyme</label>
                     <div class="col-md-8">
@@ -29,7 +32,7 @@
                                 <input class="form-check-input" name="Anonyme" type="checkbox" [checked]="add" (change)="anonyme = !anonyme">
                         </div>
                     </div>
-                </div>              
+                </div>               -->
         </div>
           <!-- <div class="w3-panel">
               <div class="form-group row"> 
@@ -81,11 +84,19 @@
 
 
 
-          <div class="form-group row center justify-content-center">
+          <!-- <div class="form-group row center justify-content-center">
             <mat-dialog-actions>
                 <button mat-button class="btn btn-outline-danger btn-xs" [mat-dialog-close]="false">Annuler</button>
                 <button mat-button class="btn btn-outline-success btn-xs" (click)="updateRole()" [mat-dialog-close]="true">Enregister</button>
             </mat-dialog-actions>
-         </div>
-        </form>
+         </div> -->
+         <div class="card-footer cyan darken-3 pt-3">
+                <div class="text-center col-12">
+                 <mat-dialog-actions class="justify-content-center esapce">
+                        <button mat-button class="btn blue darken-4 rounded" (click)="updateRole()" [mat-dialog-close]="true">Modifier</button>
+                        <button mat-button class="btn  btn-danger rounded" [mat-dialog-close]="false">Annuler</button>
+
+                    </mat-dialog-actions>
+           
+              </div> 
       </div>

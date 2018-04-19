@@ -103,7 +103,7 @@ export class AppFunctionComponent implements OnInit {
   add() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {};
-    dialogConfig.height = '650px';
+    dialogConfig.height = '390px';
     dialogConfig.width = '600px';
     this.dialog.open(AddFunctionComponent, dialogConfig);
     this.dialog.afterAllClosed.subscribe(res => {
