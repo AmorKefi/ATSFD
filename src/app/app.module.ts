@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AlwaysAuthGuard } from './guard/AlwaysAuthGuard';
 import { OnlyLoggedInUsersGuard } from './guard/OnlyLoggedInUsersGuard';
-
+import { AppSidebarMinimizerComponent } from 'app/components/app-sidebar-minimizer/app-sidebar-minimizer.component';
 import { AuthServiceService } from './Services/AuthService/auth-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
@@ -32,11 +32,6 @@ import {
   AppHeaderComponent,
   AppSidebarComponent,
   AppSidebarFooterComponent,
-  
-
-
-
-
   APP_SIDEBAR_NAV
 } from './components';
 
@@ -47,7 +42,8 @@ const APP_COMPONENTS = [
   AppHeaderComponent,
   AppSidebarComponent,
   AppSidebarFooterComponent,
-  APP_SIDEBAR_NAV
+  APP_SIDEBAR_NAV,
+  AppSidebarMinimizerComponent
 ]
 
 // Import directives
