@@ -32,6 +32,7 @@ import {
   AppHeaderComponent,
   AppSidebarComponent,
   AppSidebarFooterComponent,
+  
 
 
 
@@ -147,7 +148,7 @@ import { ModifResponsableComponent } from './point-de-vente/responsables-pdv/mod
     MatMenuModule,
     MatAutocompleteModule,
     LoadingModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
  ],
 
   declarations: [
