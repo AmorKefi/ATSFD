@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {JwtHelper} from 'angular2-jwt';
-import { TOKEN_NAME } from '../guards/auth.constants';
+import { TOKEN_NAME } from '../../guards/auth.constants';
 import{BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
