@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {tokenNotExpired} from 'angular2-jwt';
-import { UserService } from '../login/user.sercice';
+import {
+  UserService
+} from '../gestion_acces/login/user.sercice';
 import { TOKEN_NAME } from './auth.constants';
 
 

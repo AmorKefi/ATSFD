@@ -1,5 +1,7 @@
 import { Directive, Input, TemplateRef, ViewContainerRef, OnInit } from '@angular/core';
-import { UserService } from '../../login/user.sercice';
+import {
+    UserService
+} from '../../gestion_acces/login/user.sercice';
 @Directive({
     selector: '[Connected]'
 })
