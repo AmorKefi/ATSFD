@@ -59,4 +59,11 @@ export class GestionComptesComponent implements OnInit {
   sortBy(t){
     this.service.sortBy(t.value).subscribe(res=>this.comptes=res,err=>console.log(err));
   }
+  search(filter){
+    if(filter==""){
+      this.ngOnInit();
+    }else{
+    this.service.filter(filter.Code).subscribe(res=>this.comptes=res,err=>console.log(err));
+  }
+  }
 }

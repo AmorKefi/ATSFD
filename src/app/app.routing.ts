@@ -24,6 +24,7 @@ import { GestionComptesComponent } from './containers/gestion-comptes/gestion-co
 import { PointDeVenteComponent } from './point-de-vente/point-de-vente.component';
 import { UserDesactivesComponent } from './gestion_acces/app-user/user-desactives/user-desactives.component';
 import { ResponsablesPdvComponent } from './point-de-vente/responsables-pdv/responsables-pdv.component';
+import { GestionAdherentComponent } from './gestion-adherent/gestion-adherent.component';
 
 export const routes: Routes = [
   {
@@ -98,7 +99,16 @@ export const routes: Routes = [
     },
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: ParamètresCompteLayoutComponent
-  }, {
+  }, 
+  {
+    path:'GestionAdherents',
+    data:{
+      title:'Gestion des Adherents'
+    },
+    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+    component: GestionAdherentComponent
+  },
+  {
     path: 'Comptes',
     data: {
       title: 'Gestion des comptes'

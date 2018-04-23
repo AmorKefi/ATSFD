@@ -115,6 +115,10 @@ import{SelectStatutComponent} from './gestion_acces/app-user/select-statut/selec
 import { ResponsablesPdvComponent } from './point-de-vente/responsables-pdv/responsables-pdv.component';
 import { AddResponsableComponent } from './point-de-vente/responsables-pdv/add-responsable/add-responsable.component';
 import { ModifResponsableComponent } from './point-de-vente/responsables-pdv/modif-responsable/modif-responsable.component';
+import { GestionAdherentComponent } from './gestion-adherent/gestion-adherent.component';
+import { AdherentService } from './Services/adherent.service';
+import { GestionAdherentDiagComponent } from './gestion-adherent/gestion-adherent-diag/gestion-adherent-diag.component';
+import { DeleteAdherentComponent } from './gestion-adherent/delete-adherent/delete-adherent.component';
 
 
 @NgModule({
@@ -186,16 +190,19 @@ import { ModifResponsableComponent } from './point-de-vente/responsables-pdv/mod
     SelectStatutComponent,
     ResponsablesPdvComponent,
     AddResponsableComponent,
-    ModifResponsableComponent
+    ModifResponsableComponent,
+    GestionAdherentComponent,
+    GestionAdherentDiagComponent,
+    DeleteAdherentComponent
   
   ],
-  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
+  providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
   bootstrap: [ AppComponent ],
   entryComponents: [PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent
-    , AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent ],
+    , AddRoleDiagComponent,GestionAdherentDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent ],
   schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }

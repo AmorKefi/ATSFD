@@ -15,7 +15,12 @@ export const navigation = [
       icon: 'fa fa-building',
       role:['ROLE_ADMIN']
     },
-    
+    {
+      name: 'Gestion des Adherents',
+      url: '/GestionAdherents',
+      icon: 'fa fa-users',
+      role:['ROLE_ADMIN']
+    },
     {
       name: 'Points de ventes',
       url: '/GestionPDV',

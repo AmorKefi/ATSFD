@@ -10,6 +10,28 @@
         <ol class="breadcrumb">
            
         </ol>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card mb-3">
+                    <div class="card-header font-weight-bold">Critères de recherche</div>
+                    <div class="card-body">
+                        <form class="form-inline mb-2" #form="ngForm" (ngSubmit)="search(form.value)">
+                            <div class="form-group col-4">
+                                <label for="Code" class="font-weight-bold"> Login : </label> 
+                                <input type="text" id="Code" class="form-control col-5 rounded" ngModel #Login="ngModel" name="Code" >
+                              </div>
+                              <div class="form-group col-4">
+                                   <label for="Nom" class="font-weight-bold"> Nom : </label>
+                                    <input type="text" id="Nom" class="form-control  col-5 rounded" ngModel #Nom="ngModel" name="Nom" >
+                                  </div>   
+                                  <div class="form-groupe col-3">
+                                        <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
+                                  </div>                       
+                        </form>                   
+                    </div>
+                </div>
+            </div>
+        </div>
       
         <!--   <app-breadcrumbs></app-breadcrumbs>< -->
         <div class="card">

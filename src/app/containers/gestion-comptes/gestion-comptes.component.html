@@ -13,14 +13,10 @@
               <div class="card-header font-weight-bold">Critères de recherche</div>
               <div class="card-body">
                   <form class="form-inline mb-2" #form="ngForm" (ngSubmit)="search(form.value)">
-                      <div class="form-group col-4">
-                          <label for="Code" class="font-weight-bold"> Code SFD : </label> 
-                          <input type="text" id="Code" class="form-control col-6 rounded" placeholder="Code" ngModel #Code="ngModel" name="Code" >
-                        </div>
-                        <div class="form-group col-4">
-                             <label for="Nom" class="font-weight-bold"> Nom SFD : </label>
-                              <input type="text" id="Nom" class="form-control  col-6 rounded"  placeholder="Nom"  ngModel #Nom="ngModel" name="Nom" >
-                            </div>   
+                      <div class="form-group col-8">
+                          <label for="Code" class="font-weight-bold"> Num Compte : </label> 
+                          <input type="text" id="Code" class="form-control col-6 rounded" placeholder="Numéro de compte" ngModel #Code="ngModel" name="Code" >
+                      </div>  
                             <div class="form-groupe col-3">
                                   <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
                             </div>                       

@@ -44,6 +44,15 @@ perPageSelect: any;
       
         filter:false
        },
+      sfd :{
+        title: 'Nom SFD',
+        filter: false,
+        valuePrepareFunction: (sfd)=>{
+          if(sfd){
+          return sfd.nomsfd;
+        }
+      } 
+      },
       statut:{
         title: 'Statut',
         filter: false,
@@ -57,6 +66,7 @@ perPageSelect: any;
     
        
       }
+
       // password:{
       //   title:'Mot de passe',
       //   filter:false
@@ -151,6 +161,18 @@ perPageSelect: any;
     this.layout='Active';
     this.ngOnInit();
   }
+  }
+
+  search(value){
+    if(value.Code=="" && value.Nom==""){
+      this.ngOnInit();
+    }else{
+      let req={
+        ssoId:value.Code,
+        firstName:value.Nom
+      }
+      this.appUserService.filter(req).subscribe(res=>this.data=res,err=>console.log(err));
+    }
   }
 
 }

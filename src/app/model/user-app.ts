@@ -1,4 +1,5 @@
 import { RoleApp } from "./role-app";
+import { SFD } from "./SFD";
 
 export class UserApp{
     id:number;
@@ -10,4 +11,5 @@ export class UserApp{
     image:string;
     roles:Array<RoleApp>;
     statut:string;
+    sfd:SFD;
 }
