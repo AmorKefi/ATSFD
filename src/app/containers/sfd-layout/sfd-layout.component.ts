@@ -26,8 +26,8 @@ export class SfdLayoutComponent implements OnInit{
       caller :'Ajouter SFD'
     }
     let dialogRef = this.dialog.open(AddSfdDialogComponent, {
-      height: '543px',
-      width: '600px',
+      height: 'auto',
+      width: '700px',
       data:sfd
     });
 
@@ -39,7 +39,7 @@ export class SfdLayoutComponent implements OnInit{
   update(sfd){
     sfd.caller="Modifier SFD"
     const dialogConfig = new MatDialogConfig();
-     dialogConfig.height='543px';
+     dialogConfig.height='auto';
      dialogConfig.width='600px';
      dialogConfig.data = sfd;
      this.dialog.open(AddSfdDialogComponent, dialogConfig);
@@ -56,8 +56,8 @@ export class SfdLayoutComponent implements OnInit{
       sfd
     }
   const dialogConfig = new MatDialogConfig();
-  dialogConfig.height = '250px';
-  dialogConfig.width = "550";
+  dialogConfig.height = 'auto';
+  dialogConfig.width = "auto";
   dialogConfig.data = datal;
   this.dialog.open(DeletediagComponent,dialogConfig);
   this.dialog.afterAllClosed.subscribe(res=>{
@@ -70,8 +70,8 @@ export class SfdLayoutComponent implements OnInit{
       sfd
     }
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.height = '250px';
-  dialogConfig.width = "550";
+    dialogConfig.height = 'auto';
+  dialogConfig.width = "auto";
   dialogConfig.data = datal;
   this.dialog.open(DeletediagComponent,dialogConfig);
   this.dialog.afterAllClosed.subscribe(res=>{
@@ -81,6 +81,9 @@ export class SfdLayoutComponent implements OnInit{
   }
 
   search(filter){
+    if(filter.Code=="" && filter.Nom==""){
+      this.ngOnInit();
+    }else{
     let req = {
       codesfd :"",
       nomsfd:""
@@ -95,6 +98,7 @@ export class SfdLayoutComponent implements OnInit{
     }
    this.service.getbyFilter(req).subscribe(res=>this.sfds=res,err=>console.log(err));
   }
+  }
   getDesactivated(){
     if(this.layout=="Active"){
     this.layout='Desactivated';
@@ -105,8 +109,12 @@ export class SfdLayoutComponent implements OnInit{
   }
   }
   sortBy(t){
+    if(t.value==""){
+      this.ngOnInit();
+    }else{
     this.service.sortBy(t.value).subscribe(res=>this.sfds=res,err=>console.log(err));
-  }
+         }
+          }
   }
      
     

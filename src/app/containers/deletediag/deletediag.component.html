@@ -1,20 +1,24 @@
 <ng-template [ngIf]="data?.caller=='Desactiver'">
-<h2 mat-dialog-title class="text-center">Confirmation de Désactivation</h2>
-<mat-dialog-content class="text-center font-weight-bold display-5">etes vous sur ?</mat-dialog-content>
+  <div class="card col-12 p-0 m-0">
+<h2  class="text-center card-header">Confirmation de Désactivation</h2>
+<div class="text-center font-weight-bold display-5 card-body pb-5">etes vous sur ?</div>
 
-<mat-dialog-actions class="justify-content-center mt-5">
-  <button mat-button mat-dialog-close class="btn btn-danger">No</button>
+<div class="row justify-content-center m-0 p-3 card-footer">
+  <button mat-dialog-close class="btn btn-danger col-3">No</button>
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-  <button mat-button  class="btn btn-success"  (click)="Desactiver()">Yes</button>
-</mat-dialog-actions>
+  <button   class="btn btn-success col-3"  (click)="Desactiver()">Yes</button>
+</div>
+</div>
 </ng-template>
 <ng-template [ngIf]="data?.caller=='Activer'">
-  <h2 mat-dialog-title class="text-center">Confirmation d'activation</h2>
-<mat-dialog-content class="text-center font-weight-bold display-5">etes vous sur ?</mat-dialog-content>
+  <div class="card col-12 p-0 m-0">
+  <h2  class="text-center card-header">Confirmation d'activation</h2>
+<div class="text-center font-weight-bold display-5 card-body pb-5">etes vous sur ?</div>
 
-<mat-dialog-actions class="justify-content-center mt-5">
-  <button mat-button mat-dialog-close class="btn btn-danger">No</button>
+<div class="row justify-content-center m-0 p-3 card-footer">
+  <button  mat-dialog-close class="btn btn-danger col-3">No</button>
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-  <button mat-button  class="btn btn-success"  (click)="Activate()">Yes</button>
-</mat-dialog-actions>
+  <button   class="btn btn-success col-3"  (click)="Activate()">Yes</button>
+</div>
+</div>
 </ng-template>

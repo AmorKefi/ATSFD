@@ -111,7 +111,7 @@ perPageSelect: any;
   
   add(){
      const dialogConfig = new MatDialogConfig();
-     dialogConfig.height='480px';
+     dialogConfig.height='auto';
      dialogConfig.width='650px';
      this.dialog.open(AddUserComponent, dialogConfig);
      this.dialog.afterAllClosed.subscribe(res=>{
@@ -139,7 +139,7 @@ perPageSelect: any;
   onDeleteConfirm(event): void {
    const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {app_role:event.data};
-    dialogConfig.height='200px';
+    dialogConfig.height='auto';
     dialogConfig.width='350px';
     this.dialog.open(DeleteUserDialogComponent, dialogConfig);
   }

@@ -1,6 +1,6 @@
 <ng-template [ngIf] = "data?.caller == 'Ajout Compte' || data?.caller == 'Modifier Compte'">
   <div class="card m-0 p-0">
-      <div class=" card-header text-center">
+      <div class=" card-header cyan darken-2 text-center">
         <h4 class="mb-4 text-uppercase">{{data?.caller}}</h4>
       </div>
       <div class="card-body">
@@ -24,7 +24,7 @@
             </div>
           </form>
         </div>
-        <div class="card-footer p-4">
+        <div class="card-footer cyan darken-2 p-4">
           <div class="text-center col-12">
             <button type="submit" class="btn btn-primary" (click)="add(form)" *ngIf="data?.caller !== 'Modifier Compte'" [disabled]="!form.valid">Ajouter</button>
             <button class="btn btn-default waves-light rounded" mdbRippleRadius (click)="close()">Quitter</button>
@@ -35,7 +35,7 @@
 
 <ng-template [ngIf] = "data?.caller == 'bloquer'">
   <div class="card m-0 p-0">
-    <div class=" card-header text-center">
+    <div class=" card-header cyan darken-2 text-center">
       <h4 class="mb-4">{{data?.caller}}</h4>
     </div>
   <div class="card-body pb-5">
@@ -47,7 +47,7 @@
       </div>
     </form>
   </div>
-  <div class="card-footer p-5">
+  <div class="card-footer cyan darken-2 p-5">
     <div class="text-center col-12">
       <button type="submit" class="btn btn-primary" (click)="bloquer(form)" *ngIf="data?.caller=='bloquer'">Bloquer</button>
       <button class="btn btn-default waves-light rounded" mdbRippleRadius (click)="close()">Quitter</button>

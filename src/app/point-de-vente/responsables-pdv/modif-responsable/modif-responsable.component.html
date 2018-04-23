@@ -1,5 +1,5 @@
 <div class="card m-0 p-0 ">
-  <div class=" card-header text-center  bg-light mb-3">
+  <div class=" card-header text-center  cyan darken-3  bg-light mb-3">
     <h4 class="mb-4">Modifier Responsable</h4>
   </div>
 
@@ -58,12 +58,12 @@
   
    
           </div>
-          <div class="form-group col-5 ">
+          <!-- <div class="form-group col-5 ">
           <select name="statut" formControlName="statut" class="form-control  col-md-10" id="statut" >
             <option [ng-value]="Active">Activé</option>
             <option [ng-value]="Desactive">Désactivé</option>
         </select>
-             </div>             
+             </div>              -->
  
                   
 
@@ -77,14 +77,11 @@
 
 
 </div>
-<div classList="card-footer pt-0">
-          <div class="text-center col-12">
-           <mat-dialog-actions class="justify-content-center esapce p-5">
-                  
+<div class="card-footer pt-0 justify-content-center p-5 cyan darken-3">
+          <div class="text-center col-12">                 
             <button type="submit"  class="btn blue darken-4 rounded" mdbRippleRadius  [disabled]="!form.valid"(click)="modifier(form.value)">Modifier</button>
-  
             <button type="reset" class="btn btn-danger rounded" [mat-dialog-close] >Annuler</button>
-          </mat-dialog-actions>
+
           </div>
         </div> 
 </div>

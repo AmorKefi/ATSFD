@@ -73,7 +73,7 @@ export class ModifResponsableComponent implements OnInit {
     this.data.lastName=model.lastName;
     this.data.email=model.email;
     this.data.image=model.image;
-    this.data.statut=model.statut;
+    this.data.statut="Activé";
   this.user.roles=new Array<RoleApp>();
    this._roles.map(x=>this.data.roles.push(x));
 console.log(this.data);

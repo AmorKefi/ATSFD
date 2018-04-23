@@ -25,6 +25,14 @@ export class AuthentificationComComponent implements OnInit {
       this.cookies.set('Token', JSON.stringify(res));
       this.router.navigate(['dashboard']);
     },
-  err => console.log(err));
+  err =>{
+    let div = document.getElementById('loginMessage');
+    div.style.display='block';
+    div.classList.add('animate');
+    setTimeout(function(){
+      div.classList.remove('animate');
+      div.style.display='none';
+    },2000);
+  });
   }
 }

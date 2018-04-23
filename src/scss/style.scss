@@ -27,6 +27,12 @@
       padding:2%;
       z-index: 10000;
   }
+
+  #loginMessage{
+  opacity: 0;
+  display: none;
+    }
+
   @keyframes example {
     0%   {opacity: 0;}
     50%  {opacity: 1;}

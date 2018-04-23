@@ -39,7 +39,7 @@ export class ResponsablesPdvComponent implements OnInit {
     }
     modifier(event){
       const dialogConfig = new MatDialogConfig();
-      dialogConfig.height='480px';
+      dialogConfig.height='auto';
       dialogConfig.width='650px';
       dialogConfig.data = event;
       this.dialog.open(ModifResponsableComponent, dialogConfig);
@@ -54,7 +54,7 @@ export class ResponsablesPdvComponent implements OnInit {
     ajouter(){
 
       const dialogConfig = new MatDialogConfig();
-      dialogConfig.height='480px';
+      dialogConfig.height='auto';
       dialogConfig.width='650px';
       this.dialog.open(AddResponsableComponent, dialogConfig);
       this.dialog.afterAllClosed.subscribe(res=>{
@@ -68,7 +68,7 @@ export class ResponsablesPdvComponent implements OnInit {
       // console.log("nooooooooooooooccccccchhhhhhh");
       // console.log(event);
       dialogConfig.data = {app_role:event};
-      dialogConfig.height='200px';
+      dialogConfig.height='auto';
       dialogConfig.width='350px';
       this.dialog.open(DeleteUserDialogComponent, dialogConfig);
 
@@ -76,7 +76,11 @@ export class ResponsablesPdvComponent implements OnInit {
     }
 
     sortBy(t){
+      if(t.value==""){
+        this.ngOnInit();
+      }else{
       this.userservice.sortBy(t.value).subscribe(res=>this.data=res,err=>console.log(err));
+    }
     }
    
     Activer(event){

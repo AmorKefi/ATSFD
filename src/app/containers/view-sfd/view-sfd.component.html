@@ -10,14 +10,17 @@
 <!--Content-->
 <div class="row">
   <div class="col-12 card mb-0">
-    <div class="card-header text-center display-4 font-weight-bold">{{SFD?.nomsfd}}</div>
+    <div class="card-header text-center display-5 font-weight-bold">
+      <span class="float-left"><Button class="btn btn-flat btn-default" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</Button></span>
+      {{SFD?.nomsfd}}
+    </div>
     <div class="card-body">
-      <div class="row">
-        <div class="col-6">Status : </div><div class="col-6"><span *ngIf="SFD?.statutsfd=='Active'" class="badge badge-success">{{SFD?.statutsfd}}</span><span *ngIf="SFD?.statutsfd=='Desactive'" class="badge badge-danger">{{SFD?.statutsfd}}</span></div>
-        <div class="col-6">Email : </div><div class="col-6">{{SFD?.email}}</div>
-        <div class="col-6">Tel : </div><div class="col-6">{{SFD?.telsfd}}</div>
-        <div class="col-6">Ville : </div><div class="col-6">{{SFD?.villesfd}}</div>
-        <div class="col-6">Responsable : </div><div class="font-weight-bold">{{SFD?.nomrespsfd+" "+SFD?.prenomrespsfd | uppercase}}</div>
+      <div class="row justify-content-center">
+        <div class="col-6">Status : </div><div class="col-3"><span *ngIf="SFD?.statutsfd=='Activé'" class="badge badge-success">{{SFD?.statutsfd}}</span><span *ngIf="SFD?.statutsfd=='désactivé'" class="badge badge-danger">{{SFD?.statutsfd}}</span></div>
+        <div class="col-6">Email : </div><div class="col-3">{{SFD?.email}}</div>
+        <div class="col-6">Tel : </div><div class="col-3">{{SFD?.telsfd}}</div>
+        <div class="col-6">Ville : </div><div class="col-3">{{SFD?.villesfd}}</div>
+        <div class="col-6">Responsable : </div><div class=" col-3 font-weight-bold">{{responsable?.firstName +" "+responsable?.lastName | uppercase}}</div>
       </div>
     </div>
   </div>

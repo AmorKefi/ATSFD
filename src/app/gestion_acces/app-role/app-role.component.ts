@@ -73,7 +73,6 @@ export class AppRoleComponent implements OnInit {
      this.data.push(lRole);
      
     }
-    console.log(this.data);
   }
 
   ngOnInit() {
@@ -88,11 +87,11 @@ export class AppRoleComponent implements OnInit {
    CreateRole() { 
     const dialogConfig = new MatDialogConfig();
     
-    dialogConfig.height='630px';
+    dialogConfig.height='auto';
     dialogConfig.width='650px';
-   this.dialog.open(AddRoleComponent, dialogConfig);
+   let diag=this.dialog.open(AddRoleComponent, dialogConfig);
      
-   this.dialog.afterAllClosed.subscribe(res=>{
+   diag.afterClosed().subscribe(res=>{
     this.ngOnInit();
   });   
     
@@ -102,10 +101,10 @@ export class AppRoleComponent implements OnInit {
   AddRoleFunction(r) { 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {app_role:r};
-    dialogConfig.height='500px';
+    dialogConfig.height='auto';
     dialogConfig.width='650px';
-    this.dialog.open(AddRoleFunctionDialog, dialogConfig);
-    this.dialog.afterAllClosed.subscribe(res=>{
+   let diag= this.dialog.open(AddRoleFunctionDialog, dialogConfig);
+   diag.afterClosed().subscribe(res=>{
       this.ngOnInit();
     });    
   } 
@@ -114,10 +113,10 @@ export class AppRoleComponent implements OnInit {
   DeleteRole(r){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {app_role:r};
-    dialogConfig.height='200px';
-    dialogConfig.width='300px';
-    this.dialog.open(DeleteDialog, dialogConfig);
-    this.dialog.afterAllClosed.subscribe(res=>{
+    dialogConfig.height='auto';
+    dialogConfig.width='450px';
+  let diag=this.dialog.open(DeleteDialog, dialogConfig);
+  diag.afterClosed().subscribe(res=>{
       this.ngOnInit();
     });
   
@@ -126,12 +125,12 @@ export class AppRoleComponent implements OnInit {
 //update Role
 UpdateRole(r){
   const dialogConfig = new MatDialogConfig();
-    this.dialog.open(UpdateDialog, {
+  let diag=this.dialog.open(UpdateDialog, {
       data:{app_role:r},
-      height: '319px',
+      height: 'auto',
       width: '700px',
     })
-    this.dialog.afterAllClosed.subscribe(res=>{
+    diag.afterClosed().subscribe(res=>{
       this.ngOnInit();
     
     
@@ -141,16 +140,16 @@ UpdateRole(r){
 
 updateRoleFunction(x,r){
   const dialogConfig = new MatDialogConfig();
-    this.dialog.open(CrudRfComponent, {
+    let diag=this.dialog.open(CrudRfComponent, {
       data:{role_function:x,
             role:r
       },
-      height: '350px',
+      height: 'auto',
       width: '600px',
     })
-    this.dialog.afterAllClosed.subscribe(res=>{
-      this.ngOnInit();
-    });
+  diag.afterClosed().subscribe(res=>{
+    this.ngOnInit();
+  });
     
 }
 

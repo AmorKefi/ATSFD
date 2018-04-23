@@ -1,6 +1,6 @@
 <div class="card m-0 p-0 ">
-  <div class=" card-header text-center  bg-light mb-3">
-    <h4 class="mb-4">Ajouter Responsable</h4>
+  <div class=" card-header text-center   cyan darken-3 bg-light mb-3">
+    <h4 class="mb-4 text-white">Ajouter Responsable</h4>
   </div>
 
   <div class="card-body">
@@ -61,7 +61,7 @@
 
                           
           <div class="form-group col-5 mb-2">
-                          <select class="form-control col-5 mt-1 " formControlName="role"  (ngModelChange)="onChangeRole($event)"> 
+                          <select class="form-control col-5 mt-1 " formControlName="role"  (ngModelChange)="onChangeRole($event)" required> 
           
                                           <option [value]="">sélectionner un rôle </option>
                                            <option *ngFor="let _role of _roles" [value]="_role.roleId"> {{_role.roleName}} </option> 
@@ -96,14 +96,10 @@
 
 
 </div>
-<div classList="card-footer pt-0">
-          <div class="text-center col-12">
-           <mat-dialog-actions class="justify-content-center esapce p-5">
-                  
-            <button type="submit"  class="btn blue darken-4 rounded" mdbRippleRadius  [disabled]="!form.valid"(click)="save(form.value, form.valid)">Ajouter</button>
-  
-            <button type="reset" class="btn btn-danger rounded" [mat-dialog-close] >Annuler</button>
-          </mat-dialog-actions>
-          </div>
-        </div> 
+<div class="card-footer cyan darken-3 justify-content-center p-3">
+                <div class="row justify-content-center">
+                    <button type="submit"  class="btn blue darken-4 rounded col-3" mdbRippleRadius  [disabled]="!form.valid"(click)="save(form.value, form.valid)">Ajouter</button>
+                    <button type="reset" class="btn btn-danger rounded col-3" [mat-dialog-close] >Annuler</button>
+                  </div>
+                </div>
 </div>

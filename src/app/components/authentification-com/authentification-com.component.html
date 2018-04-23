@@ -40,6 +40,7 @@
               <span class="float-left"> 
                   <img src="assets/img/logo.png" alt="" class="img-fluid" style="width:50px">
               </span><span style="margin-left:-10%">Sign In</span></div>
+              <div class="alert alert-danger" id="loginMessage">Username Or Password Incorrect !</div>
           <form class="pt-5" #form="ngForm" (ngSubmit)="authenticate(form.value)">
             <div class="col-auto">
               <label class="sr-only" for="Username">Username</label>

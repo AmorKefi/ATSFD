@@ -31,6 +31,7 @@ export class AddRoleComponent implements OnInit {
   private delete=false;
   private add=false;
   private crud_role:AppRole;
+  private selectedfunction;
   
   
   constructor(private appFunctionService:AppFunctionService,
@@ -62,18 +63,31 @@ export class AddRoleComponent implements OnInit {
   }
   AddFunctions(){
     let r= new RoleFunction();
+    let index = -1;
     r.function=this.parent;
     r.role=this.newRole;
     r.add=this.add;
     r.delete=this.delete;
     r.select =this.select;
     r.update=this.update;
-    console.log(r);
+    if(r.function==undefined){
+      
+    }else{
+      console.log(r.function.functionId);
+   this.roleFunctions.forEach(element => {
+        if(element.function.functionId==r.function.functionId){
+          this.selectedfunction=r.function.functionId;
+          index++;
+        }
+     });
+     if(index==-1){
     this.roleFunctions.push(r);
     this.add=false;
     this.select=false;
     this.update=false;
     this.delete=false;
+  }
+  }
   }
   AddRole(){
        this.crud_role = new AppRole();
@@ -87,7 +101,7 @@ export class AddRoleComponent implements OnInit {
        console.log('new role ==>');
        console.log(JSON.stringify(this.crud_role));
        this.appRoleService.addRole( this.crud_role).subscribe(
-        res => console.log(res),
+        res =>this.dialogRef.close(),
         err => console.error(err),
         () => console.log('done') 
       );

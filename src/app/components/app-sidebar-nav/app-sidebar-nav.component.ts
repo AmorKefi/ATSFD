@@ -66,9 +66,8 @@ export class AppSidebarNavItemComponent {
       authorities:[]
     }
    authorities=jwt_decode(this.cookie.get('Token'));
-   console.log(authorities);
   // console.log(authorities.authorities[0].authority);
-    if(this.item.children /* && this.item.role.indexOf(authorities.authorities[0].authority)!=-1*/){
+    if(this.item.children  && this.item.role.indexOf(authorities.authorities[0].authority)!=-1){
       return true;
     }else{
       return false;
@@ -121,13 +120,11 @@ export class AppSidebarNavLinkComponent {
       authorities:[]
     }
    authorities=jwt_decode(this.cookie.get('Token'));
-   console.log(authorities);
-//     /*if(this.link.role.indexOf('Admin'/*authorities.authorities[0].authority*/) != -1){
-// return true;
-//     }else{
-//       return false;
-//     }
-return true;
+    if(this.link.role.indexOf(authorities.authorities[0].authority) != -1){
+        return true;
+            }else{
+              return false;
+            }
   }
   public hasVariant() {
     return this.link.variant ? true : false

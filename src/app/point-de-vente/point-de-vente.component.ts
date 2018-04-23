@@ -63,6 +63,7 @@ export class PointDeVenteComponent implements OnInit {
       codePdv :"",
       nomPdv:""
     };
+    
     if(form.Code && form.Nom){
       req.codePdv=form.Code;
       req.nomPdv=form.Nom
@@ -71,8 +72,12 @@ export class PointDeVenteComponent implements OnInit {
     }else {
       req.codePdv=form.Code;
     }
+    if(req.codePdv=="" &&  req.nomPdv==""){
+      this.ngOnInit();
+    }else{
       this.service.search(req).subscribe(res=>{this.pdvs=res;console.log(res)},err=>console.log(err));
   }
+}
   Desactiver(pdv){
     this.service.Desactiver(pdv).subscribe(res=>this.ngOnInit(),err=>console.log(err));
   }

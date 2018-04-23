@@ -69,4 +69,9 @@ export class SfdserviceService {
     headers.append('content-type','application/json');
     return this.http.put('http://127.0.0.1:8080/sfd/ActivateSfd',sfd,{headers})
   }
+  getResponsableSFD(id){
+    const headers = new HttpHeaders().set('X-Auth-Token',JSON.parse(this.Token).token);
+    headers.append('content-type','application/json');
+    return this.http.get('http://127.0.0.1:8080/sfd/findresponsable/'+id,{headers})
+  }
 }
