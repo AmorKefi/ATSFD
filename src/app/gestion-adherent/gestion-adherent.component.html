@@ -38,6 +38,7 @@
     <button class="btn btn-primary rounded" (click)="ajouter()"><i class="fa fa-plus"></i> Ajouter Adherent</button> 
     <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Active'"><i class="fa fa-list" aria-hidden="true"></i> Historique</button>             
     <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Desactive'"><i class="fa fa-list" aria-hidden="true"></i> Liste Des Adherents</button> 
+    <button class="btn btn-success rounded" routerLink="/Comptes">Gestion des comptes</button>
     
  <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
               </div>
@@ -48,9 +49,10 @@
                 <label class="mr-2">Afficher:</label>
                 <select class="form-control mr-2" #t (change)="sortBy(t)">
                     <option [ng-value]=""></option>
-                    <option [ng-value]="10">10</option>
                     <option [ng-value]="5">5</option>
-                    <option [ng-value]="3">3</option>
+                    <option [ng-value]="10">10</option>
+                    <option [ng-value]="15">15</option>
+                    <option [ng-value]="20">20</option>
                   </select>
                   <label>éléments</label>
                 </div>
@@ -70,30 +72,29 @@
                               <th>Prénom </th>
                               <th>statut</th>
                               <th>PDV</th>
-                              <th>type</th>
                               <th>adresse</th>
+                              <th>actions</th>
                             </tr>
                           </thead>
                          <tbody>
                           <tr *ngFor="let adherent of adherents">
-                              <td>{{pdv.codePdv}}</td>
-                          <td>{{pdv.nomPdv}}</td>
-                          <td>{{pdv.telephone1Pdv}}</td>
-                          <td>{{pdv.telephone2Pdv}}</td>
-                          <td><span *ngIf="pdv.statutPdv=='Activé'" class="badge badge-success">{{pdv.statutPdv}}</span>
-                              <span *ngIf="pdv.statutPdv=='Désactivé'" class="badge badge-danger">{{pdv.statutPdv}}</span>  
-                        </td>
-                        <td>{{pdv?.typePdv}}</td>
+                              <td>{{adherent.numAdherent}}</td>
+                          <td>{{adherent.nomAdherent}}</td>
+                          <td>{{adherent.prenomAdherent}}</td>
+                          <td><span *ngIf="adherent.statut=='Activé'" class="badge badge-success">{{adherent.statut}}</span>
+                            <span *ngIf="adherent.statut=='Désactivé'" class="badge badge-danger">{{adherent.statut}}</span></td>
+                          <td>{{adherent.pdv.nomPdv}}</td>
+                          <td>{{adherent.adresse}}</td>
                           <td>
                           
                             <div class="btn-group" role="group">
                                
-                                <button type="button" class="btn btn-info" (click)="update(pdv)"><i class="fa fa-pencil">
+                                <button type="button" class="btn btn-info" (click)="update(adherent)"><i class="fa fa-pencil">
                                     </i></button>
-                                <button type="button" class="btn btn-default" routerLink="view/{{pdv.codesfd}}"><i class="fa fa-eye">
+                                <button type="button" class="btn btn-default" routerLink="view/{{adherent.numAdherent}}"><i class="fa fa-eye">
                                     </i></button>
-                                    <button type="button" class="btn btn-info" (click)="Desactiver(pdv)" *ngIf="pdv.statutPdv!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                    <button type="button" class="btn btn-info" (click)="Activer(pdv)" *ngIf="pdv.statutPdv=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-info" (click)="Desactiver(adherent)" *ngIf="adherent.statut!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-info" (click)="Activer(adherent)" *ngIf="adherent.statut=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
                             </div>
                        
                         </td>

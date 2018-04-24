@@ -65,6 +65,7 @@
                               <th>solde</th>
                               <th>statut_compte</th>
                               <th>Nom SFD</th>
+                              <th>Nom Adherent</th>
                               <th>Actions</th>
                             </tr>
                           </thead>
@@ -75,20 +76,21 @@
                           <td>{{compte.dateCreation | date:'yyyy-MM-dd' }}</td>
                           <td>{{compte.solde}}</td>
                           <td>
-                              <span *ngIf="compte.statutCompte=='activé'" class="badge badge-success">{{compte.statutCompte}}</span>
-                              <span *ngIf="compte.statutCompte=='désactivé'" class="badge badge-danger">{{compte.statutCompte}}</span>
-                              <span *ngIf="compte.statutCompte=='bloqué'" class="badge badge-warning">{{compte.statutCompte}}</span>  
+                              <span *ngIf="compte.statutCompte=='Activé'" class="badge badge-success">{{compte.statutCompte}}</span>
+                              <span *ngIf="compte.statutCompte=='Désactivé'" class="badge badge-danger">{{compte.statutCompte}}</span>
+                              <span *ngIf="compte.statutCompte=='Bloqué'" class="badge badge-warning">{{compte.statutCompte}}</span>  
                         </td>
                         <td>{{compte?.sfd?.nomsfd}}</td>
+                        <td>{{compte.adherent.nomAdherent +" "+compte.adherent.prenomAdherent}}</td>
                           <td>
                           
                             <div class="btn-group" role="group">
                                
-                                <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'bloqué'" (click)="bloquer(compte)"><i class="fa fa-eye">
+                                <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)"><i class="fa fa-eye">
                                     </i></button>
-                                    <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'bloqué'"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
                                 <!-- <button type="button" class="btn btn-danger"(click)="delete(compte)"><i class="fa fa-close">
                                     </i></button> -->
                             </div>

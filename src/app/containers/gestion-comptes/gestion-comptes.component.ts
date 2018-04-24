@@ -21,7 +21,7 @@ export class GestionComptesComponent implements OnInit {
       caller : 'Ajout Compte'
     };
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.height='400px';
+    dialogConfig.height='auto';
     dialogConfig.width='600px';
     dialogConfig.data=data;
     this.dialog.open(CompteFinancierDiagComponent, dialogConfig);
@@ -39,7 +39,7 @@ export class GestionComptesComponent implements OnInit {
       compte : cpt
     };
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.height='400px';
+    dialogConfig.height='auto';
     dialogConfig.width='600px';
     dialogConfig.data=data;
     this.dialog.open(CompteFinancierDiagComponent, dialogConfig);
