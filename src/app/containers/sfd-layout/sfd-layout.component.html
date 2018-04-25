@@ -84,7 +84,7 @@
                                   <td>{{sfd.adressesfd}}</td>
                                   <td>{{sfd.villesfd}}</td>
                                   <td><span *ngIf="sfd.statutsfd=='Activé'" class="badge badge-success">{{sfd.statutsfd}}</span>
-                                      <span *ngIf="sfd.statutsfd=='désactivé'" class="badge badge-danger">{{sfd.statutsfd}}</span>  
+                                      <span *ngIf="sfd.statutsfd=='Désactivé'" class="badge badge-danger">{{sfd.statutsfd}}</span>  
                                 </td>
                                   <td>
                                   
@@ -95,7 +95,7 @@
                                         <button type="button" class="btn btn-default" routerLink="view/{{sfd.codesfd}}"><i class="fa fa-eye">
                                             </i></button>
                                             <button type="button" class="btn btn-info" (click)="Desactiver(sfd)" *ngIf="sfd.statutsfd=='Activé'" ><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-info" (click)="Activer(sfd)" *ngIf="sfd.statutsfd=='désactivé'" ><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-info" (click)="Activer(sfd)" *ngIf="sfd.statutsfd=='Désactivé'" ><i class="fa fa-unlock" aria-hidden="true"></i></button>
                                     </div>
                                
                                 </td>

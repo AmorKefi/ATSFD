@@ -59,6 +59,11 @@ export class SfdserviceService {
     headers.append('content-type','application/json');
     return this.http.get('http://127.0.0.1:8080/sfd/getresponsable',{headers});
   }
+  getresponsables(codesfd){
+    const headers = new HttpHeaders().set('X-Auth-Token',JSON.parse(this.Token).token);
+    headers.append('content-type','application/json');
+    return this.http.post('http://127.0.0.1:8080/sfd/getresponsable',codesfd,{headers});
+  }
   sortBy(filter){
     const headers = new HttpHeaders().set('X-Auth-Token',JSON.parse(this.Token).token);
     headers.append('content-type','application/json');

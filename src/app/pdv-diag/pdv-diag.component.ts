@@ -14,6 +14,7 @@ export class PdvDiagComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data,private diag:MatDialog, private service:PdvServiceService, private servicesfd: SfdserviceService, private servicecmpt : CompteFinancierService) { }
   sfds:any;
   comptes:any;
+  responsables:any;
   ngOnInit() {
     if(this.data.caller=='Modifier'){
       console.log(this.data);
@@ -27,6 +28,7 @@ export class PdvDiagComponent implements OnInit {
     this.data.statutPdv="Activé";
     this.data.typePdv="commerçant";
   }
+  this.service.getResponsable().subscribe(res=>this.responsables=res,err=>console.log(err));
   }
   add(form){
     if(form.value.sfd=='Choisir un SFD'){
@@ -42,6 +44,11 @@ export class PdvDiagComponent implements OnInit {
       }
     }else{
       form.value.cptf=null
+    }
+    if(form.value.responsable){
+      form.value.responsable={
+        ssoId:form.value.responsable
+      }
     }
     console.log(form.value);
    this.service.Add(form.value).subscribe(res=>{

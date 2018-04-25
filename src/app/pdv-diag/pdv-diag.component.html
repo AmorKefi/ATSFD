@@ -60,20 +60,24 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-5 mb-2">
-                                                <select name="sfd" class="form-control col-10" [ngModel]="data?.pdv?.sfd.codesfd" #sfd="ngModel" required>
+                                                <select name="sfd" class="form-control col-10" [ngModel]="data?.pdv?.sfd?.codesfd" #sfd="ngModel" required>
                                                     <option [value]="">Choisir un SFD</option>
                                                     <option *ngFor="let sfd of sfds" [value]="sfd.codesfd">{{sfd.codesfd}}</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group col-5 mb-2" *ngIf="data?.caller !='Modifier'">
-                                                    <select name="cptf" class="form-control col-10" [ngModel]="data?.pdv?.cptf.numCompte" #cptf="ngModel" required>
+                                            <div class="form-group col-5 mb-2" >
+                                                    <select name="cptf" class="form-control col-10" [ngModel]="data?.pdv?.cptf?.numCompte" #cptf="ngModel" required>
                                                         <option [value]="">choisir un compte Financier</option>
                                                         <option *ngFor="let compte of comptes" [value]="compte.numCompte">{{compte.numCompte}}</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-5 mb-2" *ngIf="data?.caller =='Modifier'">
-                                                  <input name="cptf" class="form-control col-10" [ngModel]="data?.pdv?.cptf?.numCompte" #cptf="ngModel" readonly>
-                                                     
+                                                <!-- <div class="form-group col-5 mb-2" *ngIf="data?.caller =='Modifier'">
+                                                  <input name="cptf" class="form-control col-10" [ngModel]="data?.pdv?.cptf?.numCompte" #cptf="ngModel" readonly>         
+                                              </div> -->
+                                              <div class="form-group col-5 mb-2">
+                                                <select name="responsable" [ngModel]="data?.pdv?.responsable?.ssoId" class="col-10 form-control">
+                                                  <option *ngFor="let res of responsables" [ngValue]="res.ssoId">{{res.firstName +" "+res.lastName }}</option>
+                                                </select>
                                               </div>
              </form>
  </div>

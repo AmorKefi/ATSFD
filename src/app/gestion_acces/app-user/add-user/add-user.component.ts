@@ -10,6 +10,8 @@ import { UserApp } from '../../../model/user-app';
 import { RoleApp } from '../../../model/role-app';
 import { Router } from '@angular/router';
 import { UserDesactivesComponent } from '../user-desactives/user-desactives.component';
+import { SfdLayoutComponent } from '../../../containers/sfd-layout/sfd-layout.component';
+import { SfdserviceService } from '../../../Services/SFDService/sfdservice.service';
 
 @Component({
   selector: 'app-add-user',
@@ -25,6 +27,7 @@ export class AddUserComponent implements OnInit {
   private idNewRole:number;// id of the selected role
   private userRoles:Array<RoleApp>=new Array<RoleApp>();// the new use roles
   private roleList:string='List des Roles';
+  sfds:any;
 
 
 
@@ -33,7 +36,8 @@ export class AddUserComponent implements OnInit {
               private _fb: FormBuilder,
               private route:Router,
               private dialogRef: MatDialogRef<AddUserComponent>,
-              @Inject(MAT_DIALOG_DATA) data) { 
+              @Inject(MAT_DIALOG_DATA) data,
+              private servicesfd:SfdserviceService) { 
                 this.user.roles=new Array<RoleApp>();
     
               }
@@ -54,13 +58,15 @@ export class AddUserComponent implements OnInit {
                lastName: ['', [<any>Validators.required]],
                firstName: ['', [<any>Validators.required]],
               email: ['', [<any>Validators.required,<any>Validators.email]],
-              role:''       
+              role:'',
+              sfd:['',[<any>Validators.required]]   
        });  
           this.appRoleService.getAllRoles2().subscribe(
            res=>res.map(x=>this._roles.push(x)),
             err => console.error(err),
             () => console.log('done loading all app-roles',) 
           );
+          this.servicesfd.getAll().subscribe(res=>this.sfds=res,err=>console.log(err));
   }
 
   selectParent:String='Parent';
@@ -102,6 +108,7 @@ export class AddUserComponent implements OnInit {
      this.user.email=model.email;
      this.user.image=model.image;
      this.user.statut="Activé";
+     this.user.sfd=model.sfd;
       console.log(this.user);
    
      //this.user.roles=new Array<RoleApp>();

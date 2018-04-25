@@ -105,7 +105,7 @@ sortBy(t){
   if(t.value==""){
     this.ngOnInit();
   }else{
-    this.service.sort(t.value).subscribe(res=>console.log(res),err=>console.log(err));
+    this.service.sort(t.value).subscribe(res=>this.adherents=res,err=>console.log(err));
   }
   //this.service.sort(t.value).subscribe(res=>console.log(res),err=>console.log(err));
 }
