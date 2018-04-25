@@ -3,6 +3,8 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { PdvServiceService } from '../Services/pdvService/pdv-service.service';
 import { SfdserviceService } from '../Services/SFDService/sfdservice.service';
 import { CompteFinancierService } from '../Services/compte-financier.service';
+import { CookieService } from 'ngx-cookie-service';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-pdv-diag',
@@ -11,17 +13,27 @@ import { CompteFinancierService } from '../Services/compte-financier.service';
 })
 export class PdvDiagComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data,private diag:MatDialog, private service:PdvServiceService, private servicesfd: SfdserviceService, private servicecmpt : CompteFinancierService) { }
-  sfds:any;
+  constructor(@Inject(MAT_DIALOG_DATA) public data,private diag:MatDialog, private service:PdvServiceService, private servicesfd: SfdserviceService, private servicecmpt : CompteFinancierService,private cookie:CookieService) { }
+  khalbouza:any;
   comptes:any;
   responsables:any;
+  sfds:any={
+  };
   ngOnInit() {
     if(this.data.caller=='Modifier'){
-      console.log(this.data);
-      this.servicesfd.getAll().subscribe(res=>this.sfds=res,err=>console.log(err));
+      let  user={
+        sub:''
+      }
+      user=jwt_decode(this.cookie.get('Token'));
+      this.servicesfd.getbySSOid(user.sub).subscribe(res=>this.sfds=res,err=>console.log(err));
       this.servicecmpt.getfreeacount().subscribe(res=>this.comptes=res,err=>console.log(err));
     }else{
-    this.servicesfd.getAll().subscribe(res=>this.sfds=res,err=>console.log(err));
+      let  user={
+        sub:''
+      }
+      user=jwt_decode(this.cookie.get('Token'));
+      this.servicesfd.getbySSOid(user.sub).subscribe(res=>this.sfds=res,err=>console.log(err));
+    // this.servicesfd.getAll().subscribe(res=>this.sfds=res,err=>console.log(err));
     this.servicecmpt.getfreeacount().subscribe(res=>this.comptes=res,err=>console.log(err));
     this.data.sfd="Choisir un SFD";
     this.data.cptf="choisir un compte Financier";
@@ -31,13 +43,7 @@ export class PdvDiagComponent implements OnInit {
   this.service.getResponsable().subscribe(res=>this.responsables=res,err=>console.log(err));
   }
   add(form){
-    if(form.value.sfd=='Choisir un SFD'){
-      form.value.sfd=null
-    }else{
-      form.value.sfd={
-        codesfd:form.value.sfd
-      }
-    }
+    form.value.statutPdv='Activé';
     if(form.value.cptf!=null && form.value.cptf!='choisir un compte Financier'){
       form.value.cptf={
         numCompte:form.value.cptf
@@ -45,23 +51,15 @@ export class PdvDiagComponent implements OnInit {
     }else{
       form.value.cptf=null
     }
-    if(form.value.responsable){
-      form.value.responsable={
-        ssoId:form.value.responsable
-      }
-    }
-    console.log(form.value);
+    form.value.sfd=this.sfds;
    this.service.Add(form.value).subscribe(res=>{
      this.diag.closeAll();
    },err=>console.log(err));
   }
   update(form){
-    if(form.value.sfd!=null && form.value.sfd !='choisir un SFD'){
-      form.value.sfd={
-        codesfd:form.value.sfd
-      }
-    }else{
-      form.value.sfd=null
+    form.value.statutPdv='Activé';
+    form.value.sfd={
+      codesfd:this.sfds.codesfd
     }
     if(form.value.cptf!=null && form.value.cptf!='choisir un compte Financier'){
       form.value.cptf={

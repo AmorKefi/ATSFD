@@ -63,6 +63,7 @@ export class AppSidebarNavItemComponent {
 
   public isDropdown() {
     let authorities={
+      sub:'',
       authorities:[]
     }
    authorities=jwt_decode(this.cookie.get('Token'));

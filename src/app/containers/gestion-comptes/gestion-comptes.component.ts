@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { CompteFinancierDiagComponent } from '../compte-financier-diag/compte-financier-diag.component';
 import { CompteFinancierService } from '../../Services/compte-financier.service';
+import { ActivatedRoute } from '@angular/router';
+import { compteFinancier } from '../../model/compteFinancier';
 
 @Component({
   selector: 'app-gestion-comptes',
@@ -10,11 +12,63 @@ import { CompteFinancierService } from '../../Services/compte-financier.service'
 })
 export class GestionComptesComponent implements OnInit {
 
-  constructor(private dialog : MatDialog, private service: CompteFinancierService) { }
+  constructor(private route:ActivatedRoute,private dialog : MatDialog, private service: CompteFinancierService) { }
   comptes : any;
-
+  acteur:any;
+  
   ngOnInit() {
-    this.service.getAll().subscribe(res=>this.comptes=res,err=>console.log(err));
+    this.route.params.subscribe(params=>this.acteur=params.Acteur)
+    if(this.acteur=="SFD"){
+      this.service.getAll().map(res=>{
+        let list=[];
+        let listr=[];
+        for(let key in res){
+          if(res.hasOwnProperty(key)){
+            list.push(res[key]);
+          }
+        }
+        list.forEach(element=>{
+         if(element.sfd!=null){
+           listr.push(element);
+         }
+        })
+        return listr;
+      }).subscribe(res=>this.comptes=res,err=>console.log(err));
+    }else if (this.acteur=="Adherent"){
+      this.service.getAll().map(res=>{
+        let list=[];
+        let listr=[];
+        for(let key in res){
+          if(res.hasOwnProperty(key)){
+            list.push(res[key]);
+          }
+        }
+        list.forEach(element=>{
+         if(element.adherent!=null){
+           listr.push(element);
+         }
+        })
+        return listr;
+      }).subscribe(res=>this.comptes=res,err=>console.log(err));
+    }else{
+      this.service.getAll().map(res=>{
+        let list=[];
+        let listr=[];
+        for(let key in res){
+          if(res.hasOwnProperty(key)){
+            list.push(res[key]);
+          }
+        }
+        list.forEach(element=>{
+         if(element.pdv!=null){
+           listr.push(element);
+         }
+        })
+        return listr;
+      }).subscribe(res=>this.comptes=res,err=>console.log(err));
+    }
+    
+
   }
   Ajouter(){
     const data={

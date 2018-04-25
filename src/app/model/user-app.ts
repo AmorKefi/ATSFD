@@ -12,4 +12,5 @@ export class UserApp{
     roles:Array<RoleApp>;
     statut:string;
     sfd:SFD;
+    pdv:any;
 }

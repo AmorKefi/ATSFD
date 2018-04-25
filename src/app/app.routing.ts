@@ -109,7 +109,7 @@ export const routes: Routes = [
     component: GestionAdherentComponent
   },
   {
-    path: 'Comptes',
+    path: 'Comptes/:Acteur',
     data: {
       title: 'Gestion des comptes'
     },
