@@ -115,6 +115,13 @@ import{SelectStatutComponent} from './gestion_acces/app-user/select-statut/selec
 import { ResponsablesPdvComponent } from './point-de-vente/responsables-pdv/responsables-pdv.component';
 import { AddResponsableComponent } from './point-de-vente/responsables-pdv/add-responsable/add-responsable.component';
 import { ModifResponsableComponent } from './point-de-vente/responsables-pdv/modif-responsable/modif-responsable.component';
+import { AddAdminSfdComponent } from './containers/sfd-layout/add-admin-sfd/add-admin-sfd.component';
+import { GestionAdminSfdComponent } from './containers/sfd-layout/gestion-admin-sfd/gestion-admin-sfd.component';
+import { AgentsComponent } from './point-de-vente/agents/agents.component';
+import { AddAgentComponent } from './point-de-vente/agents/add-agent/add-agent.component';
+import { ModifAgentComponent } from './point-de-vente/agents/modif-agent/modif-agent.component';
+import { ModifAdminsfdComponent } from './containers/sfd-layout/modif-adminsfd/modif-adminsfd.component';
+
 
 
 @NgModule({
@@ -186,7 +193,14 @@ import { ModifResponsableComponent } from './point-de-vente/responsables-pdv/mod
     SelectStatutComponent,
     ResponsablesPdvComponent,
     AddResponsableComponent,
-    ModifResponsableComponent
+    ModifResponsableComponent,
+    AddAdminSfdComponent,
+    GestionAdminSfdComponent,
+    AgentsComponent,
+    AddAgentComponent,
+    ModifAgentComponent,
+    ModifAdminsfdComponent,
+    
   
   ],
   providers: [AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
@@ -194,7 +208,7 @@ import { ModifResponsableComponent } from './point-de-vente/responsables-pdv/mod
     useClass: HashLocationStrategy
   }],
   bootstrap: [ AppComponent ],
-  entryComponents: [PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent
+  entryComponents: [PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent,AddAdminSfdComponent,AddAgentComponent,ModifAgentComponent,ModifAdminsfdComponent
     , AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent ],
   schemas: [ NO_ERRORS_SCHEMA ]
 })
