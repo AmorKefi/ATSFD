@@ -13,14 +13,10 @@
               <div class="card-header font-weight-bold">Critères de recherche</div>
               <div class="card-body">
                   <form class="form-inline mb-2" #form="ngForm" (ngSubmit)="search(form.value)">
-                      <div class="form-group col-4">
-                          <label for="Code" class="font-weight-bold"> Code SFD : </label> 
-                          <input type="text" id="Code" class="form-control col-6 rounded" placeholder="Code" ngModel #Code="ngModel" name="Code" >
-                        </div>
-                        <div class="form-group col-4">
-                             <label for="Nom" class="font-weight-bold"> Nom SFD : </label>
-                              <input type="text" id="Nom" class="form-control  col-6 rounded"  placeholder="Nom"  ngModel #Nom="ngModel" name="Nom" >
-                            </div>   
+                      <div class="form-group col-8">
+                          <label for="Code" class="font-weight-bold"> Num Compte : </label> 
+                          <input type="text" id="Code" class="form-control col-6 rounded" placeholder="Numéro de compte" ngModel #Code="ngModel" name="Code" >
+                      </div>  
                             <div class="form-groupe col-3">
                                   <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
                             </div>                       
@@ -60,7 +56,7 @@
                   <div class="col-lg-12">
                     <div class="card p-0">
                      <div class="card-body table-responsive p-0">
-                        <table class="table">
+                        <table class="table" *ngIf="acteur=='SFD'">
                           <thead class="blue-grey lighten-4">
                             <tr>
                               <th>num_compte</th>
@@ -79,31 +75,116 @@
                           <td>{{compte.dateCreation | date:'yyyy-MM-dd' }}</td>
                           <td>{{compte.solde}}</td>
                           <td>
-                              <span *ngIf="compte.statutCompte=='activé'" class="badge badge-success">{{compte.statutCompte}}</span>
-                              <span *ngIf="compte.statutCompte=='désactivé'" class="badge badge-danger">{{compte.statutCompte}}</span>
-                              <span *ngIf="compte.statutCompte=='bloqué'" class="badge badge-warning">{{compte.statutCompte}}</span>  
+                              <span *ngIf="compte.statutCompte=='Activé'" class="badge badge-success">{{compte.statutCompte}}</span>
+                              <span *ngIf="compte.statutCompte=='Désactivé'" class="badge badge-danger">{{compte.statutCompte}}</span>
+                              <span *ngIf="compte.statutCompte=='Bloqué'" class="badge badge-warning">{{compte.statutCompte}}</span>  
                         </td>
                         <td>{{compte?.sfd?.nomsfd}}</td>
                           <td>
                           
                             <div class="btn-group" role="group">
                                
-                                <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'bloqué'" (click)="bloquer(compte)"><i class="fa fa-eye">
+                                <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)"><i class="fa fa-close">
                                     </i></button>
-                                    <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'bloqué'"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'"><i class="fa fa-close" aria-hidden="true"></i></button>
                                 <!-- <button type="button" class="btn btn-danger"(click)="delete(compte)"><i class="fa fa-close">
                                     </i></button> -->
                             </div>
                        
                         </td>
                           </tr>
-                        
-
-
                          </tbody>
                         </table>
+                        <table class="table" *ngIf="acteur=='Adherent'">
+                                <thead class="blue-grey lighten-4">
+                                  <tr>
+                                    <th>num_compte</th>
+                                    <th>date_cloture</th>
+                                    <th>date_creation</th>
+                                    <th>solde</th>
+                                    <th>statut_compte</th>
+                                    <th>Nom Adherent</th>
+                                    <th>Actions</th>
+                                  </tr>
+                                </thead>
+                               <tbody>
+                                <tr *ngFor="let compte of comptes">
+                                    <td>{{compte.numCompte}}</td>
+                                <td >{{compte.dateCloture | date:'yyyy-MM-dd' }}</td>
+                                <td>{{compte.dateCreation | date:'yyyy-MM-dd' }}</td>
+                                <td>{{compte.solde}}</td>
+                                <td>
+                                    <span *ngIf="compte.statutCompte=='Activé'" class="badge badge-success">{{compte.statutCompte}}</span>
+                                    <span *ngIf="compte.statutCompte=='Désactivé'" class="badge badge-danger">{{compte.statutCompte}}</span>
+                                    <span *ngIf="compte.statutCompte=='Bloqué'" class="badge badge-warning">{{compte.statutCompte}}</span>  
+                              </td>
+                              <td>{{compte?.adherent?.nomAdherent+" "+comtpe?.adherent?.prenomAdherent}}</td>
+                                <td>
+                                
+                                  <div class="btn-group" role="group">
+                                     
+                                      <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                      <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                      <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)"><i class="fa fa-eye">
+                                          </i></button>
+                                          <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
+                                      <!-- <button type="button" class="btn btn-danger"(click)="delete(compte)"><i class="fa fa-close">
+                                          </i></button> -->
+                                  </div>
+                             
+                              </td>
+                                </tr>
+                              
+      
+      
+                               </tbody>
+                              </table>
+                              <table class="table" *ngIf="acteur=='PDV'">
+                                    <thead class="blue-grey lighten-4">
+                                      <tr>
+                                        <th>num_compte</th>
+                                        <th>date_cloture</th>
+                                        <th>date_creation</th>
+                                        <th>solde</th>
+                                        <th>statut_compte</th>
+                                        <th>Nom SFD</th>
+                                        <th>Actions</th>
+                                      </tr>
+                                    </thead>
+                                   <tbody>
+                                    <tr *ngFor="let compte of comptes">
+                                        <td>{{compte.numCompte}}</td>
+                                    <td >{{compte.dateCloture | date:'yyyy-MM-dd' }}</td>
+                                    <td>{{compte.dateCreation | date:'yyyy-MM-dd' }}</td>
+                                    <td>{{compte.solde}}</td>
+                                    <td>
+                                        <span *ngIf="compte.statutCompte=='Activé'" class="badge badge-success">{{compte.statutCompte}}</span>
+                                        <span *ngIf="compte.statutCompte=='Désactivé'" class="badge badge-danger">{{compte.statutCompte}}</span>
+                                        <span *ngIf="compte.statutCompte=='Bloqué'" class="badge badge-warning">{{compte.statutCompte}}</span>  
+                                  </td>
+                                  <td>{{compte?.sfd?.nomsfd}}</td>
+                                    <td>
+                                    
+                                      <div class="btn-group" role="group">
+                                         
+                                          <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                          <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                          <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)"><i class="fa fa-eye">
+                                              </i></button>
+                                              <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
+                                          <!-- <button type="button" class="btn btn-danger"(click)="delete(compte)"><i class="fa fa-close">
+                                              </i></button> -->
+                                      </div>
+                                 
+                                  </td>
+                                    </tr>
+                                  
+          
+          
+                                   </tbody>
+                                  </table>
                         <!--Pagination
                         <ul class="pagination">
                           <li class="page-item"><a class="page-link" href="#">Prev</a></li>

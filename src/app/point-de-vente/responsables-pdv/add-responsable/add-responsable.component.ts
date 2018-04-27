@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 import { AppUserService } from '../../../gestion_acces/app-user/app-user.service';
 import { AppRoleService } from '../../../gestion_acces/app-role/app-role.service';
+import { PdvServiceService } from '../../../Services/pdvService/pdv-service.service';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class AddResponsableComponent implements OnInit {
   private idNewRole:number;// id of the selected role
   private userRoles:Array<RoleApp>=new Array<RoleApp>();// the new use roles
   private roleList:string='List des Roles';
+  private pdvs:any;
 
 
 
@@ -36,6 +38,7 @@ export class AddResponsableComponent implements OnInit {
               private appUserService:AppUserService,
               private _fb: FormBuilder,
               private route:Router,
+              private servicepdv: PdvServiceService,
               private dialogRef: MatDialogRef<AddResponsableComponent>,
               @Inject(MAT_DIALOG_DATA) data) { 
                 this.user.roles=new Array<RoleApp>();
@@ -58,16 +61,16 @@ export class AddResponsableComponent implements OnInit {
                lastName: ['', [<any>Validators.required]],
                firstName: ['', [<any>Validators.required]],
               email: ['', [<any>Validators.required,<any>Validators.email]],
-              role:''
+              role:'',
+              pdv:['',[<any>Validators.required]]
            
        });  
-
-
           this.appRoleService.getAllRolesResponsables().subscribe(
            res=>res.map(x=>this._roles.push(x)),
             err => console.error(err),
             () => console.log('done loading all app-roles',) 
           );
+          this.servicepdv.getFreepdv().subscribe(res=>this.pdvs=res,err=>console.log(err));
   }
 
   selectParent:String='Parent';
@@ -109,6 +112,7 @@ export class AddResponsableComponent implements OnInit {
      this.user.email=model.email;
      this.user.image=model.image;
      this.user.statut="Activé";
+     this.user.pdv=model.pdv;
 
       console.log(this.user);
    

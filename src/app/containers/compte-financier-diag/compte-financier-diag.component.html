@@ -6,25 +6,22 @@
       <div class="card-body">
           <form #form="ngForm" class="form-inline">        
             <div class="form-group col-12 mb-2">
-              <input type="text" class="form-control col-10" placeholder="Num compte" name="numCompte" [ngModel]="data?.numCompte" #numCompte="ngModel" required>  
-            <div class="text-danger col-1" *ngIf="numCompte.invalid && (numCompte.dirty || numCompte.touched) ">
-              *
-            </div>
+              <input type="text" class="form-control col-11" placeholder="Num compte" name="numCompte" [ngModel]="data?.numCompte" #numCompte="ngModel" required>  
             </div>
             <div class="form-group col-12 mb-2">
-              <select name="statutCompte" [ngModel]="data.statutCompte" class="form-control col-12 rounded">             
-                <option [ng-value]="active" >activé</option>                
-                <option [ng-value]="desactive">désactivé</option>              
-              </select>
-            </div>
-            <div class="form-group col-12 mb-2">
-              <select name="sfd" class="form-control col-12 rounded" [ngModel]="data?.sfd">             
+              <select name="sfd" class="form-control col-12 rounded" [ngModel]="data?.sfd">    
+                <option [ng-value]="">Selectionez un SFD</option>         
                 <option *ngFor="let sfd of sfds" [value]="sfd.codesfd">{{sfd.codesfd}}</option>                            
               </select>                  
             </div>
+            <div class="form-group col-12 mb-2">
+              <select name="adherent" [ngModel]="data?.adherent" class="form-control col-12 rounded">
+                <option *ngFor="let adherent of adherents" [ngValue]="adherent.numAdherent">{{adherent.nomAdherent+" "+adherent.prenomAdherent}}</option>
+              </select>
+            </div>
           </form>
         </div>
-        <div class="card-footer cyan darken-2 p-4">
+        <div class="card-footer pb-0 cyan darken-2 p-4">
           <div class="text-center col-12">
             <button type="submit" class="btn btn-primary" (click)="add(form)" *ngIf="data?.caller !== 'Modifier Compte'" [disabled]="!form.valid">Ajouter</button>
             <button class="btn btn-default waves-light rounded" mdbRippleRadius (click)="close()">Quitter</button>

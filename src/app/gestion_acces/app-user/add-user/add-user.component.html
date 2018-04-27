@@ -61,7 +61,7 @@
     
                                 
                 <div class="form-group col-5 mb-2">
-                                <select class="form-control col-5 mt-1 " formControlName="role"  (ngModelChange)="onChangeRole($event)"> 
+                                <select class="form-control col-10 mt-1 " formControlName="role"  (ngModelChange)="onChangeRole($event)" required> 
                 
                                                 <option [value]="">sélectionner un rôle </option>
                                                  <option *ngFor="let _role of _roles" [value]="_role.roleId"> {{_role.roleName}} </option> 
@@ -75,12 +75,14 @@
                 </div> 
 
                         
-
+                <div class="form-group col-5 mb-2">
+                                <select class="form-control col-10 mt-1 " formControlName="sfd"  (ngModelChange)="onChangeRole($event)" required> 
+                                       <option [value]="">sélectionnez un sfd </option>
+                                       <option *ngFor="let s of sfds" [ngValue]="s"> {{s.nomsfd}} </option> 
+                                </select>  
+                           </div>
             </form>
-                <div class="row ">
-                        <h4>Rôles :</h4>
-                </div>
-                <div class="row ">        
+                <div class="row bg-light">        
                    
                         <ul>
                             <li class="btn btn-danger rounded" *ngFor="let role of this.user.roles">{{ role.roleName}}</li>
@@ -92,7 +94,7 @@
                  <button class="btn btn-outline-success my-2 my-sm-0" (click)="save(form.value, form.valid)">Enregister</button>
                  <button class="btn btn-outline-danger my-2 my-sm-0" [mat-dialog-close]>Annuler</button>
             </mat-dialog-actions> -->
-       
+         
    
  
 </div>

@@ -15,11 +15,32 @@ export class AddSfdDialogComponent implements OnInit {
   users : any;
   level:any = 1;
   ngOnInit() {
-    this.service.getresponsable().subscribe(res=>{
-      this.users=res;
-    },err=>console.log(err));
-    //this.data.user="Selectioné un Reponsable";
-    
+  //   if(this.data.caller!='Ajouter SFD'){
+  //   this.service.getresponsables(this.data.codesfd).subscribe(res=>{
+  //     this.users=res;
+  //     console.log(res);
+  //     this.users.forEach(element => {
+  //       if(element.sfd!=null){
+  //       if(this.data.codesfd==element.sfd.codesfd){
+  //         this.data.user=element;
+  //       }
+  //     }
+  //     });
+  //   },err=>console.log(err));
+  // }else{
+  //   this.service.getresponsable().subscribe(res=>{
+  //     this.users=res;
+  //     console.log(res);
+  //     this.users.forEach(element => {
+  //       if(element.sfd!=null){
+  //       if(this.data.codesfd==element.sfd.codesfd){
+  //         this.data.user=element;
+  //       }
+  //     }
+  //     });
+  //   },err=>console.log(err));
+  // }
+  //   this.data.user="Selectionnez un Reponsable";
   }
   close() {
     this.dialog.closeAll();
@@ -42,13 +63,27 @@ this.service.add(form.value).subscribe(res=>{
       this.dialog.closeAll();
     }
     ,err=>{
-      let div = document.getElementById('Message');
+      
+      if(err.error.exception=='org.springframework.dao.DataIntegrityViolationException'){
+        let div = document.getElementById('error');
+        div.style.display='block';
+        div.classList.add('animate');
+        div.innerHTML="Code sfd ou Matricule fiscale Invalide. Merci de réessayer !";
+        setTimeout(function(){
+          div.classList.remove('animate');
+          div.style.display='none';
+        },2000);
+        
+        
+      }else{
+        let div = document.getElementById('Message');
       div.classList.remove('rgba-green-light');
       div.classList.add('red','accent-1','animate');
       div.innerHTML="SFD n'a pas été ajouté !";
       setTimeout(function(){
         div.classList.remove('animate');
       },2000)
+    }
     });
   }
   update(form){

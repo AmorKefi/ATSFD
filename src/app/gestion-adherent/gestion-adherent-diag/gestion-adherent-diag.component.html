@@ -1,0 +1,77 @@
+<div class="card col-12 p-0 m-0">
+  <div class="card-header cyan darken-2 text-center font-weight-bold">{{data?.caller}}</div>
+  <div class="card-body ">
+    <form #form="ngForm" class="form-inline">
+      <!-- <div class="form-group col-4">
+        <input type="text" name="numAdherent" [ngModel]="data?.numAdherent" placeholder="num Adherent" class="form-control" #numadherent="ngModel" required>
+      </div> -->
+      <div class="form-group col-4" *ngIf="data?.caller=='Modifier'">
+          <input type="text" name="numAdherent" [ngModel]="data?.data?.numAdherent" placeholder="num Adherent" class="form-control" readonly>
+        </div>
+      <div class="form-group col-4">
+        <input type="text" name="statutJuridique" [ngModel]="data?.data?.statutJuridique" placeholder="Statut juridique" class="form-control" #statutjuridique="ngModel" required>
+      </div>
+      <div class="form-group col-4">
+        <input type="text" name="nomAdherent"  [ngModel]="data?.data?.nomAdherent" placeholder="Nom Adherent" class="form-control" required>
+      </div>
+      <div class="form-group col-4">
+        <input type="text" name="prenomAdherent"  [ngModel]="data?.data?.prenomAdherent" placeholder="Prenom Adherent" class="form-control" required>
+      </div>
+      <div class="form-group col-4">
+        <input type="date"  name="dateNais" [ngModel]="data?.data?.dateNais" placeholder="date de Naissance" class="form-control" required>
+      </div>
+      <div class="form-group col-4">
+        <input type="text" name="TypePieceidentite" [ngModel]="data?.data?.TypePieceidentite" placeholder="type piece Identitie" class="form-control" required>
+      </div>
+      <div class="form-group col-4">
+        <input type="text"  name="numPieceIdentite" [ngModel]="data?.data?.numPieceIdentite" placeholder="Num piece Identite" class="form-control" required>
+      </div>
+      <div class="form-group col-4">
+        <input type="text"  name="telephone" [ngModel]="data?.data?.telephone" placeholder="telephone" class="form-control" pattern="[0-9]*" minlength="8" #telephone="ngModel" required>
+        <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)" class="text-danger">
+          <div *ngIf="telephone.errors.minlength || telephone.errors.pattern">
+            numéro Invalid
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-4">
+        <input type="email" name="email" [ngModel]="data?.data?.email" placeholder="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email="ngModel" class="form-control" required>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+          <div *ngIf="email.errors.pattern">
+            Email invalide
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-4">
+        <input type="text"  name="etatCivil" class="form-control" placeholder="Etat Civil" [ngModel]="data?.data?.etatCivil" required>
+      </div>
+      <div class="form-group col-4">
+        <input type="text"  name="lieuDeNais" [ngModel]="data?.data?.lieuDeNais" placeholder="Lieu de Naissance" class="form-control" required>
+      </div>
+      <div class="form-group col-4">
+        <input type="text"  name="profession" [ngModel]="data?.data?.profession" placeholder="profession" class="form-control" required>
+      </div>
+      <div class="form-group col-4">
+        <input type="text"  name="adresse" [ngModel]="data?.data?.adresse" placeholder="adresse" class="form-control" required>
+      </div>
+      <div class="form-group col-4">
+        <select name="pdv" [ngModel]="data?.data?.pdv.codePdv" class="form-control m-0" required>
+          <option [ng-value]="">selectionez Point De vente</option>
+          <option *ngFor="let pdv of pdvs " [ngValue]="pdv.codePdv">{{pdv.nomPdv}}</option>
+        </select>
+      </div>
+      <!-- <div class="form-group col-4 offset-1">
+        <select name="cpt" [ngModel]="data?.data?.cpt" class="form-control m-0" required>
+          <option [ng-value]="">selectionez Compte Financier</option>
+        </select>
+      </div> -->
+    </form>
+  </div>
+  <div class="card-footer  pb-0 cyan darken-2">
+    <div class="row justify-content-center">  
+      <button class="btn btn-primary col-4" [disabled]="!form.valid" *ngIf="data?.caller!='Modifier'" (click)="ajouter(form.value)">Ajouter</button>
+      <button class="btn btn-primary col-4" [disabled]="!form.valid" *ngIf="data?.caller=='Modifier'" (click)="update(form.value)">Modifier</button>
+      <button class="btn btn-danger col-4" [mat-dialog-close]>Annuler</button>
+    </div>
+  </div>
+</div>

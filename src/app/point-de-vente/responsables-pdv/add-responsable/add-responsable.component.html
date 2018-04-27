@@ -76,10 +76,7 @@
 
                   
 
-      </form>
-          <div class="row ">
-                  <h4>Rôles :</h4>
-          </div>
+  
           <div class="row ">        
              
                   <ul>
@@ -92,9 +89,14 @@
            <button class="btn btn-outline-success my-2 my-sm-0" (click)="save(form.value, form.valid)">Enregister</button>
            <button class="btn btn-outline-danger my-2 my-sm-0" [mat-dialog-close]>Annuler</button>
       </mat-dialog-actions> -->
- 
+      <div class="form-group col-5 mb-2">
+                <select class="form-control col-10 mt-1 " formControlName="pdv"  required> 
+                       <option [value]="">sélectionnez un Point De Vente </option>
+                       <option *ngFor="let p of pdvs" [ngValue]="p"> {{p.nomPdv}} </option> 
+                </select>  
+           </div>
 
-
+        </form>
 </div>
 <div class="card-footer cyan darken-3 justify-content-center p-3">
                 <div class="row justify-content-center">

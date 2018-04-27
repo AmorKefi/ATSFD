@@ -1,33 +1,28 @@
-<ng-template [ngIf]="level==1">
+<ng-template [ngIf]="data?.caller=='Modifier SFD'" class="container">
 <div class="card   m-0 p-0">
   <div class=" card-header text-white text-uppercase cyan darken-2 text-center">
     <h4 class="mb-4">{{data?.caller}}</h4>
   </div>
   <div class="card-body">
     <form #form="ngForm" class="form-inline">
-      <div  class="form-group col-3"  *ngIf="data?.caller !='Modifier SFD'" >
-        <label for="codeSfd">Code SFD</label>
-          <input type="text"  class="form-control col-10 has-danger" id="codeSfd" placeholder="code SFD" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required>  
-
-        </div>
         <div  class="form-group col-3"  *ngIf="data?.caller =='Modifier SFD'" >
-            <label for="codeSfd">Code SFD</label>
+            <label for="codeSfd" class="font-weight-bold">Code SFD</label>
             <input type="text" class="form-control col-10 has-danger" placeholder="code SFD" id="codeSfd" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required readonly>  
           </div>
       <div class="form-group col-3">
-          <label for="NomSFD">Nom SFD</label>
+          <label for="NomSFD" class="font-weight-bold">Nom SFD</label>
           <input type="text" class="form-control col-10" placeholder="Nom SFD" id="NomSFD" name="nomsfd" [ngModel]="data?.nomsfd" #nomsfd="ngModel" required>
       </div>
       <div class="form-group col-3">
-          <label for="Raisonsocial">Raison Social</label>
+          <label for="Raisonsocial" class="font-weight-bold">Raison Social</label>
           <input type="text" class="form-control col-10" placeholder="raison sociale" id="Raisonsocial" name="raisonsociale" [ngModel]="data?.raisonsociale" #raisonsocial="ngModel" required>
         </div>
       <div class="form-group col-3">
-        <label for="AdresseSFD">Adresse sfd</label>
+        <label for="AdresseSFD" class="font-weight-bold">Adresse sfd</label>
           <input type="text" class="form-control col-10" placeholder="Adresse SFD"  id="AdresseSFD" name="adressesfd" [ngModel]="data?.adressesfd" #adressesfd="ngModel" required>
         </div>
       <div class="form-group col-3">
-        <label for="Email">Email</label>
+        <label for="Email" class="font-weight-bold">Email</label>
           <input type="email" id="Email" class="form-control col-10" placeholder="Email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [ngModel]="data?.email" #email="ngModel" required>
           <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
               <div *ngIf="email.errors.pattern">
@@ -35,15 +30,15 @@
               </div>
             </div>
       </div>
-      <div class="form-group col-3" *ngIf="data?.caller !='Modifier SFD'">
-          <label for="statutsfd">Statut</label>
+      <!-- <div class="form-group col-3" *ngIf="data?.caller !='Modifier SFD'">
+          <label for="statutsfd" class="font-weight-bold">Statut</label>
           <select name="statutsfd" id="" name="statutsfd" [ngModel]="data?.statutsfd" id="statutsfd" #statussfd="ngModel" class="form-control col-10" required>
             <option value="Activé">Activé</option>
             <option value="désactivé">désactivé</option>
           </select>
-      </div>
+      </div> -->
       <div class="form-group col-3">
-        <label for="telsfd">Tel</label>
+        <label for="telsfd" class="font-weight-bold">Tel</label>
           <input type="text" class="form-control col-10" id="telsfd" placeholder="Tel" name="telsfd" [ngModel]="data?.telsfd" #telsfd="ngModel" required pattern="[0-9]*" minlength="8">
           <div class="text-danger" *ngIf="telsfd.invalid && (telsfd.dirty || telsfd.touched)">
             <div *ngIf="telsfd.errors.minlength || telsfd.errors.pattern">
@@ -52,23 +47,23 @@
           </div>
         </div>
       <div class="form-group col-3">
-          <label for="Villesfd">Ville sfd</label>
+          <label for="Villesfd" class="font-weight-bold">Ville sfd</label>
           <input type="text" class="form-control col-10" placeholder="Ville" name="villesfd" id="Villesfd" [ngModel]="data?.villesfd" #villesfd="ngModel" required>
 
       </div>
       <div class="form-group col-3">
-        <label for="matriculeFiscale">matricule Fiscale</label>
+        <label for="matriculeFiscale" class="font-weight-bold">matricule Fiscale</label>
           <input type="text" class="form-control col-10" id="matriculeFiscale" placeholder="matriculeFiscale" name="matriculeFiscale" [ngModel]="data?.matriculeFiscale" #matriculeFiscale="ngModel" required>
 
       </div>
-      <div class="form-group col-3">
-        <label for="ResponsableSFD">Responsable SFD</label>
-        <select name="user" [ngModel]="data?.user" id="ResponsableSFD" #user="ngModel" class="form-control col-10" required>
-          <option [ng-value]="">Selectioné un Reponsable</option>
-          <option *ngFor="let user of users" [value]="user.id" >{{user.firstName +" "+user.lastName}}</option>
+      <!-- <div class="form-group col-3">
+        <label for="ResponsableSFD" class="font-weight-bold">Responsable SFD</label>
+        <select name="user" [ngModel]="data?.user?.id" id="ResponsableSFD" #user="ngModel" class="form-control col-10" required>
+          <option [ngValue]="">Selectioné un Reponsable</option>
+          <option *ngFor="let user of users" [ngValue]="user.id" >{{user.firstName +" "+user.lastName}}</option>
         </select>
 
-      </div> 
+      </div>  -->
     </form>
 </div>
 <div class="card-footer pb-0 cyan darken-2" [ngClass]="{
@@ -84,26 +79,74 @@
 </div> 
 </div>
 </ng-template>
-<ng-template [ngIf]="level==2">
-  <div class="card   m-0 p-0">
-    <div class=" card-header text-white text-uppercase cyan darken-2 text-center">
-      <h4 class="mb-4">{{data?.caller}}</h4>
-    </div>
-    <div class="card-body">
-      <form #form="ngForm" class="form-inline">
-       
-      </form>
-  </div>
-  <div class="card-footer pb-0 cyan darken-2" [ngClass]="{
-    'p-3': data?.caller != 'Modifier SFD',
-    'p-2': data?.caller == 'Modifier SFD'
-  }">
-    <div class="text-center col-12">
-      <button type="submit"  class="btn btn-primary   indigo darken-4 waves-light rounded" mdbRippleRadius (click)="add(form)" *ngIf="data?.caller !== 'Modifier SFD'" [disabled]="!form.valid">Ajouter</button>
-      <button type="submit" class="btn btn-primary indigo darken-4 waves-light rounded" (click)="update(form)" *ngIf="data?.caller =='Modifier SFD'" [disabled]="!form.valid">Modifier</button>
-      <button type="reset" class="btn btn-danger rounded" (click)="reset(form)" *ngIf="data?.caller != 'Modifier SFD'">Annuler</button>
-      <button type="button" class="btn btn-default waves-light rounded" mdbRippleRadius (click)="close()">Quitter</button>
-    </div>
-  </div> 
-  </div>
+<ng-template [ngIf]="data?.caller!='Modifier SFD'" class="container">
+    <div class="card   m-0 p-0">
+        <div class=" card-header text-white text-uppercase cyan darken-2 text-center">
+          <h4 class="mb-4">{{data?.caller}}</h4>
+        </div>
+        <div class="card-body">
+          <div class="alert alert-danger " style="display: none" id="error"></div>
+          <form #form="ngForm" class="form-inline">
+              <div  class="form-group col-5"  *ngIf="data?.caller !='Modifier SFD'" >
+                  <input type="text" class="form-control col-10 has-danger" placeholder="code SFD" id="codeSfd" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required>  
+                </div>
+            <div class="form-group col-5">
+                <input type="text" class="form-control col-10" placeholder="Nom SFD" id="NomSFD" name="nomsfd" [ngModel]="data?.nomsfd" #nomsfd="ngModel" required>
+            </div>
+            <div class="form-group col-5">
+                <input type="text" class="form-control col-10" placeholder="raison sociale" id="Raisonsocial" name="raisonsociale" [ngModel]="data?.raisonsociale" #raisonsocial="ngModel" required>
+              </div>
+            <div class="form-group col-5">
+                <input type="text" class="form-control col-10" placeholder="Adresse SFD"  id="AdresseSFD" name="adressesfd" [ngModel]="data?.adressesfd" #adressesfd="ngModel" required>
+              </div>
+            <div class="form-group col-5">
+                <input type="email" id="Email" class="form-control col-10" placeholder="Email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [ngModel]="data?.email" #email="ngModel" required>
+                <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <div *ngIf="email.errors.pattern">
+                      Email invalide
+                    </div>
+                  </div>
+            </div>
+            <!-- <div class="form-group col-5" *ngIf="data?.caller !='Modifier SFD'">
+                <select name="statutsfd" id="" name="statutsfd" [ngModel]="data?.statutsfd" id="statutsfd" #statussfd="ngModel" class="form-control col-10" required>
+                  <option value="Activé">Activé</option>
+                  <option value="désactivé">désactivé</option>
+                </select>
+            </div> -->
+            <div class="form-group col-5">
+                <input type="text" class="form-control col-10" id="telsfd" placeholder="Tel" name="telsfd" [ngModel]="data?.telsfd" #telsfd="ngModel" required pattern="[0-9]*" minlength="8">
+                <div class="text-danger" *ngIf="telsfd.invalid && (telsfd.dirty || telsfd.touched)">
+                  <div *ngIf="telsfd.errors.minlength || telsfd.errors.pattern">
+                    numéro Invalid
+                  </div>
+                </div>
+              </div>
+            <div class="form-group col-5">
+                <input type="text" class="form-control col-10" placeholder="Ville" name="villesfd" id="Villesfd" [ngModel]="data?.villesfd" #villesfd="ngModel" required>
+      
+            </div>
+            <div class="form-group col-5">
+                <input type="text" class="form-control col-10" id="matriculeFiscale" placeholder="matriculeFiscale" name="matriculeFiscale" [ngModel]="data?.matriculeFiscale" #matriculeFiscale="ngModel" required>
+      
+            </div>
+            <!-- <div class="form-group col-5">
+              <select name="user" [(ngModel)]="data.user" id="ResponsableSFD" #user="ngModel" class="form-control col-10" required>
+                <option [ng-value]="">Selectionnez un Reponsable</option>
+                <option *ngFor="let user of users" [ngValue]="user.id" >{{user.firstName +" "+user.lastName}}</option>
+              </select>
+            </div>  -->
+          </form>
+      </div>
+      <div class="card-footer pb-0 cyan darken-2" [ngClass]="{
+        'p-3': data?.caller != 'Modifier SFD',
+        'p-2': data?.caller == 'Modifier SFD'
+      }">
+        <div class="text-center col-12">
+          <button type="submit"  class="btn btn-primary   indigo darken-4 waves-light rounded" mdbRippleRadius (click)="add(form)" *ngIf="data?.caller !== 'Modifier SFD'" [disabled]="!form.valid">Ajouter</button>
+          <button type="submit" class="btn btn-primary indigo darken-4 waves-light rounded" (click)="update(form)" *ngIf="data?.caller =='Modifier SFD'" [disabled]="!form.valid">Modifier</button>
+          <button type="reset" class="btn btn-danger rounded" (click)="reset(form)" *ngIf="data?.caller != 'Modifier SFD'">Annuler</button>
+          <button type="button" class="btn btn-default waves-light rounded" mdbRippleRadius (click)="close()">Quitter</button>
+        </div>
+      </div> 
+      </div>
 </ng-template>

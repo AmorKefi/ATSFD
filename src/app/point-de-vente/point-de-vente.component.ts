@@ -24,7 +24,7 @@ export class PointDeVenteComponent implements OnInit {
     }
     datapdv.caller="Ajouter"
     const dialogConfig = new MatDialogConfig();
-     dialogConfig.height='543px';
+     dialogConfig.height='auto';
      dialogConfig.width='600px';
      dialogConfig.data = datapdv;
     let diag= this.diag.open(PdvDiagComponent, dialogConfig);
@@ -39,7 +39,7 @@ export class PointDeVenteComponent implements OnInit {
       pdv
     }
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.height='543px';
+    dialogConfig.height='auto';
     dialogConfig.width='600px';
     dialogConfig.data=datapdv;
    let diag= this.diag.open(PdvDiagComponent,dialogConfig);

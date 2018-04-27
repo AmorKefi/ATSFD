@@ -107,8 +107,12 @@ export class AppUserService implements OnInit {
     updateReponsable(data){
         const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
         headers.append('Content-Type', 'application/json')
-        return this.http.put<UserApp>(`${this.apiUrl.transactionURL}updateResponsable`, data ,{ headers });
-       
+        return this.http.put<UserApp>(`${this.apiUrl.transactionURL}updateResponsable`, data ,{ headers });   
+    }
+    filter(filter){
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+        headers.append('Content-Type', 'application/json')
+        return this.http.post<UserApp>(`${this.apiUrl.transactionURL}filter`,filter,{ headers }).map(res =>res);
     }
     getAllAgents(){
         const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );

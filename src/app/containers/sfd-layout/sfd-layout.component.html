@@ -18,11 +18,11 @@
                     <form class="form-inline mb-2" #form="ngForm" (ngSubmit)="search(form.value)">
                         <div class="form-group col-4">
                             <label for="Code" class="font-weight-bold"> Code SFD : </label> 
-                            <input type="text" id="Code" class="form-control col-12 rounded" placeholder="Code" ngModel #Code="ngModel" name="Code" >
+                            <input type="text" id="Code" class="form-control col-5 rounded" placeholder="Code" ngModel #Code="ngModel" name="Code" >
                           </div>
                           <div class="form-group col-4">
                                <label for="Nom" class="font-weight-bold"> Nom SFD : </label>
-                                <input type="text" id="Nom" class="form-control  col-12 rounded"  placeholder="Nom"  ngModel #Nom="ngModel" name="Nom" >
+                                <input type="text" id="Nom" class="form-control  col-5 rounded"  placeholder="Nom"  ngModel #Nom="ngModel" name="Nom" >
                               </div>   
                               <div class="form-groupe col-3">
                                     <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
@@ -41,7 +41,7 @@
             <button class="btn btn-primary rounded" (click)="openAddSFDDialog()"><i class="fa fa-plus"></i> Ajouter SFD</button>
             <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Active'" mdbRippleRadius (click)="getDesactivated()"><i class="fa fa-list" aria-hidden="true"></i> Historique</button>
             <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Desactivated'" mdbRippleRadius (click)="getDesactivated()"><i class="fa fa-list" aria-hidden="true"></i> List Des SFD</button>
-            <button class="btn btn-success rounded" routerLink="/Comptes">Gestion des comptes</button>                  
+            <button class="btn btn-success rounded" routerLink="/Comptes/SFD">Gestion des comptes</button>                  
             <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
                       </div>
                     </div>
@@ -84,7 +84,7 @@
                                   <td>{{sfd.adressesfd}}</td>
                                   <td>{{sfd.villesfd}}</td>
                                   <td><span *ngIf="sfd.statutsfd=='Activé'" class="badge badge-success">{{sfd.statutsfd}}</span>
-                                      <span *ngIf="sfd.statutsfd=='désactivé'" class="badge badge-danger">{{sfd.statutsfd}}</span>  
+                                      <span *ngIf="sfd.statutsfd=='Désactivé'" class="badge badge-danger">{{sfd.statutsfd}}</span>  
                                 </td>
                                   <td>
                                   
@@ -95,7 +95,7 @@
                                         <button type="button" class="btn btn-default" routerLink="view/{{sfd.codesfd}}"><i class="fa fa-eye">
                                             </i></button>
                                             <button type="button" class="btn btn-info" (click)="Desactiver(sfd)" *ngIf="sfd.statutsfd=='Activé'" ><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-info" (click)="Activer(sfd)" *ngIf="sfd.statutsfd=='désactivé'" ><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-info" (click)="Activer(sfd)" *ngIf="sfd.statutsfd=='Désactivé'" ><i class="fa fa-unlock" aria-hidden="true"></i></button>
                                     </div>
                                
                                 </td>

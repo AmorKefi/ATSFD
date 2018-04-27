@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { CompteFinancierService } from '../../Services/compte-financier.service';
 import { SfdserviceService } from '../../Services/SFDService/sfdservice.service';
+import { AdherentService } from '../../Services/adherent.service';
 
 @Component({
   selector: 'app-compte-financier-diag',
@@ -10,11 +11,13 @@ import { SfdserviceService } from '../../Services/SFDService/sfdservice.service'
 })
 export class CompteFinancierDiagComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog, private service : CompteFinancierService, private servicesfd : SfdserviceService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private adherentservice:AdherentService, private dialog: MatDialog, private service : CompteFinancierService, private servicesfd : SfdserviceService) { }
   sfds:any;
+  adherents:any;
   ngOnInit() {
     this.data.statutCompte='activé';
   this.servicesfd.getfreesfd().subscribe(res=>this.sfds=res,err=>console.log(err))
+  this.adherentservice.getAll().subscribe(res=>this.adherents=res,err=>console.log(err));
   }
   close(){
     this.dialog.closeAll();
@@ -26,6 +29,12 @@ export class CompteFinancierDiagComponent implements OnInit {
         codesfd: form.value.sfd
       }
     }
+    if(form.value.adherent){
+      form.value.adherent={
+        numAdherent:form.value.adherent
+      }
+    }
+    form.value.statutCompte="Activé";
     this.service.add(form.value).subscribe(res=>this.dialog.closeAll(),err=>console.log(err));
   }
   bloquer(form){

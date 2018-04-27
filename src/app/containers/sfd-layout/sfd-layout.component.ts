@@ -15,7 +15,7 @@ export class SfdLayoutComponent implements OnInit{
   sfds:any;
   layout='Active';
   ngOnInit(): void {
-    this.service.getAll().subscribe(res=>this.sfds=res,err=>console.log(err));
+    this.service.getAll().subscribe(res=>{this.sfds=res},err=>console.log(err));
     this.layout='Active';
 
   }
@@ -40,7 +40,7 @@ export class SfdLayoutComponent implements OnInit{
     sfd.caller="Modifier SFD"
     const dialogConfig = new MatDialogConfig();
      dialogConfig.height='auto';
-     dialogConfig.width='600px';
+     dialogConfig.width='700px';
      dialogConfig.data = sfd;
      this.dialog.open(AddSfdDialogComponent, dialogConfig);
 
