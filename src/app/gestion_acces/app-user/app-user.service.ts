@@ -86,6 +86,19 @@ export class AppUserService implements OnInit {
         return this.http.get(`${this.apiUrl.transactionURL}getAllResponsablesDesactives`, { headers });
 
     }
+    getDesactivatedAdminSFD(){
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+        headers.append('Content-Type', 'application/json')
+        return this.http.get(`${this.apiUrl.transactionURL}getAllAdminSfdDesactives`, { headers });
+
+    }
+    getDesactivatedAgent(){
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+        headers.append('Content-Type', 'application/json')
+        return this.http.get(`${this.apiUrl.transactionURL}getAllAgentsDesactives`, { headers }); 
+
+
+    }
     sortBy(filter){
         const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
         headers.append('Content-Type', 'application/json')
@@ -100,5 +113,17 @@ export class AppUserService implements OnInit {
         const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
         headers.append('Content-Type', 'application/json')
         return this.http.post<UserApp>(`${this.apiUrl.transactionURL}filter`,filter,{ headers }).map(res =>res);
+    }
+    getAllAgents(){
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+        headers.append('Content-Type', 'application/json')
+        return this.http.get(`${this.apiUrl.transactionURL}getAllAgents`, { headers });
+
+    }
+    getAllAdminSFD(){
+
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+        headers.append('Content-Type', 'application/json')
+        return this.http.get(`${this.apiUrl.transactionURL}getALLAdminSFD`, { headers });
     }
 }

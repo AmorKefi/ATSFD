@@ -115,10 +115,20 @@ import{SelectStatutComponent} from './gestion_acces/app-user/select-statut/selec
 import { ResponsablesPdvComponent } from './point-de-vente/responsables-pdv/responsables-pdv.component';
 import { AddResponsableComponent } from './point-de-vente/responsables-pdv/add-responsable/add-responsable.component';
 import { ModifResponsableComponent } from './point-de-vente/responsables-pdv/modif-responsable/modif-responsable.component';
+
+import { AddAdminSfdComponent } from './containers/sfd-layout/add-admin-sfd/add-admin-sfd.component';
+import { GestionAdminSfdComponent } from './containers/sfd-layout/gestion-admin-sfd/gestion-admin-sfd.component';
+import { AgentsComponent } from './point-de-vente/agents/agents.component';
+import { AddAgentComponent } from './point-de-vente/agents/add-agent/add-agent.component';
+import { ModifAgentComponent } from './point-de-vente/agents/modif-agent/modif-agent.component';
+import { ModifAdminsfdComponent } from './containers/sfd-layout/modif-adminsfd/modif-adminsfd.component';
+
+
 import { GestionAdherentComponent } from './gestion-adherent/gestion-adherent.component';
 import { AdherentService } from './Services/adherent.service';
 import { GestionAdherentDiagComponent } from './gestion-adherent/gestion-adherent-diag/gestion-adherent-diag.component';
 import { DeleteAdherentComponent } from './gestion-adherent/delete-adherent/delete-adherent.component';
+
 
 
 @NgModule({
@@ -191,9 +201,19 @@ import { DeleteAdherentComponent } from './gestion-adherent/delete-adherent/dele
     ResponsablesPdvComponent,
     AddResponsableComponent,
     ModifResponsableComponent,
+
+    AddAdminSfdComponent,
+    GestionAdminSfdComponent,
+    AgentsComponent,
+    AddAgentComponent,
+    ModifAgentComponent,
+    ModifAdminsfdComponent,
+    
+
     GestionAdherentComponent,
     GestionAdherentDiagComponent,
     DeleteAdherentComponent
+
   
   ],
   providers: [DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
@@ -201,8 +221,13 @@ import { DeleteAdherentComponent } from './gestion-adherent/delete-adherent/dele
     useClass: HashLocationStrategy
   }],
   bootstrap: [ AppComponent ],
+
+
+
   entryComponents: [DeleteAdherentComponent,PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent
-    , AddRoleDiagComponent,GestionAdherentDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent ],
+    , AddRoleDiagComponent,GestionAdherentDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent,AddAdminSfdComponent,AddAgentComponent,ModifAgentComponent,ModifAdminsfdComponent
+    , AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent ],
+
   schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }
