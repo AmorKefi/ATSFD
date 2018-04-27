@@ -14,11 +14,11 @@ export class GestionAdherentDiagComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data,private datepipe : DatePipe,private diag:MatDialog,private service:AdherentService,private pdvservice:PdvServiceService) { }
   pdvs:any;
   ngOnInit() {
-    console.log(this.data);
     this.pdvservice.getAll().subscribe(res=>this.pdvs=res,err=>console.log(err));
     if(this.data.data){
 this.data.data.dateNais= this.datepipe.transform(this.data.data.dateNais,'yyyy-MM-dd');
 }
+this.data.pdv="selectionez Point De vente";
   }
   ajouter(data){
     data.statut="Activé";
@@ -32,7 +32,6 @@ if(data.pdv=="selectionez Point De vente"){
     codePdv:data.pdv
   }
 }
-console.log(data);
 this.service.ajouter(data).subscribe(res=>this.diag.closeAll(),err=>console.log(err));
 
   }

@@ -137,6 +137,8 @@ perPageSelect: any;
       res => {
         console.log(res);
         event.confirm.resolve(event.newData);
+        this.ngOnInit();
+        this.layout='Active';
       },
       err => {
         console.error(err);
@@ -151,7 +153,8 @@ perPageSelect: any;
     dialogConfig.data = {app_role:event.data};
     dialogConfig.height='auto';
     dialogConfig.width='350px';
-    this.dialog.open(DeleteUserDialogComponent, dialogConfig);
+   let refdiag= this.dialog.open(DeleteUserDialogComponent, dialogConfig);
+   refdiag.afterClosed().subscribe(res=>this.ngOnInit(),err=>console.log(err));
   }
   getAllDesactives(){
     if(this.layout=='Active'){

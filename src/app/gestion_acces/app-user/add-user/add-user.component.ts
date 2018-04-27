@@ -126,7 +126,6 @@ export class AddUserComponent implements OnInit {
         },4000)
         this.dialogRef.close()},
        err => {
-         this.dialogRef.close();
          let div= document.getElementById('Message');
          div.classList.remove('rgba-green-light');
          div.classList.add('red','accent-1','animate');
