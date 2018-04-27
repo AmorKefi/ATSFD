@@ -20,6 +20,7 @@ export class GestionComptesComponent implements OnInit {
     this.route.params.subscribe(params=>this.acteur=params.Acteur)
     if(this.acteur=="SFD"){
       this.service.getAll().map(res=>{
+        console.log(res);
         let list=[];
         let listr=[];
         for(let key in res){
@@ -36,6 +37,7 @@ export class GestionComptesComponent implements OnInit {
       }).subscribe(res=>this.comptes=res,err=>console.log(err));
     }else if (this.acteur=="Adherent"){
       this.service.getAll().map(res=>{
+        console.log(res);
         let list=[];
         let listr=[];
         for(let key in res){
