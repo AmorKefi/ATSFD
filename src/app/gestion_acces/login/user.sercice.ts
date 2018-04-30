@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {JwtHelper} from 'angular2-jwt';
 import { TOKEN_NAME } from '../../guards/auth.constants';
 import{BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class UserService {
@@ -18,7 +19,7 @@ export class UserService {
         this.messageSource.next(message);
     }
   //_________________
-  constructor() {
+  constructor(private cookie:CookieService) {
   }
 
   login(accessToken: string) {
@@ -58,7 +59,7 @@ export class UserService {
 
   getToken(){
     //console.log('user service token :: '+localStorage.getItem(TOKEN_NAME));
-    return localStorage.getItem(TOKEN_NAME);
+    return this.cookie.get('Token');
   }
 
   isUser(): boolean {

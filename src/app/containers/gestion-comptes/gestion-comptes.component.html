@@ -17,6 +17,10 @@
                           <label for="Code" class="font-weight-bold"> Num Compte : </label> 
                           <input type="text" id="Code" class="form-control col-6 rounded" placeholder="Numéro de compte" ngModel #Code="ngModel" name="Code" >
                       </div>  
+                      <div class="form-group col-8" *ngIf="acteur=='SFD'">
+                          <label for="Nom">Nom SFD :</label>
+                          <input type="text" id="Nom" class="form-control col-6 rounded" placeholder="Nom SFD" ngModel #nomsfd="ngModel" name="Nomsfd">
+                      </div>
                             <div class="form-groupe col-3">
                                   <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
                             </div>                       
@@ -30,9 +34,13 @@
         <div class="card-body">
             <div class="row float-right">
                 <div class="form-group">
-                    <button class="btn btn-primary rounded" (click)="Ajouter()" *ngIf="acteur=='Adherent'"><i class="fa fa-plus"></i> Ajouter Un compte</button>
+                    <span *HasAnyAuthority="'ROLE_GESTIONDESADHERENT'">
+                        <button class="btn btn-primary rounded" (click)="Ajouter()" *ngIf="acteur=='Adherent'"><i class="fa fa-plus"> Ajouter Un compte </i></button>
+                    </span>
                     <button class="btn btn-success rounded" routerLink="/GestionSFD" *ngIf="acteur=='SFD'">Gestion des SFD</button>
- <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
+                    <button class="btn btn-success rounded" routerLink="/GestionAdherents" *ngIf="acteur=='Adherent'">Gestion des Adherents</button>
+                    <button class="btn btn-success rounded" routerLink="/GestionPDV" *ngIf="acteur=='PDV'">Gestion des Points de ventes</button>
+ <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>--> 
                 </div>
             </div>
             <div class="row">
@@ -56,6 +64,7 @@
                   <div class="col-lg-12">
                     <div class="card p-0">
                      <div class="card-body table-responsive p-0">
+                    <span *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD_SELECT'">
                         <table class="table" *ngIf="acteur=='SFD'">
                           <thead class="blue-grey lighten-4">
                             <tr>
@@ -83,12 +92,12 @@
                           <td>
                           
                             <div class="btn-group" role="group">
-                               
+                               <span *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD_UPDATE'">
                                 <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
                                 <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)"><i class="fa fa-close">
-                                    </i></button>
-                                    <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'"><i class="fa fa-close" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)"><i class="fa fa-close"></i></button>
+                                <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'"><i class="fa fa-close" aria-hidden="true"></i></button>
+                               </span>
                                 <!-- <button type="button" class="btn btn-danger"(click)="delete(compte)"><i class="fa fa-close">
                                     </i></button> -->
                             </div>
@@ -97,6 +106,8 @@
                           </tr>
                          </tbody>
                         </table>
+                    </span>
+                    <span *HasAnyAuthority="'ROLE_GESTIONDESCOMPTEADHERENT_SELECT'">
                         <table class="table" *ngIf="acteur=='Adherent'">
                                 <thead class="blue-grey lighten-4">
                                   <tr>
@@ -124,15 +135,15 @@
                                 <td>
                                 
                                   <div class="btn-group" role="group">
-                                     
-                                      <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                      <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
-                                      <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)"><i class="fa fa-eye">
-                                          </i></button>
-                                          <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
-                                      <!-- <button type="button" class="btn btn-danger"(click)="delete(compte)"><i class="fa fa-close">
-                                          </i></button> -->
-                                  </div>
+                                     <span *HasAnyAuthority="'ROLE_GESTIONDESCOMPTEADHERENT_DELETE'">
+                                        <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                      </span>
+                                      <span *HasAnyAuthority="'ROLE_GESTIONDESCOMPTEADHERENT_UPDATE'">
+                                        <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)"><i class="fa fa-eye"></i></button>
+                                        <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
+                                      </span> 
+                                    </div>
                              
                               </td>
                                 </tr>
@@ -140,8 +151,10 @@
       
       
                                </tbody>
-                              </table>
-                              <table class="table" *ngIf="acteur=='PDV'">
+                        </table>
+                    </span>
+                    <span *HasAnyAuthority="'ROLE_GESTIONDESCOMPTEPDV_SELECT'">
+                        <table class="table" *ngIf="acteur=='PDV'">
                                     <thead class="blue-grey lighten-4">
                                       <tr>
                                         <th>num_compte</th>
@@ -184,7 +197,8 @@
           
           
                                    </tbody>
-                                  </table>
+                        </table>
+                    </span>
                         <!--Pagination
                         <ul class="pagination">
                           <li class="page-item"><a class="page-link" href="#">Prev</a></li>

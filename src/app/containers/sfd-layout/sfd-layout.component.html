@@ -38,10 +38,12 @@
                 <div class="card-body">
                     <div class="row float-right">
                         <div class="form-group">
-            <button class="btn btn-primary rounded" (click)="openAddSFDDialog()"><i class="fa fa-plus"></i> Ajouter SFD</button>
-            <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Active'" mdbRippleRadius (click)="getDesactivated()"><i class="fa fa-list" aria-hidden="true"></i> Historique</button>
-            <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Desactivated'" mdbRippleRadius (click)="getDesactivated()"><i class="fa fa-list" aria-hidden="true"></i> List Des SFD</button>
-            <button class="btn btn-success rounded" routerLink="/Comptes/SFD">Gestion des comptes</button>                  
+            <button class="btn btn-primary rounded" (click)="openAddSFDDialog()" *HasAnyAuthority="'ROLE_GESTIONSFD_ADD'"><i class="fa fa-plus"></i> Ajouter SFD</button>
+            <span *HasAnyAuthority="'ROLE_GESTIONSFD_SELECT'">
+                <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Active'" mdbRippleRadius (click)="getDesactivated()"><i class="fa fa-list" aria-hidden="true"></i> Historique</button>
+                <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Desactivated'" mdbRippleRadius (click)="getDesactivated()"><i class="fa fa-list" aria-hidden="true"></i> List Des SFD</button>
+            </span>
+            <button class="btn btn-success rounded" routerLink="/Comptes/SFD" *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD'">Gestion des comptes</button>                  
             <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
                       </div>
                     </div>
@@ -61,7 +63,7 @@
                     </form>
                     </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" *HasAnyAuthority="'ROLE_GESTIONSFD_SELECT'">
                       <div class="row mt-2">
                           <div class="col-lg-12">
                             <div class="card p-0">
@@ -90,13 +92,13 @@
                                   
                                     <div class="btn-group" role="group">
                                        
-                                        <button type="button" class="btn btn-info" (click)="update(sfd)"><i class="fa fa-pencil">
-                                            </i></button>
-                                        <button type="button" class="btn btn-default" routerLink="view/{{sfd.codesfd}}"><i class="fa fa-eye">
-                                            </i></button>
-                                            <button type="button" class="btn btn-info" (click)="Desactiver(sfd)" *ngIf="sfd.statutsfd=='Activé'" ><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-info" (click)="Activer(sfd)" *ngIf="sfd.statutsfd=='Désactivé'" ><i class="fa fa-unlock" aria-hidden="true"></i></button>
-                                    </div>
+                                        <button type="button" class="btn btn-info" (click)="update(sfd)" *HasAnyAuthority="'ROLE_GESTIONSFD_UPDATE'"><i class="fa fa-pencil" ></i></button>
+                                        <button type="button" class="btn btn-default" routerLink="view/{{sfd.codesfd}}"><i class="fa fa-eye"></i></button>
+                                <span *HasAnyAuthority="'ROLE_GESTIONSFD_DELETE'">
+                                        <button type="button" class="btn btn-info" (click)="Desactiver(sfd)" *ngIf="sfd.statutsfd=='Activé'" ><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-info" (click)="Activer(sfd)" *ngIf="sfd.statutsfd=='Désactivé'" ><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                </span>       
+                            </div>
                                
                                 </td>
                                   </tr>

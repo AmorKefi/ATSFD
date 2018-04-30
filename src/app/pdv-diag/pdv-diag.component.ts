@@ -38,7 +38,7 @@ export class PdvDiagComponent implements OnInit {
     this.data.sfd="Choisir un SFD";
     this.data.cptf="choisir un compte Financier";
     this.data.statutPdv="Activé";
-    this.data.typePdv="commerçant";
+    this.data.typePdv="commercant";
   }
   this.service.getResponsable().subscribe(res=>this.responsables=res,err=>console.log(err));
   }
@@ -52,6 +52,7 @@ export class PdvDiagComponent implements OnInit {
       form.value.cptf=null
     }
     form.value.sfd=this.sfds;
+
    this.service.Add(form.value).subscribe(res=>{
      this.diag.closeAll();
    },err=>console.log(err));

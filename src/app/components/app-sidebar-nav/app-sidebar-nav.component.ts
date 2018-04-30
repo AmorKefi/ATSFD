@@ -41,34 +41,43 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-sidebar-nav-item',
   template: `
-    <li *ngIf="!isDropdown(); else dropdown" [ngClass]="hasClass() ? 'nav-item ' + item.class : 'nav-item'">
-      <app-sidebar-nav-link [link]='item'></app-sidebar-nav-link>
+    <li  *ngIf="!isDropdown(); else dropdown" [ngClass]="hasClass() ? 'nav-item ' + item.class : 'nav-item'" >
+      <app-sidebar-nav-link *HasAnyAuthority="role" [link]='item'></app-sidebar-nav-link>
     </li>
     <ng-template #dropdown>
       <li [ngClass]="hasClass() ? 'nav-item nav-dropdown ' + item.class : 'nav-item nav-dropdown'"
           [class.open]="isActive()"
           routerLinkActive="open"
           appNavDropdown>
-        <app-sidebar-nav-dropdown [link]='item'></app-sidebar-nav-dropdown>
+        <app-sidebar-nav-dropdown *HasAnyAuthority="role" [link]='item'></app-sidebar-nav-dropdown>
       </li>
     </ng-template>
     `
 })
-export class AppSidebarNavItemComponent {
+export class AppSidebarNavItemComponent implements OnInit{
+ 
   @Input() item: any;
-
+  role;
+  ngOnInit(): void {
+    if(this.item != undefined){
+      this.role=this.item.role;
+      // console.log(this.role);
+    }
+  }
   public hasClass() {
     return this.item.class ? true : false
   }
 
   public isDropdown() {
+
     let authorities={
       sub:'',
       authorities:[]
     }
    authorities=jwt_decode(this.cookie.get('Token'));
   // console.log(authorities.authorities[0].authority);
-    if(this.item.children  && this.item.role.indexOf(authorities.authorities[0].authority)!=-1){
+  // && this.item.role.indexOf(authorities.authorities[0].authority)!=-1
+    if(this.item.children){
       return true;
     }else{
       return false;
@@ -97,7 +106,7 @@ export class AppSidebarNavItemComponent {
   {{ link.name }}
   <span *ngIf="isBadge()"<<<<<<<<<<<<<<<<<<<<< [ngClass]="'badge badge-' + link.badge.variant">{{ link.badge.text }}</span>
 </a>
-    <a *ngIf="!isExternalLink() && !isbutton() && granted()"
+    <a *ngIf="!isExternalLink() && !isbutton()"
       [ngClass]="hasVariant() ? 'nav-link nav-link-' + link.variant : 'nav-link'"
       routerLinkActive="active"
       [routerLink]="[link.url]">
@@ -117,15 +126,15 @@ export class AppSidebarNavItemComponent {
 export class AppSidebarNavLinkComponent {
   @Input() link: any;
   public granted(){
-    let authorities={
-      authorities:[]
-    }
-   authorities=jwt_decode(this.cookie.get('Token'));
-    if(this.link.role.indexOf(authorities.authorities[0].authority) != -1){
-        return true;
-            }else{
-              return false;
-            }
+  //   let authorities={
+  //     authorities:[]
+  //   }
+  //  authorities=jwt_decode(this.cookie.get('Token'));
+  //   if(this.link.role.indexOf(authorities.authorities[0].authority) != -1){
+  //       return true;
+  //           }else{
+  //             return false;
+  //           }
   }
   public hasVariant() {
     return this.link.variant ? true : false

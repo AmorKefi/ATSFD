@@ -43,6 +43,7 @@ export class AddRoleComponent implements OnInit {
 
   ngOnInit() {
     this.appFunctionService.getAllFunction().subscribe(res => this._parent= res);
+    this.selectParent=null;
     
   }
 

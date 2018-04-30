@@ -20,10 +20,7 @@ export class GestionAdminSfdComponent implements OnInit {
    ngOnInit() {
     
      this.userservice.getAllAdminSFD().subscribe(
-       res =>{ this.data=res;
-  
-       
-       console.log(res)},
+       res =>this.data=res,
        err => console.error(err),
        () => console.log('done loading all app-roles') 
      );

@@ -128,6 +128,8 @@ import { GestionAdherentComponent } from './gestion-adherent/gestion-adherent.co
 import { AdherentService } from './Services/adherent.service';
 import { GestionAdherentDiagComponent } from './gestion-adherent/gestion-adherent-diag/gestion-adherent-diag.component';
 import { DeleteAdherentComponent } from './gestion-adherent/delete-adherent/delete-adherent.component';
+import { HasAnyAuthorityDirective } from './guards/authorities/has-anhy-authority.directive';
+import { UserService } from './gestion_acces/login/user.sercice';
 
 
 
@@ -212,11 +214,12 @@ import { DeleteAdherentComponent } from './gestion-adherent/delete-adherent/dele
 
     GestionAdherentComponent,
     GestionAdherentDiagComponent,
-    DeleteAdherentComponent
+    DeleteAdherentComponent,
+    HasAnyAuthorityDirective
 
   
   ],
-  providers: [DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
+  providers: [UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],

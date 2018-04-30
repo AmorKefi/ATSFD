@@ -61,9 +61,9 @@
     
                                 
                 <div class="form-group col-5 mb-2">
-                                <select class="form-control col-10 mt-1 " formControlName="role"  (ngModelChange)="onChangeRole($event)" required> 
+                                <select class="form-control col-10 mt-1 " formControlName="role" [ngModel]="role" (ngModelChange)="onChangeRole($event)" required> 
                 
-                                                <option [value]="">sélectionner un rôle </option>
+                                                <option [value]="null">sélectionner un rôle </option>
                                                  <option *ngFor="let _role of _roles" [value]="_role.roleId"> {{_role.roleName}} </option> 
                          </select>     
                                               
@@ -76,8 +76,8 @@
 
                         
                 <div class="form-group col-5 mb-2">
-                                <select class="form-control col-10 mt-1 " formControlName="sfd"  (ngModelChange)="onChangeRole($event)" required> 
-                                       <option [value]="">sélectionnez un sfd </option>
+                                <select class="form-control col-10 mt-1 " formControlName="sfd" [ngModel]="sfd"  (ngModelChange)="onChangeRole($event)" required> 
+                                       <option [value]="null">sélectionnez un sfd</option>
                                        <option *ngFor="let s of sfds" [ngValue]="s"> {{s.nomsfd}} </option> 
                                 </select>  
                            </div>

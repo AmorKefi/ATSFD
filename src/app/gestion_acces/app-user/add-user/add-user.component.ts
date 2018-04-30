@@ -19,6 +19,7 @@ import { SfdserviceService } from '../../../Services/SFDService/sfdservice.servi
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
+  [x: string]: any;
   public form: FormGroup; // our model driven form
   public submitted: boolean; // keep track on whether form is submitted
   public events: any[] = []; // use later to display form changes
@@ -58,9 +59,11 @@ export class AddUserComponent implements OnInit {
                lastName: ['', [<any>Validators.required]],
                firstName: ['', [<any>Validators.required]],
               email: ['', [<any>Validators.required,<any>Validators.email]],
-              role:'',
+              role:[null,[<any>Validators.required]],
               sfd:['',[<any>Validators.required]]   
        });  
+       this.sfd=null;
+       this.role=null;
           this.appRoleService.getAllRoles2().subscribe(
            res=>res.map(x=>this._roles.push(x)),
             err => console.error(err),

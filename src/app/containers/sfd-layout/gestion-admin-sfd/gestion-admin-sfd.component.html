@@ -13,7 +13,7 @@
               <div class="card-body">
                   <div class="row float-right">
                       <div class="form-group">
-          <button class="btn stylish-color" (click)="ajouter()"><i class="fa fa-plus"></i> Ajouter Administrateur SFD</button> 
+          <button class="btn stylish-color" (click)="ajouter()" *HasAnyAuthority="'ROLE_GESTIONADMINISTRATEURSFD_ADD'"><i class="fa fa-plus"></i> Ajouter Administrateur SFD</button> 
           <button class=" btn blue darken-4"(click)="getDesactivated()" *ngIf="layout=='Activé'"><i class="fa fa-list" aria-hidden="true"></i> Historique</button>             
           <button class="btn blue darken-4"(click)="getDesactivated()" *ngIf="layout=='Desactivated'"><i class="fa fa-list" aria-hidden="true"></i> Liste Des Point de ventes</button> 
  
@@ -36,7 +36,7 @@
                       </form>
               </div>
               </div>
-              <div class="card-body">
+              <div class="card-body" *HasAnyAuthority="'ROLE_GESTIONADMINISTRATEURSFD_SELECT'">
                     <div class="row mt-2">
                         <div class="col-lg-12">
                           <div class="card p-0">

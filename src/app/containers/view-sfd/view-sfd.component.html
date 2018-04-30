@@ -18,8 +18,10 @@
       <div class="row justify-content-center">
         <div class="col-6">Status : </div><div class="col-3"><span *ngIf="SFD?.statutsfd=='Activé'" class="badge badge-success">{{SFD?.statutsfd}}</span><span *ngIf="SFD?.statutsfd=='désactivé'" class="badge badge-danger">{{SFD?.statutsfd}}</span></div>
         <div class="col-6">Email : </div><div class="col-3">{{SFD?.email}}</div>
-        <div class="col-6">Tel : </div><div class="col-3">{{SFD?.telsfd}}</div>
+        <div class="col-6">Telphone : </div><div class="col-3">{{SFD?.telsfd}}</div>
+        <div class="col-6">Telphone  : </div><div class="col-3">{{SFD?.telsfd2}}</div>
         <div class="col-6">Ville : </div><div class="col-3">{{SFD?.villesfd}}</div>
+        <div class="col-6">Matricule Fiscale : </div><div class="col-3">{{SFD?.matriculeFiscale}}</div>
         <div class="col-12 card-header m-0  font-weight-bold text-center mt-3">Responsables</div>
         <ul class="list-group col-12">
             <li class="list-group-item" *ngFor="let Resp of responsable">{{Resp?.firstName +" "+Resp?.lastName | uppercase}}</li>

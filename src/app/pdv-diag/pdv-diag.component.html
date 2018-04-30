@@ -53,12 +53,26 @@
                            <option [ng-value]="desactive">Désactivé</option>
                        </select> -->
                                            <!-- </div> -->
-                                           <div class="form-group col-5 mb-2">
+                                           <!-- <div class="form-group col-5 mb-2" *ngIf="data?.caller == 'Modifier'">
                                                <select name="typePdv" class="form-control col-10" [ngModel]="data?.pdv?.typePdv" #typePdv="ngModel" required>
                                                    <option [ng-value]="commercant">commerçant</option>
                                                    <option [ng-value]="agence">agence</option>
                                                </select>
                                            </div>
+                                           <div class="form-group col-5 mb-2" *ngIf="data?.caller == 'Ajouter'">
+                                            <select name="typePdv" class="form-control col-10" [ngModel]="data?.typePdv" #typePdv="ngModel" required>
+                                                <option [ng-value]="commercant">commerçant</option>
+                                                <option [ng-value]="agence">agence</option>
+                                            </select>
+                                        </div> -->
+                                        <div class="form-check mr-1">
+                                          <input class="form-check-input" mdbInputDirective name="typePdv" [ngModel]="data?.pdv?.typePdv"  value="commerce" type="radio" id="radio1" checked="data?.pdv?.typePdv == 'commerce'">
+                                          <label class="form-check-label" for="radio1">Commerce</label>
+                                        </div>
+                                        <div class="form-check">
+                                          <input class="form-check-input" mdbInputDirective name="typePdv" [ngModel]="data?.pdv?.typePdv" type="radio" id="radio2" value="agence" checked="data?.pdv?.typePdv == 'agence'">
+                                          <label class="form-check-label" for="radio2">Agence</label>
+                                        </div>
                                            <!-- <div class="form-group col-5 mb-2">
                                                   <input type="text" name="sfd" class="form-control col-10" [(ngModel)]="sfds.codesfd" #sfd="ngModel" required hidden>
                                                </div> -->

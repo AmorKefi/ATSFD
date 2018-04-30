@@ -23,7 +23,7 @@
                   <tr>
                     <td>
                         <select class="form-control " id="selectParent" required [(ngModel)]="selectParent" name="selectedParent" #selectedParent="ngModel" (ngModelChange)="onChangeParent($event)">
-                                <option [value]="">Select parent</option> 
+                                <option [value]="null">Selectionnez une fonction</option> 
                                 <option *ngFor="let _p of _parent" [value]="_p.functionId"> {{_p.functionName}} </option>
                         </select>
                     </td>
