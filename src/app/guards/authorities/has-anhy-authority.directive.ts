@@ -43,7 +43,6 @@ export class HasAnyAuthorityDirective implements OnInit{
     hasAnyAuthorityDirect(): boolean {
        // console.log(this.authorities);
          let x=this.userAuthorities=this.userService.getAuthorities();
-         console.log(x);
          if(this.authorities.length>0){
         for (let i = 0; i < this.authorities.length; i++) {
             if(this.userService.getAuthorities().some(el => el.authority === this.authorities[i])){

@@ -16,18 +16,15 @@ export const navigation = [
       role:['ROLE_GESTIONSFD']
     },
     {
-
       name: 'Gestion des agents',
       url: '/GestionDesAgents',
       icon: 'fa fa-users',
-
       role:['ROLE_GESTIONDESAGENTS']
     },
     {
       name: 'Gestion des administrateurs SFD',
       url: '/GestionDesAdmin',
       icon: 'fa fa-users',
-
       role:['ROLE_GESTIONADMINISTRATEURSFD']
     },
     
@@ -52,26 +49,24 @@ export const navigation = [
   icon: 'fa fa-users',
   role:['ROLE_GESTIONDESRESPONSABLEPDV']
 },
-{name: 'Gestion Point de vente',
-url: '/GestionPDV',
-icon: 'fa fa-institution',
-role:['ROLE_GESTIONDESPDV']
+{
+  name: 'Gestion Point de vente',
+  url: '/GestionPDV',
+  icon: 'fa fa-institution',
+  role:['ROLE_GESTIONDESPDV']
 }
       ]
     },
    {
-    name: 'Gestion des accès',
-    url: '/GestionAccès',
-    icon: 'fa fa-key',
-    role:['ROLE_GESTIONDESACCES']
-    , children: [
-
-      { name: 'Gestion des utilisateurs', url: '/GestionAccès', icon: 'fa fa-user',role:['ROLE_GESTIONDESACCES']},
-      { name: 'Gestion des rôles', url: '/GestionRoles', icon: 'fa fa-address-card',role:['ROLE_GESTIONDESACCES']  },
-      { name: 'Gestion des fonctions', url: '/GestionFontions', icon: 'fa fa-eye',role:['ROLE_GESTIONDESACCES']  },
-
-    ]},
-
+  name: 'Gestion des accès',
+  url: '/GestionAccès',
+  icon: 'fa fa-key',
+  role:['ROLE_GESTIONDESACCES']
+  , children: [
+    { name: 'Gestion des utilisateurs', url: '/GestionAccès', icon: 'fa fa-user',role:['ROLE_GESTIONDESACCES']},
+    { name: 'Gestion des rôles', url: '/GestionRoles', icon: 'fa fa-address-card',role:['ROLE_GESTIONDESACCES']  },
+    { name: 'Gestion des fonctions', url: '/GestionFontions', icon: 'fa fa-eye',role:['ROLE_GESTIONDESACCES']  },
+  ]},
     {
       name: 'Statistiques',
       url: '/Statistiques',

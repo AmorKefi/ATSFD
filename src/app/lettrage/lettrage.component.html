@@ -1,0 +1,120 @@
+<app-header></app-header>
+<div class="app-body">
+  <app-sidebar></app-sidebar>
+  <!-- Main content -->
+ <main class="main">
+    <!-- Breadcrumb -->
+   <ol class="breadcrumb">
+      <app-breadcrumbs></app-breadcrumbs>
+    </ol>
+    <div class="row">
+      <div class="col-lg-12">
+          <div class="card mb-3">
+              <div class="card-header font-weight-bold">Critères de recherche</div>
+              <div class="card-body">
+                  <form class="form-inline mb-2" #form="ngForm" (ngSubmit)="search(form.value)">
+                      <div class="form-group col-8">
+                          <label for="Jeton" class="font-weight-bold"> Jeton : </label> 
+                          <input type="text" id="Jeton" class="form-control col-6 rounded" placeholder="Jeton de transaction" ngModel #Jeton="ngModel" name="Jeton" >
+                      </div>  
+                            <div class="form-groupe col-3">
+                                  <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
+                            </div>                       
+                  </form>                   
+              </div>
+          </div>
+      </div>
+  </div>
+    <div class="card p-0 col-12 mb-3">
+        <div class="card-header font-weight-bold">Liste des Lettrage</div>
+        <div class="card-body">
+            <div class="row float-right">
+                <div class="form-group">
+
+ <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>--> 
+                </div>
+            </div>
+            <div class="row">
+                <form class="form-inline">
+            <div class="form-group ">
+                <label class="mr-2">Afficher:</label>
+                <select class="form-control mr-2" #t (change)="sortBy(t)">
+                    <option [ng-value]=""></option>
+                    <option [ng-value]="10">10</option>
+                    <option [ng-value]="5">5</option>
+                    <option [ng-value]="3">3</option>
+                  </select>
+                  <label>éléments</label>
+                </div>
+             
+        </form>
+        </div>
+            </div>
+            <div class="card-body ">
+              <div class="row mt-2">
+                  <div class="col-lg-12">
+                    <div class="card p-0">
+                     <div class="card-body table-responsive p-0">
+                        <!-- *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD_SELECT'" -->
+                        <table class="table">
+                          <thead class="blue-grey lighten-4">
+                            <tr>
+                              <th>id Lettrage</th>
+                              <th>id CashIn</th>
+                              <th>id CashOut</th>
+                              <th>Etat</th>
+                            </tr>
+                          </thead>
+                         <tbody>
+                          <tr *ngFor="let Lettrage of Lettrages">
+                              <td>{{Lettrage.idLettrage}}</td>
+                          <td >{{Lettrage.cashIn}}</td>
+                          <td>{{Lettrage.cashOut}}</td>
+                          <td>
+                              <span *ngIf="Lettrage.etat=='Payer'" class="badge badge-success">{{Lettrage.etat}}</span>
+                              <span *ngIf="Lettrage.etat=='Annuler'" class="badge badge-danger">{{Lettrage.etat}}</span>
+                              <span *ngIf="Lettrage.etat=='EnCours'" class="badge badge-warning">{{Lettrage.etat}}</span>  
+                          </td>
+                          <!-- <td>
+                            <div class="btn-group" role="group">
+                               <span *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD_UPDATE'">
+                                <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)"><i class="fa fa-close"></i></button>
+                                <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'"><i class="fa fa-close" aria-hidden="true"></i></button>
+                               </span>
+                                <button type="button" class="btn btn-danger"(click)="delete(compte)"><i class="fa fa-close">
+                                    </i></button>
+                            </div>
+                        </td> -->
+                          </tr>
+                         </tbody>
+                        </table>
+                        <!--Pagination
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                          <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item"><a class="page-link" href="#">4</a></li>
+                          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>-->
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          
+        </div>
+    </div>
+
+
+    
+    <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div><!-- /.conainer-fluid -->
+    </main>
+    <app-aside></app-aside>
+  </div>
+  <app-footer></app-footer>

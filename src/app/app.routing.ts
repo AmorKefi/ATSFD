@@ -29,6 +29,7 @@ import { GestionAdminSfdComponent } from './containers/sfd-layout/gestion-admin-
 import { AgentsComponent } from './point-de-vente/agents/agents.component';
 
 import { GestionAdherentComponent } from './gestion-adherent/gestion-adherent.component';
+import { LettrageComponent } from './lettrage/lettrage.component';
 
 
 export const routes: Routes = [
@@ -107,6 +108,11 @@ export const routes: Routes = [
 
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: UserDesactivesComponent
+  },
+  {
+    path : 'Lettrage',
+    canActivate : [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+    component: LettrageComponent
   },
   {
     path: 'GestionParamètresGlobaux',

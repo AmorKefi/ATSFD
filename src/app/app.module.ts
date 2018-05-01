@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AlwaysAuthGuard } from './guard/AlwaysAuthGuard';
 import { OnlyLoggedInUsersGuard } from './guard/OnlyLoggedInUsersGuard';
-import { AppSidebarMinimizerComponent } from 'app/components/app-sidebar-minimizer/app-sidebar-minimizer.component';
+//import { AppSidebarMinimizerComponent } from 'app/components/app-sidebar-minimizer/app-sidebar-minimizer.component';
 import { AuthServiceService } from './Services/AuthService/auth-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
@@ -43,7 +43,7 @@ const APP_COMPONENTS = [
   AppSidebarComponent,
   AppSidebarFooterComponent,
   APP_SIDEBAR_NAV,
-  AppSidebarMinimizerComponent
+ // AppSidebarMinimizerComponent
 ]
 
 // Import directives
@@ -130,6 +130,8 @@ import { GestionAdherentDiagComponent } from './gestion-adherent/gestion-adheren
 import { DeleteAdherentComponent } from './gestion-adherent/delete-adherent/delete-adherent.component';
 import { HasAnyAuthorityDirective } from './guards/authorities/has-anhy-authority.directive';
 import { UserService } from './gestion_acces/login/user.sercice';
+import { LettrageComponent } from './lettrage/lettrage.component';
+import { LettrageService } from './Services/LettrageService/lettrage.service';
 
 
 
@@ -215,11 +217,12 @@ import { UserService } from './gestion_acces/login/user.sercice';
     GestionAdherentComponent,
     GestionAdherentDiagComponent,
     DeleteAdherentComponent,
-    HasAnyAuthorityDirective
+    HasAnyAuthorityDirective,
+    LettrageComponent
 
   
   ],
-  providers: [UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
+  providers: [LettrageService,UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
