@@ -162,7 +162,7 @@
                                         <th>date_creation</th>
                                         <th>solde</th>
                                         <th>statut_compte</th>
-                                        <th>Nom SFD</th>
+                                        <th>Nom PDV</th>
                                         <th>Actions</th>
                                       </tr>
                                     </thead>
@@ -177,7 +177,7 @@
                                         <span *ngIf="compte.statutCompte=='Désactivé'" class="badge badge-danger">{{compte.statutCompte}}</span>
                                         <span *ngIf="compte.statutCompte=='Bloqué'" class="badge badge-warning">{{compte.statutCompte}}</span>  
                                   </td>
-                                  <td>{{compte?.sfd?.nomsfd}}</td>
+                                  <td>{{compte?.pdv?.nomPdv}}</td>
                                     <td>
                                     
                                       <div class="btn-group" role="group">
