@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 import { AppUserService } from '../../../gestion_acces/app-user/app-user.service';
 import { AppRoleService } from '../../../gestion_acces/app-role/app-role.service';
+import { PdvServiceService } from '../../../Services/pdvService/pdv-service.service';
 
 @Component({
   selector: 'app-add-agent',
@@ -28,6 +29,7 @@ export class AddAgentComponent implements OnInit {
   private idNewRole:number;// id of the selected role
   private userRoles:Array<RoleApp>=new Array<RoleApp>();// the new use roles
   private roleList:string='List des Roles';
+  private pdvs : any;
 
 
 
@@ -36,6 +38,7 @@ export class AddAgentComponent implements OnInit {
               private _fb: FormBuilder,
               private route:Router,
               private dialogRef: MatDialogRef<AddAgentComponent>,
+              private pdvservice:PdvServiceService,
               @Inject(MAT_DIALOG_DATA) data) { 
                 this.user.roles=new Array<RoleApp>();
     
@@ -57,11 +60,11 @@ export class AddAgentComponent implements OnInit {
                lastName: ['', [<any>Validators.required]],
                firstName: ['', [<any>Validators.required]],
               email: ['', [<any>Validators.required,<any>Validators.email]],
-              role:''
-           
+              role:'',
+              pdv:''  
        });  
 
-
+          this.pdvservice.getAll().subscribe(res=>this.pdvs=res,err=>console.log(err));
           this.appRoleService.getAllRolesAgent().subscribe(
            res=>res.map(x=>this._roles.push(x)),
             err => console.error(err),
@@ -108,7 +111,9 @@ export class AddAgentComponent implements OnInit {
      this.user.email=model.email;
      this.user.image=model.image;
      this.user.statut="Activé";
-
+     this.user.pdv={
+       codePdv:model.pdv
+      };
       console.log(this.user);
    
      //this.user.roles=new Array<RoleApp>();

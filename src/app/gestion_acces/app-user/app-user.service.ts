@@ -19,7 +19,11 @@ export class AppUserService implements OnInit {
     ngOnInit(): void {
        // throw new Error("Method not implemented.");
     }
-
+    getUserbySSo(ssoId){
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
+        headers.append('Content-Type', 'application/json')
+        return this.http.post(`${this.apiUrl.transactionURL}getbysso`,ssoId,{ headers });
+    }
     getAllUsers(){
     
         const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token );
@@ -126,4 +130,5 @@ export class AppUserService implements OnInit {
         headers.append('Content-Type', 'application/json')
         return this.http.get(`${this.apiUrl.transactionURL}getALLAdminSFD`, { headers });
     }
+    
 }

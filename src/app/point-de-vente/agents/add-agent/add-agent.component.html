@@ -74,6 +74,13 @@
 
                   </div> 
 
+                  <div class="form-group col-5 mb-2">
+                                <select class="form-control col-5 mt-1 " formControlName="pdv"  required> 
+          
+                                                <option [value]="">sélectionner un point de vente </option>
+                                                 <option *ngFor="let pdv of pdvs" [value]="pdv.codePdv"> {{pdv.nomPdv}} </option> 
+                         </select>          
+        </div>
                   
 
       </form>
