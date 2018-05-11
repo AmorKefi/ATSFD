@@ -84,4 +84,14 @@ export class SfdserviceService {
     headers.append('content-type','application/json');
     return this.http.post('http://127.0.0.1:8080/sfd/getByssoId',ssoId,{headers})
   }
+  getCompte(id){
+    const headers = new HttpHeaders().set('X-Auth-Token',JSON.parse(this.Token).token);
+    headers.append('content-type','application/json');
+    return this.http.post('http://127.0.0.1:8080/sfd/getCompte',id,{headers})
+  }
+  getpdv(id){
+    const headers = new HttpHeaders().set('X-Auth-Token',JSON.parse(this.Token).token);
+    headers.append('content-type','application/json');
+    return this.http.post('http://127.0.0.1:8080/sfd/getpdv',id,{headers})
+  }
 }

@@ -14,11 +14,14 @@ export class ViewSfdComponent implements OnInit {
   ID;
   SFD;
   responsable:any;
+  compteFinancier:any;
+  pdv:any;
   ngOnInit() {
     this.route.params.subscribe(params=>this.ID=params.id);
     this.sfd.getbyId(this.ID).subscribe(res=>this.SFD=res,err=>console.log(err));
-    this.sfd.getResponsableSFD(this.ID).subscribe(res=>{this.responsable=res;
-    console.log(res)},err=>console.log(err));
+    this.sfd.getResponsableSFD(this.ID).subscribe(res=>{this.responsable=res},err=>console.log(err));
+    this.sfd.getCompte(this.ID).subscribe(res=>{console.log(res);this.compteFinancier=res},err=>console.log(err));
+    this.sfd.getpdv(this.ID).subscribe(res=>this.pdv=res,err=>console.log(err));
   }
   back(){
   this.location.back();
