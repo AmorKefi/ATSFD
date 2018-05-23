@@ -13,7 +13,11 @@ export class SfdserviceService {
     firstName:'',
     lastName:''
   }
-
+  count(){
+    const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
+    headers.append('content-type', 'application/json')
+    return this.http.get<number>('http://127.0.0.1:8080/sfd/count',{headers})
+  }
   getAll(){
     const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
     headers.append('content-type', 'application/json')

@@ -7,6 +7,11 @@ export class AdherentService {
 
   constructor(private http : HttpClient, private cookie: CookieService) { }
   Token = this.cookie.get('Token');
+  count(){
+    const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
+    headers.append('content-type', 'application/json')
+    return this.http.get<number>('http://127.0.0.1:8080/adherent/count',{headers});
+  }
   getAll(){
     const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
     headers.append('content-type', 'application/json')

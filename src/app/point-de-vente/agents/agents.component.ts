@@ -20,12 +20,8 @@ export class AgentsComponent implements OnInit {
    ngOnInit() {
     
      this.userservice.getAllAgents().subscribe(
-       res =>{ this.data=res;
-  
-       
-       console.log(res)},
+       res =>{ this.data=res},
        err => console.error(err),
-       () => console.log('done loading all app-roles') 
      );
    }
    
@@ -90,6 +86,5 @@ export class AgentsComponent implements OnInit {
      Activer(event){
        this.userservice.ActiverUser(event).subscribe(res=>this.ngOnInit(),err=>console.log(err));
      }
-
 
 }

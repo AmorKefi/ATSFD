@@ -59,7 +59,7 @@ export class AddAgentComponent implements OnInit {
              password: ['', [<any>Validators.required]],
                lastName: ['', [<any>Validators.required]],
                firstName: ['', [<any>Validators.required]],
-              email: ['', [<any>Validators.required,<any>Validators.email]],
+              email: ['', [<any>Validators.email]],
               role:'',
               pdv:''  
        });  
@@ -68,14 +68,14 @@ export class AddAgentComponent implements OnInit {
           this.appRoleService.getAllRolesAgent().subscribe(
            res=>res.map(x=>this._roles.push(x)),
             err => console.error(err),
-            () => console.log('done loading all app-roles',) 
+           
           );
   }
 
   selectParent:String='Parent';
    onChangeRole(value){
     this.idNewRole=value;
-    console.log(this.idNewRole);
+ 
   }
 
   addUserRole(){
@@ -113,12 +113,9 @@ export class AddAgentComponent implements OnInit {
      this.user.statut="Activé";
      this.user.pdv={
        codePdv:model.pdv
-      };
-      console.log(this.user);
-   
+      };   
      //this.user.roles=new Array<RoleApp>();
      //this._roles.map(x=>this.user.roles.push(x));
-
      this.appUserService.addResponsable(this.user).subscribe(
        res=>{
         let div= document.getElementById('Message');
@@ -140,7 +137,6 @@ export class AddAgentComponent implements OnInit {
            div.classList.remove('animate');
          },4000)
        },
-       ()=>console.log('we added the user => '+ model)
      )
 
  }

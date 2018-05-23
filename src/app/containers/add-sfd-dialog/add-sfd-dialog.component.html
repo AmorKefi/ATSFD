@@ -48,7 +48,7 @@
         </div>
         <div class="form-group col-3">
           <label for="telsfd" class="font-weight-bold">Telephone 2</label>
-            <input type="text" class="form-control col-10" id="telsfd" placeholder="Telephone 2" name="telsfd2" [ngModel]="data?.telsfd2" #telsfd2="ngModel" required pattern="[0-9]*" minlength="8">
+            <input type="text" class="form-control col-10" id="telsfd" placeholder="Telephone 2" name="telsfd2" [ngModel]="data?.telsfd2" #telsfd2="ngModel"  pattern="[0-9]*">
             <div class="text-danger" *ngIf="telsfd2.invalid && (telsfd2.dirty || telsfd2.touched)">
               <div *ngIf="telsfd2.errors.minlength || telsfd2.errors.pattern">
                 numéro Invalid
@@ -97,18 +97,23 @@
           <div class="alert alert-danger " style="display: none" id="error"></div>
           <form #form="ngForm" class="form-inline">
               <div  class="form-group col-5"  *ngIf="data?.caller !='Modifier SFD'" >
+              <label for="codeSfd" class="font-weight-bold">code Sfd</label>
                   <input type="text" class="form-control col-10 has-danger" placeholder="code SFD" id="codeSfd" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required>  
                 </div>
             <div class="form-group col-5">
+            <label for="NomSFD" class="font-weight-bold">Nom SFD</label>
                 <input type="text" class="form-control col-10" placeholder="Nom SFD" id="NomSFD" name="nomsfd" [ngModel]="data?.nomsfd" #nomsfd="ngModel" required>
             </div>
             <div class="form-group col-5">
+            <label for="Raisonsocial" class="font-weight-bold">Raison social</label>
                 <input type="text" class="form-control col-10" placeholder="raison sociale" id="Raisonsocial" name="raisonsociale" [ngModel]="data?.raisonsociale" #raisonsocial="ngModel" required>
               </div>
             <div class="form-group col-5">
+            <label for="AdresseSFD" class="font-weight-bold">Adresse SFD</label>
                 <input type="text" class="form-control col-10" placeholder="Adresse SFD"  id="AdresseSFD" name="adressesfd" [ngModel]="data?.adressesfd" #adressesfd="ngModel" required>
               </div>
             <div class="form-group col-5">
+            <label for="Email" class="font-weight-bold">Email</label>
                 <input type="email" id="Email" class="form-control col-10" placeholder="Email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [ngModel]="data?.email" #email="ngModel" required>
                 <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
                     <div *ngIf="email.errors.pattern">
@@ -123,6 +128,7 @@
                 </select>
             </div> -->
             <div class="form-group col-5">
+            <label for="telsfd" class="font-weight-bold">tel sfd</label>
                 <input type="text" class="form-control col-10" id="telsfd" placeholder="Telephone" name="telsfd" [ngModel]="data?.telsfd" #telsfd="ngModel" required pattern="[0-9]*" minlength="8" maxlength="12">
                 <div class="text-danger" *ngIf="telsfd.invalid && (telsfd.dirty || telsfd.touched)">
                   <div *ngIf="telsfd.errors.minlength || telsfd.errors.pattern">
@@ -131,7 +137,8 @@
                 </div>
               </div>
               <div class="form-group col-5">
-                  <input type="text" class="form-control col-10" id="telsfd" placeholder="Telephone 2" name="telsfd2" [ngModel]="data?.telsfd2" #telsfd2="ngModel" required pattern="[0-9]*" minlength="8" maxlength="12">
+               <label for="telsfd2" class="font-weight-bold">tel sfd 2</label>
+                  <input type="text" class="form-control col-10" id="telsfd2" placeholder="Telephone 2" name="telsfd2" [ngModel]="data?.telsfd2" #telsfd2="ngModel" required pattern="[0-9]*" minlength="8" maxlength="12">
                   <div class="text-danger" *ngIf="telsfd2.invalid && (telsfd2.dirty || telsfd2.touched)">
                     <div *ngIf="telsfd2.errors.minlength || telsfd2.errors.pattern">
                       numéro Invalid
@@ -139,10 +146,12 @@
                   </div>
                 </div>
             <div class="form-group col-5">
+            <label for="Villesfd" class="font-weight-bold">Ville sfd</label>
                 <input type="text" class="form-control col-10" placeholder="Ville" name="villesfd" id="Villesfd" [ngModel]="data?.villesfd" #villesfd="ngModel" required>
       
             </div>
             <div class="form-group col-5">
+            <label for="matriculeFiscale" class="font-weight-bold">matricule Fiscale</label>
                 <input type="text" class="form-control col-10" id="matriculeFiscale" placeholder="matriculeFiscale" name="matriculeFiscale" [ngModel]="data?.matriculeFiscale" #matriculeFiscale="ngModel" required>
       
             </div>

@@ -34,12 +34,12 @@
               <div class="card-body">
                   <div class="row float-right">
                       <div class="form-group">
-          <button class="btn btn-primary rounded" (click)="ajouter()" *HasAnyAuthority="'ROLE_GESTIONDESPDV_ADD'"><i class="fa fa-plus"></i> Ajouter Point De Vente</button>
+          <button class="btn btn-primary rounded" (click)="ajouter()" *HasAnyAuthority="'ROLE_GESTIONDESPDV_ADD'"><i class="fa fa-plus"></i></button>
           <span *HasAnyAuthority="'ROLE_GESTIONDESPDV_SELECT'"> 
-            <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Active'"><i class="fa fa-list" aria-hidden="true"></i> Historique</button>             
-            <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Desactive'"><i class="fa fa-list" aria-hidden="true"></i> Liste Des Point de ventes</button>
+            <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Active'"  mdbTooltip="Historique" placement="top"><i class="fa fa-list" aria-hidden="true"></i></button>             
+            <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Desactive'"><i class="fa fa-list" aria-hidden="true"  mdbTooltip="Liste Des Point de ventes" placement="top"></i> Liste Des Point de ventes</button>
           </span>
-          <button class="btn btn-success rounded" routerLink="/Comptes/PDV" *HasAnyAuthority="'ROLE_GESTIONDESCOMPTEPDV'">Gestion des comptes</button> 
+          <button class="btn btn-success rounded" routerLink="/Comptes/PDV" *HasAnyAuthority="'ROLE_GESTIONDESCOMPTEPDV'"  mdbTooltip="Gestion des comptes" placement="top">Gestion des comptes</button> 
           
        <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
                     </div>
@@ -91,11 +91,11 @@
                                 
                                   <div class="btn-group" role="group">
                                      
-                                      <button *HasAnyAuthority="'ROLE_GESTIONDESPDV_UPDATE'" type="button" class="btn btn-info" (click)="update(pdv)"><i class="fa fa-pencil"></i></button>
-                                      <button *HasAnyAuthority="'ROLE_GESTIONDESPDV_SELECT'" type="button" class="btn btn-default" routerLink="view/{{pdv.codePdv}}"><i class="fa fa-eye"></i></button>
+                                      <button *HasAnyAuthority="'ROLE_GESTIONDESPDV_UPDATE'" type="button" class="btn btn-info" (click)="update(pdv)"  mdbTooltip="Modifier" placement="top"><i class="fa fa-pencil"></i></button>
+                                      <button *HasAnyAuthority="'ROLE_GESTIONDESPDV_SELECT'" type="button" class="btn btn-default" routerLink="view/{{pdv.codePdv}}"  mdbTooltip="Consulter" placement="top"><i class="fa fa-eye"></i></button>
                                    <span *HasAnyAuthority="'ROLE_GESTIONPDV_DELETE'">    
-                                      <button type="button" class="btn btn-info" (click)="Desactiver(pdv)" *ngIf="pdv.statutPdv!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                      <button type="button" class="btn btn-info" (click)="Activer(pdv)" *ngIf="pdv.statutPdv=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                      <button type="button" class="btn btn-info" (click)="Desactiver(pdv)" *ngIf="pdv.statutPdv!='Désactivé'"  mdbTooltip="Désactiver" placement="top"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                      <button type="button" class="btn btn-info" (click)="Activer(pdv)" *ngIf="pdv.statutPdv=='Désactivé'"  mdbTooltip="Activer" placement="top"><i class="fa fa-unlock" aria-hidden="true"></i></button>
                                    </span>
                                     </div>
                              

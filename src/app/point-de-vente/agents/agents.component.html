@@ -13,9 +13,9 @@
               <div class="card-body">
                   <div class="row float-right">
                       <div class="form-group">
-          <button class="btn stylish-color" (click)="ajouter()"><i class="fa fa-plus"></i> Ajouter un agent</button> 
-          <button class=" btn blue darken-4"(click)="getDesactivated()" *ngIf="layout=='Activé'"><i class="fa fa-list" aria-hidden="true"></i> Historique</button>             
-          <button class="btn blue darken-4"(click)="getDesactivated()" *ngIf="layout=='Desactivated'"><i class="fa fa-list" aria-hidden="true"></i> Liste Des Point de ventes</button> 
+          <button class="btn stylish-color" (click)="ajouter()"  mdbTooltip="Ajouter un agent" placement="top"><i class="fa fa-plus"></i></button> 
+          <button class=" btn blue darken-4"(click)="getDesactivated()" *ngIf="layout=='Activé'" mdbTooltip="Historique" placement="top"><i class="fa fa-list" aria-hidden="true"></i></button>             
+          <button class="btn blue darken-4"(click)="getDesactivated()" *ngIf="layout=='Desactivated'" mdbTooltip="Liste Des Point de ventes" placement="top"><i class="fa fa-list" aria-hidden="true"></i> Liste Des Point de ventes</button> 
  
           
        <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
@@ -67,10 +67,10 @@
                                 
                                   <div class="btn-group" role="group">
                                      
-                                      <button type="button" class="btn blue darken-4 rounded" (click)="modifier(user)" ><i class="fa fa-pencil">
+                                      <button type="button" class="btn blue darken-4 rounded" (click)="modifier(user)"  mdbTooltip="Modifier" placement="top" ><i class="fa fa-pencil">
                                           </i></button>
-                                      <button type="button" class="btn danger-color-dark rounded" (click)="Desactivate(user)" *ngIf="user.statut!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                      <button type="button" class="btn success-color-dark rounded" (click)="Activer(user)" *ngIf="user.statut=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                      <button type="button" class="btn danger-color-dark rounded" (click)="Desactivate(user)" *ngIf="user.statut!='Désactivé'"  mdbTooltip="Désactiver" placement="top"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                      <button type="button" class="btn success-color-dark rounded" (click)="Activer(user)" *ngIf="user.statut=='Désactivé'"  mdbTooltip="Activer" placement="top"><i class="fa fa-unlock" aria-hidden="true"></i></button>
                                   </div>
                              
                               </td>

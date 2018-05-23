@@ -55,6 +55,11 @@
                                           <input class="form-check-input" mdbInputDirective name="typePdv" [ngModel]="data?.pdv?.typePdv" type="radio" id="radio2" value="agence" checked="data?.pdv?.typePdv == 'agence'">
                                           <label class="form-check-label" for="radio2">Agence</label>
                                         </div>
+                                        <div class="form-group col-5 mb-2">
+                                          <select name="responsable" class="form-control" [ngModel]="data?.pdv?.responsable" #responsable="ngModel">
+                                            <option *ngFor="let responsable of responsables" [ngValue]="responsable">{{responsable.firstName+""+responsable.lastName}}</option>
+                                          </select>
+                                        </div>
                 </form>
   </div>
   <div class="card-footer cyan darken-2  p-0">

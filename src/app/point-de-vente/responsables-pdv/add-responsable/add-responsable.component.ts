@@ -62,7 +62,6 @@ export class AddResponsableComponent implements OnInit {
                firstName: ['', [<any>Validators.required]],
               email: ['', [<any>Validators.required,<any>Validators.email]],
               role:'',
-              pdv:['',[<any>Validators.required]]
            
        });  
           this.appRoleService.getAllRolesResponsables().subscribe(
@@ -112,7 +111,6 @@ export class AddResponsableComponent implements OnInit {
      this.user.email=model.email;
      this.user.image=model.image;
      this.user.statut="Activé";
-     this.user.pdv=model.pdv;
 
       console.log(this.user);
    

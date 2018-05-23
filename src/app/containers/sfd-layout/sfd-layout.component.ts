@@ -69,13 +69,13 @@ export class SfdLayoutComponent implements OnInit{
       caller:'Activer',
       sfd
     }
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.height = 'auto';
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.height = 'auto';
   dialogConfig.width = "auto";
   dialogConfig.data = datal;
   this.dialog.open(DeletediagComponent,dialogConfig);
   this.dialog.afterAllClosed.subscribe(res=>{
-    this.ngOnInit()
+  this.ngOnInit()
   });
 
   }
@@ -84,14 +84,14 @@ export class SfdLayoutComponent implements OnInit{
     if(filter.Code=="" && filter.Nom==""){
       this.ngOnInit();
     }else{
-    let req = {
-      codesfd :"",
-      nomsfd:""
+      let req = {
+      codesfd :null,
+      nomsfd:null
     };
-    if(filter.Code && filter.Nom){
+    if(filter.Code!="" && filter.Nom!=""){
       req.codesfd=filter.Code;
       req.nomsfd=filter.Nom
-    }else if (filter.Nom){
+    }else if (filter.Nom!=""){
       req.nomsfd=filter.Nom
     }else {
       req.codesfd=filter.Code;
