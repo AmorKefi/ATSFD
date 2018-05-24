@@ -134,6 +134,9 @@ import { LettrageComponent } from './lettrage/lettrage.component';
 import { LettrageService } from './Services/LettrageService/lettrage.service';
 import { ShowfunctionroleComponent } from './gestion_acces/app-role/showfunctionrole/showfunctionrole.component';
 
+import { ViewpdvComponent } from './viewpdv/viewpdv.component';
+
+
 
 
 @NgModule({
@@ -220,7 +223,11 @@ import { ShowfunctionroleComponent } from './gestion_acces/app-role/showfunction
     DeleteAdherentComponent,
     HasAnyAuthorityDirective,
     LettrageComponent,
-    ShowfunctionroleComponent
+
+    ShowfunctionroleComponent,
+
+    ViewpdvComponent
+
 
   
   ],

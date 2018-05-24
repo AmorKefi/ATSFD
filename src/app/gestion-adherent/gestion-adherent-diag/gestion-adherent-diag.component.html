@@ -1,5 +1,5 @@
 <div class="card col-12 p-0 m-0">
-  <div class="card-header cyan darken-2 text-center font-weight-bold">{{data?.caller}}</div>
+  <div class="card-header cyan darken-2 text-center font-weight-bold">{{data?.caller}} Adherent</div>
   <div class="card-body ">
     <form #form="ngForm" class="form-inline">
       <!-- <div class="form-group col-4">
@@ -9,13 +9,13 @@
           <input type="text" name="numAdherent" [ngModel]="data?.data?.numAdherent" placeholder="num Adherent" class="form-control" readonly>
         </div>
       <div class="form-group col-4">
-        <input type="text" name="statutJuridique" [ngModel]="data?.data?.statutJuridique" placeholder="Statut juridique" class="form-control" #statutjuridique="ngModel" required>
-      </div>
-      <div class="form-group col-4">
         <input type="text" name="nomAdherent"  [ngModel]="data?.data?.nomAdherent" placeholder="Nom Adherent" class="form-control" required>
       </div>
       <div class="form-group col-4">
         <input type="text" name="prenomAdherent"  [ngModel]="data?.data?.prenomAdherent" placeholder="Prenom Adherent" class="form-control" required>
+      </div>
+      <div class="form-group col-4">
+        <input type="text" name="statutJuridique" [ngModel]="data?.data?.statutJuridique" placeholder="Statut juridique" class="form-control" #statutjuridique="ngModel" required>
       </div>
       <div class="form-group col-4">
         <input type="date"  name="dateNais" [ngModel]="data?.data?.dateNais" placeholder="date de Naissance" class="form-control" required>
@@ -58,6 +58,12 @@
         <select name="pdv" [ngModel]="data?.pdv" class="form-control m-0" required>
           <option [ng-value]="">selectionez Point De vente</option>
           <option *ngFor="let pdv of pdvs " [ngValue]="pdv.codePdv">{{pdv.nomPdv}}</option>
+        </select>
+      </div>
+      <div class="form-group col-4">
+        <select name="type" [ngModel]="data?.type" id="type" class="form-control m-0">
+          <option [ng-value]="epargne">epargne</option>
+          <option [ng-value]="normal">normal</option>
         </select>
       </div>
       <!-- <div class="form-group col-4 offset-1">

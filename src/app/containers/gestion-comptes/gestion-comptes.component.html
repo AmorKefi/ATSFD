@@ -13,11 +13,11 @@
               <div class="card-header font-weight-bold">Critères de recherche</div>
               <div class="card-body">
                   <form class="form-inline mb-2" #form="ngForm" (ngSubmit)="search(form.value)">
-                      <div class="form-group col-8">
+                      <div class="form-group col-4">
                           <label for="Code" class="font-weight-bold"> Num Compte : </label> 
                           <input type="text" id="Code" class="form-control col-6 rounded" placeholder="Numéro de compte" ngModel #Code="ngModel" name="Code" >
                       </div>  
-                      <div class="form-group col-8" *ngIf="acteur=='SFD'">
+                      <div class="form-group col-4" *ngIf="acteur=='SFD'">
                           <label for="Nom">Nom SFD :</label>
                           <input type="text" id="Nom" class="form-control col-6 rounded" placeholder="Nom SFD" ngModel #nomsfd="ngModel" name="Nomsfd">
                       </div>
@@ -37,9 +37,9 @@
                     <span *HasAnyAuthority="'ROLE_GESTIONDESADHERENT'">
                         <button class="btn btn-primary rounded" (click)="Ajouter()" *ngIf="acteur=='Adherent'"><i class="fa fa-plus"> Ajouter Un compte </i></button>
                     </span>
-                    <button class="btn btn-success rounded" routerLink="/GestionSFD" *ngIf="acteur=='SFD'">Gestion des SFD</button>
-                    <button class="btn btn-success rounded" routerLink="/GestionAdherents" *ngIf="acteur=='Adherent'">Gestion des Adherents</button>
-                    <button class="btn btn-success rounded" routerLink="/GestionPDV" *ngIf="acteur=='PDV'">Gestion des Points de ventes</button>
+                    <button class="btn btn-success rounded" routerLink="/GestionSFD" *ngIf="acteur=='SFD'" mdbTooltip="Gestion des SFD" placement="top">Gestion des SFD</button>
+                    <button class="btn btn-success rounded" routerLink="/GestionAdherents" *ngIf="acteur=='Adherent'" mdbTooltip="Gestion des Adherents" placement="top">Gestion des Adherents</button>
+                    <button class="btn btn-success rounded" routerLink="/GestionPDV" *ngIf="acteur=='PDV'" mdbTooltip="Gestion des Points de ventes" placement="top">Gestion des Points de ventes</button>
  <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>--> 
                 </div>
             </div>
@@ -93,10 +93,10 @@
                           
                             <div class="btn-group" role="group">
                                <span *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD_UPDATE'">
-                                <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)"><i class="fa fa-close"></i></button>
-                                <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'"><i class="fa fa-close" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'" mdbTooltip="Désactiver" placement="top"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'" mdbTooltip="Activer" placement="top"><i class="fa fa-unlock" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)" mdbTooltip="Bloquer" placement="top"><i class="fa fa-close"></i></button>
+                                <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'" mdbTooltip="Débloquer" placement="top"><i class="fa fa-close" aria-hidden="true"></i></button>
                                </span>
                                 <!-- <button type="button" class="btn btn-danger"(click)="delete(compte)"><i class="fa fa-close">
                                     </i></button> -->

@@ -12,6 +12,11 @@ export class CompteFinancierService {
     headers.append('content-type', 'application/json')
     return this.http.get('http://127.0.0.1:8080/compte/Allcompte',{headers});
   }
+  getbypdvcode(id){
+    const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
+    headers.append('content-type', 'application/json')
+    return this.http.get('http://127.0.0.1:8080/compte/getbypdv/'+id,{headers});
+  }
   add(data){
     const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
     headers.append('content-type', 'application/json')
@@ -50,6 +55,7 @@ export class CompteFinancierService {
   filter(filter){
     const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
     headers.append('content-type','application/json')
+    console.log(filter);
     return this.http.post('http://127.0.0.1:8080/compte/Filter',filter,{headers});
   }
 }

@@ -32,7 +32,27 @@ if(data.pdv=="selectionez Point De vente"){
     codePdv:data.pdv
   }
 }
-this.service.ajouter(data).subscribe(res=>this.diag.closeAll(),err=>console.log(err));
+console.log(data);
+this.service.ajouter(data).subscribe(res=>{
+  let div = document.getElementById('Message');
+  div.classList.remove('red','accent-1');
+  div.classList.add('rgba-green-light','animate');
+  div.innerHTML="Adherent a été ajouter !";
+  setTimeout(function(){
+    div.classList.remove('animate');
+  },2000)
+  this.diag.closeAll()
+},err=>{
+  let div = document.getElementById('Message');
+  div.classList.remove('rgba-green-light');
+  div.classList.add('red','accent-1','animate');
+  div.innerHTML="Adherent n'a pas été ajouter !";
+  setTimeout(function(){
+    div.classList.remove('animate');
+  },2000);
+  this.diag.closeAll();
+});
+data.pdv=null;
 
   }
   update(data){
@@ -46,7 +66,27 @@ this.service.ajouter(data).subscribe(res=>this.diag.closeAll(),err=>console.log(
         codePdv:data.pdv
       }
     }
-    this.service.update(data).subscribe(res=>console.log(res),err=>console.log(err));
+    this.service.update(data).subscribe(res=>
+      {
+        let div = document.getElementById('Message');
+        div.classList.remove('red','accent-1');
+        div.classList.add('rgba-green-light','animate');
+        div.innerHTML="Adherent a été modifié !";
+        setTimeout(function(){
+          div.classList.remove('animate');
+        },2000)
+        this.diag.closeAll()
+      },err=>{
+        let div = document.getElementById('Message');
+        div.classList.remove('rgba-green-light');
+        div.classList.add('red','accent-1','animate');
+        div.innerHTML="Adherent n'a pas été modifié !";
+        setTimeout(function(){
+          div.classList.remove('animate');
+        },2000);
+        this.diag.closeAll();
+      });
+    data.pdv=null;
   }
 
 }

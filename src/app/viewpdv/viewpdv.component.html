@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="app-body">
+  <app-sidebar></app-sidebar>
+  <!-- Main content -->
+<main class="main">
+    <!-- Breadcrumb -->
+   <ol class="breadcrumb">
+      <app-breadcrumbs></app-breadcrumbs>
+    </ol>
+<!--Content-->
+<div class="row">
+  <div class=" col-12 card">
+    <div class="card-header text-center display-5 font-weight-bold">
+      <span class="float-left"><Button class="btn btn-flat btn-default" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Gestion des points de vente</Button></span>
+      {{PDV?.nomPdv}}
+    </div>
+    <div class="card-body p-0">
+      <div class="row justify-content-center">
+        <div class="col-6">telephone1  : </div><div class="col-3">{{PDV?.telephone1Pdv}}</div>
+        <div class="col-6">telephone2 : </div><div class="col-3">{{PDV?.telephone2Pdv}}</div>
+        <div class="col-6">email  : </div><div class="col-3">{{PDV?.emailPdv}}</div>
+        <div class="col-6">statut : </div><div class="col-3"><div class="col-3"><span *ngIf="PDV?.statutPdv=='Activé'" class="badge badge-success">{{PDV?.statutPdv}}</span><span *ngIf="PDV?.statutPdv=='désactivé'" class="badge badge-danger">{{PDV?.statutPdv}}</span></div></div>
+        <div class="col-6">type: </div><div class="col-3">{{PDV?.typePdv}}</div>
+        <div class="col-6">pays :</div><div class="col-3">{{PDV?.ville}}</div>
+        <div class="col-6">sfd :</div><div class="col-3">{{PDV?.sfd?.nomsfd}}</div>
+      </div>
+    </div>
+    <div class="card-header display-6 text-center font-weight-bold">Information du Compte Financier</div>
+    <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="col-6">Numero Compte :</div><div class="col-3">{{cpt?.numCompte}}</div>
+        <div class="col-6">Statut :</div><div class="col-3"><span *ngIf="cpt?.statutCompte=='Activé'" class="badge badge-success">{{cpt?.statutCompte}}</span><span *ngIf="cpt?.statutCompte=='Désactivé'" class="badge badge-danger">{{cpt?.statutCompte}}</span>
+        <span *ngIf="compteFinancier?.statutCompte=='Bloqué'" class="badge badge-warning">{{cpt?.statutCompte}}</span>  </div>
+      </div>
+    </div>
+  </div>
+  
+
+</div>
+  </main>
+  <app-aside></app-aside>
+</div>
+<app-footer></app-footer>

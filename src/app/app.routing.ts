@@ -30,6 +30,7 @@ import { AgentsComponent } from './point-de-vente/agents/agents.component';
 
 import { GestionAdherentComponent } from './gestion-adherent/gestion-adherent.component';
 import { LettrageComponent } from './lettrage/lettrage.component';
+import { ViewpdvComponent } from './viewpdv/viewpdv.component';
 
 
 export const routes: Routes = [
@@ -159,6 +160,11 @@ export const routes: Routes = [
     path: 'GestionSFD/view/:id',
     canActivate : [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: ViewSfdComponent
+  },
+  {
+    path: 'GestionPDV/view/:id',
+    canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+    component: ViewpdvComponent
   },
   {
     path:'GestionPDV',

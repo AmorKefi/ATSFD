@@ -2,14 +2,14 @@
 <div class="app-body">
   <app-sidebar></app-sidebar>
   <!-- Main content -->
- <main class="main">
+<main class="main">
     <!-- Breadcrumb -->
    <ol class="breadcrumb">
       <app-breadcrumbs></app-breadcrumbs>
     </ol>
 <!--Content-->
 <div class="row">
-  <div class="col-12 card mb-0">
+  <div class=" col-12 card">
     <div class="card-header text-center display-5 font-weight-bold">
       <span class="float-left"><Button class="btn btn-flat btn-default" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Gestion des SFD</Button></span>
       {{SFD?.nomsfd}}
@@ -22,24 +22,26 @@
         <div class="col-6">Telphone  : </div><div class="col-3">{{SFD?.telsfd2}}</div>
         <div class="col-6">Ville : </div><div class="col-3">{{SFD?.villesfd}}</div>
         <div class="col-6">Matricule Fiscale : </div><div class="col-3">{{SFD?.matriculeFiscale}}</div>
-        <div class="col-12 card-header m-0  font-weight-bold text-center mt-3">Responsables</div>
-        <ul class="list-group col-12">
-            <li class="list-group-item" *ngFor="let Resp of responsable">{{Resp?.firstName +" "+Resp?.lastName | uppercase}}</li>
-          </ul>
       </div>
     </div>
-  </div>
-  <div class="col-12 card mb-0">
-    <div class="card-header display-6 text-center font-weight-bold">Historique</div>
+    <div class="card-header font-weight-bold text-center ">Responsables</div>
+    <ul class=" card-body list-group p-0">
+      <li class="list-group-item col-12" *ngFor="let Resp of responsable">{{Resp?.firstName +" "+Resp?.lastName | uppercase}}</li>
+    </ul>
+    <div class="card-header display-6 text-center font-weight-bold">Information du Compte Financier</div>
     <div class="card-body">
-
+      <div class="row justify-content-center">
+        <div class="col-6">Numero Compte :</div><div class="col-3">{{compteFinancier?.numCompte}}</div>
+        <div class="col-6">Statut :</div><div class="col-3"><span *ngIf="compteFinancier?.statutCompte=='Activé'" class="badge badge-success">{{compteFinancier?.statutCompte}}</span><span *ngIf="compteFinancier?.statutCompte=='Désactivé'" class="badge badge-danger">{{compteFinancier?.statutCompte}}</span>
+        <span *ngIf="compteFinancier?.statutCompte=='Bloqué'" class="badge badge-warning">{{compteFinancier?.statutCompte}}</span>  </div>
+      </div>
     </div>
+    <div class="card-header display-6 text-center font-weight-bold">Point des Ventes</div>
+      <div class="card-body">
+        <button *ngFor="let p of pdv" class="btn btn-primary">{{p?.nomPdv}}</button>
+      </div>
   </div>
 </div>
-    <!-- <div class="container-fluid">
-      <router-outlet></router-outlet>
-    </div> -->
-    <!-- /.conainer-fluid -->
   </main>
   <app-aside></app-aside>
 </div>

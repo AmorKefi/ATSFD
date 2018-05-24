@@ -20,7 +20,6 @@ export class GestionComptesComponent implements OnInit {
     this.route.params.subscribe(params=>this.acteur=params.Acteur)
     if(this.acteur=="SFD"){
       this.service.getAll().map(res=>{
-        console.log(res);
         let list=[];
         let listr=[];
         for(let key in res){
@@ -37,7 +36,6 @@ export class GestionComptesComponent implements OnInit {
       }).subscribe(res=>this.comptes=res,err=>console.log(err));
     }else if (this.acteur=="Adherent"){
       this.service.getAll().map(res=>{
-        console.log(res);
         let list=[];
         let listr=[];
         for(let key in res){
@@ -116,10 +114,23 @@ export class GestionComptesComponent implements OnInit {
     this.service.sortBy(t.value).subscribe(res=>this.comptes=res,err=>console.log(err));
   }
   search(filter){
-    if(filter==""){
+   
+    if(filter.Code=="" && filter.Nomsfd==""){
       this.ngOnInit();
     }else{
-    this.service.filter(filter.Code).subscribe(res=>this.comptes=res,err=>console.log(err));
+      let req={
+          Code:null,
+          Nomsfd:null
+    }
+    if(filter.Code!="" && filter.Nomsfd!=""){
+      req.Code=filter.Code;
+      req.Nomsfd=filter.Nomsfd;
+    }else if (filter.Nomsfd!=""){
+      req.Nomsfd=filter.Nomsfd;
+    }else{
+      req.Code=filter.Code;
+    }
+    this.service.filter(req).subscribe(res=>{this.comptes=res;console.log(res)},err=>console.log(err));
   }
   }
 }

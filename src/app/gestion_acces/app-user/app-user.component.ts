@@ -109,13 +109,10 @@ perPageSelect: any;
   ngOnInit() {
     this.settings.pager.display = true;
     this.settings.pager.perPage = 100;
+    this.layout='Active';
     this.appUserService.getAllUsers().subscribe(
-      res =>{ this.data=res;
- 
-      
-      console.log(res)},
+      res =>{this.data=res},
       err => console.error(err),
-      () => console.log('done loading all app-roles') 
     );
   }
   
@@ -135,7 +132,6 @@ perPageSelect: any;
     console.log('On Save Confirm : '+event);
     this.appUserService.UpdateAppUser(event.newData).subscribe(
       res => {
-        console.log(res);
         event.confirm.resolve(event.newData);
         this.ngOnInit();
         this.layout='Active';
@@ -143,8 +139,7 @@ perPageSelect: any;
       err => {
         console.error(err);
         event.confirm.reject();
-      },
-      () => console.log('done') 
+      }, 
     );
   }
   
