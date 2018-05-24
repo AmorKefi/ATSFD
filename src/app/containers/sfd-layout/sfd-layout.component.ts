@@ -1,9 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {MatDialog, MatDialogConfig,MAT_DIALOG_DATA} from "@angular/material";
 import { AddSfdDialogComponent } from '../add-sfd-dialog/add-sfd-dialog.component';
 import { SfdserviceService } from '../../Services/SFDService/sfdservice.service';
 import { DeleteDialog } from '../../gestion_acces/app-role/delete-role.component';
 import { DeletediagComponent } from '../deletediag/deletediag.component';
+  //  import * as jsPDF from 'jspdf'; 
+  //  import 'jspdf-autotable';
+ declare var jsPDF: any;
+//  declare let jsPDF;
+//  declare let JSPdf;
+//declare var JSPdf:any;
+// declare let JSPdf ;
 @Component({
   selector: 'app-sfd-layout',
   templateUrl: './sfd-layout.component.html',
@@ -19,7 +26,8 @@ export class SfdLayoutComponent implements OnInit{
     this.layout='Active';
 
   }
-  
+
+
 
   openAddSFDDialog(){
     const sfd = {
@@ -115,7 +123,32 @@ export class SfdLayoutComponent implements OnInit{
     this.service.sortBy(t.value).subscribe(res=>this.sfds=res,err=>console.log(err));
          }
           }
+          @ViewChild('content') content :ElementRef;
+          downolad(){
+         
+        // let doc=new JSPdf();
+        var doc = new jsPDF('p', 'pt');
+        var res = doc.autoTableHtmlToJson(document.getElementById('content'));
+        let specialElementHandlers={
+          '#editor':function(element,renderer) {
+            return true;
+          }};
+          let content=this.content.nativeElement;
+          // doc.fromHTML(content.innerHTML,15,15,{
+          //   'width':190,
+          //   'elementHandlers':specialElementHandlers
+          // });
+          // doc.autoTable(content.innerHTML,15,15,{
+          //   'width':190,
+          //   'elementHandlers':specialElementHandlers
+          // });
+          doc.autoTable(res.columns, res.rows);
+          doc.save('test.pdf');
+   
+        
+        
+          }
   }
-     
+
     
 

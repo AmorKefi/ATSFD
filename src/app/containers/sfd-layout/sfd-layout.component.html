@@ -39,6 +39,7 @@
                     <div class="row float-right">
                         <div class="form-group">
             <button class="btn btn-primary rounded" (click)="openAddSFDDialog()" *HasAnyAuthority="'ROLE_GESTIONSFD_ADD'"><i class="fa fa-plus"></i> Ajouter SFD</button>
+            <button class="btn btn-primary rounded" (click)="downolad()">PDF</button>
             <span *HasAnyAuthority="'ROLE_GESTIONSFD_SELECT'">
                 <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Active'" mdbRippleRadius (click)="getDesactivated()"><i class="fa fa-list" aria-hidden="true"></i> Historique</button>
                 <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Desactivated'" mdbRippleRadius (click)="getDesactivated()"><i class="fa fa-list" aria-hidden="true"></i> List Des SFD</button>
@@ -68,8 +69,8 @@
                           <div class="col-lg-12">
                             <div class="card p-0">
                              <div class="card-body  table-responsive p-0">
-                                <table class="table">
-                                  <thead class="blue-grey lighten-4">
+                                <table class="table" #content id="content" >
+                                  <!-- <thead class="blue-grey lighten-4"> -->
                                     <tr>
                                       <th class="font-weight-bold">Code</th>
                                       <th class="font-weight-bold" >Nom</th>
@@ -78,8 +79,8 @@
                                       <th class="font-weight-bold" >Statut social</th>
                                       <th class="font-weight-bold" >Actions</th>
                                     </tr>
-                                  </thead>
-                                 <tbody>
+                                  <!-- </thead> -->
+                                 <!-- <tbody > -->
                                   <tr *ngFor="let sfd of sfds">
                                       <td>{{sfd.codesfd}}</td>
                                   <td>{{sfd.nomsfd}}</td>
@@ -105,7 +106,7 @@
                                 
 
 
-                                 </tbody>
+                                 <!-- </tbody> -->
                                 </table>
                                 <!--Pagination
                                 <ul class="pagination">

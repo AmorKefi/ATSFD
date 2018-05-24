@@ -1,0 +1,25 @@
+<div class="card m-0 p-0 ">
+  <div class=" card-header  text-center #64b5f6 blue lighten-2  mb-3">
+    <h4 class="mb-4">Liste des fonctions</h4>
+  </div>
+  <div class="alert rgba-green-light font-weight-bold col-4" id="Message"></div>
+
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  <div class="card-body">
+    <ng2-smart-table class='form-control table table-striped table-hover dt-responsive table-bordered' 
+                     [settings]="settings"
+                     [source]="data" 
+                     (changePage)="changePage($event)"
+                     (deleteConfirm)="onDeleteConfirm($event)">
+                </ng2-smart-table>
+  </div>
+
+
+  <div class="card-footer #64b5f6 blue lighten-2 pt-0">
+    <div class="text-center col-12">
+      <mat-dialog-actions class="justify-content-center esapce p-5">
+        <button class="btn btn-danger rounded" [mat-dialog-close]="false">Fermer</button>
+      </mat-dialog-actions>
+    </div>
+  </div>
+</div>

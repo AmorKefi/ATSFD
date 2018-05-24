@@ -132,6 +132,7 @@ import { HasAnyAuthorityDirective } from './guards/authorities/has-anhy-authorit
 import { UserService } from './gestion_acces/login/user.sercice';
 import { LettrageComponent } from './lettrage/lettrage.component';
 import { LettrageService } from './Services/LettrageService/lettrage.service';
+import { ShowfunctionroleComponent } from './gestion_acces/app-role/showfunctionrole/showfunctionrole.component';
 
 
 
@@ -218,7 +219,8 @@ import { LettrageService } from './Services/LettrageService/lettrage.service';
     GestionAdherentDiagComponent,
     DeleteAdherentComponent,
     HasAnyAuthorityDirective,
-    LettrageComponent
+    LettrageComponent,
+    ShowfunctionroleComponent
 
   
   ],
@@ -232,7 +234,7 @@ import { LettrageService } from './Services/LettrageService/lettrage.service';
 
   entryComponents: [DeleteAdherentComponent,PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent
     , AddRoleDiagComponent,GestionAdherentDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent,AddAdminSfdComponent,AddAgentComponent,ModifAgentComponent,ModifAdminsfdComponent
-    , AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent ],
+    , AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent,ShowfunctionroleComponent],
 
   schemas: [ NO_ERRORS_SCHEMA ]
 })
