@@ -15,13 +15,12 @@ export class DashboardComponent   implements OnInit {
   nbrsfd:number;
   nbrpdv:number;
   nbrclient:number;
-  logger:String;
   constructor( protected localStorage: AsyncLocalStorage ,private router: Router,private cookie: CookieService,private sfdservice: SfdserviceService,private adherentService:AdherentService,private pdvService:PdvServiceService) { }
   ngOnInit() {
     this.sfdservice.count().subscribe(res=>this.nbrsfd=res,err=>this.nbrsfd=0);
     this.pdvService.count().subscribe(res=>this.nbrpdv=res,err=>this.nbrpdv=0);
     this.adherentService.count().subscribe(res=>this.nbrclient=res,err=>this.nbrclient=0);
-    this.logger=jwt_decode(this.Token);
+  
 
   }
 }

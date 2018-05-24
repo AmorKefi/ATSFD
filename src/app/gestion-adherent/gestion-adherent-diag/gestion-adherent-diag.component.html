@@ -60,6 +60,12 @@
           <option *ngFor="let pdv of pdvs " [ngValue]="pdv.codePdv">{{pdv.nomPdv}}</option>
         </select>
       </div>
+      <div class="form-group col-4">
+        <select name="type" [ngModel]="data?.type" id="type" class="form-control m-0">
+          <option [ng-value]="epargne">epargne</option>
+          <option [ng-value]="normal">normal</option>
+        </select>
+      </div>
       <!-- <div class="form-group col-4 offset-1">
         <select name="cpt" [ngModel]="data?.data?.cpt" class="form-control m-0" required>
           <option [ng-value]="">selectionez Compte Financier</option>

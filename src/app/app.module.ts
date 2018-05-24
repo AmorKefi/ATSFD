@@ -132,6 +132,7 @@ import { HasAnyAuthorityDirective } from './guards/authorities/has-anhy-authorit
 import { UserService } from './gestion_acces/login/user.sercice';
 import { LettrageComponent } from './lettrage/lettrage.component';
 import { LettrageService } from './Services/LettrageService/lettrage.service';
+import { ViewpdvComponent } from './viewpdv/viewpdv.component';
 
 
 
@@ -218,7 +219,8 @@ import { LettrageService } from './Services/LettrageService/lettrage.service';
     GestionAdherentDiagComponent,
     DeleteAdherentComponent,
     HasAnyAuthorityDirective,
-    LettrageComponent
+    LettrageComponent,
+    ViewpdvComponent
 
   
   ],

@@ -32,6 +32,7 @@ if(data.pdv=="selectionez Point De vente"){
     codePdv:data.pdv
   }
 }
+console.log(data);
 this.service.ajouter(data).subscribe(res=>{
   let div = document.getElementById('Message');
   div.classList.remove('red','accent-1');
