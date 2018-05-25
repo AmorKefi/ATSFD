@@ -31,6 +31,7 @@ import { AgentsComponent } from './point-de-vente/agents/agents.component';
 import { GestionAdherentComponent } from './gestion-adherent/gestion-adherent.component';
 import { LettrageComponent } from './lettrage/lettrage.component';
 import { ViewpdvComponent } from './viewpdv/viewpdv.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 
 export const routes: Routes = [
@@ -172,6 +173,14 @@ export const routes: Routes = [
     component: PointDeVenteComponent,
     data:{
       title: 'Gestion Des Point de Vente'
+    }
+  },
+  {
+    path:'Transactions',
+    canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+    component : TransactionsComponent,
+    data: {
+      title : 'Transactions'
     }
   },
   {

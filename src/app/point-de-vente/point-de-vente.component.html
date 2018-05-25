@@ -93,7 +93,7 @@
                                      
                                       <button *HasAnyAuthority="'ROLE_GESTIONDESPDV_UPDATE'" type="button" class="btn btn-info" (click)="update(pdv)"  mdbTooltip="Modifier" placement="top"><i class="fa fa-pencil"></i></button>
                                       <button *HasAnyAuthority="'ROLE_GESTIONDESPDV_SELECT'" type="button" class="btn btn-default" routerLink="view/{{pdv.codePdv}}"  mdbTooltip="Consulter" placement="top"><i class="fa fa-eye"></i></button>
-                                   <span *HasAnyAuthority="'ROLE_GESTIONPDV_DELETE'">    
+                                   <span *HasAnyAuthority="'ROLE_GESTIONDESPDV_DELETE'">    
                                       <button type="button" class="btn btn-info" (click)="Desactiver(pdv)" *ngIf="pdv.statutPdv!='Désactivé'"  mdbTooltip="Désactiver" placement="top"><i class="fa fa-lock" aria-hidden="true"></i></button>
                                       <button type="button" class="btn btn-info" (click)="Activer(pdv)" *ngIf="pdv.statutPdv=='Désactivé'"  mdbTooltip="Activer" placement="top"><i class="fa fa-unlock" aria-hidden="true"></i></button>
                                    </span>

@@ -135,6 +135,9 @@ import { LettrageService } from './Services/LettrageService/lettrage.service';
 import { ShowfunctionroleComponent } from './gestion_acces/app-role/showfunctionrole/showfunctionrole.component';
 
 import { ViewpdvComponent } from './viewpdv/viewpdv.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { TransactionsService } from './transactions.service';
+import { TransactionOperationsComponent } from './transaction-operations/transaction-operations.component';
 
 
 
@@ -226,12 +229,16 @@ import { ViewpdvComponent } from './viewpdv/viewpdv.component';
 
     ShowfunctionroleComponent,
 
-    ViewpdvComponent
+    ViewpdvComponent,
+
+    TransactionsComponent,
+
+    TransactionOperationsComponent
 
 
   
   ],
-  providers: [LettrageService,UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
+  providers: [LettrageService,TransactionsService,UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
@@ -239,7 +246,7 @@ import { ViewpdvComponent } from './viewpdv/viewpdv.component';
 
 
 
-  entryComponents: [DeleteAdherentComponent,PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent
+  entryComponents: [DeleteAdherentComponent,TransactionOperationsComponent,PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent
     , AddRoleDiagComponent,GestionAdherentDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent,AddAdminSfdComponent,AddAgentComponent,ModifAgentComponent,ModifAdminsfdComponent
     , AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent,ShowfunctionroleComponent],
 

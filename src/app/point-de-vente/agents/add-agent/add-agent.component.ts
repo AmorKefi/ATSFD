@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 import { AppUserService } from '../../../gestion_acces/app-user/app-user.service';
 import { AppRoleService } from '../../../gestion_acces/app-role/app-role.service';
 import { PdvServiceService } from '../../../Services/pdvService/pdv-service.service';
-
+import * as jwt_decode from 'jwt-decode';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-add-agent',
   templateUrl: './add-agent.component.html',
@@ -30,13 +31,14 @@ export class AddAgentComponent implements OnInit {
   private userRoles:Array<RoleApp>=new Array<RoleApp>();// the new use roles
   private roleList:string='List des Roles';
   private pdvs : any;
-
+  usersfd: any =jwt_decode(this.cookie.get('Token'));
 
 
   constructor(private appRoleService:AppRoleService,
               private appUserService:AppUserService,
               private _fb: FormBuilder,
               private route:Router,
+              private cookie : CookieService,
               private dialogRef: MatDialogRef<AddAgentComponent>,
               private pdvservice:PdvServiceService,
               @Inject(MAT_DIALOG_DATA) data) { 
@@ -64,7 +66,21 @@ export class AddAgentComponent implements OnInit {
               pdv:''  
        });  
 
-          this.pdvservice.getAll().subscribe(res=>this.pdvs=res,err=>console.log(err));
+          this.pdvservice.getAll().map(res=>{
+            let list=[];
+            let listr=[];
+            for(let key in res){
+              if(res.hasOwnProperty(key)){
+                list.push(res[key]);
+              }
+            }
+            list.forEach(element => {
+               if(element.sfd.codesfd == this.usersfd.SFD.codesfd){
+                 listr.push(element);
+               }
+            });
+            return listr;
+          }).subscribe(res=>this.pdvs=res,err=>console.log(err));
           this.appRoleService.getAllRolesAgent().subscribe(
            res=>res.map(x=>this._roles.push(x)),
             err => console.error(err),
@@ -114,6 +130,7 @@ export class AddAgentComponent implements OnInit {
      this.user.pdv={
        codePdv:model.pdv
       };   
+      this.user.sfd= this.usersfd.SFD;
      //this.user.roles=new Array<RoleApp>();
      //this._roles.map(x=>this.user.roles.push(x));
      this.appUserService.addResponsable(this.user).subscribe(
