@@ -1,9 +1,16 @@
 <div class="card p-0 mb-0">
     <div class="card-header text-white text-uppercase cyan darken-2 text-center">{{Operation}}</div>
-    <div class="card-body">
-
+    <div class="card-body font-weight-bold" *ngIf="Operation == 'remboursement'">
+        Le montant a rembourser : {{MontantRemboursement}}
+        <br>
+        Le point de vente Bénifier de : {{benification}}
     </div>
-    <div class="card-footer cyan darken-2">
-
+    <div class="card-body font-weight-bold" *ngIf="Operation == 'annuler'">
+        etes-vous sur d'annuler cette transaction ?
+    </div>
+    <div class="card-footer cyan darken-2 ">
+        <div class="row justify-content-between">
+            <button class="btn btn-primary">Confirmer</button><button class="btn btn-danger">Annuler</button>
+        </div>
     </div>
 </div>

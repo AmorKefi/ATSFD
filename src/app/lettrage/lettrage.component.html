@@ -68,10 +68,10 @@
                          <tbody>
                           <tr *ngFor="let Lettrage of Lettrages">
                               <td>{{Lettrage.idLettrage}}</td>
-                          <td >{{Lettrage.cashIn}}</td>
-                          <td>{{Lettrage.cashOut}}</td>
+                          <td >{{Lettrage.cashIn.idTransaction}}</td>
+                          <td>{{Lettrage.cashOut.idTransaction}}</td>
                           <td>
-                              <span *ngIf="Lettrage.etat=='Payer'" class="badge badge-success">{{Lettrage.etat}}</span>
+                              <span *ngIf="Lettrage.etat=='Payé'" class="badge badge-success">{{Lettrage.etat}}</span>
                               <span *ngIf="Lettrage.etat=='Annuler'" class="badge badge-danger">{{Lettrage.etat}}</span>
                               <span *ngIf="Lettrage.etat=='EnCours'" class="badge badge-warning">{{Lettrage.etat}}</span>  
                           </td>

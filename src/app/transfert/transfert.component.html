@@ -1,0 +1,33 @@
+
+<app-header></app-header>
+<div class="app-body">
+  <app-sidebar></app-sidebar>
+  <!-- Main content -->
+ <main class="main">
+    <!-- Breadcrumb -->
+   <ol class="breadcrumb">
+      <app-breadcrumbs></app-breadcrumbs>
+    </ol>
+    <div class="row">
+    <div class="card col-12">
+      <div class="card-header text-center">
+        Jeton
+      </div>
+      <div class="card-body">
+        <form #form="ngForm" class="form-inline">
+          <div class="form-group col-9">
+            <label for="Jeton">Jeton</label>
+            <input type="text" name="jeton" class="form-controle" #jeton="ngModel" [ngModel]="Jeton">
+          </div>
+          <button class="btn btn-primary rounded col-2" (click)="find(form)">Recherche</button>
+        </form>
+      </div>
+    </div>
+    </div>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div><!-- /.conainer-fluid -->
+  </main>
+  <app-aside></app-aside>
+</div>
+<app-footer></app-footer>

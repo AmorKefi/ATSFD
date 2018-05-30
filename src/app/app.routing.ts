@@ -32,6 +32,9 @@ import { GestionAdherentComponent } from './gestion-adherent/gestion-adherent.co
 import { LettrageComponent } from './lettrage/lettrage.component';
 import { ViewpdvComponent } from './viewpdv/viewpdv.component';
 import { TransactionsComponent } from './transactions/transactions.component';
+import { TransactionsfdComponent } from './transactionsfd/transactionsfd.component';
+import { CompensationComponent } from './compensation/compensation.component';
+import { TransfertComponent } from './transfert/transfert.component';
 
 
 export const routes: Routes = [
@@ -182,6 +185,24 @@ export const routes: Routes = [
     data: {
       title : 'Transactions'
     }
+  },
+  {
+    path:'Compensation',
+    canActivate : [OnlyLoggedInUsersGuard , AlwaysAuthGuard],
+    component : CompensationComponent,
+    data : {
+      title : 'Compensation'
+    }
+  },
+  {
+    path:'Transactions/:id',
+    canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+    component: TransactionsfdComponent
+  },
+  {
+    path:'transfert',
+    canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+    component : TransfertComponent
   },
   {
     path: '',

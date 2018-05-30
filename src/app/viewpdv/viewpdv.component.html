@@ -13,6 +13,7 @@
     <div class="card-header text-center display-5 font-weight-bold">
       <span class="float-left"><Button class="btn btn-flat btn-default" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Gestion des points de vente</Button></span>
       {{PDV?.nomPdv}}
+      <span class="float-right"><button class="btn btn-flat btn-warning" routerLink="/Transactions/{{PDV?.codePdv}}">Transactions</button></span>
     </div>
     <div class="card-body p-0">
       <div class="row justify-content-center">

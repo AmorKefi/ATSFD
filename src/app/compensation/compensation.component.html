@@ -1,0 +1,52 @@
+
+<app-header></app-header>
+<div class="app-body">
+  <app-sidebar></app-sidebar>
+  <!-- Main content -->
+ <main class="main">
+    <!-- Breadcrumb -->
+   <ol class="breadcrumb">
+      <app-breadcrumbs></app-breadcrumbs>
+    </ol>
+    <div class="row">
+    <div class="card col-12">
+      <div class="card-header text-center">
+        Filter
+      </div>
+      <div class="card-body">
+        <form class="form-inline">
+          <div class="form-group col-4">
+            <label for="">DU</label>
+            <input type="date" class="form-control col-12">
+          </div>
+          <div class="form-group col-4">
+            <label for="">Au</label>
+            <input type="date" class="form-control col-12">
+          </div>
+          <button class="btn btn-primary rounded col-2">Recherche</button>
+        </form>
+      </div>
+    </div>
+      <div class="card col-12">
+      <div class="card-body">
+        <table class="table table-hover">
+       
+            <tr>
+              <th class="font-weight-bold">ID COMPENSATION</th><th class="font-weight-bold">DATE COMPENSATION</th><th class="font-weight-bold">ETAT</th><th class="font-weight-bold">ACTION</th>
+            </tr>
+            <tr *ngFor="let compensation of compensations">
+            <td>{{compensation.idCompensaiton}}</td><td>{{compensation.dateCompensation}}</td> <td>{{compensation.etatCompensation}}</td><td><button class="btn btn-primary"><i class="fa fa-eye"></i></button>
+            </td>
+            </tr>
+        </table>
+      </div>
+    </div>
+          
+    </div>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div><!-- /.conainer-fluid -->
+  </main>
+  <app-aside></app-aside>
+</div>
+<app-footer></app-footer>

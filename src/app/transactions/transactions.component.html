@@ -14,11 +14,24 @@
         Filter
       </div>
       <div class="card-body">
-
+          <form class="form-inline">
+              <div class="form-group col-4">
+                <label for="">DU</label>
+                <input type="date" class="form-control col-12">
+              </div>
+              <div class="form-group col-4">
+                <label for="">Au</label>
+                <input type="date" class="form-control col-12">
+              </div>
+              <button class="btn btn-primary rounded col-2">Recherche</button>
+            </form>
       </div>
     </div>
       <div class="card col-12">
       <div class="card-body">
+        <div class="float-right">
+          <button class="btn btn-primary" mdbTooltip="Ajouter un CashIn" placement="top" (click)="ajouter()">+</button>
+        </div>
         <table class="table table-hover">
        
             <tr>
@@ -27,7 +40,10 @@
             </tr>
             <tr *ngFor="let transaction of transactions">
             <td>{{transaction.numeroTransaction}}</td><td>{{transaction.adresseDestinataire}}</td> <td>{{transaction.adresseEmetteur}}</td> <td>{{transaction.typecommision}}</td> <td>{{transaction.dateTransfert | date:'yyyy-MM-dd HH:mm:ss'}}</td> 
-            <td>{{transaction.numeroTransaction}}</td>  <td>{{transaction.montantTransfert}}</td><td>{{transaction.montantCommision}}</td><td>{{transaction.typeTransaction}}</td>  <td><button class="btn btn-info" mdbTooltip="Rembourser" placement="top" *ngIf="transaction.typeTransaction!='CASHOUT'" (click)="Rembourser(transaction)"><i class="fa fa-exchange" aria-hidden="true"></i></button><button class="btn btn-yellow" mdbTooltip="Annuler" placement="top" *ngIf="transaction.typeTransaction!='CASHOUT'" (click)="annuler(transaction)"><i class="fa fa-mail-forward" aria-hidden="true"></i></button></td>
+            <td>{{transaction.numeroTransaction}}</td>  <td>{{transaction.montantTransfert}}</td><td>{{transaction.montantCommision}}</td><td>{{transaction.typeTransaction}}</td>  
+            <td><button class="btn btn-info" mdbTooltip="Rembourser" placement="top" *ngIf="transaction.typeTransaction!='CASHOUT'" (click)="Rembourser(transaction)"><i class="fa fa-exchange" aria-hidden="true"></i></button><button class="btn btn-yellow" mdbTooltip="Annuler" placement="top" *ngIf="transaction.typeTransaction!='CASHOUT'" (click)="annuler(transaction)"><i class="fa fa-mail-forward" aria-hidden="true"></i></button>
+              <button class="btn btn-primary"><i class="fa fa-eye"></i></button>
+            </td>
             </tr>
         </table>
       </div>

@@ -138,6 +138,12 @@ import { ViewpdvComponent } from './viewpdv/viewpdv.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { TransactionsService } from './transactions.service';
 import { TransactionOperationsComponent } from './transaction-operations/transaction-operations.component';
+import { TransactionsfdComponent } from './transactionsfd/transactionsfd.component';
+import { CompensationComponent } from './compensation/compensation.component';
+import { CompensationService } from './compensation.service';
+import { TransfertComponent } from './transfert/transfert.component';
+import { AddCashinComponent } from './add-cashin/add-cashin.component';
+import { CashinServiceService } from './cashin-service.service';
 
 
 
@@ -219,7 +225,6 @@ import { TransactionOperationsComponent } from './transaction-operations/transac
     AddAgentComponent,
     ModifAgentComponent,
     ModifAdminsfdComponent,
-    
 
     GestionAdherentComponent,
     GestionAdherentDiagComponent,
@@ -233,12 +238,21 @@ import { TransactionOperationsComponent } from './transaction-operations/transac
 
     TransactionsComponent,
 
-    TransactionOperationsComponent
+    TransactionOperationsComponent,
+
+    TransactionsfdComponent,
+
+    CompensationComponent,
+
+    TransfertComponent,
+
+    AddCashinComponent,
+    
 
 
   
   ],
-  providers: [LettrageService,TransactionsService,UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
+  providers: [CashinServiceService,LettrageService,CompensationService,TransactionsService,UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
@@ -246,7 +260,7 @@ import { TransactionOperationsComponent } from './transaction-operations/transac
 
 
 
-  entryComponents: [DeleteAdherentComponent,TransactionOperationsComponent,PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent
+  entryComponents: [AddCashinComponent,DeleteAdherentComponent,TransactionOperationsComponent,PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent
     , AddRoleDiagComponent,GestionAdherentDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent,AddAdminSfdComponent,AddAgentComponent,ModifAgentComponent,ModifAdminsfdComponent
     , AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent,ShowfunctionroleComponent],
 
