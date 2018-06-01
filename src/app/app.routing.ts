@@ -35,6 +35,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { TransactionsfdComponent } from './transactionsfd/transactionsfd.component';
 import { CompensationComponent } from './compensation/compensation.component';
 import { TransfertComponent } from './transfert/transfert.component';
+import { TransactionviewComponent } from './transactionview/transactionview.component';
 
 
 export const routes: Routes = [
@@ -198,6 +199,11 @@ export const routes: Routes = [
     path:'Transactions/:id',
     canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
     component: TransactionsfdComponent
+  },
+  {
+    path:'Transaction/view/:id',
+    canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+    component: TransactionviewComponent
   },
   {
     path:'transfert',

@@ -37,7 +37,7 @@
             </tr>
             <tr *ngFor="let transaction of transactions">
             <td>{{transaction.numeroTransaction}}</td><td>{{transaction.adresseDestinataire}}</td> <td>{{transaction.adresseEmetteur}}</td> <td>{{transaction.typecommision}}</td> <td>{{transaction.dateTransfert | date:'yyyy-MM-dd HH:mm:ss'}}</td> 
-            <td>{{transaction.numeroTransaction}}</td>  <td>{{transaction.montantTransfert}}</td><td>{{transaction.montantCommision}}</td><td>{{transaction.typeTransaction}}</td> <td><button class="btn btn-primary"><i class="fa fa-eye"></i></button></td>
+            <td>{{transaction.numeroTransaction}}</td>  <td>{{transaction.montantTransfert}}</td><td>{{transaction.montantCommision}}</td><td>{{transaction.typeTransaction}}</td> <td><button class="btn btn-primary" routerLink="/Transaction/view/{{transaction.idTransaction}}"><i class="fa fa-eye"></i></button></td>
             </tr>
         </table>
       </div>

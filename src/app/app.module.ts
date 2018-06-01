@@ -144,6 +144,7 @@ import { CompensationService } from './compensation.service';
 import { TransfertComponent } from './transfert/transfert.component';
 import { AddCashinComponent } from './add-cashin/add-cashin.component';
 import { CashinServiceService } from './cashin-service.service';
+import { TransactionviewComponent } from './transactionview/transactionview.component';
 
 
 
@@ -247,6 +248,8 @@ import { CashinServiceService } from './cashin-service.service';
     TransfertComponent,
 
     AddCashinComponent,
+
+    TransactionviewComponent,
     
 
 
