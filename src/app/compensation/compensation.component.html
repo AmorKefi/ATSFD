@@ -35,7 +35,7 @@
               <th class="font-weight-bold">ID COMPENSATION</th><th class="font-weight-bold">DATE COMPENSATION</th><th class="font-weight-bold">ETAT</th><th class="font-weight-bold">ACTION</th>
             </tr>
             <tr *ngFor="let compensation of compensations">
-            <td>{{compensation.idCompensaiton}}</td><td>{{compensation.dateCompensation}}</td> <td>{{compensation.etatCompensation}}</td><td><button class="btn btn-primary"><i class="fa fa-eye"></i></button>
+            <td>{{compensation.idCompensaiton}}</td><td>{{compensation.dateCompensation | date:"yyyy/MM/dd"}}</td> <td>{{compensation.etatCompensation}}</td><td><button class="btn btn-primary" routerLink="/Compensation/{{compensation.idCompensaiton}}"><i class="fa fa-eye"></i></button>
             </td>
             </tr>
         </table>

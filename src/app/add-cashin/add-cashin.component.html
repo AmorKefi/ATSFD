@@ -1,8 +1,16 @@
 <div class="card pb-0 m-0">
-  <div class="card-header cyan darken-2  text-center font-weight-bold">{{data?.operation}}</div>
+  <div class="card-header cyan darken-2  text-center font-weight-bold text-white">{{data?.operation}}</div>
   <div class="card-body p-0 ">
     <div class="container">
     <form #form="ngForm" class="form-inline">
+            <div class="form-group col-3"  *ngIf="data?.operation!='CASHOUT'">
+                    <label for="numeroTransaction" class="font-weight-bold">numero Transaction</label>
+                    <input type="text" class="form-control col-10"  name="numeroTransaction" [ngModel]="data?.transaction?.numeroTransaction" min="8" #numeroTransaction="ngModel" required>
+                  </div>
+                  <div class="form-group col-3" *ngIf="data?.operation=='CASHOUT'">
+                        <label for="numeroTransaction" class="font-weight-bold">numero Transaction</label>
+                        <input type="text" class="form-control col-10"  name="numeroTransaction" [ngModel]="data?.transaction?.numeroTransaction" min="8" #numeroTransaction="ngModel" required readonly>
+                      </div>
       <div class="form-group col-3">
         <label for="cinEmetteur" class="font-weight-bold">cin Emetteur</label>
         <input type="text" class="form-control col-10"  name="cinEmetteur" [ngModel]="data?.transaction?.cinEmetteur" min="8" #cinEmetteur="ngModel" required>
@@ -39,17 +47,21 @@
           <label for="telephoneDestinataire" class="font-weight-bold">telephoneDestinataire</label>
           <input type="text" class="form-control col-10"  name="telephoneDestinataire" [ngModel]="data?.transaction?.telephoneDestinataire" min="8" #telephoneDestinataire="ngModel">
       </div>
-      <div class="form-group col-3">
+      <div class="form-group col-3" *ngIf="data?.operation!='CASHOUT'">
           <label for="montantTransfert" class="font-weight-bold">montantTransfert</label>
           <input type="number" class="form-control col-10" min="1.00" step="0.01" name="montantTransfert" [ngModel]="data?.transaction?.montantTransfert" #montantTransfert="ngModel" required>
       </div>
-      <div class="form-group col-3" *ngIf="data?.operation=='CASHIN'">
+      <div class="form-group col-3" *ngIf="data?.operation=='CASHOUT'">
+            <label for="montantTransfert" class="font-weight-bold">montantTransfert</label>
+            <input type="number" class="form-control col-10" min="1.00" step="0.01" name="montantTransfert" [ngModel]="data?.transaction?.montantTransfert" #montantTransfert="ngModel" required readonly>
+        </div>
+      <div class="form-group col-3" *ngIf="data?.operation=='CASHIN' && data?.operation!='CASHOUT'" >
           <label for="jeton" class="font-weight-bold">jeton</label>
           <input type="text" class="form-control col-10"  name="jeton" [(ngModel)]="Jeton" #jeton="ngModel" required>
       </div>
       <div class="form-group col-3" *ngIf="data?.operation=='CASHOUT'">
             <label for="jeton" class="font-weight-bold">jeton</label>
-            <input type="text" class="form-control col-10"  name="jeton" [ngModel]="data?.transaction?.jeton" #jeton="ngModel" required>
+            <input type="text" class="form-control col-10"  name="jeton" [ngModel]="data?.transaction?.jeton" #jeton="ngModel" required readonly>
         </div>
     </form>
   </div>

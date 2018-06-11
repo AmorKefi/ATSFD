@@ -145,6 +145,8 @@ import { TransfertComponent } from './transfert/transfert.component';
 import { AddCashinComponent } from './add-cashin/add-cashin.component';
 import { CashinServiceService } from './cashin-service.service';
 import { TransactionviewComponent } from './transactionview/transactionview.component';
+import { CompensationviewComponent } from './compensationview/compensationview.component';
+import { StatistiqueService } from './statistique.service';
 
 
 
@@ -250,12 +252,14 @@ import { TransactionviewComponent } from './transactionview/transactionview.comp
     AddCashinComponent,
 
     TransactionviewComponent,
+
+    CompensationviewComponent,
     
 
 
   
   ],
-  providers: [CashinServiceService,LettrageService,CompensationService,TransactionsService,UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
+  providers: [StatistiqueService,CashinServiceService,LettrageService,CompensationService,TransactionsService,UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],

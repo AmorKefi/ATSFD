@@ -19,19 +19,19 @@
           <div class="col-2 font-weight-bold">cin Emetteur : </div><div class="col-2">{{transaction?.cinEmetteur}}</div>
           <div class="col-2 font-weight-bold">nom Emetteur : </div><div class="col-2">{{transaction?.nomEmetteur}}</div>
           <div class="col-2 font-weight-bold">prenom Emetteur : </div><div class="col-2">{{transaction?.prenomEmetteur}}</div>
-          <div class="col-2 font-weight-bold">adresse Emetteur : </div><div class="col-2">{{transaction?.adresseEmetteur}}</div>
+          <!-- <div class="col-2 font-weight-bold">adresse Emetteur : </div><div class="col-2">{{transaction?.adresseEmetteur}}</div> -->
           <div class="col-2 font-weight-bold">telephone Emetteur : </div><div class="col-2">{{transaction?.telephoneEmetteur}}</div>
           <div class="col-2 font-weight-bold">cin Desinataire : </div><div class="col-2">{{transaction?.cinDesinataire}}</div>
           <div class="col-2 font-weight-bold">nom Destinataire : </div><div class="col-2">{{transaction?.nomDestinataire}}</div>
           <div class="col-2 font-weight-bold">prenom Destinataire : </div><div class="col-2">{{transaction?.prenomDestinataire}}</div>
           <div class="col-2 font-weight-bold">adresse Destinataire : </div><div class="col-2">{{transaction?.adresseDestinataire}}</div>
           <div class="col-2 font-weight-bold">telephone Destinataire : </div><div class="col-2">{{transaction?.telephoneDestinataire}}</div>
-          <div class="col-2 font-weight-bold">type commision : </div><div class="col-2">{{transaction?.typecommision}}</div>
+          <!-- <div class="col-2 font-weight-bold">type commision : </div><div class="col-2">{{transaction?.typecommision}}</div> -->
           <div class="col-2 font-weight-bold">date Transfert : </div><div class="col-2">{{transaction?.dateTransfert | date}}</div>
           <div class="col-2 font-weight-bold">numero Transaction : </div><div class="col-2">{{transaction?.numeroTransaction}}</div>
-          <div class="col-2 font-weight-bold">montant Transfert : </div><div class="col-2">{{transaction?.montantTransfert}}</div>
-          <div class="col-2 font-weight-bold">montant Commision : </div><div class="col-2">{{transaction?.montantCommision}}</div>
-          <div class="col-2 font-weight-bold">montant Tva : </div><div class="col-2">{{transaction?.montantTva}}</div>
+          <div class="col-2 font-weight-bold">montant Transfert : </div><div class="col-2">{{transaction?.montantTransfert | currency:'CFA':'symbol':'4.2-2'}}</div>
+          <div class="col-2 font-weight-bold">montant Commision : </div><div class="col-2">{{transaction?.montantCommision | currency:'CFA':'symbol':'4.2-2'}}</div>
+          <div class="col-2 font-weight-bold">montant Tva : </div><div class="col-2">{{transaction?.montantTva | currency:'CFA ':'symbol':'4.2-2'}}</div>
           <div class="col-2 font-weight-bold">typeTransaction : </div><div class="col-2">{{transaction?.typeTransaction}}</div>
         </div>
         </div>
