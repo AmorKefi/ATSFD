@@ -37,7 +37,7 @@
                     <span *HasAnyAuthority="'ROLE_GESTIONDESADHERENT'">
                         <button class="btn btn-primary rounded" (click)="Ajouter()" *ngIf="acteur=='Adherent'"><i class="fa fa-plus"> Ajouter Un compte </i></button>
                     </span>
-                    <button class="btn btn-success rounded" routerLink="/GestionSFD" *ngIf="acteur=='SFD'" mdbTooltip="Gestion des SFD" placement="top">Gestion des SFD</button>
+                    <button class="btn btn-success rounded" routerLink="/GestionSFD" *ngIf="acteur=='SFD'" mdbTooltip="Gestion des SFD" placement="top"><i class="fa fa-institution" aria-hidden="true"></i></button>
                     <button class="btn btn-success rounded" routerLink="/GestionAdherents" *ngIf="acteur=='Adherent'" mdbTooltip="Gestion des Adherents" placement="top">Gestion des Adherents</button>
                     <button class="btn btn-success rounded" routerLink="/GestionPDV" *ngIf="acteur=='PDV'" mdbTooltip="Gestion des Points de ventes" placement="top">Gestion des Points de ventes</button>
  <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>--> 

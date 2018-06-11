@@ -6,7 +6,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material'
   selector: 'app-delete-user-dialog',
   template: `
   <div class="card col-12 p-0 m-0">
-    <h2 class='justify-content-center card-header' >delete User</h2>
+    <h2 class='justify-content-center card-header' >Confirmation </h2>
     <div class='card-body p-0 pb-4 m-0'>
     Etes-vous sûr de vouloir désactiver cet utilisateur ?
     </div>

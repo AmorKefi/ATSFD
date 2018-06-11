@@ -2,26 +2,115 @@
 <div class="app-body">
   <app-sidebar></app-sidebar>
   <!-- Main content -->
-  <main class="main">
+ <main class="main">
     <!-- Breadcrumb -->
+   <ol class="breadcrumb">
+      <app-breadcrumbs></app-breadcrumbs>
+    </ol>
+    <div class="alert rgba-green-light font-weight-bold col-4" id="Message">
+            
+      </div>
  
-   <div class="card p-0"><span class="card-header">Paramétres Globaux</span></div>
-   <div class="row justify-content-center">
-     <div class="card col-3 p-0">
-       <div class="card-header bg-primary">Frais de transfert</div>
-       <div class="card-body table-responsive p-0 ">
-        <table class="table">
-          <thead class="thead-light">
-            <tr>
-              <th>Id</th>
-              <th>Désignation</th>
-              <th>Valeur</th>
-            </tr>
-          </thead>
-        </table>
-       </div>
-     </div>
-   </div>
+ 
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="card">
+        <div class="card-header">
+          <strong>Horaire Compensation</strong>
+        </div>
+        <div class="card-body">
+          <form action="" method="post" class="form-horizontal" #form="ngForm">
+            <div class="form-group row">
+            
+              <div class="col-sm-12" *ngIf="data">
+                  <pre class="alert alert-success">Horaire Compensation actuel: {{data.horaireCompensation| date:'shortTime'}} </pre>
+                
+              </div>
+
+
+              <div class="form-group">
+              <div class="input-group col-12">
+                <!-- <button (click)="open()">Time</button> -->
+                <!-- <input type="time" value="{{selectedTime}}"> -->
+                  <input type="text"  class="form-control col-sm-6"   value="{{selectedTime}}" > 
+                  <div class="input-group-append">
+                    <button class="input-group-text" (click)="open()"><i class="fa fa-clock-o" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+                </div>
+            </div>
+     
+            <div class="container" ng-app="timepickerDemo" ng-controller='DemoCtrl'>
+              <div ng-controller="mainController">
+
+              </div>
+  
+            </div>
+           
+          </form>
+
+        
+        </div>
+    
+        <div class="card-footer ">
+            <div class="text-center col-12">
+            <button type="submit" class="btn btn-sm btn-success rounded" (click)="save(form)"><i class="fa fa-dot-circle-o"></i> Modifier</button>
+  </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="card">
+        <div class="card-header">
+          <strong>Horaire Lettrage</strong>
+        </div>
+        <div class="card-body">
+          <form action="" method="post" class="form-horizontal" #form="ngForm">
+            <div class="form-group row">
+            
+              <div class="col-sm-12" *ngIf="data">
+                  <pre class="alert alert-info">Horaire Lettrage actuel: {{data.horaireLettrage| date:'shortTime'}} </pre>
+                
+              </div>
+
+
+              <div class="form-group">
+              <div class="input-group ">
+                <!-- <button (click)="open()">Time</button> -->
+                <!-- <input type="time" value="{{selectedTime}}"> -->
+                  <input type="text"  class="form-control col-sm-6"   value="{{selectedTimeLettrage}}" > 
+                  <div class="input-group-append">
+                    <button class="input-group-text" (click)="openlettrage()"><i class="fa fa-clock-o" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+                </div>
+            </div>
+     
+            <div class="container" ng-app="timepickerDemo" ng-controller='DemoCtrl'>
+              <div ng-controller="mainController">
+
+              </div>
+  
+            </div>
+           
+          </form>
+
+        
+        </div>
+    
+        <div class="card-footer ">
+            <div class="text-center col-12">
+            <button type="submit" class="btn btn-sm btn-info rounded" (click)="updatelettrage(form)"><i class="fa fa-dot-circle-o"></i> Modifier</button>
+  </div>
+          </div>
+      </div>
+    </div>
+
+  </div>
+       
+
+  
+
     <div class="container-fluid">
       <router-outlet></router-outlet>
     </div><!-- /.conainer-fluid -->

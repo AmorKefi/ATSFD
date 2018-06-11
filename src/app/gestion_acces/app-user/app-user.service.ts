@@ -130,5 +130,12 @@ export class AppUserService implements OnInit {
         headers.append('Content-Type', 'application/json')
         return this.http.get(`${this.apiUrl.transactionURL}getALLAdminSFD`, { headers });
     }
-    
+    getByssoId(ssoid){
+        const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
+        headers.append('content-type', 'application/json')
+        return this.http.get('http://localhost:8080/api/getbyssoID/'+ssoid,{headers});
+
+
+
+    }
 }

@@ -13,6 +13,7 @@ import { AuthServiceService } from './Services/AuthService/auth-service.service'
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 
+
 // Import containers
 import {
   FullLayoutComponent,
@@ -135,12 +136,14 @@ import { LettrageService } from './Services/LettrageService/lettrage.service';
 import { ShowfunctionroleComponent } from './gestion_acces/app-role/showfunctionrole/showfunctionrole.component';
 
 import { ViewpdvComponent } from './viewpdv/viewpdv.component';
-
+import { AmazingTimePickerModule } from 'amazing-time-picker'; 
+import { ParamServiceService } from './Services/ParametresGlobauxService/param-service.service';
 
 
 
 @NgModule({
   imports: [
+    AmazingTimePickerModule,
     BrowserModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
@@ -231,7 +234,7 @@ import { ViewpdvComponent } from './viewpdv/viewpdv.component';
 
   
   ],
-  providers: [LettrageService,UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
+  providers: [LettrageService,DatePipe,ParamServiceService,UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],

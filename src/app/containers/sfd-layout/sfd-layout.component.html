@@ -25,7 +25,7 @@
                                 <input type="text" id="Nom" class="form-control  col-5 rounded"  placeholder="Nom"  ngModel #Nom="ngModel" name="Nom" >
                               </div>   
                               <div class="form-groupe col-3">
-                                    <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
+                                    <button type="submit" class="btn btn-primary  float-right rounded col-12" mdbTooltip="recherche SFD" placement="top" ><i class="fa fa-search" aria-hidden="true"></i></button>
                               </div>                       
                     </form>                   
                 </div>
@@ -38,8 +38,8 @@
                 <div class="card-body">
                     <div class="row float-right">
                         <div class="form-group">
-            <button class="btn btn-primary rounded" (click)="openAddSFDDialog()" *HasAnyAuthority="'ROLE_GESTIONSFD_ADD'"><i class="fa fa-plus"></i> Ajouter SFD</button>
-            <button class="btn btn-primary rounded" (click)="downolad()">PDF</button>
+
+            <button class="btn btn-primary rounded" (click)="downolad()"  mdbTooltip="imprimer liste" placement="top" ><i class="fa fa-file-pdf-o" aria-hidden="true"></i></button>
 
             <button class="btn btn-primary rounded" mdbTooltip="Ajouter un SFD" placement="left" (click)="openAddSFDDialog()" *HasAnyAuthority="'ROLE_GESTIONSFD_ADD'"><i class="fa fa-plus"></i></button>
 
@@ -47,7 +47,8 @@
                 <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Active'" mdbRippleRadius (click)="getDesactivated()" mdbTooltip="Historique" placement="top" ><i class="fa fa-list" aria-hidden="true"></i></button>
                 <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Desactivated'" mdbRippleRadius (click)="getDesactivated()" mdbTooltip="List Des SFD" placement="top" ><i class="fa fa-list" aria-hidden="true"></i></button>
             </span>
-            <button class="btn btn-success rounded" routerLink="/Comptes/SFD" *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD'" mdbTooltip="Gestion des comptes" placement="top" >Gestion des comptes</button>                  
+ 
+            <button class="btn btn-success rounded" routerLink="/Comptes/SFD" *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD'" mdbTooltip="Gestion des comptes" placement="top" ><i class="fa fa-money" aria-hidden="true"></i></button>                  
             <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
                       </div>
                     </div>
