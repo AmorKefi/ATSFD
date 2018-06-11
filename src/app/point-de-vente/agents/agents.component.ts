@@ -5,7 +5,8 @@ import { AppUserService } from '../../gestion_acces/app-user/app-user.service';
 import { DeleteUserDialogComponent } from '../../gestion_acces/app-user/delete-user-dialog/delete-user-dialog.component';
 import { AddAgentComponent } from './add-agent/add-agent.component';
 import { ModifAgentComponent } from './modif-agent/modif-agent.component';
-
+import * as jwt_decode from 'jwt-decode';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-agents',
@@ -15,11 +16,26 @@ import { ModifAgentComponent } from './modif-agent/modif-agent.component';
 export class AgentsComponent implements OnInit {
   data:any;
   layout='Activé';
-   constructor( private userservice: AppUserService, private dialog: MatDialog) { }
+  usersfd: any =jwt_decode(this.cookie.get('Token'));
+   constructor( private userservice: AppUserService, private dialog: MatDialog,private cookie : CookieService) { }
  
    ngOnInit() {
     
-     this.userservice.getAllAgents().subscribe(
+     this.userservice.getAllAgents().map(res=>{
+      let list=[];
+      let listr=[];
+      for(let key in res){
+        if(res.hasOwnProperty(key)){
+          list.push(res[key]);
+        }
+      }
+      list.forEach(element => {
+         if(element.sfd.codesfd == this.usersfd.SFD.codesfd){
+           listr.push(element);
+         }
+      });
+      return listr;
+     }).subscribe(
        res =>{ this.data=res},
        err => console.error(err),
      );
@@ -28,7 +44,21 @@ export class AgentsComponent implements OnInit {
    getDesactivated(){
      if(this.layout=='Activé'){
        this.layout='Desactivated';
-       this.userservice.getDesactivatedAgent().subscribe(res=>this.data=res,err=>console.log(err));
+       this.userservice.getDesactivatedAgent().map(res=>{
+        let list=[];
+        let listr=[];
+        for(let key in res){
+          if(res.hasOwnProperty(key)){
+            list.push(res[key]);
+          }
+        }
+        list.forEach(element => {
+           if(element.sfd.codesfd == this.usersfd.SFD.codesfd){
+             listr.push(element);
+           }
+        });
+        return listr;
+       }).subscribe(res=>this.data=res,err=>console.log(err));
      }else{
        this.layout='Activé';
        this.ngOnInit();

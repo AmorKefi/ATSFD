@@ -2,20 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { PdvServiceService } from '../Services/pdvService/pdv-service.service';
 import { PdvDiagComponent } from '../pdv-diag/pdv-diag.component';
-
+import * as jwt_decode from 'jwt-decode';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-point-de-vente',
   templateUrl: './point-de-vente.component.html',
   styleUrls: ['./point-de-vente.component.scss']
 })
 export class PointDeVenteComponent implements OnInit {
-
+  
+  usersfd: any =jwt_decode(this.cookie.get('Token'));
   pdvs:any;
   layout='Active'
-  constructor(private diag : MatDialog, private service: PdvServiceService) { }
+  constructor(private diag : MatDialog, private service: PdvServiceService,private cookie : CookieService) { }
 
   ngOnInit() {
-    this.service.getAll().subscribe(res=>{this.pdvs=res;},err=>console.log(err));
+   
+    this.service.getAll().map(res=>{
+      let list=[];
+      let listr=[];
+      for(let key in res){
+        if(res.hasOwnProperty(key)){
+          list.push(res[key]);
+        }
+      }
+      list.forEach(element => {
+         if(element.sfd.codesfd == this.usersfd.SFD.codesfd){
+           listr.push(element);
+         }
+      });
+      return listr;
+    }).subscribe(res=>{this.pdvs=res},err=>console.log(err));
     this.layout='Active';
   }
   ajouter(){
@@ -51,7 +68,21 @@ export class PointDeVenteComponent implements OnInit {
   getDesactivated(){
     if(this.layout=='Active'){
       this.layout='Desactive';
-      this.service.getDesactive().subscribe(res=>this.pdvs=res,err=>console.log(err));
+      this.service.getDesactive().map(res=>{
+        let list=[];
+        let listr=[];
+        for(let key in res){
+          if(res.hasOwnProperty(key)){
+            list.push(res[key]);
+          }
+        }
+        list.forEach(element => {
+           if(element.sfd.codesfd == this.usersfd.SFD.codesfd){
+             listr.push(element);
+           }
+        });
+        return listr;
+      }).subscribe(res=>this.pdvs=res,err=>console.log(err));
     }else{
       this.layout='Active'
       this.ngOnInit();
@@ -75,7 +106,21 @@ export class PointDeVenteComponent implements OnInit {
     if(req.codePdv=="" &&  req.nomPdv==""){
       this.ngOnInit();
     }else{
-      this.service.search(req).subscribe(res=>{this.pdvs=res;console.log(res)},err=>console.log(err));
+      this.service.search(req).map(res=>{
+        let list=[];
+        let listr=[];
+        for(let key in res){
+          if(res.hasOwnProperty(key)){
+            list.push(res[key]);
+          }
+        }
+        list.forEach(element => {
+           if(element.sfd.codesfd == this.usersfd.SFD.codesfd){
+             listr.push(element);
+           }
+        });
+        return listr;
+      }).subscribe(res=>{this.pdvs=res},err=>console.log(err));
   }
 }
   Desactiver(pdv){
@@ -85,6 +130,20 @@ export class PointDeVenteComponent implements OnInit {
     this.service.Activer(pdv).subscribe(res=>this.ngOnInit(),err=>console.log(err));
   }
   sortBy(t){
-   this.service.sortBy(t.value).subscribe(res=>this.pdvs=res,err=>console.log(err))
+   this.service.sortBy(t.value).map(res=>{
+    let list=[];
+    let listr=[];
+    for(let key in res){
+      if(res.hasOwnProperty(key)){
+        list.push(res[key]);
+      }
+    }
+    list.forEach(element => {
+       if(element.sfd.codesfd == this.usersfd.SFD.codesfd){
+         listr.push(element);
+       }
+    });
+    return listr;
+   }).subscribe(res=>this.pdvs=res,err=>console.log(err))
   }
 }

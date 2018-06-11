@@ -138,6 +138,19 @@ import { ShowfunctionroleComponent } from './gestion_acces/app-role/showfunction
 import { ViewpdvComponent } from './viewpdv/viewpdv.component';
 import { AmazingTimePickerModule } from 'amazing-time-picker'; 
 import { ParamServiceService } from './Services/ParametresGlobauxService/param-service.service';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { TransactionOperationsComponent } from './transaction-operations/transaction-operations.component';
+import { TransactionsfdComponent } from './transactionsfd/transactionsfd.component';
+import { CompensationComponent } from './compensation/compensation.component';
+import { TransfertComponent } from './transfert/transfert.component';
+import { AddCashinComponent } from './add-cashin/add-cashin.component';
+import { TransactionviewComponent } from './transactionview/transactionview.component';
+import { CompensationviewComponent } from './compensationview/compensationview.component';
+import { StatistiqueService } from './statistique.service';
+import { CashinServiceService } from './cashin-service.service';
+import { CompensationService } from './compensation.service';
+import { TransactionsService } from './transactions.service';
+
 
 
 
@@ -219,7 +232,6 @@ import { ParamServiceService } from './Services/ParametresGlobauxService/param-s
     AddAgentComponent,
     ModifAgentComponent,
     ModifAdminsfdComponent,
-    
 
     GestionAdherentComponent,
     GestionAdherentDiagComponent,
@@ -229,12 +241,31 @@ import { ParamServiceService } from './Services/ParametresGlobauxService/param-s
 
     ShowfunctionroleComponent,
 
-    ViewpdvComponent
+    ViewpdvComponent,
+
+    TransactionsComponent,
+
+    TransactionOperationsComponent,
+
+    TransactionsfdComponent,
+
+    CompensationComponent,
+
+    TransfertComponent,
+
+    AddCashinComponent,
+
+    TransactionviewComponent,
+
+    CompensationviewComponent,
+    
 
 
   
   ],
-  providers: [LettrageService,DatePipe,ParamServiceService,UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
+  
+  providers: [ParamServiceService,StatistiqueService,CashinServiceService,LettrageService,CompensationService,TransactionsService,UserService,DatePipe,AlwaysAuthGuard, OnlyLoggedInUsersGuard, AuthServiceService, CookieService,CrudRfService , UtilisateurService, AdherentService, PdvServiceService ,RoleServiceService , AppUserService,AppRoleService,AppFunctionService,SfdserviceService,CompteFinancierService,{
+
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
@@ -242,7 +273,7 @@ import { ParamServiceService } from './Services/ParametresGlobauxService/param-s
 
 
 
-  entryComponents: [DeleteAdherentComponent,PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent
+  entryComponents: [AddCashinComponent,DeleteAdherentComponent,TransactionOperationsComponent,PdvDiagComponent,CompteFinancierDiagComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent
     , AddRoleDiagComponent,GestionAdherentDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent,AddSfdDialogComponent,DeletediagComponent, DeleteDialog ,CrudRfComponent ,DeleteRoleFunctionDialog , UtilisateurDiagComponent,SelectStatutComponent,ModifResponsableComponent,AddAdminSfdComponent,AddAgentComponent,ModifAgentComponent,ModifAdminsfdComponent
     , AddRoleDiagComponent,UpdateDialog,AddFunctionComponent,AddRoleComponent,AddUserComponent,AddRoleFunctionDialog,DeleteUserDialogComponent,AddResponsableComponent,ShowfunctionroleComponent],
 

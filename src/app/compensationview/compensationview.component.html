@@ -1,0 +1,35 @@
+
+<app-header></app-header>
+<div class="app-body">
+  <app-sidebar></app-sidebar>
+  <!-- Main content -->
+ <main class="main">
+    <!-- Breadcrumb -->
+   <ol class="breadcrumb">
+      <app-breadcrumbs></app-breadcrumbs>
+    </ol>
+    <div class="row">
+      <div class="card p-0 col-12">
+        <div class="card-header font-weight-bold text-center">
+            <span class="float-left"><Button class="btn btn-flat btn-default" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Compensation</Button></span>
+          Liste des Lettrage</div>
+        <div class="card-body">
+            <ul class=" card-body list-group p-0">
+                <li class="list-group-item col-12" *ngFor="let Lettrage of Lettrages">
+                 <span class="col-2 font-weight-bold">ID : {{Lettrage.idLettrage}}</span>
+                  <span class="col-2 font-weight-bold">Agence de Cashin : {{Lettrage.agenceCashin}}</span>
+                 <span class="col-2 font-weight-bold">agence de Cashout : {{Lettrage.agenceCashout}}</span>
+                  <span class="col-2 font-weight-bold">Montant : {{Lettrage.montant | currency:'CFA':'symbol':'4.2-2' }}</span>
+                  <span class="float-right col-2"><button class="btn btn-primary" routerLink="/Lettrage/{{Lettrage.idLettrage}}"><i class="fa fa-eye"></i></button></span>
+                </li>
+              </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div><!-- /.conainer-fluid -->
+  </main>
+  <app-aside></app-aside>
+</div>
+<app-footer></app-footer>

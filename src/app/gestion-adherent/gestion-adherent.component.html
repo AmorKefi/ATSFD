@@ -36,10 +36,10 @@
         <div class="card-body">
             <div class="row float-right">
                 <div class="form-group">
-    <button class="btn btn-primary rounded" (click)="ajouter()"><i class="fa fa-plus"></i> Ajouter Adherent</button> 
-    <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Active'"><i class="fa fa-list" aria-hidden="true"></i> Historique</button>             
+    <button class="btn btn-primary rounded" (click)="ajouter()" *HasAnyAuthority="'ROLE_GESTIONDESADHERENT_ADD'" ><i class="fa fa-plus"></i> Ajouter Adherent</button> 
+    <button class="btn btn-warning rounded" (click)="getDesactivated()" *ngIf="layout=='Active'" ><i class="fa fa-list" aria-hidden="true"></i> Historique</button>             
     <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Desactive'"><i class="fa fa-list" aria-hidden="true"></i> Liste Des Adherents</button> 
-    <button class="btn btn-success rounded" routerLink="/Comptes/Adherent">Gestion des comptes</button>
+    <button class="btn btn-success rounded" *HasAnyAuthority="'ROLE_GESTIONDESADHERENT_ADD'" routerLink="/Comptes/Adherent">Gestion des comptes</button>
     
  <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
               </div>
@@ -65,7 +65,7 @@
                   <div class="col-lg-12">
                     <div class="card p-0">
                      <div class="card-body table-responsive">
-                        <table class="table ">
+                        <table class="table " *HasAnyAuthority="'ROLE_GESTIONDESADHERENT_SELECT'">
                           <thead>
                             <tr>
                               <th>Num Adherent</th>
@@ -90,13 +90,14 @@
                           
                             <div class="btn-group" role="group">
                                
-                                <button type="button" class="btn btn-info" (click)="update(adherent)"><i class="fa fa-pencil">
+                                <button type="button" class="btn btn-info" *HasAnyAuthority="'ROLE_GESTIONDESADHERENT_UPDATE'" (click)="update(adherent)"><i class="fa fa-pencil"></i></button>
+                                <button type="button" class="btn btn-default" *HasAnyAuthority="'ROLE_GESTIONDESADHERENT_SELECT'" routerLink="view/{{adherent.numAdherent}}"><i class="fa fa-eye">
                                     </i></button>
-                                <button type="button" class="btn btn-default" routerLink="view/{{adherent.numAdherent}}"><i class="fa fa-eye">
-                                    </i></button>
+                                    <div *HasAnyAuthority="'ROLE_GESTIONDESADHERENT_DELETE'">
                                     <button type="button" class="btn btn-info" (click)="Desactiver(adherent)" *ngIf="adherent.statut!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
                                     <button type="button" class="btn btn-info" (click)="Activer(adherent)" *ngIf="adherent.statut=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
-                            </div>
+                                      </div>  
+                                  </div>
                        
                         </td>
                           </tr>

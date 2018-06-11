@@ -31,6 +31,12 @@ import { AgentsComponent } from './point-de-vente/agents/agents.component';
 import { GestionAdherentComponent } from './gestion-adherent/gestion-adherent.component';
 import { LettrageComponent } from './lettrage/lettrage.component';
 import { ViewpdvComponent } from './viewpdv/viewpdv.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { TransactionsfdComponent } from './transactionsfd/transactionsfd.component';
+import { CompensationComponent } from './compensation/compensation.component';
+import { TransfertComponent } from './transfert/transfert.component';
+import { TransactionviewComponent } from './transactionview/transactionview.component';
+import { CompensationviewComponent } from './compensationview/compensationview.component';
 
 
 export const routes: Routes = [
@@ -173,6 +179,42 @@ export const routes: Routes = [
     data:{
       title: 'Gestion Des Point de Vente'
     }
+  },
+  {
+    path:'Transactions',
+    canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+    component : TransactionsComponent,
+    data: {
+      title : 'Transactions'
+    }
+  },
+  {
+    path:'Compensation',
+    canActivate : [OnlyLoggedInUsersGuard , AlwaysAuthGuard],
+    component : CompensationComponent,
+    data : {
+      title : 'Compensation'
+    }
+  },
+  {
+    path:'Transactions/:id',
+    canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+    component: TransactionsfdComponent
+  },
+  {
+    path :'Compensation/:id',
+    canActivate: [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+    component : CompensationviewComponent
+  },
+  {
+    path:'Transaction/view/:id',
+    canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+    component: TransactionviewComponent
+  },
+  {
+    path:'transfert',
+    canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+    component : TransfertComponent
   },
   {
     path: '',

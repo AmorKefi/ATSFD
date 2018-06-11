@@ -14,6 +14,7 @@ export class AppHeaderComponent implements OnInit{
   }
   ngOnInit(): void {
     this.logger=jwt_decode(this.Token);
+    console.log(this.logger);
   }
   
  }

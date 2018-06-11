@@ -41,6 +41,7 @@
 
             <button class="btn btn-primary rounded" (click)="downolad()"  mdbTooltip="imprimer liste" placement="top" ><i class="fa fa-file-pdf-o" aria-hidden="true"></i></button>
 
+
             <button class="btn btn-primary rounded" mdbTooltip="Ajouter un SFD" placement="left" (click)="openAddSFDDialog()" *HasAnyAuthority="'ROLE_GESTIONSFD_ADD'"><i class="fa fa-plus"></i></button>
 
             <span *HasAnyAuthority="'ROLE_GESTIONSFD_SELECT'">
@@ -49,6 +50,9 @@
             </span>
  
             <button class="btn btn-success rounded" routerLink="/Comptes/SFD" *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD'" mdbTooltip="Gestion des comptes" placement="top" ><i class="fa fa-money" aria-hidden="true"></i></button>                  
+
+            <button class="btn btn-primary rounded" (click)="downolad()">PDF</button>
+            <button class="btn btn-success rounded" routerLink="/Comptes/SFD" *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD'" mdbTooltip="Gestion des comptes" placement="top" >Gestion des comptes</button>                  
             <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
                       </div>
                     </div>
