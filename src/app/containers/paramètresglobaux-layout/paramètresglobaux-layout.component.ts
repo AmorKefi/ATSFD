@@ -38,7 +38,7 @@ openlettrage() {
   });
 }
   ngOnInit() {
-this.service.getHoraireCompensation().subscribe(res=>{this.data=res});
+this.service.getHoraireCompensation().subscribe(res=>{this.data=res},err=>console.log(err));
 
   }
   save(form){
@@ -49,7 +49,9 @@ this.service.getHoraireCompensation().subscribe(res=>{this.data=res});
 
     }
 
-this.service.updateParam(parametre).subscribe(res=>{  this.ngOnInit();let div = document.getElementById('Message');
+this.service.updateParam(parametre).subscribe(res=>{  
+this.ngOnInit();
+let div = document.getElementById('Message');
 div.classList.remove('red','accent-1');
 div.classList.add('rgba-green-light','animate');
 div.innerHTML="L'horaire de compensation a été mis à jour !";

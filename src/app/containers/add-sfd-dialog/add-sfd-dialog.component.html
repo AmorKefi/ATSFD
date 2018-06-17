@@ -98,8 +98,13 @@
           <form #form="ngForm" class="form-inline">
               <div  class="form-group col-3"  *ngIf="data?.caller !='Modifier SFD'" >
               <label for="codeSfd" class="font-weight-bold">code Sfd</label>
-                  <input type="text" class="form-control col-10 has-danger" placeholder="code SFD" id="codeSfd" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel"  required>  
-                </div>
+                  <input type="text" class="form-control col-10 has-danger" placeholder="code SFD" id="codeSfd" name="codesfd" [ngModel]="data?.codesfd" #codesfd="ngModel" minlength="3" maxlength="3" required>  
+                  <div class="text-danger" *ngIf="codesfd.invalid && (codesfd.dirty || codesfd.touched)">
+                    <div *ngIf="codesfd.errors.minlength">
+                     La taille de  Code sfd doit etre : 3 
+                    </div>
+                  </div>
+              </div>
             <div class="form-group col-3">
             <label for="NomSFD" class="font-weight-bold">Nom SFD</label>
                 <input type="text" class="form-control col-10" placeholder="Nom SFD" id="NomSFD" name="nomsfd" [ngModel]="data?.nomsfd" #nomsfd="ngModel" required>
@@ -138,7 +143,7 @@
               </div>
               <div class="form-group col-3">
                <label for="telsfd2" class="font-weight-bold">tel sfd 2</label>
-                  <input type="text" class="form-control col-10" id="telsfd2" placeholder="Telephone 2" name="telsfd2" [ngModel]="data?.telsfd2" #telsfd2="ngModel" required pattern="[0-9]*" minlength="8" maxlength="12">
+                  <input type="text" class="form-control col-10" id="telsfd2" placeholder="Telephone 2" name="telsfd2" [ngModel]="data?.telsfd2" #telsfd2="ngModel" pattern="[0-9]*" minlength="8" maxlength="12">
                   <div class="text-danger" *ngIf="telsfd2.invalid && (telsfd2.dirty || telsfd2.touched)">
                     <div *ngIf="telsfd2.errors.minlength || telsfd2.errors.pattern">
                       numéro Invalid

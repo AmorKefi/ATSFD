@@ -2,6 +2,7 @@
 <div class="row">
   <div class="col-sm-12 col-md-12 ml-2">
 <div class="card-group">
+  <ng-template [ngIf]="Acteur=='ROLE_ADMIN'">
   <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
 
     <div class="card-body">
@@ -34,10 +35,77 @@
       </div>
     </div>
   </div>
- 
-  
-  
-  
+  </ng-template>
+  <ng-template [ngIf]="Acteur=='ROLE_AGENT'">
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+
+      <div class="card-body">
+        <h5 class="card-title text-center">Transaction</h5>
+        <div class="row">
+      <div class="col-6"> <img src="./assets/img/profits.png">
+      </div>
+      <div class="col-6 display-4">{{nbrtransaction}}</div>
+    </div>
+      </div>
+    </div>
+    <div class="card text-white bg-primary mb-3 ml-5" style="max-width: 18rem;">
+
+      <div class="card-body">
+        <h5 class="card-title text-center">CASHIN</h5>
+        <div class="row">
+      <div class="col-6"><img src="./assets/img/cash.png">
+      </div>
+      <div class="col-6 display-4">{{nbrcashin}}</div>
+    </div>
+      </div>
+    </div>
+    <div class="card text-white bg-primary mb-3 ml-5" style="max-width: 18rem;">
+
+      <div class="card-body">
+        <h5 class="card-title text-center">CASHOUT</h5>
+        <div class="row">
+      <div class="col-6"><img src="./assets/img/payment-method.png">
+      </div>
+      <div class="col-6 display-4">{{nbrcashout}}</div>
+    </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template [ngIf]="Acteur=='ROLE_ADMINSFD'">
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+
+      <div class="card-body">
+        <h5 class="card-title text-center">Point De Vente</h5>
+        <div class="row">
+      <div class="col-6"><img src="./assets/img/institute.png">
+      </div>
+      <div class="col-6 display-4">{{nbrpdv}}</div>
+    </div>
+      </div>
+    </div>
+    <div class="card text-white bg-primary mb-3 ml-5" style="max-width: 18rem;">
+
+      <div class="card-body">
+        <h5 class="card-title text-center">Adherents</h5>
+        <div class="row">
+      <div class="col-6"><img src="./assets/img/users.png">
+      </div>
+      <div class="col-6 display-4">{{nbrclient}}</div>
+    </div>
+      </div>
+    </div>
+    <div class="card text-white bg-primary mb-3 ml-5" style="max-width: 18rem;">
+
+      <div class="card-body">
+        <h5 class="card-title text-center">Transactions</h5>
+        <div class="row">
+      <div class="col-6"><img src="./assets/img/profits.png">
+      </div>
+      <div class="col-6 display-4">{{nbrtransaction}}</div>
+    </div>
+      </div>
+    </div>
+  </ng-template>
 </div>
 </div>
 </div>

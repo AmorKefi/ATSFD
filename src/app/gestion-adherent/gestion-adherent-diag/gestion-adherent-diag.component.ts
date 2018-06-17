@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { AdherentService } from '../../Services/adherent.service';
 import { PdvServiceService } from '../../Services/pdvService/pdv-service.service';
 import { DatePipe } from '@angular/common';
+import * as jwt_decode from 'jwt-decode';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-gestion-adherent-diag',
@@ -11,8 +13,9 @@ import { DatePipe } from '@angular/common';
 })
 export class GestionAdherentDiagComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data,private datepipe : DatePipe,private diag:MatDialog,private service:AdherentService,private pdvservice:PdvServiceService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data,private cookie:CookieService,private datepipe : DatePipe,private diag:MatDialog,private service:AdherentService,private pdvservice:PdvServiceService) { }
   pdvs:any;
+  Token:any=jwt_decode(this.cookie.get("Token"));
   ngOnInit() {
     this.pdvservice.getAll().subscribe(res=>this.pdvs=res,err=>console.log(err));
     if(this.data.data){
@@ -29,10 +32,9 @@ if(data.pdv=="selectionez Point De vente"){
   data.pdv=null;
 }else{
   data.pdv={
-    codePdv:data.pdv
+    codePdv:this.Token.PDV.codePdv
   }
 }
-console.log(data);
 this.service.ajouter(data).subscribe(res=>{
   let div = document.getElementById('Message');
   div.classList.remove('red','accent-1');

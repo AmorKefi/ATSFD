@@ -37,7 +37,20 @@ export class CompteFinancierDiagComponent implements OnInit {
     form.value.statutCompte="Activé";
     this.service.add(form.value).subscribe(res=>this.dialog.closeAll(),err=>console.log(err));
   }
-  bloquer(form){
-    this.service.bloquer(form.value).subscribe(res=>this.dialog.closeAll(),err=>console.log(err));
+  bloquer(){
+    let date = new Date();
+    this.data.compte.dateCloture=this.formatDate(date);
+    this.service.bloquer(this.data.compte).subscribe(res=>this.dialog.closeAll(),err=>console.log(err));
   }
+ formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 }
