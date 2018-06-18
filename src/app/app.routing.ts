@@ -54,14 +54,14 @@ export const routes: Routes = [
     component: SfdLayoutComponent,
   },
   
-  {
-    path: 'GestionDesAdmin',
-    data: {
-      title: 'Gestion des administrateurs SFD'
-    },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
-    component: GestionAdminSfdComponent,
-  },
+  // {
+  //   path: 'GestionDesAdmin',
+  //   data: {
+  //     title: 'Gestion des administrateurs SFD'
+  //   },
+  //   canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+  //   component: GestionAdminSfdComponent,
+  // },
   {
     path: 'GestionDesAgents',
     data: {
@@ -81,14 +81,14 @@ export const routes: Routes = [
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: AppUserComponent
   },
-  {
-    path: 'GestionResPdv',
-    data: {
-      title: 'Gestion des responsables'
-    },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
-    component: ResponsablesPdvComponent
-  },
+  // {
+  //   path: 'GestionResPdv',
+  //   data: {
+  //     title: 'Gestion des responsables'
+  //   },
+  //   canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+  //   component: ResponsablesPdvComponent
+  // },
   {
     path: 'auth',
 

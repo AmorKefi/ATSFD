@@ -21,12 +21,12 @@ export const navigation = [
       icon: 'fa fa-users',
       role:['ROLE_GESTIONDESAGENTS']
     },
-    {
-      name: 'Gestion des administrateurs SFD',
-      url: '/GestionDesAdmin',
-      icon: 'fa fa-users',
-      role:['ROLE_GESTIONADMINISTRATEURSFD']
-    },
+    // {
+    //   name: 'Gestion des administrateurs SFD',
+    //   url: '/GestionDesAdmin',
+    //   icon: 'fa fa-users',
+    //   role:['ROLE_GESTIONADMINISTRATEURSFD']
+    // },
     
     
 {
@@ -37,25 +37,25 @@ export const navigation = [
     },
 
     {
-      name: 'Points de ventes',
+      name: 'Gestion point de vente',
       url: '/GestionPDV',
       icon: 'fa fa-institution',
       role:['ROLE_GESTIONDESPDV']
-      ,children :[
+//       ,children :[
 
-{
-  name: 'Gestion responsables',
-  url: '/GestionResPdv',
-  icon: 'fa fa-users',
-  role:['ROLE_GESTIONDESRESPONSABLEPDV']
-},
-{
-  name: 'Gestion Point de vente',
-  url: '/GestionPDV',
-  icon: 'fa fa-institution',
-  role:['ROLE_GESTIONDESPDV']
-}
-      ]
+// // {
+// //   name: 'Gestion responsables',
+// //   url: '/GestionResPdv',
+// //   icon: 'fa fa-users',
+// //   role:['ROLE_GESTIONDESRESPONSABLEPDV']
+// // },
+// {
+//   name: 'Gestion Point de vente',
+//   url: '/GestionPDV',
+//   icon: 'fa fa-institution',
+//   role:['ROLE_GESTIONDESPDV']
+// }
+//       ]
     },
    {
   name: 'Gestion des accès',
