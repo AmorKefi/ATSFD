@@ -11,7 +11,8 @@ export class CompensationComponent implements OnInit {
   constructor(private compservice : CompensationService) { }
   compensations : any;
   ngOnInit() {
-    this.compservice.getAll().subscribe(res=>this.compensations=res,err=>console.log(err));
+    this.compservice.getAll().subscribe(res=>{this.compensations=res
+    console.log(res)},err=>console.log(err));
   }
 
 }

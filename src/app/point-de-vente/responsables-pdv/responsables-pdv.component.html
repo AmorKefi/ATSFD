@@ -13,7 +13,7 @@
               <div class="card-body">
                   <div class="row float-right">
                       <div class="form-group">
-          <button class="btn btn-primary rounded" (click)="ajouter()" *HasAnyAuthority="'ROLE_GESTIONDESRESPONSABLEPDV_ADD'"><i class="fa fa-plus"></i> Ajouter Responsable</button> 
+          <button class="btn btn-primary rounded" (click)="ajouter()" ><i class="fa fa-plus"></i> Ajouter Responsable</button> 
           <span *HasAnyAuthority="'ROLE_GESTIONDESRESPONSABLEPDV_SELECT'">
             <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Activé'"><i class="fa fa-list" aria-hidden="true"></i> Historique</button>             
             <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Desactivated'"><i class="fa fa-list" aria-hidden="true"></i> Liste Des Point de ventes</button> 
@@ -37,7 +37,7 @@
                       </form>
               </div>
               </div>
-              <div class="card-body" *HasAnyAuthority="'ROLE_GESTIONDESRESPONSABLEPDV_SELECT'">
+              <div class="card-body">
                     <div class="row mt-2">
                         <div class="col-lg-12">
                           <div class="card p-0">
@@ -68,8 +68,8 @@
                                 
                                   <div class="btn-group" role="group">
                                      
-                                      <button type="button" class="btn btn-info" (click)="modifier(user)" *HasAnyAuthority="'ROLE_GESTIONDESRESPONSABLEPDV_UPDATE'"><i class="fa fa-pencil"></i></button>
-                                      <span *HasAnyAuthority="'ROLE_GESTIONDESRESPONSABLEPDV_DELETE'">
+                                      <button type="button" class="btn btn-info" (click)="modifier(user)" ><i class="fa fa-pencil"></i></button>
+                                      <span>
                                         <button type="button" class="btn btn-info" (click)="Desactivate(user)" *ngIf="user.statut!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-info" (click)="Activer(user)" *ngIf="user.statut=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
                                       </span>

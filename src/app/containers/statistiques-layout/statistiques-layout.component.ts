@@ -15,6 +15,7 @@ export class StatistiquesLayoutComponent implements OnInit {
   Token : any = jwt_decode(this.cookie.get('Token'));
   ngOnInit() {
     console.log(this.Token.PDV);
+    if(this.Token.PDV!=null){
     this.statService.getEchange(this.Token.PDV.codePdv).subscribe(res=>{
       let totalcashin  = Number(res['totalCashin']);
       let totalCashout = Number(res['totalCashout']);
@@ -65,5 +66,5 @@ this.chart = new Chart('canvas',{
 });
     },err=>console.log(err));
   }
-
+}
 }

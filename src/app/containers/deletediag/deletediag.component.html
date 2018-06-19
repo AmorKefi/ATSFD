@@ -1,24 +1,24 @@
 <ng-template [ngIf]="data?.caller=='Desactiver'">
   <div class="card col-12 p-0 m-0">
-<h2  class="text-center card-header">Confirmation de Désactivation</h2>
-<div class="text-center font-weight-bold display-5 card-body pb-5">etes vous sur ?</div>
+<h2  class="text-center card-header cyan darken-2">Confirmation de Désactivation</h2>
+<div class="text-center font-weight-bold display-5 card-body pb-5">êtes-vous sûr de vouloir désactiver cet SFD ?</div>
 
-<div class="row justify-content-center m-0 p-3 card-footer">
-  <button mat-dialog-close class="btn btn-danger col-3">No</button>
+<div class="row justify-content-center m-0 p-3 card-footer cyan darken-2">
+  <button class="btn btn-danger col-3" (click)="Desactiver()">Oui</button>
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-  <button   class="btn btn-success col-3"  (click)="Desactiver()">Yes</button>
+  <button  mat-dialog-close  class="btn btn-success col-3"  >Non</button>
 </div>
 </div>
 </ng-template>
 <ng-template [ngIf]="data?.caller=='Activer'">
   <div class="card col-12 p-0 m-0">
-  <h2  class="text-center card-header">Confirmation d'activation</h2>
-<div class="text-center font-weight-bold display-5 card-body pb-5">etes vous sur ?</div>
+  <h2  class="text-center card-header cyan darken-2" >Confirmation d'activation</h2>
+<div class="text-center font-weight-bold display-5 card-body pb-5">êtes-vous sûr de vouloir activé cet SFD ?</div>
 
-<div class="row justify-content-center m-0 p-3 card-footer">
-  <button  mat-dialog-close class="btn btn-danger col-3">No</button>
+<div class="row justify-content-center m-0 p-3 card-footer cyan darken-2">
+  <button   class="btn btn-danger col-3"  (click)="Activate()">Oui</button>
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-  <button   class="btn btn-success col-3"  (click)="Activate()">Yes</button>
+  <button  mat-dialog-close  class="btn btn-success col-3" >Non</button>
 </div>
 </div>
 </ng-template>

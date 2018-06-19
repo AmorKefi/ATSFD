@@ -30,9 +30,11 @@ export class AgentsComponent implements OnInit {
         }
       }
       list.forEach(element => {
+        if(element.sfd!=null){
          if(element.sfd.codesfd == this.usersfd.SFD.codesfd){
            listr.push(element);
          }
+        }
       });
       return listr;
      }).subscribe(

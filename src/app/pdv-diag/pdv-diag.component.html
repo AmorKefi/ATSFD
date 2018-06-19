@@ -4,10 +4,13 @@
            <form #form="ngForm" class="form-inline">
                    <div  class="form-group col-5 mb-2" *ngIf="data.caller!='Modifier'">
                         <label for="codePdv" class="font-weight-bold">code Pdv :</label>
-                         <input type="text" class="form-control col-10 has-danger" placeholder="code Point De vente" name="codePdv" id="codePdv" [ngModel]="data?.pdv?.codePdv" #codePdv="ngModel"  required>  
+                         <input type="text" class="form-control col-10 has-danger" placeholder="code Point De vente" name="codePdv" id="codePdv" [ngModel]="data?.pdv?.codePdv" #codePdv="ngModel" minlength="3" maxlength="3" required>  
                          <div *ngIf="codePdv.invalid && (codePdv.dirty || codePdv.touched)" class="text-danger">
                            <div *ngIf="codePdv.errors.required">
                              *
+                           </div>
+                           <div *ngIf="codePdv.errors.minlength">
+                              la taille de code doit etre  : 3 
                            </div>
                          </div>
                        </div>
@@ -42,7 +45,7 @@
                                </div>
                                <div  class="form-group col-5 mb-2" >
                                <label for="telephone2Pdv" class="font-weight-bold">telephone2Pdv :</label>  
-                                     <input type="text" class="form-control col-10 has-danger" placeholder="Telephone Point de vente"  id="telephone2Pdv" name="telephone2Pdv" [ngModel]="data?.pdv?.telephone2Pdv" #telephone2Pdv="ngModel" pattern="[0-9]*" minlength="8"  required>  
+                                     <input type="text" class="form-control col-10 has-danger" placeholder="Telephone Point de vente"  id="telephone2Pdv" name="telephone2Pdv" [ngModel]="data?.pdv?.telephone2Pdv" #telephone2Pdv="ngModel" pattern="[0-9]*" minlength="8" >  
                                      <div *ngIf="telephone2Pdv.invalid && (telephone2Pdv.dirty || telephone2Pdv.touched)"
                                      class="text-danger">
                                        <div *ngIf="telephone2Pdv.errors.minlength || telephone2Pdv.errors.pattern">
@@ -67,11 +70,6 @@
                                         <div class="form-check">
                                           <input class="form-check-input" mdbInputDirective name="typePdv" [ngModel]="data?.pdv?.typePdv" type="radio" id="radio2" value="agence" checked="data?.pdv?.typePdv == 'agence'">
                                           <label class="form-check-label" for="radio2">Agence</label>
-                                        </div>
-                                        <div class="form-group col-5 mb-2">
-                                          <select name="responsable" class="form-control" [ngModel]="data?.pdv?.responsable" #responsable="ngModel">
-                                            <option *ngFor="let responsable of responsables" [ngValue]="responsable">{{responsable.firstName+""+responsable.lastName}}</option>
-                                          </select>
                                         </div>
                 </form>
   </div>

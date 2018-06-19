@@ -50,9 +50,7 @@
             </span>
  
             <button class="btn btn-success rounded" routerLink="/Comptes/SFD" *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD'" mdbTooltip="Gestion des comptes" placement="top" ><i class="fa fa-money" aria-hidden="true"></i></button>                  
-
-            <button class="btn btn-primary rounded" (click)="downolad()" mdbTooltip="PDF" placement="top"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> </button>
-            <button class="btn btn-success rounded" routerLink="/Comptes/SFD" *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD'" mdbTooltip="Gestion des comptes" placement="top" >Gestion des comptes</button>                  
+            <!-- <button class="btn btn-success rounded" routerLink="/Comptes/SFD" *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD'" mdbTooltip="Gestion des comptes" placement="top" >Gestion des comptes</button>                   -->
             <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
                       </div>
                     </div>
@@ -62,9 +60,11 @@
                             <label class="mr-2">Afficher:</label>
                             <select class="form-control mr-2" #t (change)="sortBy(t)">
                                     <option [ng-value]=""></option>
-                                    <option [ng-value]="10">10</option>
-                                    <option [ng-value]="5">5</option>
                                     <option [ng-value]="3">3</option>
+                                    <option [ng-value]="5">5</option>
+                                    <option [ng-value]="10">10</option>
+                                  
+                                
                               </select>
                               <label>éléments</label>
                             </div>
@@ -79,16 +79,13 @@
                              <div class="card-body  table-responsive p-0">
                                 <table class="table" #content id="content" >
                                   <!-- <thead class="blue-grey lighten-4"> -->
-                           
                                     <tr>
                                       <th class="font-weight-bold">Code</th>
                                       <th class="font-weight-bold" >Nom</th>
                                       <th class="font-weight-bold" >Adresse</th>
                                       <th class="font-weight-bold" >Pays</th>
                                       <th class="font-weight-bold" >Statut social</th>
-                                      <div>
-                                      <th class="font-weight-bold" >Actions</th>
-                                    </div>
+                                      <div><th class="font-weight-bold" >Actions</th></div>
                                     </tr>
                                   <!-- </thead> -->
                                  <!-- <tbody > -->

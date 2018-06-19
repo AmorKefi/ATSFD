@@ -49,7 +49,7 @@ export class GestionComptesComponent implements OnInit {
          }
         })
         return listr;
-      }).subscribe(res=>this.comptes=res,err=>console.log(err));
+      }).subscribe(res=>{this.comptes=res;},err=>console.log(err));
     }else{
       this.service.getAll().map(res=>{
         let list=[];
@@ -114,23 +114,16 @@ export class GestionComptesComponent implements OnInit {
     this.service.sortBy(t.value).subscribe(res=>this.comptes=res,err=>console.log(err));
   }
   search(filter){
-   
-    if(filter.Code=="" && filter.Nomsfd==""){
+ 
+    if(filter.Nomsfd=="" || filter.NomAdherent==""){
       this.ngOnInit();
     }else{
-      let req={
-          Code:null,
-          Nomsfd:null
-    }
-    if(filter.Code!="" && filter.Nomsfd!=""){
-      req.Code=filter.Code;
-      req.Nomsfd=filter.Nomsfd;
-    }else if (filter.Nomsfd!=""){
-      req.Nomsfd=filter.Nomsfd;
-    }else{
-      req.Code=filter.Code;
-    }
-    this.service.filter(req).subscribe(res=>{this.comptes=res;console.log(res)},err=>console.log(err));
+    
+    if (filter.Nomsfd!=null){
+    this.service.filter(filter.Nomsfd).subscribe(res=>{this.comptes=res;console.log(res)},err=>console.log(err));
+  }else if(filter.NomAdherent!=null){
+    this.service.filterbyadherent(filter.NomAdherent).subscribe(res=>this.comptes=res,err=>console.log(err));
+  }
   }
   }
 }

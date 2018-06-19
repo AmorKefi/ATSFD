@@ -55,7 +55,11 @@ export class CompteFinancierService {
   filter(filter){
     const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
     headers.append('content-type','application/json')
-    console.log(filter);
     return this.http.post('http://127.0.0.1:8080/compte/Filter',filter,{headers});
+  }
+  filterbyadherent(filter){
+    const headers = new HttpHeaders().set('X-Auth-Token', JSON.parse(this.Token).token);
+    headers.append('content-type','application/json')
+    return this.http.post('http://127.0.0.1:8080/adherent/filterAdherent',filter,{headers});
   }
 }

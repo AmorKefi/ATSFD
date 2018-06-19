@@ -36,17 +36,11 @@
       <h4 class="mb-4">{{data?.caller}}</h4>
     </div>
   <div class="card-body pb-5">
-    <form #form="ngForm" class="form-inline">     
-      <div class="form-group col-6 mb-2 pb-4">
-        <label for="DateCloture pb-2">Date Cloture</label>
-          <input type="text" class="form-control" placeholder="Num compte" name="numCompte" [ngModel]="data?.compte?.numCompte" hidden>  
-          <input type="date" class="form-control" placeholder="dateCloture" name="dateCloture" [ngModel]="data?.compte?.dateCloture">
-      </div>
-    </form>
+    Etes vous sur de bloquer cet compte ? 
   </div>
   <div class="card-footer cyan darken-2 p-5">
     <div class="text-center col-12">
-      <button type="submit" class="btn btn-primary" (click)="bloquer(form)" *ngIf="data?.caller=='bloquer'">Bloquer</button>
+      <button type="submit" class="btn btn-primary" (click)="bloquer()" *ngIf="data?.caller=='bloquer'">Bloquer</button>
       <button class="btn btn-default waves-light rounded" mdbRippleRadius (click)="close()">Quitter</button>
     </div>
   </div> 

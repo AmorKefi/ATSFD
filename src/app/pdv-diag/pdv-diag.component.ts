@@ -52,7 +52,6 @@ export class PdvDiagComponent implements OnInit {
       form.value.cptf=null
     }
     form.value.sfd=this.sfds;
-    console.log(form.value);
    this.service.Add(form.value).subscribe(res=>{
      this.diag.closeAll();
    },err=>console.log(err));

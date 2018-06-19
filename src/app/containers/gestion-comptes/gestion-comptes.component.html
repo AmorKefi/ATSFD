@@ -13,14 +13,14 @@
               <div class="card-header font-weight-bold">Critères de recherche</div>
               <div class="card-body">
                   <form class="form-inline mb-2" #form="ngForm" (ngSubmit)="search(form.value)">
-                      <div class="form-group col-4">
-                          <label for="Code" class="font-weight-bold"> Num Compte : </label> 
-                          <input type="text" id="Code" class="form-control col-6 rounded" placeholder="Numéro de compte" ngModel #Code="ngModel" name="Code" >
-                      </div>  
                       <div class="form-group col-4" *ngIf="acteur=='SFD'">
                           <label for="Nom">Nom SFD :</label>
                           <input type="text" id="Nom" class="form-control col-6 rounded" placeholder="Nom SFD" ngModel #nomsfd="ngModel" name="Nomsfd">
                       </div>
+                      <div class="form-group col-4" *ngIf="acteur=='Adherent'">
+                        <label for="Nom">Nom Adherent :</label>
+                        <input type="text" id="Nom" class="form-control col-6 rounded" placeholder="Nom Adherent" ngModel #nomAdherent="ngModel" name="NomAdherent">
+                    </div>
                             <div class="form-groupe col-3">
                                   <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
                             </div>                       
@@ -93,8 +93,6 @@
                           
                             <div class="btn-group" role="group">
                                <span *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD_UPDATE'">
-                                <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'" mdbTooltip="Désactiver" placement="top"><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'" mdbTooltip="Activer" placement="top"><i class="fa fa-unlock" aria-hidden="true"></i></button>
                                 <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)" mdbTooltip="Bloquer" placement="top"><i class="fa fa-close"></i></button>
                                 <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'" mdbTooltip="Débloquer" placement="top"><i class="fa fa-close" aria-hidden="true"></i></button>
                                </span>
@@ -107,7 +105,7 @@
                          </tbody>
                         </table>
                     </span>
-                    <span *HasAnyAuthority="'ROLE_GESTIONDESCOMPTEADHERENT_SELECT'">
+                    <span >
                         <table class="table" *ngIf="acteur=='Adherent'">
                                 <thead class="blue-grey lighten-4">
                                   <tr>
@@ -135,11 +133,11 @@
                                 <td>
                                 
                                   <div class="btn-group" role="group">
-                                     <span *HasAnyAuthority="'ROLE_GESTIONDESCOMPTEADHERENT_DELETE'">
+                                     <!-- <span *HasAnyAuthority="'ROLE_GESTIONDESCOMPTEADHERENT_DELETE'">
                                         <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'"><i class="fa fa-unlock" aria-hidden="true"></i></button>
-                                      </span>
-                                      <span *HasAnyAuthority="'ROLE_GESTIONDESCOMPTEADHERENT_UPDATE'">
+                                      </span> -->
+                                      <span >
                                         <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)" mdbTooltip="Bloquer" placement="top"><i class="fa fa-close"></i></button>
                                         <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'" mdbTooltip="Débloquer" placement="top"><i class="fa fa-close" aria-hidden="true"></i></button>
                                       </span> 
@@ -181,8 +179,7 @@
                                     <td>
                                     
                                       <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'" mdbTooltip="Désactiver" placement="top"><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                        <button type="button" class="btn btn-info" (click)="Activer(compte)" *ngIf="compte.statutCompte=='Désactivé'" mdbTooltip="Activer" placement="top"><i class="fa fa-unlock" aria-hidden="true"></i></button>
+          
                                         <button type="button" class="btn btn-danger" *ngIf="compte.statutCompte != 'Bloqué'" (click)="bloquer(compte)" mdbTooltip="Bloquer" placement="top"><i class="fa fa-close"></i></button>
                                         <button type="button" class="btn btn-success" (click)="bloquer(compte)" *ngIf="compte.statutCompte == 'Bloqué'" mdbTooltip="Débloquer" placement="top"><i class="fa fa-close" aria-hidden="true"></i></button>
                                       </div>
