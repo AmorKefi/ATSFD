@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { UserDesactivesComponent } from '../user-desactives/user-desactives.component';
 import { SfdLayoutComponent } from '../../../containers/sfd-layout/sfd-layout.component';
 import { SfdserviceService } from '../../../Services/SFDService/sfdservice.service';
+import { PdvServiceService } from '../../../Services/pdvService/pdv-service.service';
 
 @Component({
   selector: 'app-add-user',
@@ -29,7 +30,8 @@ export class AddUserComponent implements OnInit {
   private userRoles:Array<RoleApp>=new Array<RoleApp>();// the new use roles
   private roleList:string='List des Roles';
   sfds:any;
-
+  pdvs:any;
+  private acteur="ADMINSFD";
 
 
   constructor(private appRoleService:AppRoleService,
@@ -38,7 +40,8 @@ export class AddUserComponent implements OnInit {
               private route:Router,
               private dialogRef: MatDialogRef<AddUserComponent>,
               @Inject(MAT_DIALOG_DATA) data,
-              private servicesfd:SfdserviceService) { 
+              private servicesfd:SfdserviceService,
+              private pdvservice:PdvServiceService) { 
                 this.user.roles=new Array<RoleApp>();
     
               }
@@ -60,10 +63,14 @@ export class AddUserComponent implements OnInit {
                firstName: ['', [<any>Validators.required]],
               email: ['', [<any>Validators.required,<any>Validators.email]],
               role:[null,[<any>Validators.required]],
-              sfd:['',[<any>Validators.required]]   
+              sfd:['',[]],
+              pdv:['',[]]
        });  
        this.sfd=null;
        this.role=null;
+       this.pdv=null;
+       this.pdvservice.getAll().subscribe(res=>{this.pdvs=res
+      console.log(res)},err=>console.log(err));
           this.appRoleService.getAllRoles2().subscribe(
            res=>res.map(x=>this._roles.push(x)),
             err => console.error(err),
@@ -75,6 +82,11 @@ export class AddUserComponent implements OnInit {
   selectParent:String='Parent';
    onChangeRole(value){
     this.idNewRole=value;
+    if(value==3){
+      this.acteur="AGENT";
+    }else if (value==2){
+      this.acteur="ADMINSFD";
+    }
     console.log(this.idNewRole);
   }
 
@@ -112,13 +124,13 @@ export class AddUserComponent implements OnInit {
      this.user.image=model.image;
      this.user.statut="Activé";
      this.user.sfd=model.sfd;
-      console.log(this.user);
    
      //this.user.roles=new Array<RoleApp>();
      //this._roles.map(x=>this.user.roles.push(x));
 
      this.appUserService.addAppUser(this.user).subscribe(
        res=>{
+         if(res['success']){
         let div= document.getElementById('Message');
         div.classList.add('animate');
         div.classList.remove('red','accent-1');
@@ -127,8 +139,28 @@ export class AddUserComponent implements OnInit {
         setInterval(function(){
           div.classList.remove('animate');
         },4000)
-        this.dialogRef.close()},
+        this.dialogRef.close();
+      }else{
+        let div= document.getElementById('Message');
+        div.classList.remove('rgba-green-light');
+        div.classList.add('red','accent-1','animate');
+        div.innerHTML="Veuillez vérifier votre login"
+        setInterval(function(){
+          div.classList.remove('animate');
+        },4000)
+      }
+        //
+      },
        err => {
+         if(err.error.exception == "org.springframework.dao.DataIntegrityViolationException"){
+          let div= document.getElementById('Message');
+          div.classList.remove('rgba-green-light');
+          div.classList.add('red','accent-1','animate');
+          div.innerHTML="Resaisir votre email !"
+          setInterval(function(){
+            div.classList.remove('animate');
+          },4000)
+         }else{
          let div= document.getElementById('Message');
          div.classList.remove('rgba-green-light');
          div.classList.add('red','accent-1','animate');
@@ -136,8 +168,8 @@ export class AddUserComponent implements OnInit {
          setInterval(function(){
            div.classList.remove('animate');
          },4000)
-       },
-       ()=>console.log('we added the user => '+ model)
+       }
+      }
      )
 
  }

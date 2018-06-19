@@ -12,27 +12,42 @@
      <div class="card col-12 p-0">
        <div class="card-header text-center font-weight-bold">
           <span class="float-left"><Button class="btn btn-flat btn-default" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Transaction</Button></span>
-        Transaction  {{transaction?.numeroTransaction}}
+        Transaction numéro   {{transaction?.numeroTransaction}}
        </div>
        <div class="card-body">
          <div class="row ">
-          <div class="col-2 font-weight-bold">cin Emetteur : </div><div class="col-2">{{transaction?.cinEmetteur}}</div>
-          <div class="col-2 font-weight-bold">nom Emetteur : </div><div class="col-2">{{transaction?.nomEmetteur}}</div>
-          <div class="col-2 font-weight-bold">prenom Emetteur : </div><div class="col-2">{{transaction?.prenomEmetteur}}</div>
-          <!-- <div class="col-2 font-weight-bold">adresse Emetteur : </div><div class="col-2">{{transaction?.adresseEmetteur}}</div> -->
-          <div class="col-2 font-weight-bold">telephone Emetteur : </div><div class="col-2">{{transaction?.telephoneEmetteur}}</div>
-          <div class="col-2 font-weight-bold">cin Desinataire : </div><div class="col-2">{{transaction?.cinDesinataire}}</div>
-          <div class="col-2 font-weight-bold">nom Destinataire : </div><div class="col-2">{{transaction?.nomDestinataire}}</div>
-          <div class="col-2 font-weight-bold">prenom Destinataire : </div><div class="col-2">{{transaction?.prenomDestinataire}}</div>
-          <div class="col-2 font-weight-bold">adresse Destinataire : </div><div class="col-2">{{transaction?.adresseDestinataire}}</div>
-          <div class="col-2 font-weight-bold">telephone Destinataire : </div><div class="col-2">{{transaction?.telephoneDestinataire}}</div>
-          <!-- <div class="col-2 font-weight-bold">type commision : </div><div class="col-2">{{transaction?.typecommision}}</div> -->
-          <div class="col-2 font-weight-bold">date Transfert : </div><div class="col-2">{{transaction?.dateTransfert | date}}</div>
-          <div class="col-2 font-weight-bold">numero Transaction : </div><div class="col-2">{{transaction?.numeroTransaction}}</div>
-          <div class="col-2 font-weight-bold">montant Transfert : </div><div class="col-2">{{transaction?.montantTransfert | currency:'CFA':'symbol':'4.2-2'}}</div>
-          <div class="col-2 font-weight-bold">montant Commision : </div><div class="col-2">{{transaction?.montantCommision | currency:'CFA':'symbol':'4.2-2'}}</div>
-          <div class="col-2 font-weight-bold">montant Tva : </div><div class="col-2">{{transaction?.montantTva | currency:'CFA ':'symbol':'4.2-2'}}</div>
-          <div class="col-2 font-weight-bold">typeTransaction : </div><div class="col-2">{{transaction?.typeTransaction}}</div>
+           <div class="col-4">
+           <div class="card-header text-center font-weight-bold col-12">Informations de la Transaction</div>
+           <div class="card-body">
+           <div class="col-6 font-weight-bold">Date Transfert : </div><div class="col-6">{{transaction?.dateTransfert | date}}</div>
+           <div class="col-6 font-weight-bold">Numéro Transaction : </div><div class="col-6">{{transaction?.numeroTransaction}}</div>
+           <div class="col-6 font-weight-bold">Montant Transfert : </div><div class="col-6">{{transaction?.montantTransfert | currency:'CFA':'symbol':'4.2-2'}}</div>
+           <!-- <div class="col-6 font-weight-bold">Montant Commision : </div><div class="col-6">{{transaction?.montantCommision | currency:'CFA':'symbol':'4.2-2'}}</div>
+           <div class="col-6 font-weight-bold">Montant Tva : </div><div class="col-6">{{transaction?.montantTva | currency:'CFA ':'symbol':'4.2-2'}}</div> -->
+           <div class="col-6 font-weight-bold ">TypeTransaction : </div><div class="col-6">{{transaction?.typeTransaction}}</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card-header text-center font-weight-bold col-12">Informations de l'emetteur</div>
+          <div class="card-body">
+          <div class="col-6 font-weight-bold">CIN Emetteur : </div><div class="col-6">{{transaction?.cinEmetteur}}</div>
+          <div class="col-6 font-weight-bold">Nom Emetteur : </div><div class="col-6">{{transaction?.nomEmetteur}}</div>
+          <div class="col-6 font-weight-bold">Prénom Emetteur : </div><div class="col-6">{{transaction?.prenomEmetteur}}</div>
+          <!-- <div class="col-6 font-weight-bold">adresse Emetteur : </div><div class="col-6">{{transaction?.adresseEmetteur}}</div> -->
+          <div class="col-6 font-weight-bold">Téléphone Emetteur : </div><div class="col-6">{{transaction?.telephoneEmetteur}}</div>
+        </div>
+        </div>
+        <div class="col-4">
+          <div class="card-header text-center font-weight-bold col-12">Informations de destinataire</div>
+          <div class="card-body"> 
+          <div class="col-6 font-weight-bold">CIN Desinataire : </div><div class="col-6">{{transaction?.cinDesinataire}}</div>
+          <div class="col-6 font-weight-bold">Nom Destinataire : </div><div class="col-6">{{transaction?.nomDestinataire}}</div>
+          <div class="col-6 font-weight-bold">Prénom Destinataire : </div><div class="col-6">{{transaction?.prenomDestinataire}}</div>
+          <div class="col-6 font-weight-bold">Adresse Destinataire : </div><div class="col-6">{{transaction?.adresseDestinataire}}</div>
+          <div class="col-6 font-weight-bold">Téléphone Destinataire : </div><div class="col-6">{{transaction?.telephoneDestinataire}}</div>
+          <!-- <div class="col-6 font-weight-bold">type commision : </div><div class="col-6">{{transaction?.typecommision}}</div> -->
+        </div>
+      </div>
         </div>
         </div>
      </div>

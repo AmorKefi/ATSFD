@@ -81,6 +81,20 @@ export const navigation = [
       role:['ROLE_PARAMETRE']
 
     },
+    // {
+    //   name: 'Lettrage',
+    //   url: '/Lettrage',
+    //   icon: 'fa fa-gears',
+    //   role:['ROLE_LETTRAGE']
+
+    // },
+    // {
+    //   name: 'Compensation',
+    //   url: '/Compensation',
+    //   icon: 'fa fa-gears',
+    //   role:['ROLE_COMPENSATION']
+
+    // },
     {
       name: 'Paramètres compte',
       url: '/GestionParamètresComptes',

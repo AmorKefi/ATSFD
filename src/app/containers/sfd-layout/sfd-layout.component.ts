@@ -129,6 +129,7 @@ export class SfdLayoutComponent implements OnInit{
         // let doc=new JSPdf();
         var doc = new jsPDF('p', 'pt');
         doc.text(15, 15, '                                Liste des SFD');
+
         var res = doc.autoTableHtmlToJson(document.getElementById('content'));
         let specialElementHandlers={
           '#editor':function(element,renderer) {
@@ -144,8 +145,8 @@ export class SfdLayoutComponent implements OnInit{
           //   'elementHandlers':specialElementHandlers
           // });
           doc.autoTable(res.columns, res.rows);
+
           doc.save('listeSFD.pdf');
-   
         
         
           }
