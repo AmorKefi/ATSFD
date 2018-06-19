@@ -19,7 +19,7 @@ export class DashboardComponent   implements OnInit {
   Acteur:any;
   nbrcashin:number=0;
   nbrcashout:number=0;
-  nbrtransaction:number=0;
+  nbrtransaction:number=0; 
   constructor( protected localStorage: AsyncLocalStorage ,private router: Router,private cookie: CookieService,private sfdservice: SfdserviceService,private adherentService:AdherentService,private pdvService:PdvServiceService,private transerv: TransactionsService) { }
   ngOnInit() {
     this.Acteur=this.Token.authorities[0].authority;
