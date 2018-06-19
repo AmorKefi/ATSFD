@@ -111,7 +111,8 @@ export class AgentsComponent implements OnInit {
        if(t.value==""){
          this.ngOnInit();
        }else{
-       this.userservice.sortBy(t.value).subscribe(res=>this.data=res,err=>console.log(err));
+       this.userservice.sortBy(t.value).subscribe(res=>{this.data=res
+      console.log(res)},err=>console.log(err));
      }
      }
     

@@ -75,12 +75,19 @@
                 </div> 
 
                         
-                <div class="form-group col-5 mb-2">
-                                <select class="form-control col-10 mt-1 " formControlName="sfd" [ngModel]="sfd"  (ngModelChange)="onChangeRole($event)" required> 
+                <div class="form-group col-5 mb-2" *ngIf="acteur=='ADMINSFD'">
+                                <select class="form-control col-10 mt-1 " formControlName="sfd" [ngModel]="sfd"  (ngModelChange)="onChangeRole($event)" > 
                                        <option [value]="null">sélectionnez un sfd</option>
                                        <option *ngFor="let s of sfds" [ngValue]="s"> {{s.nomsfd}} </option> 
                                 </select>  
-                           </div>
+                </div>
+                <div class="form-group col-5 mb-2" *ngIf="acteur=='AGENT'">
+                        <select class="form-control col-10 mt-1 " formControlName="pdv" [ngModel]="pdv"   > 
+  
+                                        <option [value]="null">sélectionner un point de vente </option>
+                                         <option *ngFor="let pdv of pdvs" [ngValue]="pdv"> {{pdv.nomPdv}} </option> 
+                 </select>          
+                </div>
             </form>
                 <div class="row bg-light">        
                    

@@ -18,11 +18,11 @@
                           <input type="text" id="Nom" class="form-control col-6 rounded" placeholder="Nom SFD" ngModel #nomsfd="ngModel" name="Nomsfd">
                       </div>
                       <div class="form-group col-4" *ngIf="acteur=='Adherent'">
-                        <label for="Nom">Nom Adherent :</label>
+                        <label for="Nom">Nom Adhérent :</label>
                         <input type="text" id="Nom" class="form-control col-6 rounded" placeholder="Nom Adherent" ngModel #nomAdherent="ngModel" name="NomAdherent">
                     </div>
                             <div class="form-groupe col-3">
-                                  <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
+                                  <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true" ></i></button>
                             </div>                       
                   </form>                   
               </div>
@@ -35,11 +35,11 @@
             <div class="row float-right">
                 <div class="form-group">
                     <span *HasAnyAuthority="'ROLE_GESTIONDESADHERENT'">
-                        <button class="btn btn-primary rounded" (click)="Ajouter()" *ngIf="acteur=='Adherent'"><i class="fa fa-plus"> Ajouter Un compte </i></button>
+                        <button class="btn btn-primary rounded" (click)="Ajouter()" *ngIf="acteur=='Adherent'" mdbTooltip="Ajouter Un compte" placement="top"><i class="fa fa-plus"></i></button>
                     </span>
                     <button class="btn btn-success rounded" routerLink="/GestionSFD" *ngIf="acteur=='SFD'" mdbTooltip="Gestion des SFD" placement="top"><i class="fa fa-institution" aria-hidden="true"></i></button>
-                    <button class="btn btn-success rounded" routerLink="/GestionAdherents" *ngIf="acteur=='Adherent'" mdbTooltip="Gestion des Adherents" placement="top">Gestion des Adherents</button>
-                    <button class="btn btn-success rounded" routerLink="/GestionPDV" *ngIf="acteur=='PDV'" mdbTooltip="Gestion des Points de ventes" placement="top">Gestion des Points de ventes</button>
+                    <button class="btn btn-success rounded" routerLink="/GestionAdherents" *ngIf="acteur=='Adherent'" mdbTooltip="Gestion des Adherents" placement="top"><i class="fa fa-institution" aria-hidden="true"></i></button>
+                    <button class="btn btn-success rounded" routerLink="/GestionPDV" *ngIf="acteur=='PDV'" mdbTooltip="Gestion des Points de ventes" placement="top"><i class="fa fa-institution" aria-hidden="true"></i></button>
  <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>--> 
                 </div>
             </div>
@@ -49,9 +49,9 @@
                 <label class="mr-2">Afficher:</label>
                 <select class="form-control mr-2" #t (change)="sortBy(t)">
                     <option [ng-value]=""></option>
-                    <option [ng-value]="10">10</option>
-                    <option [ng-value]="5">5</option>
                     <option [ng-value]="3">3</option>
+                    <option [ng-value]="5">5</option>
+                    <option [ng-value]="10">10</option>                
                   </select>
                   <label>éléments</label>
                 </div>

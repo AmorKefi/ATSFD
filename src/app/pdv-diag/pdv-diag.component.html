@@ -3,19 +3,19 @@
     <div class="card-body p-0">
            <form #form="ngForm" class="form-inline">
                    <div  class="form-group col-5 mb-2" *ngIf="data.caller!='Modifier'">
-                        <label for="codePdv" class="font-weight-bold">code Pdv :</label>
+                        <label for="codePdv" class="font-weight-bold">Code point de vente :</label>
                          <input type="text" class="form-control col-10 has-danger" placeholder="code Point De vente" name="codePdv" id="codePdv" [ngModel]="data?.pdv?.codePdv" #codePdv="ngModel" minlength="3" maxlength="3" required>  
                          <div *ngIf="codePdv.invalid && (codePdv.dirty || codePdv.touched)" class="text-danger">
                            <div *ngIf="codePdv.errors.required">
                              *
                            </div>
                            <div *ngIf="codePdv.errors.minlength">
-                              la taille de code doit etre  : 3 
+                              la taille du code doit être égale à 3 
                            </div>
                          </div>
                        </div>
                         <div  class="form-group col-5 mb-2" *ngIf="data.caller=='Modifier'">
-                        <label for="codePdv" class="font-weight-bold">code Pdv :</label>
+                        <label for="codePdv" class="font-weight-bold">Code point de vente  :</label>
                          <input type="text" class="form-control col-10 has-danger" placeholder="code Point De vente" name="codePdv" id="codePdv" [ngModel]="data?.pdv?.codePdv" #codePdv="ngModel" readonly  required>  
                          <div *ngIf="codePdv.invalid && (codePdv.dirty || codePdv.touched)" class="text-danger">
                            <div *ngIf="codePdv.errors.required">
@@ -24,7 +24,7 @@
                          </div>
                        </div>
                        <div class="form-group col-5 mb-2" >
-                       <label for="nomPdv" class="font-weight-bold">nom Pdv :</label>  
+                       <label for="nomPdv" class="font-weight-bold">Nom point de vente :</label>  
                              <input type="text" class="form-control col-10 has-danger" placeholder="Nom Point de vente" name="nomPdv"  id="nomPdv" [ngModel]="data?.pdv?.nomPdv" #nomPdv="ngModel"  required>  
                              <div *ngIf="nomPdv.invalid && (nomPdv.dirty || nomPdv.touched)"
                              class="text-danger">
@@ -34,7 +34,7 @@
                              </div>
                            </div>
                            <div  class="form-group col-5 mb-2" >
-                           <label for="telephone1Pdv" class="font-weight-bold">telephone1Pdv :</label>  
+                           <label for="telephone1Pdv" class="font-weight-bold">Téléphone 1 point de vente :</label>  
                                  <input type="text" class="form-control col-10 has-danger" placeholder="Telephone Point de vente" id="telephone1Pdv" name="telephone1Pdv" [ngModel]="data?.pdv?.telephone1Pdv" #telephone1Pdv="ngModel" pattern="[0-9]*" minlength="8"  required>  
                                  <div *ngIf="telephone1Pdv.invalid && (telephone1Pdv.dirty || telephone1Pdv.touched)"
                                  class="text-danger">
@@ -44,7 +44,7 @@
                                  </div>
                                </div>
                                <div  class="form-group col-5 mb-2" >
-                               <label for="telephone2Pdv" class="font-weight-bold">telephone2Pdv :</label>  
+                               <label for="telephone2Pdv" class="font-weight-bold">Téléphone 2 point de vente :</label>  
                                      <input type="text" class="form-control col-10 has-danger" placeholder="Telephone Point de vente"  id="telephone2Pdv" name="telephone2Pdv" [ngModel]="data?.pdv?.telephone2Pdv" #telephone2Pdv="ngModel" pattern="[0-9]*" minlength="8" >  
                                      <div *ngIf="telephone2Pdv.invalid && (telephone2Pdv.dirty || telephone2Pdv.touched)"
                                      class="text-danger">

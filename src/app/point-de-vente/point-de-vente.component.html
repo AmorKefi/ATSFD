@@ -14,15 +14,15 @@
                 <div class="card-body">
                     <form class="form-inline mb-2" #form="ngForm" (ngSubmit)="search(form.value)">
                         <div class="form-group col-4">
-                            <label for="Code" class="font-weight-bold"> Code PDV : </label> 
+                            <label for="Code" class="font-weight-bold"> Code point de vente : </label> 
                             <input type="text" id="Code" class="form-control col-12 rounded" placeholder="Code" ngModel #Code="ngModel" name="Code" >
                           </div>
                           <div class="form-group col-4">
-                               <label for="Nom" class="font-weight-bold"> Nom PDV : </label>
+                               <label for="Nom" class="font-weight-bold"> Nom point de vente : </label>
                                 <input type="text" id="Nom" class="form-control  col-12 rounded"  placeholder="Nom"  ngModel #Nom="ngModel" name="Nom" >
                               </div>   
                               <div class="form-groupe col-3">
-                                    <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
+                                    <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i></button>
                               </div>                       
                     </form>                   
                 </div>
@@ -37,9 +37,9 @@
           <button class="btn btn-primary rounded" (click)="ajouter()" *HasAnyAuthority="'ROLE_GESTIONDESPDV_ADD'"><i class="fa fa-plus"></i></button>
           <span *HasAnyAuthority="'ROLE_GESTIONDESPDV_SELECT'"> 
             <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Active'"  mdbTooltip="Historique" placement="top"><i class="fa fa-list" aria-hidden="true"></i></button>             
-            <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Desactive'"><i class="fa fa-list" aria-hidden="true"  mdbTooltip="Liste Des Point de ventes" placement="top"></i> Liste Des Point de ventes</button>
+            <button class="btn btn-warning rounded"(click)="getDesactivated()" *ngIf="layout=='Desactive'"><i class="fa fa-list" aria-hidden="true"  mdbTooltip="Liste Des Point de ventes" placement="top"></i></button>
           </span>
-          <button class="btn btn-success rounded" routerLink="/Comptes/PDV" *HasAnyAuthority="'ROLE_GESTIONDESCOMPTEPDV'"  mdbTooltip="Gestion des comptes" placement="top">Gestion des comptes</button> 
+          <button class="btn btn-success rounded" routerLink="/Comptes/PDV" *HasAnyAuthority="'ROLE_GESTIONDESCOMPTEPDV'"  mdbTooltip="Gestion des comptes" placement="top" ><i class="fa fa-money" aria-hidden="true"></i></button>  
           
        <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
                     </div>
@@ -68,12 +68,12 @@
                               <table class="table ">
                                 <thead>
                                   <tr>
-                                    <th>code</th>
-                                    <th>nom</th>
-                                    <th>telephone</th>
-                                    <th>telephone 2</th>
-                                    <th>statut</th>
-                                    <th>type</th>
+                                    <th>Code</th>
+                                    <th>Nom</th>
+                                    <th>Téléphone</th>
+                                    <th>Téléphone 2</th>
+                                    <th>Statut</th>
+                                    <th>Type</th>
                                     <th>Actions</th>
                                   </tr>
                                 </thead>

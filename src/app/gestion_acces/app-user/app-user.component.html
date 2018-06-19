@@ -25,7 +25,7 @@
                                     <input type="text" id="Nom" class="form-control  col-5 rounded" ngModel #Nom="ngModel" name="Nom" >
                                   </div>   
                                   <div class="form-groupe col-3">
-                                        <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i> Chercher</button>
+                                        <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i></button>
                                   </div>                       
                         </form>                   
                     </div>
@@ -43,14 +43,14 @@
             </div>
                        <div class="tools ">
                     <div class="form-group float-right pt-2">
-                            <button type="button" class="btn light-blue darken-4 rounded" (click)="add()" data-target="#add-function-model" >
-                              <span class="fa fa-plus"></span> Ajouter utilisateur</button>
-                              <button type="button" class="btn  blue-grey darken-3 rounded" *ngIf="layout=='Active'" (click)=getAllDesactives()>
+                            <button type="button" class="btn light-blue darken-4 rounded" (click)="add()" data-target="#add-function-model" mdbTooltip="Ajouter utilisateur" placement="top" >
+                              <span class="fa fa-plus"></span></button>
+                              <button type="button" class="btn  blue-grey darken-3 rounded" *ngIf="layout=='Active'" (click)=getAllDesactives() mdbTooltip="Historique" placement="top">
                                
-                                <span class="fa fa-list-ul"></span> Voir Historique</button>
-                                <button type="button" class="btn  blue-grey darken-3 rounded" *ngIf="layout=='Desactivated'" (click)=getAllDesactives()>
+                                <span class="fa fa-list-ul"></span></button>
+                                <button type="button" class="btn  blue-grey darken-3 rounded" *ngIf="layout=='Desactivated'" (click)=getAllDesactives() mdbTooltip="Liste des utilisateurs" placement="top">
                                
-                                        <span class="fa fa-list-ul"></span> Liste des Utilisateurs</button>
+                                        <span class="fa fa-list-ul"></span></button>
                           </div>
                          
      

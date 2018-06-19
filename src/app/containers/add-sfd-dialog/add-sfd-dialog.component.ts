@@ -63,7 +63,6 @@ this.service.add(form.value).subscribe(res=>{
       this.dialog.closeAll();
     }
     ,err=>{
-      
       if(err.error.exception=='org.springframework.dao.DataIntegrityViolationException'){
         let div = document.getElementById('error');
         div.style.display='block';

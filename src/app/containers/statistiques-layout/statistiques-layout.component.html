@@ -8,6 +8,22 @@
       <app-breadcrumbs></app-breadcrumbs>
     </ol>
     <div class="row">
+      <ng-template [ngIf]="Acteur=='ROLE_ADMIN'">
+        <div class="card col-12">
+          <div class="card-header text-center font-weight-bold">Filter</div>
+          <div class="card-body">
+            <form #form="ngForm" class="form-inline">
+              <div class="form-group col-4">
+                <label for="SFD" class="font-weight-bold">SFD : </label>
+                <select name="SFD" id="SFD" class="form-control col-12" [ngModel]="SFD" #SFD="ngModel">
+                  <option *ngFor="let sfd of sfds" [ngValue]="sfd">{{sfd.nomsfd}}</option>
+                </select>
+              </div>
+              <button class="btn btn-primary col-4" (click)="filter(form)">Chercher</button>
+            </form> 
+          </div>
+        </div>
+      </ng-template>
     <canvas id="canvas">
 
     </canvas>
