@@ -54,9 +54,7 @@ export const routes: Routes = [
     },
     //canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: sfdnewviewComponent,
-  },
-  
-  
+  },  
   {
     path: 'GestionDesAdmin',
     data: {

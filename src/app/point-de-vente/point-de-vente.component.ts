@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { PdvServiceService } from '../Services/pdvService/pdv-service.service';
 import { PdvDiagComponent } from '../pdv-diag/pdv-diag.component';
 import * as jwt_decode from 'jwt-decode';
 import { CookieService } from 'ngx-cookie-service';
+declare var jsPDF: any;
 @Component({
   selector: 'app-point-de-vente',
   templateUrl: './point-de-vente.component.html',
@@ -13,7 +14,8 @@ export class PointDeVenteComponent implements OnInit {
   
   usersfd: any =jwt_decode(this.cookie.get('Token'));
   pdvs:any;
-  layout='Active'
+  layout='Active';
+
   constructor(private diag : MatDialog, private service: PdvServiceService,private cookie : CookieService) { }
 
   ngOnInit() {
@@ -145,5 +147,31 @@ export class PointDeVenteComponent implements OnInit {
     });
     return listr;
    }).subscribe(res=>this.pdvs=res,err=>console.log(err))
+  }
+  @ViewChild('content') content :ElementRef;
+  downolad(){
+ 
+// let doc=new JSPdf();
+var doc = new jsPDF('p', 'pt');
+doc.text(15, 15, '                                Liste des Points de vente');
+var res = doc.autoTableHtmlToJson(document.getElementById('content'));
+let specialElementHandlers={
+  '#editor':function(element,renderer) {
+    return true;
+  }};
+  let content=this.content.nativeElement;
+  // doc.fromHTML(content.innerHTML,15,15,{
+  //   'width':190,
+  //   'elementHandlers':specialElementHandlers
+  // });
+  // doc.autoTable(content.innerHTML,15,15,{
+  //   'width':190,
+  //   'elementHandlers':specialElementHandlers
+  // });
+  doc.autoTable(res.columns, res.rows);
+  doc.save('listePDV.pdf');
+
+
+
   }
 }
