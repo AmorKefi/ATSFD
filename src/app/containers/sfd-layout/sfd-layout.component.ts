@@ -22,7 +22,7 @@ export class SfdLayoutComponent implements OnInit{
   sfds:any;
   layout='Active';
   ngOnInit(): void {
-    this.service.getAll().subscribe(res=>{this.sfds=res},err=>console.log(err));
+    //this.service.getAll().subscribe(res=>{this.sfds=res},err=>console.log(err));
     this.layout='Active';
 
   }

@@ -1,42 +1,51 @@
-
-<app-header></app-header>
+<app-header>
+</app-header>
 <div class="app-body">
   <app-sidebar></app-sidebar>
   <!-- Main content -->
- <main class="main">
+  <main class="main">
     <!-- Breadcrumb -->
-   <ol class="breadcrumb">
+    <ol class="breadcrumb">
       <app-breadcrumbs></app-breadcrumbs>
     </ol>
     <div class="row">
       <div class="card p-0 col-12">
         <div class="card-header font-weight-bold text-center">
-            <span class="float-left"><Button class="btn btn-flat btn-default" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Compensation</Button></span>
+          <span class="float-left">
+            <Button class="btn btn-flat btn-default" (click)="back()">
+              <i class="fa fa-arrow-left" aria-hidden="true"></i> Compensation</Button>
+          </span>
           Liste des lettrage</div>
         <div class="card-body">
-            <ul class=" card-body list-group p-0">
-                <li class="list-group-item col-12" *ngFor="let Lettrage of Lettrages">
-                  <table class="table">
-                    <thead class="blue-grey lighten-4">
-                      <tr>
-                        <th>Point de vente de Cashin</th><th>Point de vente de Cashout</th><th>Montant</th><th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>{{Lettrage.agenceCashin}}</td><td>{{Lettrage.agenceCashout}}</td><td>{{Lettrage.montant | currency:'CFA':'symbol':'4.2-2' }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- <span class="float-right col-2"><button class="btn btn-primary" routerLink="/Lettrage/{{Lettrage.idLettrage}}"><i class="fa fa-eye"></i></button></span> -->
-                </li>
-              </ul>
+          <ul class=" card-body list-group p-0">
+            <li class="list-group-item col-12" *ngFor="let Lettrage of Lettrages">
+              <table class="table">
+                <thead class="blue-grey lighten-4">
+                  <tr>
+                    <th>Point de vente de Cashin</th>
+                    <th>Point de vente de Cashout</th>
+                    <th>Montant</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{Lettrage.agenceCashin}}</td>
+                    <td>{{Lettrage.agenceCashout}}</td>
+                    <td>{{Lettrage.montant | currency:'CFA':'symbol':'4.2-2' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- <span class="float-right col-2"><button class="btn btn-primary" routerLink="/Lettrage/{{Lettrage.idLettrage}}"><i class="fa fa-eye"></i></button></span> -->
+            </li>
+          </ul>
         </div>
       </div>
     </div>
     <div class="container-fluid">
       <router-outlet></router-outlet>
-    </div><!-- /.conainer-fluid -->
+    </div>
+    <!-- /.conainer-fluid -->
   </main>
   <app-aside></app-aside>
 </div>

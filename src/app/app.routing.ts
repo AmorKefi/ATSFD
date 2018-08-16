@@ -37,6 +37,8 @@ import { CompensationComponent } from './compensation/compensation.component';
 import { TransfertComponent } from './transfert/transfert.component';
 import { TransactionviewComponent } from './transactionview/transactionview.component';
 import { CompensationviewComponent } from './compensationview/compensationview.component';
+import { sfdnewviewComponent } from './sfdnewview/sfdnewview.component';
+
 
 
 export const routes: Routes = [
@@ -50,16 +52,17 @@ export const routes: Routes = [
     data: {
       title: 'Gestion des SFD'
     },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
-    component: SfdLayoutComponent,
+    //canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+    component: sfdnewviewComponent,
   },
+  
   
   {
     path: 'GestionDesAdmin',
     data: {
       title: 'Gestion des administrateurs SFD'
     },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+ //   canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: GestionAdminSfdComponent,
   },
   {
@@ -67,7 +70,7 @@ export const routes: Routes = [
     data: {
       title: 'Gestion des agents'
     },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+   // canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: AgentsComponent,
     
   },
@@ -78,7 +81,7 @@ export const routes: Routes = [
     data: {
       title: 'Gestion des utilisateurs'
     },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+   // canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: AppUserComponent
   },
   {
@@ -86,12 +89,11 @@ export const routes: Routes = [
     data: {
       title: 'Gestion des responsables'
     },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+   // canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: ResponsablesPdvComponent
   },
   {
     path: 'auth',
-
     component: AuthentificationComComponent
   },
   {
@@ -99,7 +101,7 @@ export const routes: Routes = [
     data: {
       title: 'Gestion des rôles'
     },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+  //  canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: AppRoleComponent
   },
   {
@@ -107,18 +109,18 @@ export const routes: Routes = [
     data: {
       title: 'Gestion des fonctions'
     },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+  //  canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: AppFunctionComponent
   },
   {
     path: 'UsersDesactives',
 
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+ //   canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: UserDesactivesComponent
   },
   {
     path : 'Lettrage',
-    canActivate : [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+ //   canActivate : [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: LettrageComponent
   },
   {
@@ -126,7 +128,7 @@ export const routes: Routes = [
     data: {
       title: 'Paramètres Globaux'
     },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+  //  canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: ParamètresglobauxLayoutComponent
   },
   {
@@ -134,7 +136,7 @@ export const routes: Routes = [
     data: {
       title: 'Paramètres comptes'
     },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+ //   canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: ParamètresCompteLayoutComponent
   }, 
   {
@@ -142,7 +144,7 @@ export const routes: Routes = [
     data:{
       title:'Gestion des Adherents'
     },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+ //   canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: GestionAdherentComponent
   },
   {
@@ -150,7 +152,7 @@ export const routes: Routes = [
     data: {
       title: 'Gestion des comptes'
     },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+//    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: GestionComptesComponent
   },
 
@@ -159,22 +161,22 @@ export const routes: Routes = [
     data: {
       title: 'Statistiques'
     },
-    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+ //   canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: StatistiquesLayoutComponent
 
   },{
     path: 'GestionSFD/view/:id',
-    canActivate : [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+    // canActivate : [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: ViewSfdComponent
   },
   {
     path: 'GestionPDV/view/:id',
-    canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+ //   canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
     component: ViewpdvComponent
   },
   {
     path:'GestionPDV',
-    canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
+  //  canActivate : [OnlyLoggedInUsersGuard,AlwaysAuthGuard],
     component: PointDeVenteComponent,
     data:{
       title: 'Gestion Des Point de Vente'

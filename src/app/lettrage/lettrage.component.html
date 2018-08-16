@@ -2,86 +2,99 @@
 <div class="app-body">
   <app-sidebar></app-sidebar>
   <!-- Main content -->
- <main class="main">
+  <main class="main">
     <!-- Breadcrumb -->
-   <ol class="breadcrumb">
+    <ol class="breadcrumb">
       <app-breadcrumbs></app-breadcrumbs>
     </ol>
     <div class="row">
       <div class="col-lg-12">
-          <div class="card mb-3">
-              <div class="card-header font-weight-bold">Critères de recherche</div>
-              <div class="card-body">
-                  <form class="form-inline mb-2" #form="ngForm" (ngSubmit)="search(form.value)">
-                      <div class="form-group col-4">
-                          <label for="pdvcashin" class="font-weight-bold"> Point de vente cashin : </label> 
-                          <input type="text" id="pdvcashin" class="form-control col-10 rounded" placeholder="point de vente cashin" ngModel #pdvcashin="ngModel" name="pdvcashin" >
-                      </div>  
-                      <div class="form-group col-4">
-                          <label for="pdvcashout" class="font-weight-bold"> Point de vente cashout : </label> 
-                          <input type="text" id="pdvcashout" class="form-control col-10 rounded" placeholder="point de vente cashout" ngModel #pdvcashout="ngModel" name="pdvcashout" >
-                      </div>  
-                            <div class="form-groupe col-3">
-                                  <button type="submit" class="btn btn-primary  float-right rounded col-12" ><i class="fa fa-search" aria-hidden="true"></i></button>
-                            </div>                       
-                  </form>                   
+        <div class="card mb-3">
+          <div class="card-header font-weight-bold">Critères de recherche</div>
+          <div class="card-body">
+            <form class="form-inline mb-2" #form="ngForm" (ngSubmit)="search(form.value)">
+              <div class="form-group col-4">
+                <label for="pdvcashin" class="font-weight-bold"> Point de vente cashin : </label>
+                <input type="text" id="pdvcashin" class="form-control col-10 rounded" placeholder="point de vente cashin" ngModel #pdvcashin="ngModel"
+                  name="pdvcashin">
               </div>
+              <div class="form-group col-4">
+                <label for="pdvcashout" class="font-weight-bold"> Point de vente cashout : </label>
+                <input type="text" id="pdvcashout" class="form-control col-10 rounded" placeholder="point de vente cashout" ngModel #pdvcashout="ngModel"
+                  name="pdvcashout">
+              </div>
+              <div class="form-groupe col-3">
+                <button type="submit" class="btn btn-primary  float-right rounded col-12">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </div>
+            </form>
           </div>
-      </div>
-  </div>
-    <div class="card p-0 col-12 mb-3">
-        <div class="card-header font-weight-bold">Liste des Lettrage</div>
-        <div class="card-body">
-            <div class="row float-right">
-                <div class="form-group">
-
- <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>--> 
-                </div>
-            </div>
-            <div class="row">
-                <form class="form-inline">
-            <div class="form-group ">
-                <label class="mr-2">Afficher:</label>
-                <select class="form-control mr-2" #t (change)="sortBy(t)">
-                    <option [ng-value]=""></option>
-                    <option [ng-value]="3">3</option>
-                    <option [ng-value]="5">5</option>
-                    <option [ng-value]="10">10</option>                  
-                  </select>
-                  <label>éléments</label>
-                </div>
-             
-        </form>
         </div>
+      </div>
+    </div>
+    <div class="card p-0 col-12 mb-3">
+      <div class="card-header font-weight-bold">Liste des Lettrage</div>
+      <div class="card-body">
+        <div class="row float-right">
+          <div class="form-group">
+
+            <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
+          </div>
+        </div>
+        <div class="row">
+          <form class="form-inline">
+            <div class="form-group ">
+              <label class="mr-2">Afficher:</label>
+              <select class="form-control mr-2" #t (change)="sortBy(t)">
+                <option [ng-value]=""></option>
+                <option [ng-value]="3">3</option>
+                <option [ng-value]="5">5</option>
+                <option [ng-value]="10">10</option>
+              </select>
+              <label>éléments</label>
             </div>
-            <div class="card-body ">
-              <div class="row mt-2">
-                  <div class="col-lg-12">
-                    <div class="card p-0">
-                     <div class="card-body table-responsive p-0">
-                        <!-- *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD_SELECT'" -->
-                        <table class="table">
-                          <thead class="blue-grey lighten-4">
-                            <tr>
-                              <th>Point de vente Cash In</th>
-                              <th>Transaction Cash In</th>
-                              <th>Point de vente Cash out</th>
-                              <th>Transaction Cash Out</th>
-                              <th>Etat</th>
-                            </tr>
-                          </thead>
-                         <tbody>
-                          <tr *ngFor="let Lettrage of Lettrages">
-                              <td>{{Lettrage?.agenceCashin}}</td>
-                          <td><button class="btn btn-primary" routerLink="/Transaction/view/{{Lettrage?.cashIn?.idTransaction}}"><i class="fa fa-eye"></i></button></td>
-                            <td>{{Lettrage?.agenceCashout}}</td>
-                          <td><button class="btn btn-primary" routerLink="/Transaction/view/{{Lettrage?.cashOut?.idTransaction}}" *ngIf="Lettrage.cashOut"><i class="fa fa-eye"></i></button></td>
-                          <td>
-                              <span *ngIf="Lettrage.etat=='Payé'" class="badge badge-success">{{Lettrage.etat}}</span>
-                              <span *ngIf="Lettrage.etat=='Annuler'" class="badge badge-danger">{{Lettrage.etat}}</span>
-                              <span *ngIf="Lettrage.etat=='EnCours'" class="badge badge-warning">{{Lettrage.etat}}</span>  
-                          </td>
-                          <!-- <td>
+
+          </form>
+        </div>
+      </div>
+      <div class="card-body ">
+        <div class="row mt-2">
+          <div class="col-lg-12">
+            <div class="card p-0">
+              <div class="card-body table-responsive p-0">
+                <!-- *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD_SELECT'" -->
+                <table class="table">
+                  <thead class="blue-grey lighten-4">
+                    <tr>
+                      <th>Point de vente Cash In</th>
+                      <th>Transaction Cash In</th>
+                      <th>Point de vente Cash out</th>
+                      <th>Transaction Cash Out</th>
+                      <th>Etat</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let Lettrage of Lettrages">
+                      <td>{{Lettrage?.agenceCashin}}</td>
+                      <td>
+                        <button class="btn btn-primary" routerLink="/Transaction/view/{{Lettrage?.cashIn?.idTransaction}}">
+                          <i class="fa fa-eye"></i>
+                        </button>
+                      </td>
+                      <td>{{Lettrage?.agenceCashout}}</td>
+                      <td>
+                        <button class="btn btn-primary" routerLink="/Transaction/view/{{Lettrage?.cashOut?.idTransaction}}"
+                          *ngIf="Lettrage.cashOut">
+                          <i class="fa fa-eye"></i>
+                        </button>
+                      </td>
+                      <td>
+                        <span *ngIf="Lettrage.etat=='Payé'" class="badge badge-success">{{Lettrage.etat}}</span>
+                        <span *ngIf="Lettrage.etat=='Annuler'" class="badge badge-danger">{{Lettrage.etat}}</span>
+                        <span *ngIf="Lettrage.etat=='EnCours'" class="badge badge-warning">{{Lettrage.etat}}</span>
+                      </td>
+                      <!-- <td>
                             <div class="btn-group" role="group">
                                <span *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD_UPDATE'">
                                 <button type="button" class="btn btn-info" (click)="Desactiver(compte)" *ngIf="compte.statutCompte!='Désactivé'"><i class="fa fa-lock" aria-hidden="true"></i></button>
@@ -93,10 +106,10 @@
                                     </i></button>
                             </div>
                         </td> -->
-                          </tr>
-                         </tbody>
-                        </table>
-                        <!--Pagination
+                    </tr>
+                  </tbody>
+                </table>
+                <!--Pagination
                         <ul class="pagination">
                           <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                           <li class="page-item active">
@@ -107,20 +120,21 @@
                           <li class="page-item"><a class="page-link" href="#">4</a></li>
                           <li class="page-item"><a class="page-link" href="#">Next</a></li>
                         </ul>-->
-                      </div>
-                    </div>
-                  </div>
               </div>
-          
+            </div>
+          </div>
         </div>
+
+      </div>
     </div>
 
 
-    
+
     <div class="container-fluid">
-        <router-outlet></router-outlet>
-      </div><!-- /.conainer-fluid -->
-    </main>
-    <app-aside></app-aside>
-  </div>
-  <app-footer></app-footer>
+      <router-outlet></router-outlet>
+    </div>
+    <!-- /.conainer-fluid -->
+  </main>
+  <app-aside></app-aside>
+</div>
+<app-footer></app-footer>

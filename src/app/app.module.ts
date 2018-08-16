@@ -150,6 +150,8 @@ import { StatistiqueService } from './statistique.service';
 import { CashinServiceService } from './cashin-service.service';
 import { CompensationService } from './compensation.service';
 import { TransactionsService } from './transactions.service';
+import { sfdnewviewComponent } from './sfdnewview/sfdnewview.component';
+
 
 
 
@@ -258,6 +260,8 @@ import { TransactionsService } from './transactions.service';
     TransactionviewComponent,
 
     CompensationviewComponent,
+
+    sfdnewviewComponent,
     
 
 

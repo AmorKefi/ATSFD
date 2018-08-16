@@ -46,12 +46,13 @@ export class AddSfdDialogComponent implements OnInit {
     this.dialog.closeAll();
   }
   add(form){
-    form.value.statutsfd="Activé"
-    if(form.value.user !='Selectioné un Reponsable' && form.value.user !=null){
+    // form.value.statutsfd="Activé"
+    // if(form.value.user !='Selectioné un Reponsable' && form.value.user !=null){
 
-    }else{
-      form.value.user = null;
-    }
+    // }else{
+    //   form.value.user = null;
+    // }
+    console.log(form.value);
 this.service.add(form.value).subscribe(res=>{
       let div = document.getElementById('Message');
       div.classList.remove('red','accent-1');
@@ -86,7 +87,7 @@ this.service.add(form.value).subscribe(res=>{
     });
   }
   update(form){
-      form.value.statutsfd="Activé"
+      // form.value.statutsfd="Activé"
     this.service.update(form.value).subscribe(res=>{
       let div = document.getElementById('Message');
       div.classList.remove('red','accent-1');

@@ -42,14 +42,16 @@ import { CookieService } from 'ngx-cookie-service';
   selector: 'app-sidebar-nav-item',
   template: `
     <li  *ngIf="!isDropdown(); else dropdown" [ngClass]="hasClass() ? 'nav-item ' + item.class : 'nav-item'" >
-      <app-sidebar-nav-link *HasAnyAuthority="role" [link]='item'></app-sidebar-nav-link>
+      <!--<app-sidebar-nav-link *HasAnyAuthority="role" [link]='item'></app-sidebar-nav-link>-->
+      <app-sidebar-nav-link  [link]='item'></app-sidebar-nav-link>
     </li>
     <ng-template #dropdown>
       <li [ngClass]="hasClass() ? 'nav-item nav-dropdown ' + item.class : 'nav-item nav-dropdown'"
           [class.open]="isActive()"
           routerLinkActive="open"
           appNavDropdown>
-        <app-sidebar-nav-dropdown *HasAnyAuthority="role" [link]='item'></app-sidebar-nav-dropdown>
+       <!--<app-sidebar-nav-dropdown *HasAnyAuthority="role" [link]='item'></app-sidebar-nav-dropdown>-->
+        <app-sidebar-nav-dropdown  [link]='item'></app-sidebar-nav-dropdown>
       </li>
     </ng-template>
     `
@@ -60,7 +62,7 @@ export class AppSidebarNavItemComponent implements OnInit{
   role;
   ngOnInit(): void {
     if(this.item != undefined){
-      this.role=this.item.role;
+      //this.role=this.item.role;
       // console.log(this.role);
     }
   }
@@ -74,7 +76,7 @@ export class AppSidebarNavItemComponent implements OnInit{
       sub:'',
       authorities:[]
     }
-   authorities=jwt_decode(this.cookie.get('Token'));
+  // authorities=jwt_decode(this.cookie.get('Token'));
   // console.log(authorities.authorities[0].authority);
   // && this.item.role.indexOf(authorities.authorities[0].authority)!=-1
     if(this.item.children){

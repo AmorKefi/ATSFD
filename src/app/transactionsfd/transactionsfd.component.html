@@ -1,52 +1,72 @@
-
-<app-header></app-header>
+<app-header>
+</app-header>
 <div class="app-body">
   <app-sidebar></app-sidebar>
   <!-- Main content -->
- <main class="main">
+  <main class="main">
     <!-- Breadcrumb -->
-   <ol class="breadcrumb">
+    <ol class="breadcrumb">
       <app-breadcrumbs></app-breadcrumbs>
     </ol>
     <div class="row">
-    <div class="card col-12">
-      <div class="card-header text-center">
-        Filter
-      </div>
-      <div class="card-body">
-        <form class="form-inline">
-          <div class="form-group col-4">
-            <label for="">DU</label>
-            <input type="date" class="form-control col-12">
-          </div>
-          <div class="form-group col-4">
-            <label for="">Au</label>
-            <input type="date" class="form-control col-12">
-          </div>
-          <button class="btn btn-primary rounded col-2"><i class="fa fa-search" aria-hidden="true"></i></button>
-        </form>
-      </div>
-    </div>
       <div class="card col-12">
-      <div class="card-body">
-        <table class="table table-hover">
-       
+        <div class="card-header text-center">
+          Filter
+        </div>
+        <div class="card-body">
+          <form class="form-inline">
+            <div class="form-group col-4">
+              <label for="">DU</label>
+              <input type="date" class="form-control col-12">
+            </div>
+            <div class="form-group col-4">
+              <label for="">Au</label>
+              <input type="date" class="form-control col-12">
+            </div>
+            <button class="btn btn-primary rounded col-2">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="card col-12">
+        <div class="card-body">
+          <table class="table table-hover">
+
             <tr>
-              <th class="font-weight-bold">Numéro Transaction</th><th class="font-weight-bold">Adresse Destinataire</th><th class="font-weight-bold">Adresse Emetteur</th><th class="font-weight-bold">Date Transfert</th>
-              <th class="font-weight-bold">Montant Transfert</th> <th class="font-weight-bold">Montant Commision</th> <th class="font-weight-bold">Type</th><th>Action</th>
+              <th class="font-weight-bold">Numéro Transaction</th>
+              <th class="font-weight-bold">Adresse Destinataire</th>
+              <th class="font-weight-bold">Adresse Emetteur</th>
+              <th class="font-weight-bold">Date Transfert</th>
+              <th class="font-weight-bold">Montant Transfert</th>
+              <th class="font-weight-bold">Montant Commision</th>
+              <th class="font-weight-bold">Type</th>
+              <th>Action</th>
             </tr>
             <tr *ngFor="let transaction of transactions">
-            <td>{{transaction.numeroTransaction}}</td><td>{{transaction.adresseDestinataire}}</td> <td>{{transaction.adresseEmetteur}}</td><td>{{transaction.dateTransfert | date:'yyyy-MM-dd HH:mm:ss'}}</td> 
-            <td>{{transaction.numeroTransaction}}</td>  <td>{{transaction.montantTransfert}}</td><td>{{transaction.montantCommision}}</td><td>{{transaction.typeTransaction}}</td> <td><button class="btn btn-primary" routerLink="/Transaction/view/{{transaction.idTransaction}}"><i class="fa fa-eye"></i></button></td>
+              <td>{{transaction.numeroTransaction}}</td>
+              <td>{{transaction.adresseDestinataire}}</td>
+              <td>{{transaction.adresseEmetteur}}</td>
+              <td>{{transaction.dateTransfert | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+              <td>{{transaction.numeroTransaction}}</td>
+              <td>{{transaction.montantTransfert}}</td>
+              <td>{{transaction.montantCommision}}</td>
+              <td>{{transaction.typeTransaction}}</td>
+              <td>
+                <button class="btn btn-primary" routerLink="/Transaction/view/{{transaction.idTransaction}}">
+                  <i class="fa fa-eye"></i>
+                </button>
+              </td>
             </tr>
-        </table>
+          </table>
+        </div>
       </div>
-    </div>
-          
+
     </div>
     <div class="container-fluid">
       <router-outlet></router-outlet>
-    </div><!-- /.conainer-fluid -->
+    </div>
+    <!-- /.conainer-fluid -->
   </main>
   <app-aside></app-aside>
 </div>

@@ -10,30 +10,7 @@
     <div class="alert rgba-green-light font-weight-bold col-4" id="Message">
 
     </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card mb-3">
-          <div class="card-header font-weight-bold">Critères de recherche</div>
-          <div class="card-body">
-            <form class="form-inline mb-2" #form="ngForm" (ngSubmit)="search(form.value)">
-              <div class="form-group col-4">
-                <label for="Code" class="font-weight-bold"> Code SFD : </label>
-                <input type="text" id="Code" class="form-control col-5 rounded" placeholder="Code" ngModel #Code="ngModel" name="Code">
-              </div>
-              <div class="form-group col-4">
-                <label for="Nom" class="font-weight-bold"> Nom SFD : </label>
-                <input type="text" id="Nom" class="form-control  col-5 rounded" placeholder="Nom" ngModel #Nom="ngModel" name="Nom">
-              </div>
-              <div class="form-groupe col-3">
-                <button type="submit" class="btn btn-primary  float-right rounded col-12" mdbTooltip="recherche SFD" placement="top">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
     <div class="card  col-12  p-0 mb-3">
       <div class="card-header font-weight-bold">Liste des SFD</div>
@@ -41,31 +18,26 @@
         <div class="row float-right">
           <div class="form-group">
 
-            <button class="btn btn-primary rounded" (click)="downolad()" mdbTooltip="imprimer liste" placement="top">
-              <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-            </button>
 
-
-            <button class="btn btn-primary rounded" mdbTooltip="Ajouter un SFD" placement="left" (click)="openAddSFDDialog()" *HasAnyAuthority="'ROLE_GESTIONSFD_ADD'">
+            <button class="btn btn-primary rounded"  placement="left" (click)="openAddSFDDialog()">
               <i class="fa fa-plus"></i>
             </button>
-
-            <span *HasAnyAuthority="'ROLE_GESTIONSFD_SELECT'">
-              <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Active'" mdbRippleRadius (click)="getDesactivated()" mdbTooltip="Historique"
+<!-- 
+            <span>
+              <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Active'" mdbRippleRadius (click)="getDesactivated()"
                 placement="top">
                 <i class="fa fa-list" aria-hidden="true"></i>
               </button>
               <button class="btn btn-amber waves-light rounded" *ngIf="layout=='Desactivated'" mdbRippleRadius (click)="getDesactivated()"
-                mdbTooltip="List Des SFD" placement="top">
+                 placement="top">
                 <i class="fa fa-list" aria-hidden="true"></i>
               </button>
-            </span>
+            </span> -->
 
-            <button class="btn btn-success rounded" routerLink="/Comptes/SFD" *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD'" mdbTooltip="Gestion des comptes"
-              placement="top">
+            <!-- <button class="btn btn-success rounded" routerLink="/Comptes/SFD"  placement="top">
               <i class="fa fa-money" aria-hidden="true"></i>
-            </button>
-            <!-- <button class="btn btn-success rounded" routerLink="/Comptes/SFD" *HasAnyAuthority="'ROLE_GESTIONCOMPTESFD'" mdbTooltip="Gestion des comptes" placement="top" >Gestion des comptes</button>                   -->
+            </button> -->
+            <!-- <button class="btn btn-success rounded" routerLink="/Comptes/SFD"  mdbTooltip="Gestion des comptes" placement="top" >Gestion des comptes</button>                   -->
             <!-- <button type="button" class="btn btn-primary rounded" > Ajouter</button>-->
           </div>
         </div>
@@ -85,7 +57,7 @@
           </form>
         </div>
       </div>
-      <div class="card-body" *HasAnyAuthority="'ROLE_GESTIONSFD_SELECT'">
+      <div class="card-body">
         <div class="row mt-2">
           <div class="col-lg-12">
             <div class="card p-0">
@@ -97,7 +69,8 @@
                     <th class="font-weight-bold">Nom</th>
                     <th class="font-weight-bold">Adresse</th>
                     <th class="font-weight-bold">Pays</th>
-                    <th class="font-weight-bold">Statut social</th>
+                    <!-- <th class="font-weight-bold">Statut social</th> -->
+                    <th class="font-weight-bold">Point des Ventes</th>
                     <div>
                       <th class="font-weight-bold">Actions</th>
                     </div>
@@ -105,25 +78,26 @@
                   <!-- </thead> -->
                   <!-- <tbody > -->
                   <tr *ngFor="let sfd of sfds">
-                    <td>{{sfd.codesfd}}</td>
-                    <td>{{sfd.nomsfd}}</td>
-                    <td>{{sfd.adressesfd}}</td>
-                    <td>{{sfd.villesfd}}</td>
-                    <td>
+                    <td>{{sfd.sfd_code}}</td>
+                    <td>{{sfd.sfd_nom}}</td>
+                    <td>{{sfd.sfd_adresse}}</td>
+                    <td>{{sfd.sfd_pays}}</td>
+                    <!-- <td>
                       <span *ngIf="sfd.statutsfd=='Activé'" class="badge badge-success">{{sfd.statutsfd}}</span>
                       <span *ngIf="sfd.statutsfd=='Désactivé'" class="badge badge-danger">{{sfd.statutsfd}}</span>
-                    </td>
+                    </td> -->
+                    <td> <span *ngFor="let pdv of sfd.pointdevente" class="btn btn-amber">{{pdv.pdv_nom}}</span></td>
                     <td>
 
                       <div class="btn-group" role="group">
 
-                        <button type="button" mdbTooltip="Modifier" placement="top" class="btn btn-info" (click)="update(sfd)" *HasAnyAuthority="'ROLE_GESTIONSFD_UPDATE'">
+                        <button type="button" mdbTooltip="Modifier" placement="top" class="btn btn-info" (click)="update(sfd)">
                           <i class="fa fa-pencil"></i>
                         </button>
-                        <button type="button" class="btn btn-default" mdbTooltip="Consulter" placement="top" routerLink="view/{{sfd.codesfd}}">
+                        <button type="button" class="btn btn-default" mdbTooltip="Consulter" placement="top" routerLink="view/{{sfd.sfd_code}}">
                           <i class="fa fa-eye"></i>
                         </button>
-                        <span *HasAnyAuthority="'ROLE_GESTIONSFD_DELETE'">
+                        <span>
                           <button type="button" class="btn btn-info" (click)="Desactiver(sfd)" mdbTooltip="Désactiver" placement="top" *ngIf="sfd.statutsfd=='Activé'">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                           </button>
@@ -134,7 +108,7 @@
                         </span>
                       </div>
 
-                    </td>
+                    </td>             
                   </tr>
 
 
